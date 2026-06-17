@@ -502,6 +502,35 @@
       font-size: 0.8rem;
       text-align: center;
     }
+
+    .app-tabs {
+      display: flex;
+      gap: 8px;
+      width: min(720px, 100%);
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .app-tab {
+      padding: 10px 16px;
+      border: 2px solid rgba(255,255,255,0.15);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.05);
+      color: #94a3b8;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .app-tab.active {
+      border-color: #facc15;
+      background: rgba(250,204,21,0.12);
+      color: #facc15;
+    }
+
+    .view { display: none; width: min(720px, 100%); }
+    .view.active { display: block; }
   </style>
 </head>
 <body>
@@ -511,7 +540,13 @@
     <p class="team-status loading" id="team-status">Đang tải 48 đội WC 2026...</p>
   </header>
 
-  <div class="panel">
+  <nav class="app-tabs">
+    <button class="app-tab active" data-view="shuffle">🎲 Bắt Đội</button>
+    <button class="app-tab" data-view="tournament">🏆 Giải Nhất Nhì</button>
+    <button class="app-tab" data-view="profile">📊 Lịch sử cá nhân</button>
+  </nav>
+
+  <div class="panel" style="width:min(720px,100%);margin-bottom:16px">
     <div class="panel-header">
       <h2>👥 Người chơi</h2>
       <span class="player-count" id="player-count">6 người</span>
@@ -523,6 +558,7 @@
     </div>
   </div>
 
+  <div id="view-shuffle" class="view active">
   <div class="pitch" id="pitch">
     <div class="teams">
       <div class="team team-a">
@@ -559,6 +595,15 @@
     <p>📱 Gửi link này cho anh em dùng chung:</p>
     <code id="share-url"></code>
     <button class="btn-copy" id="copy-btn">Copy link</button>
+  </div>
+  </div>
+
+  <div id="view-tournament" class="view">
+    <div class="panel"><p class="empty-state">Giải Nhất Nhì — đang xây dựng</p></div>
+  </div>
+
+  <div id="view-profile" class="view">
+    <div class="panel"><p class="empty-state">Lịch sử cá nhân — đang xây dựng</p></div>
   </div>
 
   <footer>Mỗi máy lưu danh sách riêng · Thêm/bớt tên tùy ý</footer>
@@ -981,6 +1026,15 @@
         updateModeButtons();
         previewResult();
       });
+    });
+
+    function switchView(view) {
+      document.querySelectorAll(".app-tab").forEach(t => t.classList.toggle("active", t.dataset.view === view));
+      document.querySelectorAll(".view").forEach(v => v.classList.toggle("active", v.id === `view-${view}`));
+    }
+
+    document.querySelectorAll(".app-tab").forEach(tab => {
+      tab.addEventListener("click", () => switchView(tab.dataset.view));
     });
 
     document.getElementById("add-btn").addEventListener("click", () => addPlayer(nameInput.value));
