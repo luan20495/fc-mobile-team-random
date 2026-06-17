@@ -531,6 +531,286 @@
 
     .view { display: none; width: min(720px, 100%); }
     .view.active { display: block; }
+
+    .tournament-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .tournament-meta { font-size: 0.85rem; color: #94a3b8; }
+    .tournament-meta strong { color: #4ade80; }
+
+    .btn-secondary {
+      padding: 10px 14px;
+      border: none;
+      border-radius: 10px;
+      background: #334155;
+      color: #e2e8f0;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    .btn-secondary:hover { background: #475569; }
+    .btn-secondary:disabled { opacity: 0.45; cursor: not-allowed; }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #eab308, #ca8a04);
+      color: #0f172a;
+    }
+
+    .standings-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      margin-bottom: 14px;
+    }
+
+    .standings-table th,
+    .standings-table td {
+      padding: 8px 6px;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .standings-table th { color: #64748b; font-size: 0.72rem; text-transform: uppercase; }
+    .standings-table td:first-child,
+    .standings-table th:first-child { text-align: left; }
+    .standings-table tr.top-4 td:first-child { color: #4ade80; font-weight: 700; }
+
+    .bracket-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    @media (min-width: 640px) {
+      .bracket-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .bracket-section h3 {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #64748b;
+      margin-bottom: 10px;
+    }
+
+    .match-card {
+      background: rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 10px;
+      padding: 10px 12px;
+      margin-bottom: 8px;
+      cursor: pointer;
+      transition: border-color 0.15s;
+    }
+
+    .match-card:hover:not(.locked) { border-color: #4ade80; }
+    .match-card.locked { cursor: default; opacity: 0.92; }
+    .match-card.pending { border-style: dashed; opacity: 0.7; cursor: default; }
+    .match-card.playoff { border-left: 3px solid #facc15; }
+
+    .match-card .match-label {
+      font-size: 0.68rem;
+      color: #64748b;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .match-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 0;
+      font-size: 0.9rem;
+    }
+
+    .match-row.winner { color: #4ade80; font-weight: 700; }
+    .match-score {
+      font-weight: 800;
+      color: #facc15;
+      font-size: 0.85rem;
+      white-space: nowrap;
+    }
+
+    .playoff-tree {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .playoff-slot {
+      background: rgba(250,204,21,0.08);
+      border: 1px dashed rgba(250,204,21,0.35);
+      border-radius: 10px;
+      padding: 12px;
+    }
+
+    .playoff-slot.done {
+      border-style: solid;
+      background: rgba(74,222,128,0.08);
+      border-color: rgba(74,222,128,0.35);
+    }
+
+    .cycle-list { display: flex; flex-direction: column; gap: 12px; }
+
+    .cycle-card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 14px;
+    }
+
+    .cycle-card.locked { border-color: rgba(100,116,139,0.4); }
+
+    .cycle-card h4 {
+      font-size: 0.95rem;
+      margin-bottom: 6px;
+      color: #e2e8f0;
+    }
+
+    .cycle-card .cycle-info {
+      font-size: 0.8rem;
+      color: #94a3b8;
+      margin-bottom: 10px;
+    }
+
+    .profile-search {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .profile-search input {
+      flex: 1;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 2px solid rgba(255,255,255,0.15);
+      background: rgba(0,0,0,0.3);
+      color: #fff;
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    .profile-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+
+    .profile-chip {
+      padding: 6px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(59,130,246,0.4);
+      background: rgba(59,130,246,0.15);
+      color: #93c5fd;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .mini-bracket {
+      display: grid;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: #94a3b8;
+    }
+
+    .mini-bracket .won { color: #4ade80; font-weight: 600; }
+
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      z-index: 200;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .modal-overlay.show { display: flex; }
+
+    .modal {
+      width: min(360px, 100%);
+      background: #1e293b;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 14px;
+      padding: 20px;
+    }
+
+    .modal h3 { margin-bottom: 14px; font-size: 1rem; }
+
+    .score-inputs {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    .score-inputs input {
+      width: 56px;
+      padding: 10px;
+      text-align: center;
+      border-radius: 8px;
+      border: 2px solid rgba(255,255,255,0.15);
+      background: rgba(0,0,0,0.3);
+      color: #fff;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .score-inputs span { color: #64748b; font-weight: 700; }
+
+    .quick-result {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .quick-result button {
+      flex: 1;
+      min-width: 80px;
+      padding: 8px;
+      border: none;
+      border-radius: 8px;
+      background: #334155;
+      color: #e2e8f0;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .modal-actions { display: flex; gap: 8px; }
+    .modal-actions button { flex: 1; }
+
+    .empty-state {
+      color: #475569;
+      font-size: 0.85rem;
+      font-style: italic;
+      text-align: center;
+      padding: 20px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .badge.active { background: rgba(74,222,128,0.2); color: #4ade80; }
+    .badge.locked { background: rgba(100,116,139,0.3); color: #94a3b8; }
+    .badge.playoffs { background: rgba(250,204,21,0.2); color: #facc15; }
+
+
+    .cycle-card .fc-diagram { margin-top: 10px; margin-bottom: 0; }
   </style>
 </head>
 <body>
@@ -599,11 +879,73 @@
   </div>
 
   <div id="view-tournament" class="view">
-    <div class="panel"><p class="empty-state">Giải Nhất Nhì — đang xây dựng</p></div>
+    <div class="panel">
+      <div class="tournament-header">
+        <div>
+          <h2 style="font-size:1rem;margin-bottom:4px">🏆 Giải Nhất Nhì</h2>
+          <div class="tournament-meta" id="tournament-status">Vòng tròn → Nhất vs Nhì, Ba vs Tư</div>
+        </div>
+        <button class="btn-secondary btn-gold" id="new-cycle-btn">+ Giải mới</button>
+      </div>
+      <p style="font-size:0.8rem;color:#64748b;margin-bottom:12px">
+        Đá vòng tròn tính điểm (thắng 3, hòa 1) → xếp hạng → playoff Nhất vs Nhì, Ba vs Tư.
+        Giải cũ khóa sau khi xong; giải mới có thể đổi số người.
+      </p>
+      <div id="standings-wrap"></div>
+      <div class="bracket-grid">
+        <div class="bracket-section">
+          <h3>⚽ Vòng tròn</h3>
+          <div id="league-matches"></div>
+        </div>
+        <div class="bracket-section">
+          <h3>🥇 Playoff</h3>
+          <div class="playoff-tree" id="playoff-matches"></div>
+        </div>
+      </div>
+    </div>
+    <div class="panel">
+      <h2 style="font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;color:#94a3b8;margin-bottom:10px">Các giải đã qua</h2>
+      <div class="cycle-list" id="past-cycles">
+        <div class="empty-state">Chưa có giải nào</div>
+      </div>
+    </div>
   </div>
 
   <div id="view-profile" class="view">
-    <div class="panel"><p class="empty-state">Lịch sử cá nhân — đang xây dựng</p></div>
+    <div class="panel">
+      <h2 style="font-size:1rem;margin-bottom:8px">📊 Lịch sử theo tên</h2>
+      <p style="font-size:0.8rem;color:#64748b;margin-bottom:12px">Nhập tên để xem sơ đồ các giải đã tham gia</p>
+      <div class="profile-search">
+        <input type="text" id="profile-name-input" placeholder="VD: Luân" maxlength="20" />
+        <button class="btn-secondary" id="profile-search-btn">Xem</button>
+      </div>
+      <div class="profile-chips" id="profile-chips"></div>
+      <div id="profile-results">
+        <div class="empty-state">Chọn hoặc nhập tên người chơi</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="score-modal">
+    <div class="modal">
+      <h3 id="modal-title">Nhập kết quả</h3>
+      <div class="score-inputs">
+        <span id="modal-home-name">A</span>
+        <input type="number" id="score-home" min="0" max="99" value="0" />
+        <span>:</span>
+        <input type="number" id="score-away" min="0" max="99" value="0" />
+        <span id="modal-away-name">B</span>
+      </div>
+      <div class="quick-result">
+        <button type="button" id="quick-home-win">Thắng trái</button>
+        <button type="button" id="quick-draw">Hòa</button>
+        <button type="button" id="quick-away-win">Thắng phải</button>
+      </div>
+      <div class="modal-actions">
+        <button class="btn-secondary" id="modal-cancel">Huỷ</button>
+        <button class="btn-secondary btn-gold" id="modal-save">Lưu & Khóa</button>
+      </div>
+    </div>
   </div>
 
   <footer>Mỗi máy lưu danh sách riêng · Thêm/bớt tên tùy ý</footer>
@@ -675,6 +1017,445 @@
 
     const DEFAULT_PLAYERS = ["Luân", "Hưng", "Hải", "Long", "Đại", "Khuê"];
     const STORAGE_KEY = "fc-mobile-players";
+    const TOURNAMENT_KEY = "fc-mobile-tournament";
+
+    let tournamentData = loadTournamentData();
+    let pendingMatch = null;
+
+    function loadTournamentData() {
+      try {
+        const saved = localStorage.getItem(TOURNAMENT_KEY);
+        if (saved) return JSON.parse(saved);
+      } catch {}
+      return { cycles: [], activeCycleId: null };
+    }
+
+    function saveTournamentData() {
+      localStorage.setItem(TOURNAMENT_KEY, JSON.stringify(tournamentData));
+    }
+
+    function uid() {
+      return Date.now().toString(36) + Math.random().toString(36).slice(2, 7);
+    }
+
+    function getActiveCycle() {
+      return tournamentData.cycles.find(c => c.id === tournamentData.activeCycleId) || null;
+    }
+
+    function getLockedCycles() {
+      return tournamentData.cycles.filter(c => c.locked).reverse();
+    }
+
+    function generateRoundRobin(playerList) {
+      const list = [...playerList];
+      if (list.length % 2 === 1) list.push(null);
+      const n = list.length;
+      const rounds = n - 1;
+      const matches = [];
+      let arr = [...list];
+      for (let r = 0; r < rounds; r++) {
+        for (let i = 0; i < n / 2; i++) {
+          const home = arr[i];
+          const away = arr[n - 1 - i];
+          if (home && away) {
+            matches.push({
+              id: uid(),
+              home,
+              away,
+              round: r + 1,
+              scoreHome: null,
+              scoreAway: null,
+              played: false,
+              lockedAt: null,
+            });
+          }
+        }
+        arr = [arr[0], arr[n - 1], ...arr.slice(1, n - 1)];
+      }
+      return matches;
+    }
+
+    function headToHead(a, b, matches) {
+      const m = matches.find(x => x.played && ((x.home === a && x.away === b) || (x.home === b && x.away === a)));
+      if (!m) return 0;
+      if (m.home === a) {
+        if (m.scoreHome > m.scoreAway) return -1;
+        if (m.scoreHome < m.scoreAway) return 1;
+      } else {
+        if (m.scoreAway > m.scoreHome) return -1;
+        if (m.scoreAway < m.scoreHome) return 1;
+      }
+      return 0;
+    }
+
+    function computeStandings(cycle) {
+      const stats = {};
+      cycle.players.forEach(p => {
+        stats[p] = { name: p, played: 0, w: 0, d: 0, l: 0, gf: 0, ga: 0, pts: 0 };
+      });
+      cycle.league.forEach(m => {
+        if (!m.played) return;
+        const h = stats[m.home];
+        const a = stats[m.away];
+        h.played++; a.played++;
+        h.gf += m.scoreHome; h.ga += m.scoreAway;
+        a.gf += m.scoreAway; a.ga += m.scoreHome;
+        if (m.scoreHome > m.scoreAway) { h.w++; a.l++; h.pts += 3; }
+        else if (m.scoreHome < m.scoreAway) { a.w++; h.l++; a.pts += 3; }
+        else { h.d++; a.d++; h.pts += 1; a.pts += 1; }
+      });
+      return Object.values(stats).sort((x, y) => {
+        if (y.pts !== x.pts) return y.pts - x.pts;
+        const h2h = headToHead(x.name, y.name, cycle.league);
+        if (h2h !== 0) return h2h;
+        return (y.gf - y.ga) - (x.gf - x.ga);
+      });
+    }
+
+    function leagueComplete(cycle) {
+      return cycle.league.length > 0 && cycle.league.every(m => m.played);
+    }
+
+    function playoffsComplete(cycle) {
+      if (!cycle.playoffs.length) return true;
+      return cycle.playoffs.every(m => m.played);
+    }
+
+    function generatePlayoffs(standings) {
+      if (standings.length < 4) return [];
+      return [
+        {
+          id: uid(),
+          type: "final",
+          label: "Chung kết · Nhất vs Nhì",
+          home: standings[0].name,
+          away: standings[1].name,
+          homeSeed: 1,
+          awaySeed: 2,
+          scoreHome: null,
+          scoreAway: null,
+          played: false,
+          lockedAt: null,
+        },
+        {
+          id: uid(),
+          type: "third",
+          label: "Tranh hạng 3 · Ba vs Tư",
+          home: standings[2].name,
+          away: standings[3].name,
+          homeSeed: 3,
+          awaySeed: 4,
+          scoreHome: null,
+          scoreAway: null,
+          played: false,
+          lockedAt: null,
+        },
+      ];
+    }
+
+    function maybeAdvancePhase(cycle) {
+      if (cycle.phase === "league" && leagueComplete(cycle)) {
+        if (cycle.players.length >= 4) {
+          cycle.phase = "playoffs";
+          cycle.playoffs = generatePlayoffs(computeStandings(cycle));
+        } else {
+          cycle.phase = "done";
+          cycle.locked = true;
+          cycle.completedAt = new Date().toISOString();
+          tournamentData.activeCycleId = null;
+        }
+      }
+      if (cycle.phase === "playoffs" && playoffsComplete(cycle)) {
+        cycle.phase = "done";
+        cycle.locked = true;
+        cycle.completedAt = new Date().toISOString();
+        tournamentData.activeCycleId = null;
+      }
+    }
+
+    function startNewCycle() {
+      const active = getActiveCycle();
+      if (active && !active.locked) {
+        const done = active.league.filter(m => m.played).length;
+        const total = active.league.length;
+        if (!confirm(`Giải #${active.number} đang đá dở (${done}/${total} trận vòng tròn). Bắt đầu giải mới sẽ khóa giải này lại. Tiếp tục?`)) return;
+        active.locked = true;
+        active.phase = "done";
+        active.completedAt = new Date().toISOString();
+      }
+      if (players.length < 3) return showToast("Cần ít nhất 3 người cho giải Nhất Nhì!");
+      const cycle = {
+        id: uid(),
+        number: tournamentData.cycles.length + 1,
+        createdAt: new Date().toISOString(),
+        locked: false,
+        players: [...players],
+        phase: "league",
+        league: generateRoundRobin(players),
+        playoffs: [],
+        completedAt: null,
+      };
+      tournamentData.cycles.push(cycle);
+      tournamentData.activeCycleId = cycle.id;
+      saveTournamentData();
+      renderTournament();
+      showToast(`Bắt đầu Giải #${cycle.number} · ${players.length} người`);
+      switchView("tournament");
+    }
+
+    function openScoreModal(match, phase) {
+      pendingMatch = { match, phase };
+      document.getElementById("modal-home-name").textContent = match.home;
+      document.getElementById("modal-away-name").textContent = match.away;
+      document.getElementById("modal-title").textContent = phase === "playoffs" ? match.label : `Vòng ${match.round}`;
+      document.getElementById("score-home").value = match.played ? match.scoreHome : 0;
+      document.getElementById("score-away").value = match.played ? match.scoreAway : 0;
+      document.getElementById("score-modal").classList.add("show");
+    }
+
+    function closeScoreModal() {
+      pendingMatch = null;
+      document.getElementById("score-modal").classList.remove("show");
+    }
+
+    function saveMatchScore(scoreHome, scoreAway) {
+      if (!pendingMatch) return;
+      const cycle = getActiveCycle();
+      if (!cycle || cycle.locked) return;
+      const { match, phase } = pendingMatch;
+      const list = phase === "league" ? cycle.league : cycle.playoffs;
+      const target = list.find(m => m.id === match.id);
+      if (!target || target.played) return;
+      target.scoreHome = scoreHome;
+      target.scoreAway = scoreAway;
+      target.played = true;
+      target.lockedAt = new Date().toISOString();
+      maybeAdvancePhase(cycle);
+      saveTournamentData();
+      closeScoreModal();
+      renderTournament();
+      showToast("Đã lưu kết quả · trận đã khóa");
+    }
+
+    function seedClass(seed) {
+      if (seed === 1) return "gold";
+      if (seed === 2) return "silver";
+      if (seed === 3 || seed === 4) return "bronze";
+      return "";
+    }
+
+    function fcTeamRow(name, score, isWinner, seed) {
+      const seedHtml = seed
+        ? `<span class="fc-seed ${seedClass(seed)}">${seed}</span>`
+        : `<span class="fc-avatar">${name.charAt(0)}</span>`;
+      return `
+        <div class="fc-team ${isWinner ? "winner" : ""}">
+          ${seedHtml}
+          <span class="fc-name">${name}</span>
+          <span class="fc-score">${score ?? "-"}</span>
+        </div>
+      `;
+    }
+
+    function renderMatchCard(match, phase, index) {
+      const locked = match.played;
+      const cls = [
+        "match-card",
+        phase === "playoffs" ? "playoff" : "",
+        locked ? "locked" : "",
+      ].filter(Boolean).join(" ");
+      const homeWin = locked && match.scoreHome > match.scoreAway;
+      const awayWin = locked && match.scoreAway > match.scoreHome;
+      const score = locked ? `${match.scoreHome} : ${match.scoreAway}` : "Chưa đá";
+      const label = phase === "playoffs" ? match.label : `Trận ${index + 1} · V${match.round}`;
+      return `
+        <div class="${cls}" data-match-id="${match.id}" data-phase="${phase}" ${locked ? "" : 'title="Bấm để nhập kết quả"'}>
+          <div class="match-label">${label}${locked ? " 🔒" : ""}</div>
+          <div class="match-row ${homeWin ? "winner" : ""}"><span>${match.home}</span></div>
+          <div class="match-score">${score}</div>
+          <div class="match-row ${awayWin ? "winner" : ""}"><span>${match.away}</span></div>
+        </div>
+      `;
+    }
+
+    function groupLeagueByRound(matches) {
+      const rounds = {};
+      matches.forEach(m => {
+        if (!rounds[m.round]) rounds[m.round] = [];
+        rounds[m.round].push(m);
+      });
+      return Object.keys(rounds).sort((a, b) => a - b).map(r => ({
+        round: +r,
+        matches: rounds[r],
+      }));
+    }
+
+    function renderStandingsBar(cycle) {
+      const standings = computeStandings(cycle);
+      return `<div class="fc-standings-bar">${standings.map((s, i) => `
+        <span class="fc-rank-chip ${i < 4 ? "top" : ""}">
+          <span class="rk">#${i + 1}</span>${s.name} <strong>${s.pts}đ</strong>
+        </span>
+      `).join("")}</div>`;
+    }
+
+    function renderFcDiagram(cycle, interactive = false, highlightPlayer = null) {
+      if (!cycle) {
+        return `<div class="empty-state">Bấm <strong>+ Giải mới</strong> để bắt đầu</div>`;
+      }
+      return renderStandingsBar(cycle);
+    }
+
+    function bindBracketClicks(container) {
+      if (!container) return;
+      const root = container.closest('#view-tournament') || container;
+      root.querySelectorAll(".match-card:not(.locked)").forEach(el => {
+        el.addEventListener("click", () => {
+          const cycle = getActiveCycle();
+          if (!cycle) return;
+          const phase = el.dataset.phase;
+          const list = phase === "league" ? cycle.league : cycle.playoffs;
+          const match = list.find(m => m.id === el.dataset.matchId);
+          if (match && !match.played) openScoreModal(match, phase);
+        });
+      });
+    }
+
+    function renderStandings(cycle) {
+      const standings = computeStandings(cycle);
+      const rows = standings.map((s, i) => `
+        <tr class="${i < 4 ? "top-4" : ""}">
+          <td>${i + 1}. ${s.name}</td>
+          <td>${s.played}</td>
+          <td>${s.w}</td>
+          <td>${s.d}</td>
+          <td>${s.l}</td>
+          <td>${s.gf - s.ga > 0 ? "+" : ""}${s.gf - s.ga}</td>
+          <td><strong>${s.pts}</strong></td>
+        </tr>
+      `).join("");
+      return `
+        <table class="standings-table">
+          <thead><tr><th>Hạng</th><th>Tr</th><th>T</th><th>H</th><th>B</th><th>HS</th><th>Điểm</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      `;
+    }
+
+    function renderTournament() {
+      const active = getActiveCycle();
+      const statusEl = document.getElementById("tournament-status");
+      const standingsWrap = document.getElementById("standings-wrap");
+      const leagueEl = document.getElementById("league-matches");
+      const playoffEl = document.getElementById("playoff-matches");
+      const pastEl = document.getElementById("past-cycles");
+      const newBtn = document.getElementById("new-cycle-btn");
+
+      if (!active) {
+        statusEl.innerHTML = `Chưa có giải đang chạy · <strong>${players.length} người</strong> sẵn sàng`;
+        standingsWrap.innerHTML = "";
+        leagueEl.innerHTML = '<div class="empty-state">Bấm "Giải mới" để bắt đầu vòng tròn</div>';
+        playoffEl.innerHTML = '<div class="match-card pending"><div class="match-label">Chờ vòng tròn</div></div>';
+        newBtn.disabled = players.length < 3;
+      } else {
+        const played = active.league.filter(m => m.played).length;
+        const total = active.league.length;
+        const phaseLabel = active.phase === "league" ? "Vòng tròn" : active.phase === "playoffs" ? "Playoff" : "Hoàn tất";
+        statusEl.innerHTML = `Giải #${active.number} · <strong>${phaseLabel}</strong> · ${played}/${total} trận VL`;
+        standingsWrap.innerHTML = renderStandings(active);
+        leagueEl.innerHTML = active.league.map((m, i) => renderMatchCard(m, "league", i)).join("");
+        if (active.phase === "playoffs" || active.playoffs.length) {
+          playoffEl.innerHTML = active.playoffs.map((m, i) => renderMatchCard(m, "playoffs", i)).join("");
+        } else if (active.players.length < 4) {
+          playoffEl.innerHTML = '<div class="match-card pending"><div class="match-label">3 người — xếp hạng vòng tròn</div></div>';
+        } else {
+          playoffEl.innerHTML = '<div class="match-card pending"><div class="match-label">Chờ xong vòng tròn</div></div>';
+        }
+        bindBracketClicks(leagueEl);
+        bindBracketClicks(playoffEl);
+        newBtn.disabled = false;
+      }
+
+      const locked = getLockedCycles();
+      if (!locked.length) {
+        pastEl.innerHTML = '<div class="empty-state">Chưa có giải nào hoàn tất</div>';
+      } else {
+        pastEl.innerHTML = locked.map(c => renderCycleSummary(c)).join("");
+      }
+      renderProfileChips();
+    }
+
+    function getChampion(cycle) {
+      const final = cycle.playoffs.find(m => m.type === "final" && m.played);
+      if (final) return final.scoreHome > final.scoreAway ? final.home : final.away;
+      return computeStandings(cycle)[0]?.name || "?";
+    }
+
+    function renderCycleSummary(cycle, highlightPlayer) {
+      const standings = computeStandings(cycle);
+      const champion = getChampion(cycle);
+      const date = new Date(cycle.completedAt || cycle.createdAt).toLocaleDateString("vi-VN");
+      const playerRank = highlightPlayer
+        ? standings.findIndex(s => s.name.toLowerCase() === highlightPlayer.toLowerCase()) + 1
+        : 0;
+      const rankNote = playerRank > 0 ? ` · Hạng ${playerRank}` : "";
+      const badge = cycle.locked
+        ? '<span class="badge locked">Đã khóa</span>'
+        : '<span class="badge active">Đang đá</span>';
+      return `
+        <div class="cycle-card ${cycle.locked ? "locked" : ""}">
+          <h4>Giải #${cycle.number} ${badge}</h4>
+          <div class="cycle-info">${date} · VĐ: <strong style="color:#facc15">${champion}</strong>${rankNote}</div>
+          ${renderStandingsBar(cycle)}
+        </div>
+      `;
+    }
+
+    function renderProfile(name) {
+      const trimmed = name.trim();
+      const resultsEl = document.getElementById("profile-results");
+      if (!trimmed) {
+        resultsEl.innerHTML = '<div class="empty-state">Chọn hoặc nhập tên người chơi</div>';
+        return;
+      }
+      const allCycles = tournamentData.cycles.filter(c =>
+        c.players.some(p => p.toLowerCase() === trimmed.toLowerCase())
+      ).reverse();
+      if (!allCycles.length) {
+        resultsEl.innerHTML = `<div class="empty-state">${trimmed} chưa tham gia giải nào</div>`;
+        return;
+      }
+      const canonical = allCycles[0].players.find(p => p.toLowerCase() === trimmed.toLowerCase()) || trimmed;
+      const active = getActiveCycle();
+      const activeNote = active?.players.some(p => p.toLowerCase() === trimmed.toLowerCase())
+        ? `<div style="margin-bottom:12px;padding:10px;background:rgba(74,222,128,0.1);border-radius:8px;font-size:0.85rem;color:#4ade80">Đang thi đấu Giải #${active.number}</div>`
+        : "";
+      resultsEl.innerHTML = activeNote + allCycles.map(c => renderCycleSummary(c, canonical)).join("");
+    }
+
+    function renderProfileChips() {
+      const el = document.getElementById("profile-chips");
+      const names = [...new Set([
+        ...players,
+        ...tournamentData.cycles.flatMap(c => c.players),
+      ])];
+      el.innerHTML = names.map(n =>
+        `<button type="button" class="profile-chip" data-name="${n}">${n}</button>`
+      ).join("");
+      el.querySelectorAll(".profile-chip").forEach(btn => {
+        btn.addEventListener("click", () => {
+          document.getElementById("profile-name-input").value = btn.dataset.name;
+          renderProfile(btn.dataset.name);
+        });
+      });
+    }
+
+    function switchView(view) {
+      document.querySelectorAll(".app-tab").forEach(t => t.classList.toggle("active", t.dataset.view === view));
+      document.querySelectorAll(".view").forEach(v => v.classList.toggle("active", v.id === `view-${view}`));
+      if (view === "tournament") renderTournament();
+      if (view === "profile") renderProfile(document.getElementById("profile-name-input").value);
+    }
 
     let players = loadPlayers();
     let mode = "split";
@@ -887,6 +1668,8 @@
       subtitleEl.textContent = `${n} người · ${NATIONAL_TEAMS.length} đội WC 2026 · Bấm bắt đội để random`;
       updateModeButtons();
       previewResult();
+      renderProfileChips();
+      renderTournament();
     }
 
     function updateModeButtons() {
@@ -1028,15 +1811,6 @@
       });
     });
 
-    function switchView(view) {
-      document.querySelectorAll(".app-tab").forEach(t => t.classList.toggle("active", t.dataset.view === view));
-      document.querySelectorAll(".view").forEach(v => v.classList.toggle("active", v.id === `view-${view}`));
-    }
-
-    document.querySelectorAll(".app-tab").forEach(tab => {
-      tab.addEventListener("click", () => switchView(tab.dataset.view));
-    });
-
     document.getElementById("add-btn").addEventListener("click", () => addPlayer(nameInput.value));
     nameInput.addEventListener("keydown", e => { if (e.key === "Enter") addPlayer(nameInput.value); });
     shuffleBtn.addEventListener("click", doShuffle);
@@ -1046,7 +1820,35 @@
       navigator.clipboard.writeText(window.location.href).then(() => showToast("Đã copy link!"));
     });
 
+    document.querySelectorAll(".app-tab").forEach(tab => {
+      tab.addEventListener("click", () => switchView(tab.dataset.view));
+    });
+    document.getElementById("new-cycle-btn").addEventListener("click", startNewCycle);
+    document.getElementById("profile-search-btn").addEventListener("click", () => {
+      renderProfile(document.getElementById("profile-name-input").value);
+      switchView("profile");
+    });
+    document.getElementById("profile-name-input").addEventListener("keydown", e => {
+      if (e.key === "Enter") {
+        renderProfile(e.target.value);
+        switchView("profile");
+      }
+    });
+    document.getElementById("modal-cancel").addEventListener("click", closeScoreModal);
+    document.getElementById("modal-save").addEventListener("click", () => {
+      const h = parseInt(document.getElementById("score-home").value, 10) || 0;
+      const a = parseInt(document.getElementById("score-away").value, 10) || 0;
+      saveMatchScore(h, a);
+    });
+    document.getElementById("quick-home-win").addEventListener("click", () => saveMatchScore(2, 1));
+    document.getElementById("quick-away-win").addEventListener("click", () => saveMatchScore(1, 2));
+    document.getElementById("quick-draw").addEventListener("click", () => saveMatchScore(1, 1));
+    document.getElementById("score-modal").addEventListener("click", e => {
+      if (e.target.id === "score-modal") closeScoreModal();
+    });
+
     renderPlayerChips();
+    renderTournament();
     loadTeamsFromApi();
   </script>
 </body>
