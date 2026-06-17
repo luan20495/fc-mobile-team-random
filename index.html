@@ -276,9 +276,31 @@
       font-weight: 500;
       color: #fbbf24;
       opacity: 0.95;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      justify-content: center;
+    }
+
+    .player-nation img {
+      width: 18px;
+      height: 13px;
+      object-fit: cover;
+      border-radius: 2px;
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.15);
     }
 
     .player-nation.pending { color: #64748b; font-style: italic; }
+
+    .team-status {
+      font-size: 0.75rem;
+      color: #64748b;
+      text-align: center;
+      margin-top: 4px;
+    }
+
+    .team-status.error { color: #f87171; }
+    .team-status.loading { color: #94a3b8; }
 
     .player:last-child { margin-bottom: 0; }
     .player.shuffling { opacity: 0.4; transform: scale(0.95); }
@@ -486,6 +508,7 @@
   <header>
     <h1>⚽ FC Mobile — Bắt Đội</h1>
     <p id="subtitle">Chia đội ngẫu nhiên · Bấm bắt đội để random ĐTQG</p>
+    <p class="team-status loading" id="team-status">Đang tải 48 đội WC 2026...</p>
   </header>
 
   <div class="panel">
@@ -542,80 +565,68 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    // 70 đội tuyển — Giải Vô Địch Thế Giới FC Mobile VN
-    const NATIONAL_TEAMS = [
-      { flag: "🇻🇳", name: "Việt Nam" },
-      { flag: "🇦🇷", name: "Argentina" },
-      { flag: "🇦🇺", name: "Úc" },
-      { flag: "🇦🇹", name: "Áo" },
-      { flag: "🇧🇪", name: "Bỉ" },
-      { flag: "🇧🇦", name: "Bosnia" },
-      { flag: "🇧🇷", name: "Brazil" },
-      { flag: "🇨🇻", name: "Cabo Verde" },
-      { flag: "🇨🇦", name: "Canada" },
-      { flag: "🇨🇴", name: "Colombia" },
-      { flag: "🇨🇩", name: "CHDC Congo" },
-      { flag: "🇭🇷", name: "Croatia" },
-      { flag: "🇨🇿", name: "Séc" },
-      { flag: "🇩🇰", name: "Đan Mạch" },
-      { flag: "🇪🇨", name: "Ecuador" },
-      { flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", name: "Anh" },
-      { flag: "🇫🇮", name: "Phần Lan" },
-      { flag: "🇫🇷", name: "Pháp" },
-      { flag: "🇩🇪", name: "Đức" },
-      { flag: "🇬🇭", name: "Ghana" },
-      { flag: "🇭🇹", name: "Haiti" },
-      { flag: "🇳🇱", name: "Hà Lan" },
-      { flag: "🇭🇺", name: "Hungary" },
-      { flag: "🇮🇸", name: "Iceland" },
-      { flag: "🇮🇩", name: "Indonesia" },
-      { flag: "🇮🇹", name: "Ý" },
-      { flag: "🇨🇮", name: "Bờ Biển Ngà" },
-      { flag: "🇰🇷", name: "Hàn Quốc" },
-      { flag: "🇲🇽", name: "Mexico" },
-      { flag: "🇲🇦", name: "Ma Rốc" },
-      { flag: "🇳🇿", name: "New Zealand" },
-      { flag: "🇬🇧", name: "Bắc Ireland" },
-      { flag: "🇳🇴", name: "Na Uy" },
-      { flag: "🇵🇦", name: "Panama" },
-      { flag: "🇵🇾", name: "Paraguay" },
-      { flag: "🇵🇱", name: "Ba Lan" },
-      { flag: "🇵🇹", name: "Bồ Đào Nha" },
-      { flag: "🇶🇦", name: "Qatar" },
-      { flag: "🇮🇪", name: "Ireland" },
-      { flag: "🇷🇴", name: "Romania" },
-      { flag: "🇸🇦", name: "Ả Rập Xê Út" },
-      { flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", name: "Scotland" },
-      { flag: "🇸🇳", name: "Senegal" },
-      { flag: "🇿🇦", name: "Nam Phi" },
-      { flag: "🇪🇸", name: "Tây Ban Nha" },
-      { flag: "🇸🇪", name: "Thụy Điển" },
-      { flag: "🇨🇭", name: "Thụy Sĩ" },
-      { flag: "🇹🇳", name: "Tunisia" },
-      { flag: "🇹🇷", name: "Thổ Nhĩ Kỳ" },
-      { flag: "🇺🇦", name: "Ukraine" },
-      { flag: "🇺🇸", name: "Mỹ" },
-      { flag: "🇺🇾", name: "Uruguay" },
-      { flag: "🇺🇿", name: "Uzbekistan" },
-      { flag: "🇯🇵", name: "Nhật Bản" },
-      { flag: "🇪🇬", name: "Ai Cập" },
-      { flag: "🇩🇿", name: "Algeria" },
-      { flag: "🇮🇶", name: "Iraq" },
-      { flag: "🇯🇴", name: "Jordan" },
-      { flag: "🇮🇷", name: "Iran" },
-      { flag: "🇨🇼", name: "Curacao" },
-      { flag: "🇳🇬", name: "Nigeria" },
-      { flag: "🇨🇲", name: "Cameroon" },
-      { flag: "🇨🇱", name: "Chile" },
-      { flag: "🇵🇪", name: "Peru" },
-      { flag: "🇨🇷", name: "Costa Rica" },
-      { flag: "🇯🇲", name: "Jamaica" },
-      { flag: "🇷🇸", name: "Serbia" },
-      { flag: "🇸🇰", name: "Slovakia" },
-      { flag: "🇬🇪", name: "Georgia" },
-      { flag: "🇦🇱", name: "Albania" },
-      { flag: "🏴󠁧󠁢󠁷󠁬󠁳󠁿", name: "Wales" },
+    const TEAMS_API = "https://worldcup26.ir/get/teams";
+
+    const VN_NAMES = {
+      "Mexico": "Mexico",
+      "South Africa": "Nam Phi",
+      "South Korea": "Hàn Quốc",
+      "Czech Republic": "Séc",
+      "Canada": "Canada",
+      "Bosnia and Herzegovina": "Bosnia",
+      "Qatar": "Qatar",
+      "Switzerland": "Thụy Sĩ",
+      "Brazil": "Brazil",
+      "Morocco": "Ma Rốc",
+      "Haiti": "Haiti",
+      "Scotland": "Scotland",
+      "United States": "Mỹ",
+      "Paraguay": "Paraguay",
+      "Australia": "Úc",
+      "Turkey": "Thổ Nhĩ Kỳ",
+      "Germany": "Đức",
+      "Curaçao": "Curacao",
+      "Ivory Coast": "Bờ Biển Ngà",
+      "Ecuador": "Ecuador",
+      "Netherlands": "Hà Lan",
+      "Japan": "Nhật Bản",
+      "Sweden": "Thụy Điển",
+      "Tunisia": "Tunisia",
+      "Belgium": "Bỉ",
+      "Egypt": "Ai Cập",
+      "Iran": "Iran",
+      "New Zealand": "New Zealand",
+      "Spain": "Tây Ban Nha",
+      "Cape Verde": "Cabo Verde",
+      "Saudi Arabia": "Ả Rập Xê Út",
+      "Uruguay": "Uruguay",
+      "France": "Pháp",
+      "Senegal": "Senegal",
+      "Iraq": "Iraq",
+      "Norway": "Na Uy",
+      "Argentina": "Argentina",
+      "Algeria": "Algeria",
+      "Austria": "Áo",
+      "Jordan": "Jordan",
+      "Portugal": "Bồ Đào Nha",
+      "Democratic Republic of the Congo": "CHDC Congo",
+      "Uzbekistan": "Uzbekistan",
+      "Colombia": "Colombia",
+      "England": "Anh",
+      "Croatia": "Croatia",
+      "Ghana": "Ghana",
+      "Panama": "Panama",
+    };
+
+    const FALLBACK_TEAMS = [
+      { flag: "https://flagcdn.com/w80/ar.png", name: "Argentina" },
+      { flag: "https://flagcdn.com/w80/br.png", name: "Brazil" },
+      { flag: "https://flagcdn.com/w80/fr.png", name: "Pháp" },
+      { flag: "https://flagcdn.com/w80/de.png", name: "Đức" },
+      { flag: "https://flagcdn.com/w80/vn.png", name: "Việt Nam" },
     ];
+
+    let NATIONAL_TEAMS = [...FALLBACK_TEAMS];
 
     const DEFAULT_PLAYERS = ["Luân", "Hưng", "Hải", "Long", "Đại", "Khuê"];
     const STORAGE_KEY = "fc-mobile-players";
@@ -641,6 +652,36 @@
     const labelA = document.getElementById("label-a");
     const labelB = document.getElementById("label-b");
     const toast = document.getElementById("toast");
+    const teamStatusEl = document.getElementById("team-status");
+
+    function flagHtml(flag) {
+      if (!flag) return "";
+      if (flag.startsWith("http")) {
+        return `<img src="${flag}" alt="" width="18" height="13" loading="lazy">`;
+      }
+      return flag;
+    }
+
+    async function loadTeamsFromApi() {
+      try {
+        const res = await fetch(TEAMS_API);
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        const data = await res.json();
+        if (!Array.isArray(data.teams) || !data.teams.length) throw new Error("empty");
+        NATIONAL_TEAMS = data.teams.map(t => ({
+          flag: t.flag,
+          name: VN_NAMES[t.name_en] || t.name_en,
+          group: t.groups,
+        }));
+        teamStatusEl.textContent = `${NATIONAL_TEAMS.length} đội WC 2026 · worldcup26.ir`;
+        teamStatusEl.className = "team-status";
+        renderPlayerChips();
+      } catch {
+        NATIONAL_TEAMS = [...FALLBACK_TEAMS];
+        teamStatusEl.textContent = "Không tải được API — dùng danh sách dự phòng";
+        teamStatusEl.className = "team-status error";
+      }
+    }
 
     function loadPlayers() {
       try {
@@ -685,7 +726,7 @@
     }
 
     function teamLabel(team) {
-      return team ? `<div class="player-nation">${team.flag} ${team.name}</div>` : "";
+      return team ? `<div class="player-nation">${flagHtml(team.flag)} ${team.name}</div>` : "";
     }
 
     function playerCard(name, cls, team) {
@@ -737,7 +778,7 @@
         benchBar.classList.add("show");
         benchNames.textContent = bench.map(n => {
           const t = currentTeams[n];
-          return t ? `${n} (${t.flag} ${t.name})` : n;
+          return t ? `${n} (${t.name})` : n;
         }).join(", ");
       } else {
         benchBar.classList.remove("show");
@@ -798,7 +839,7 @@
 
       const n = players.length;
       playerCountEl.textContent = `${n} người`;
-      subtitleEl.textContent = `${n} người · ${NATIONAL_TEAMS.length} ĐTQG · Bấm bắt đội để random`;
+      subtitleEl.textContent = `${n} người · ${NATIONAL_TEAMS.length} đội WC 2026 · Bấm bắt đội để random`;
       updateModeButtons();
       previewResult();
     }
@@ -856,7 +897,7 @@
 
     function historyPlayerLine(name, teams) {
       const t = teams?.[name];
-      return t ? `${name} (${t.flag} ${t.name})` : name;
+      return t ? `${name} (${t.name})` : name;
     }
 
     function renderHistory() {
@@ -952,6 +993,7 @@
     });
 
     renderPlayerChips();
+    loadTeamsFromApi();
   </script>
 </body>
 </html>
