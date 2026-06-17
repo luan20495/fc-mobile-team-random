@@ -809,6 +809,246 @@
     .badge.locked { background: rgba(100,116,139,0.3); color: #94a3b8; }
     .badge.playoffs { background: rgba(250,204,21,0.2); color: #facc15; }
 
+    /* ── FC Mobile knockout tree ── */
+    .fc-diagram {
+      background: linear-gradient(165deg, #12061f 0%, #2a1450 42%, #1a0a30 100%);
+      border-radius: 16px;
+      padding: 14px 10px 16px;
+      border: 2px solid rgba(139,92,246,0.35);
+      box-shadow: inset 0 0 80px rgba(139,92,246,0.1), 0 12px 40px rgba(0,0,0,0.45);
+      overflow: hidden;
+      margin-bottom: 14px;
+    }
+
+    .fc-diagram-head { text-align: center; margin-bottom: 10px; }
+    .fc-diagram-head .fc-title {
+      font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase;
+      color: #c4b5fd; font-weight: 800;
+    }
+    .fc-diagram-head .fc-sub { font-size: 0.68rem; color: #7c3aed; margin-top: 3px; }
+
+    .fc-standings-bar { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+    .fc-rank-chip {
+      display: inline-flex; align-items: center; gap: 5px; padding: 5px 10px;
+      border-radius: 20px; background: rgba(139,92,246,0.15);
+      border: 1px solid rgba(139,92,246,0.3); font-size: 0.75rem; color: #ddd6fe;
+    }
+    .fc-rank-chip.top { border-color: rgba(74,222,128,0.5); background: rgba(74,222,128,0.1); color: #bbf7d0; }
+    .fc-rank-chip .rk { font-weight: 800; color: #facc15; font-size: 0.68rem; }
+
+    .fc-section-divider {
+      display: flex; align-items: center; gap: 8px; margin: 10px 0 8px;
+      font-size: 0.65rem; font-weight: 800; letter-spacing: 0.14em;
+      text-transform: uppercase; color: #7c3aed;
+    }
+    .fc-section-divider::before, .fc-section-divider::after {
+      content: ""; flex: 1; height: 1px; background: rgba(139,92,246,0.3);
+    }
+
+    .fc-knockout-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 6px; }
+
+    .fc-knockout-stages {
+      display: grid;
+      grid-template-columns: 1fr 0.75fr 90px 0.75fr 1fr;
+      gap: 4px;
+      min-width: 520px;
+      margin-bottom: 8px;
+      padding: 0 4px;
+    }
+    .fc-ks {
+      text-align: center; font-size: 0.58rem; font-weight: 800;
+      letter-spacing: 0.1em; text-transform: uppercase; color: #8b5cf6;
+    }
+    .fc-ks-center { color: #facc15; font-size: 0.62rem; }
+
+    .fc-knockout-main {
+      display: grid;
+      grid-template-columns: 1fr 0.75fr 90px 0.75fr 1fr;
+      align-items: center;
+      gap: 0;
+      min-width: 520px;
+      min-height: 200px;
+      position: relative;
+    }
+
+    .fc-knockout-main::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center 55%, rgba(250,204,21,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .fc-k-side {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 48px;
+      z-index: 1;
+    }
+
+    .fc-k-side.right { align-items: flex-end; }
+
+    .fc-pair-group {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      width: 100%;
+      max-width: 148px;
+    }
+
+    .fc-k-side.right .fc-pair-group { margin-left: auto; }
+
+    .fc-pair-group.left-out::after {
+      content: "";
+      position: absolute;
+      right: -28px; top: 50%;
+      width: 28px; height: 2px;
+      background: rgba(167,139,250,0.65);
+      transform: translateY(-50%);
+    }
+    .fc-pair-group.left-out::before {
+      content: "";
+      position: absolute;
+      right: -2px; top: 12%; bottom: 12%;
+      width: 2px; background: rgba(167,139,250,0.65);
+    }
+
+    .fc-pair-group.right-out::after {
+      content: "";
+      position: absolute;
+      left: -28px; top: 50%;
+      width: 28px; height: 2px;
+      background: rgba(167,139,250,0.65);
+      transform: translateY(-50%);
+    }
+    .fc-pair-group.right-out::before {
+      content: "";
+      position: absolute;
+      left: -2px; top: 12%; bottom: 12%;
+      width: 2px; background: rgba(167,139,250,0.65);
+    }
+
+    .fc-slot {
+      display: flex; align-items: center; gap: 5px;
+      background: linear-gradient(90deg, #4c1d95 0%, #2e1065 100%);
+      border-radius: 8px; padding: 7px 8px;
+      border: 1px solid rgba(139,92,246,0.45);
+      font-size: 0.76rem; color: #ede9fe;
+      min-width: 0;
+    }
+    .fc-slot.winner {
+      background: linear-gradient(90deg, #15803d 0%, #166534 100%);
+      border-color: rgba(74,222,128,0.6); color: #bbf7d0; font-weight: 700;
+    }
+    .fc-slot.dim { opacity: 0.5; }
+
+    .fc-avatar, .fc-seed {
+      width: 20px; height: 20px; border-radius: 5px; flex-shrink: 0;
+      background: linear-gradient(135deg, #5b21b6, #7c3aed);
+      font-size: 0.6rem; font-weight: 800;
+      display: flex; align-items: center; justify-content: center; color: #ede9fe;
+    }
+    .fc-seed.gold { background: linear-gradient(135deg, #ca8a04, #facc15); color: #1a0a30; }
+    .fc-seed.silver { background: linear-gradient(135deg, #64748b, #94a3b8); color: #0f172a; }
+    .fc-seed.bronze { background: linear-gradient(135deg, #92400e, #d97706); color: #fff; }
+
+    .fc-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .fc-score-box {
+      flex-shrink: 0; min-width: 22px; text-align: center;
+      background: rgba(0,0,0,0.45); border-radius: 4px;
+      padding: 2px 5px; font-weight: 900; font-size: 0.78rem; color: #facc15;
+    }
+
+    .fc-bk-col {
+      display: flex; flex-direction: column; justify-content: center;
+      gap: 48px; z-index: 1;
+    }
+
+    .fc-bk-match {
+      position: relative;
+      background: rgba(15,8,30,0.8);
+      border: 1px solid rgba(250,204,21,0.4);
+      border-radius: 8px; padding: 6px 8px;
+      text-align: center; min-width: 56px;
+    }
+    .fc-bk-match.clickable { cursor: pointer; }
+    .fc-bk-match.clickable:hover {
+      border-color: #4ade80; box-shadow: 0 0 14px rgba(74,222,128,0.3);
+    }
+    .fc-bk-match .bk-score {
+      font-size: 1rem; font-weight: 900; color: #facc15; line-height: 1.2;
+    }
+    .fc-bk-match .bk-label {
+      font-size: 0.52rem; color: #7c3aed; text-transform: uppercase;
+      letter-spacing: 0.06em; margin-top: 2px;
+    }
+
+    .fc-bk-match.left-bk::after {
+      content: ""; position: absolute;
+      right: -28px; top: 50%; width: 28px; height: 2px;
+      background: rgba(167,139,250,0.65); transform: translateY(-50%);
+    }
+    .fc-bk-match.right-bk::after {
+      content: ""; position: absolute;
+      left: -28px; top: 50%; width: 28px; height: 2px;
+      background: rgba(167,139,250,0.65); transform: translateY(-50%);
+    }
+
+    .fc-k-center {
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; gap: 6px; z-index: 2; text-align: center;
+    }
+    .fc-trophy-hero {
+      font-size: 2.6rem; line-height: 1;
+      filter: drop-shadow(0 0 16px rgba(250,204,21,0.55));
+    }
+    .fc-trophy-hero.bronze { font-size: 1.6rem; filter: drop-shadow(0 0 10px rgba(217,119,6,0.5)); margin-top: 8px; }
+    .fc-trophy-text {
+      font-size: 0.55rem; font-weight: 800; letter-spacing: 0.12em;
+      text-transform: uppercase; color: #c4b5fd;
+    }
+    .fc-champ-name { font-size: 0.72rem; font-weight: 700; color: #facc15; max-width: 80px; }
+    .fc-third-name { font-size: 0.65rem; color: #d97706; max-width: 80px; }
+
+  /* League columns — FC style */
+    .fc-league-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin-bottom: 4px; }
+    .fc-league-stages {
+      display: flex; gap: 6px; min-width: min-content; margin-bottom: 6px; padding: 0 2px;
+    }
+    .fc-league-stages span {
+      min-width: 112px; text-align: center; font-size: 0.58rem;
+      font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; color: #8b5cf6;
+    }
+    .fc-league-body { display: flex; gap: 10px; min-width: min-content; }
+    .fc-league-col { display: flex; flex-direction: column; gap: 8px; min-width: 112px; }
+
+    .fc-league-pair {
+      position: relative; display: flex; flex-direction: column; gap: 4px;
+      padding-right: 12px;
+    }
+    .fc-league-pair::after {
+      content: ""; position: absolute; right: 0; top: 50%;
+      width: 12px; height: 2px; background: rgba(139,92,246,0.45);
+      transform: translateY(-50%);
+    }
+    .fc-league-pair::before {
+      content: ""; position: absolute; right: 0; top: 18%; bottom: 18%;
+      width: 2px; background: rgba(139,92,246,0.45);
+    }
+    .fc-league-pair.clickable { cursor: pointer; }
+    .fc-league-pair.clickable:hover .fc-slot { border-color: #4ade80; }
+
+    .fc-match-tag {
+      font-size: 0.55rem; color: #6d28d9; text-align: center;
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+
+    .fc-waiting-tree {
+      min-width: 520px; padding: 24px; text-align: center;
+      color: #7c3aed; font-size: 0.82rem;
+    }
 
     .cycle-card .fc-diagram { margin-top: 10px; margin-bottom: 0; }
   </style>
@@ -892,16 +1132,7 @@
         Giải cũ khóa sau khi xong; giải mới có thể đổi số người.
       </p>
       <div id="standings-wrap"></div>
-      <div class="bracket-grid">
-        <div class="bracket-section">
-          <h3>⚽ Vòng tròn</h3>
-          <div id="league-matches"></div>
-        </div>
-        <div class="bracket-section">
-          <h3>🥇 Playoff</h3>
-          <div class="playoff-tree" id="playoff-matches"></div>
-        </div>
-      </div>
+      <div id="fc-bracket-active"></div>
     </div>
     <div class="panel">
       <h2 style="font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;color:#94a3b8;margin-bottom:10px">Các giải đã qua</h2>
@@ -1244,38 +1475,138 @@
       return "";
     }
 
-    function fcTeamRow(name, score, isWinner, seed) {
-      const seedHtml = seed
+    function fcSlot(name, score, isWinner, seed) {
+      const icon = seed
         ? `<span class="fc-seed ${seedClass(seed)}">${seed}</span>`
         : `<span class="fc-avatar">${name.charAt(0)}</span>`;
       return `
-        <div class="fc-team ${isWinner ? "winner" : ""}">
-          ${seedHtml}
+        <div class="fc-slot ${isWinner ? "winner" : ""}">
+          ${icon}
           <span class="fc-name">${name}</span>
-          <span class="fc-score">${score ?? "-"}</span>
+          <span class="fc-score-box">${score ?? "-"}</span>
         </div>
       `;
     }
 
-    function renderMatchCard(match, phase, index) {
-      const locked = match.played;
-      const cls = [
-        "match-card",
-        phase === "playoffs" ? "playoff" : "",
-        locked ? "locked" : "",
-      ].filter(Boolean).join(" ");
-      const homeWin = locked && match.scoreHome > match.scoreAway;
-      const awayWin = locked && match.scoreAway > match.scoreHome;
-      const score = locked ? `${match.scoreHome} : ${match.scoreAway}` : "Chưa đá";
-      const label = phase === "playoffs" ? match.label : `Trận ${index + 1} · V${match.round}`;
+    function fcBkBox(match, side, interactive, highlightPlayer) {
+      const cycle = getActiveCycle();
+      const clickable = interactive && match && !match.played && cycle && !cycle.locked;
+      const played = match?.played;
+      const score = played ? `${match.scoreHome}:${match.scoreAway}` : "-:-";
+      const label = match?.type === "third" ? "Hạng 3" : "CK";
+      const hl = highlightPlayer && match && (match.home === highlightPlayer || match.away === highlightPlayer);
+      const attrs = match
+        ? `data-match-id="${match.id}" data-phase="playoffs"`
+        : "";
       return `
-        <div class="${cls}" data-match-id="${match.id}" data-phase="${phase}" ${locked ? "" : 'title="Bấm để nhập kết quả"'}>
-          <div class="match-label">${label}${locked ? " 🔒" : ""}</div>
-          <div class="match-row ${homeWin ? "winner" : ""}"><span>${match.home}</span></div>
-          <div class="match-score">${score}</div>
-          <div class="match-row ${awayWin ? "winner" : ""}"><span>${match.away}</span></div>
+        <div class="fc-bk-match ${side}-bk ${clickable ? "clickable" : ""}"
+             ${attrs} ${clickable ? 'title="Bấm nhập kết quả"' : ""}
+             ${hl ? 'style="box-shadow:0 0 0 2px #facc15"' : ""}>
+          <div class="bk-score">${score}</div>
+          <div class="bk-label">${label}</div>
         </div>
       `;
+    }
+
+    function fcPairSlots(home, away, homeScore, awayScore, homeSeed, awaySeed, homeWin, awayWin) {
+      return `${fcSlot(home, homeScore, homeWin, homeSeed)}${fcSlot(away, awayScore, awayWin, awaySeed)}`;
+    }
+
+    function renderKnockoutTree(cycle, standings, finalMatch, thirdMatch, interactive, highlightPlayer) {
+      const leagueDone = leagueComplete(cycle);
+      const s = standings;
+      const champ = finalMatch?.played
+        ? (finalMatch.scoreHome > finalMatch.scoreAway ? finalMatch.home : finalMatch.away)
+        : leagueDone ? "?" : "···";
+      const third = thirdMatch?.played
+        ? (thirdMatch.scoreHome > thirdMatch.scoreAway ? thirdMatch.home : thirdMatch.away)
+        : leagueDone ? "?" : "···";
+
+      const h1 = finalMatch?.home || s[0]?.name || "Nhất";
+      const h2 = finalMatch?.away || s[1]?.name || "Nhì";
+      const h3 = thirdMatch?.home || s[2]?.name || "Ba";
+      const h4 = thirdMatch?.away || s[3]?.name || "Tư";
+
+      const fPlayed = finalMatch?.played;
+      const tPlayed = thirdMatch?.played;
+      const fHW = fPlayed && finalMatch.scoreHome > finalMatch.scoreAway;
+      const fAW = fPlayed && finalMatch.scoreAway > finalMatch.scoreHome;
+      const tHW = tPlayed && thirdMatch.scoreHome > thirdMatch.scoreAway;
+      const tAW = tPlayed && thirdMatch.scoreAway > thirdMatch.scoreHome;
+
+      if (!leagueDone && !cycle.playoffs.length) {
+        // Vẫn hiện sơ đồ với seed tạm theo BXH hiện tại
+      }
+
+      return `
+        <div class="fc-knockout-scroll">
+          <div class="fc-knockout-stages">
+            <div class="fc-ks">Vòng loại</div>
+            <div class="fc-ks">Bán kết</div>
+            <div class="fc-ks fc-ks-center">Chung kết</div>
+            <div class="fc-ks">Bán kết</div>
+            <div class="fc-ks">Vòng loại</div>
+          </div>
+          <div class="fc-knockout-main">
+            <div class="fc-k-side left">
+              <div class="fc-pair-group left-out">
+                ${fcPairSlots(h1, h2,
+                  fPlayed ? finalMatch.scoreHome : null,
+                  fPlayed ? finalMatch.scoreAway : null,
+                  finalMatch?.homeSeed || 1, finalMatch?.awaySeed || 2, fHW, fAW)}
+              </div>
+            </div>
+            <div class="fc-bk-col">${fcBkBox(finalMatch, "left", interactive, highlightPlayer)}<div></div></div>
+            <div class="fc-k-center">
+              <div class="fc-trophy-hero">🏆</div>
+              <div class="fc-trophy-text">Vô địch</div>
+              <div class="fc-champ-name">${champ}</div>
+              <div class="fc-trophy-hero bronze">🥉</div>
+              <div class="fc-third-name">${third}</div>
+            </div>
+            <div class="fc-bk-col"><div></div>${fcBkBox(thirdMatch, "right", interactive, highlightPlayer)}</div>
+            <div class="fc-k-side right">
+              <div class="fc-pair-group right-out">
+                ${fcPairSlots(h3, h4,
+                  tPlayed ? thirdMatch.scoreHome : null,
+                  tPlayed ? thirdMatch.scoreAway : null,
+                  thirdMatch?.homeSeed || 3, thirdMatch?.awaySeed || 4, tHW, tAW)}
+              </div>
+            </div>
+          </div>
+        </div>`;
+    }
+
+    function renderLeagueColumns(cycle, interactive, highlightPlayer) {
+      const rounds = groupLeagueByRound(cycle.league);
+      const cycleActive = getActiveCycle();
+      const canClick = interactive && cycleActive && !cycleActive.locked;
+
+      const cols = rounds.map(({ round, matches }) => `
+        <div class="fc-league-col">
+          ${matches.map(m => {
+            const played = m.played;
+            const hWin = played && m.scoreHome > m.scoreAway;
+            const aWin = played && m.scoreAway > m.scoreHome;
+            const clickable = canClick && !played;
+            const hl = highlightPlayer && (m.home === highlightPlayer || m.away === highlightPlayer);
+            return `
+              <div class="fc-league-pair ${clickable ? "clickable" : ""}"
+                   data-match-id="${m.id}" data-phase="league"
+                   ${hl ? 'style="filter:drop-shadow(0 0 4px #facc15)"' : ""}>
+                <div class="fc-match-tag">V${round}</div>
+                ${fcSlot(m.home, played ? m.scoreHome : null, hWin, null)}
+                ${fcSlot(m.away, played ? m.scoreAway : null, aWin, null)}
+              </div>`;
+          }).join("")}
+        </div>
+      `).join("");
+
+      return `
+        <div class="fc-league-scroll">
+          <div class="fc-league-stages">${rounds.map(({ round }) => `<span>V${round}</span>`).join("")}</div>
+          <div class="fc-league-body">${cols}</div>
+        </div>`;
     }
 
     function groupLeagueByRound(matches) {
@@ -1301,15 +1632,48 @@
 
     function renderFcDiagram(cycle, interactive = false, highlightPlayer = null) {
       if (!cycle) {
-        return `<div class="empty-state">Bấm <strong>+ Giải mới</strong> để bắt đầu</div>`;
+        return `<div class="fc-diagram"><div class="empty-state" style="color:#7c3aed">Bấm <strong>+ Giải mới</strong> để tạo sơ đồ</div></div>`;
       }
-      return renderStandingsBar(cycle);
+
+      const standings = computeStandings(cycle);
+      const showPlayoffs = cycle.players.length >= 4;
+      const finalMatch = cycle.playoffs.find(m => m.type === "final");
+      const thirdMatch = cycle.playoffs.find(m => m.type === "third");
+      const badge = cycle.locked ? "ĐÃ KHÓA" : cycle.phase === "playoffs" ? "PLAYOFF" : "VÒNG TRÒN";
+
+      let playoffSection = "";
+      if (!showPlayoffs) {
+        playoffSection = `
+          <div class="fc-section-divider">Kết quả</div>
+          <div class="fc-knockout-scroll">
+            <div class="fc-k-center" style="min-width:200px;padding:20px">
+              <div class="fc-trophy-hero">🏆</div>
+              <div class="fc-champ-name">${standings[0]?.name || "?"}</div>
+            </div>
+          </div>`;
+      } else {
+        playoffSection = `
+          <div class="fc-section-divider">Playoff · Nhất Nhì</div>
+          ${renderKnockoutTree(cycle, standings, finalMatch, thirdMatch, interactive, highlightPlayer)}`;
+      }
+
+      return `
+        <div class="fc-diagram" data-cycle-id="${cycle.id}">
+          <div class="fc-diagram-head">
+            <div class="fc-title">⚽ GIẢI NHẤT NHÌ #${cycle.number}</div>
+            <div class="fc-sub">${badge} · ${cycle.players.length} người</div>
+          </div>
+          ${renderStandingsBar(cycle)}
+          <div class="fc-section-divider">Vòng tròn</div>
+          ${renderLeagueColumns(cycle, interactive, highlightPlayer)}
+          ${playoffSection}
+        </div>
+      `;
     }
 
     function bindBracketClicks(container) {
       if (!container) return;
-      const root = container.closest('#view-tournament') || container;
-      root.querySelectorAll(".match-card:not(.locked)").forEach(el => {
+      container.querySelectorAll("[data-match-id].clickable, .fc-league-pair.clickable, .fc-bk-match.clickable").forEach(el => {
         el.addEventListener("click", () => {
           const cycle = getActiveCycle();
           if (!cycle) return;
@@ -1346,33 +1710,23 @@
       const active = getActiveCycle();
       const statusEl = document.getElementById("tournament-status");
       const standingsWrap = document.getElementById("standings-wrap");
-      const leagueEl = document.getElementById("league-matches");
-      const playoffEl = document.getElementById("playoff-matches");
+      const bracketEl = document.getElementById("fc-bracket-active");
       const pastEl = document.getElementById("past-cycles");
       const newBtn = document.getElementById("new-cycle-btn");
 
       if (!active) {
         statusEl.innerHTML = `Chưa có giải đang chạy · <strong>${players.length} người</strong> sẵn sàng`;
         standingsWrap.innerHTML = "";
-        leagueEl.innerHTML = '<div class="empty-state">Bấm "Giải mới" để bắt đầu vòng tròn</div>';
-        playoffEl.innerHTML = '<div class="match-card pending"><div class="match-label">Chờ vòng tròn</div></div>';
+        bracketEl.innerHTML = renderFcDiagram(null);
         newBtn.disabled = players.length < 3;
       } else {
         const played = active.league.filter(m => m.played).length;
         const total = active.league.length;
         const phaseLabel = active.phase === "league" ? "Vòng tròn" : active.phase === "playoffs" ? "Playoff" : "Hoàn tất";
         statusEl.innerHTML = `Giải #${active.number} · <strong>${phaseLabel}</strong> · ${played}/${total} trận VL`;
-        standingsWrap.innerHTML = renderStandings(active);
-        leagueEl.innerHTML = active.league.map((m, i) => renderMatchCard(m, "league", i)).join("");
-        if (active.phase === "playoffs" || active.playoffs.length) {
-          playoffEl.innerHTML = active.playoffs.map((m, i) => renderMatchCard(m, "playoffs", i)).join("");
-        } else if (active.players.length < 4) {
-          playoffEl.innerHTML = '<div class="match-card pending"><div class="match-label">3 người — xếp hạng vòng tròn</div></div>';
-        } else {
-          playoffEl.innerHTML = '<div class="match-card pending"><div class="match-label">Chờ xong vòng tròn</div></div>';
-        }
-        bindBracketClicks(leagueEl);
-        bindBracketClicks(playoffEl);
+        standingsWrap.innerHTML = "";
+        bracketEl.innerHTML = renderFcDiagram(active, true);
+        bindBracketClicks(bracketEl);
         newBtn.disabled = false;
       }
 
@@ -1406,7 +1760,7 @@
         <div class="cycle-card ${cycle.locked ? "locked" : ""}">
           <h4>Giải #${cycle.number} ${badge}</h4>
           <div class="cycle-info">${date} · VĐ: <strong style="color:#facc15">${champion}</strong>${rankNote}</div>
-          ${renderStandingsBar(cycle)}
+          ${renderFcDiagram(cycle, false, highlightPlayer)}
         </div>
       `;
     }
