@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FC Mobile — Bắt Đội Ngẫu Nhiên</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      min-height: 100dvh;
+      font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+      background: linear-gradient(160deg, #0a1628 0%, #0d3320 45%, #0a1628 100%);
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 24px 16px 40px;
+    }
+
+    header { text-align: center; margin-bottom: 20px; }
+
+    header h1 {
+      font-size: clamp(1.5rem, 5vw, 2rem);
+      font-weight: 800;
+      background: linear-gradient(90deg, #4ade80, #facc15);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    header p { margin-top: 6px; color: #94a3b8; font-size: 0.95rem; }
+
+    .panel {
+      width: min(720px, 100%);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin-bottom: 16px;
+    }
+
+    .panel-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .panel-header h2 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #94a3b8;
+    }
+
+    .player-count {
+      font-size: 0.8rem;
+      color: #4ade80;
+      font-weight: 600;
+    }
+
+    .player-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+      min-height: 36px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(74,222,128,0.15);
+      border: 1px solid rgba(74,222,128,0.35);
+      border-radius: 20px;
+      padding: 6px 10px 6px 14px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: #bbf7d0;
+    }
+
+    .chip button {
+      background: none;
+      border: none;
+      color: #f87171;
+      cursor: pointer;
+      font-size: 1rem;
+      line-height: 1;
+      padding: 0 2px;
+      opacity: 0.8;
+    }
+
+    .chip button:hover { opacity: 1; }
+
+    .add-row {
+      display: flex;
+      gap: 8px;
+    }
+
+    .add-row input {
+      flex: 1;
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 2px solid rgba(255,255,255,0.15);
+      background: rgba(0,0,0,0.3);
+      color: #fff;
+      font-size: 0.95rem;
+      outline: none;
+    }
+
+    .add-row input:focus { border-color: #4ade80; }
+    .add-row input::placeholder { color: #64748b; }
+
+    .btn-add {
+      padding: 10px 16px;
+      border: none;
+      border-radius: 10px;
+      background: #334155;
+      color: #e2e8f0;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn-add:hover { background: #475569; }
+
+    .pitch {
+      width: min(720px, 100%);
+      background: linear-gradient(180deg, #14532d 0%, #166534 50%, #14532d 100%);
+      border: 3px solid rgba(255,255,255,0.25);
+      border-radius: 16px;
+      padding: 20px 16px;
+      position: relative;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    }
+
+    .pitch::before {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border: 2px solid rgba(255,255,255,0.15);
+      border-radius: 10px;
+      pointer-events: none;
+    }
+
+    .pitch::after {
+      content: "";
+      position: absolute;
+      top: 12px; bottom: 12px;
+      left: 50%;
+      width: 2px;
+      background: rgba(255,255,255,0.15);
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+
+    .pitch.mode-1v1::after { display: none; }
+    .pitch.mode-1v1 .teams, .pitch.mode-1v1 .vs { display: none; }
+
+    .pairs { display: none; position: relative; z-index: 1; }
+    .pitch.mode-1v1 .pairs { display: flex; flex-direction: column; gap: 10px; }
+
+    .bench-bar {
+      display: none;
+      margin-top: 12px;
+      padding: 10px 12px;
+      background: rgba(0,0,0,0.35);
+      border-radius: 10px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #94a3b8;
+      position: relative;
+      z-index: 1;
+    }
+
+    .bench-bar.show { display: block; }
+    .bench-bar span { color: #fbbf24; font-weight: 600; }
+
+    .pair-row {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      gap: 10px;
+      background: rgba(0,0,0,0.35);
+      border-radius: 12px;
+      padding: 12px;
+    }
+
+    .pair-label {
+      grid-column: 1 / -1;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #94a3b8;
+    }
+
+    .pair-player {
+      background: rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 12px 8px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-align: center;
+      transition: all 0.15s ease;
+    }
+
+    .pair-player.left { border-left: 3px solid #3b82f6; }
+    .pair-player.right { border-right: 3px solid #ef4444; }
+    .pair-player.shuffling { opacity: 0.4; transform: scale(0.95); }
+    .pair-player.reveal { animation: pop 0.4s ease; }
+
+    .pair-vs {
+      font-weight: 900;
+      font-size: 0.8rem;
+      color: #facc15;
+      background: #0f172a;
+      border: 2px solid #facc15;
+      border-radius: 50%;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .teams {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .team {
+      background: rgba(0,0,0,0.35);
+      border-radius: 12px;
+      padding: 16px 12px;
+      text-align: center;
+    }
+
+    .team.team-a { border-top: 4px solid #3b82f6; }
+    .team.team-b { border-top: 4px solid #ef4444; }
+
+    .team-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 12px;
+      opacity: 0.8;
+    }
+
+    .team-a .team-label { color: #60a5fa; }
+    .team-b .team-label { color: #f87171; }
+
+    .player {
+      background: rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 12px 8px;
+      margin-bottom: 8px;
+      font-size: 1.15rem;
+      font-weight: 600;
+      transition: all 0.15s ease;
+    }
+
+    .player:last-child { margin-bottom: 0; }
+    .player.shuffling { opacity: 0.4; transform: scale(0.95); }
+    .player.reveal { animation: pop 0.4s ease; }
+
+    @keyframes pop {
+      0% { transform: scale(0.8); opacity: 0; }
+      60% { transform: scale(1.05); }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    .vs {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 2;
+      background: #0f172a;
+      border: 2px solid #facc15;
+      border-radius: 50%;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 0.85rem;
+      color: #facc15;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+
+    .controls {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      width: min(720px, 100%);
+    }
+
+    .btn-shuffle {
+      width: 100%;
+      max-width: 400px;
+      padding: 16px 24px;
+      font-size: 1.1rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 14px;
+      cursor: pointer;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #fff;
+      box-shadow: 0 6px 24px rgba(34,197,94,0.4);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .btn-shuffle:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 32px rgba(34,197,94,0.5);
+    }
+
+    .btn-shuffle:disabled { opacity: 0.6; cursor: not-allowed; }
+
+    .mode-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .mode-btn {
+      flex: 1;
+      min-width: 100px;
+      padding: 10px 8px;
+      border: 2px solid rgba(255,255,255,0.2);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.05);
+      color: #cbd5e1;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .mode-btn.active {
+      border-color: #4ade80;
+      background: rgba(74,222,128,0.15);
+      color: #4ade80;
+    }
+
+    .mode-btn:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+    }
+
+    .history {
+      margin-top: 24px;
+      width: min(720px, 100%);
+    }
+
+    .history h3 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #64748b;
+      margin-bottom: 10px;
+    }
+
+    .history-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      max-height: 160px;
+      overflow-y: auto;
+    }
+
+    .history-item {
+      background: rgba(255,255,255,0.05);
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 0.85rem;
+      color: #94a3b8;
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .history-item span:first-child { color: #60a5fa; }
+    .history-item span:last-child { color: #f87171; text-align: right; }
+
+    .history-item.pairs-item {
+      flex-direction: column;
+      gap: 4px;
+      align-items: stretch;
+    }
+
+    .history-item.pairs-item .pair-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .empty-history { color: #475569; font-size: 0.85rem; font-style: italic; }
+
+    .share-box {
+      margin-top: 16px;
+      width: min(720px, 100%);
+      background: rgba(59,130,246,0.1);
+      border: 1px solid rgba(59,130,246,0.3);
+      border-radius: 12px;
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .share-box p { font-size: 0.85rem; color: #94a3b8; flex: 1; min-width: 180px; }
+    .share-box code { color: #60a5fa; font-size: 0.8rem; word-break: break-all; }
+
+    .btn-copy {
+      padding: 8px 14px;
+      border: none;
+      border-radius: 8px;
+      background: #3b82f6;
+      color: #fff;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn-copy:hover { background: #2563eb; }
+
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: #166534;
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 100;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    footer {
+      margin-top: 24px;
+      color: #475569;
+      font-size: 0.8rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>⚽ FC Mobile — Bắt Đội</h1>
+    <p id="subtitle">Chia đội ngẫu nhiên công bằng</p>
+  </header>
+
+  <div class="panel">
+    <div class="panel-header">
+      <h2>👥 Người chơi</h2>
+      <span class="player-count" id="player-count">6 người</span>
+    </div>
+    <div class="player-chips" id="player-chips"></div>
+    <div class="add-row">
+      <input type="text" id="name-input" placeholder="Nhập tên mới..." maxlength="20" />
+      <button class="btn-add" id="add-btn">+ Thêm</button>
+    </div>
+  </div>
+
+  <div class="pitch" id="pitch">
+    <div class="teams">
+      <div class="team team-a">
+        <div class="team-label" id="label-a">Đội Xanh</div>
+        <div id="team-a"></div>
+      </div>
+      <div class="team team-b">
+        <div class="team-label" id="label-b">Đội Đỏ</div>
+        <div id="team-b"></div>
+      </div>
+    </div>
+    <div class="vs">VS</div>
+    <div class="pairs" id="pairs"></div>
+    <div class="bench-bar" id="bench-bar">🪑 Dự bị: <span id="bench-names"></span></div>
+  </div>
+
+  <div class="controls">
+    <div class="mode-row" id="mode-row">
+      <button class="mode-btn active" data-mode="split" id="mode-split">Chia 2 đội</button>
+      <button class="mode-btn" data-mode="2v2" id="mode-2v2">2 vs 2</button>
+      <button class="mode-btn" data-mode="1v1" id="mode-1v1">1 vs 1</button>
+    </div>
+    <button class="btn-shuffle" id="shuffle-btn">🎲 Bắt Đội Ngẫu Nhiên</button>
+  </div>
+
+  <div class="history">
+    <h3>Lịch sử bắt đội</h3>
+    <div class="history-list" id="history">
+      <div class="empty-history">Chưa bắt đội lần nào</div>
+    </div>
+  </div>
+
+  <div class="share-box">
+    <p>📱 Gửi link này cho anh em dùng chung:</p>
+    <code id="share-url"></code>
+    <button class="btn-copy" id="copy-btn">Copy link</button>
+  </div>
+
+  <footer>Mỗi máy lưu danh sách riêng · Thêm/bớt tên tùy ý</footer>
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const DEFAULT_PLAYERS = ["Luân", "Hưng", "Hải", "Long", "Đại", "Khuê"];
+    const STORAGE_KEY = "fc-mobile-players";
+
+    let players = loadPlayers();
+    let mode = "split";
+    let isShuffling = false;
+    const history = [];
+
+    const pitchEl = document.getElementById("pitch");
+    const teamAEl = document.getElementById("team-a");
+    const teamBEl = document.getElementById("team-b");
+    const pairsEl = document.getElementById("pairs");
+    const benchBar = document.getElementById("bench-bar");
+    const benchNames = document.getElementById("bench-names");
+    const shuffleBtn = document.getElementById("shuffle-btn");
+    const historyEl = document.getElementById("history");
+    const playerChips = document.getElementById("player-chips");
+    const nameInput = document.getElementById("name-input");
+    const playerCountEl = document.getElementById("player-count");
+    const subtitleEl = document.getElementById("subtitle");
+    const labelA = document.getElementById("label-a");
+    const labelB = document.getElementById("label-b");
+    const toast = document.getElementById("toast");
+
+    function loadPlayers() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (saved) {
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed) && parsed.length >= 2) return parsed;
+        }
+      } catch {}
+      return [...DEFAULT_PLAYERS];
+    }
+
+    function savePlayers() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(players));
+    }
+
+    function showToast(msg) {
+      toast.textContent = msg;
+      toast.classList.add("show");
+      setTimeout(() => toast.classList.remove("show"), 2000);
+    }
+
+    function shuffle(arr) {
+      const a = [...arr];
+      for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+      }
+      return a;
+    }
+
+    function getSplit() {
+      const shuffled = shuffle(players);
+      const n = shuffled.length;
+
+      if (mode === "1v1") {
+        const pairs = [];
+        for (let i = 0; i + 1 < n; i += 2) pairs.push([shuffled[i], shuffled[i + 1]]);
+        const bench = n % 2 === 1 ? [shuffled[n - 1]] : [];
+        return { type: "pairs", pairs, bench };
+      }
+
+      if (mode === "2v2") {
+        const playing = shuffled.slice(0, Math.min(4, n));
+        const bench = shuffled.slice(Math.min(4, n));
+        return {
+          type: "teams",
+          a: playing.slice(0, 2),
+          b: playing.slice(2, 4),
+          bench,
+        };
+      }
+
+      // split: chia 2 đội đều nhất có thể
+      const half = Math.ceil(n / 2);
+      return {
+        type: "teams",
+        a: shuffled.slice(0, half),
+        b: shuffled.slice(half),
+        bench: [],
+      };
+    }
+
+    function renderBench(bench) {
+      if (bench?.length) {
+        benchBar.classList.add("show");
+        benchNames.textContent = bench.join(", ");
+      } else {
+        benchBar.classList.remove("show");
+      }
+    }
+
+    function renderPairs(pairs, animate = false, shuffling = false) {
+      const cls = shuffling ? "pair-player shuffling" : animate ? "pair-player reveal" : "pair-player";
+      pairsEl.innerHTML = pairs.map((pair, i) => `
+        <div class="pair-row">
+          <div class="pair-label">Trận ${i + 1}</div>
+          <div class="${cls} left">${pair[0]}</div>
+          <div class="pair-vs">VS</div>
+          <div class="${cls} right">${pair[1]}</div>
+        </div>
+      `).join("");
+    }
+
+    function renderTeams(result, animate = false) {
+      const cls = animate ? "player reveal" : "player";
+      teamAEl.innerHTML = result.a.map(n => `<div class="${cls}">${n}</div>`).join("");
+      teamBEl.innerHTML = result.b.map(n => `<div class="${cls}">${n}</div>`).join("");
+      renderBench(result.bench);
+    }
+
+    function renderResult(result, animate = false) {
+      pitchEl.classList.toggle("mode-1v1", result.type === "pairs");
+      if (result.type === "pairs") {
+        renderPairs(result.pairs, animate);
+        renderBench(result.bench);
+      } else {
+        renderTeams(result, animate);
+      }
+    }
+
+    function renderPlayerChips() {
+      playerChips.innerHTML = players.map((name, i) => `
+        <span class="chip">
+          ${name}
+          <button type="button" aria-label="Xóa ${name}" data-index="${i}">×</button>
+        </span>
+      `).join("");
+
+      playerChips.querySelectorAll("button").forEach(btn => {
+        btn.addEventListener("click", () => removePlayer(+btn.dataset.index));
+      });
+
+      const n = players.length;
+      playerCountEl.textContent = `${n} người`;
+      subtitleEl.textContent = `${n} người · Chia đội ngẫu nhiên công bằng`;
+      updateModeButtons();
+      renderResult(getSplit());
+    }
+
+    function updateModeButtons() {
+      const n = players.length;
+      const btn2v2 = document.getElementById("mode-2v2");
+      const btn1v1 = document.getElementById("mode-1v1");
+      const btnSplit = document.getElementById("mode-split");
+
+      btnSplit.textContent = n === 6 ? "3 vs 3" : `Chia 2 đội (${Math.ceil(n/2)}-${Math.floor(n/2)})`;
+      btn2v2.textContent = n > 4 ? `2 vs 2 (+${n - 4} dự bị)` : "2 vs 2";
+      btn1v1.textContent = n % 2 === 0 ? `${n / 2} trận 1 vs 1` : `${Math.floor(n / 2)} trận 1 vs 1 (+1 dự bị)`;
+
+      btn2v2.disabled = n < 4;
+      btn1v1.disabled = n < 2;
+      btnSplit.disabled = n < 2;
+
+      if ((mode === "2v2" && n < 4) || n < 2) {
+        mode = n >= 2 ? "split" : "split";
+        document.querySelectorAll(".mode-btn").forEach(b => b.classList.remove("active"));
+        btnSplit.classList.add("active");
+      }
+
+      if (mode === "split") {
+        labelA.textContent = `Đội Xanh (${Math.ceil(n / 2)})`;
+        labelB.textContent = `Đội Đỏ (${Math.floor(n / 2)})`;
+      } else if (mode === "2v2") {
+        labelA.textContent = "Đội Xanh";
+        labelB.textContent = "Đội Đỏ";
+      }
+    }
+
+    function addPlayer(name) {
+      const trimmed = name.trim();
+      if (!trimmed) return showToast("Nhập tên trước nhé!");
+      if (players.some(p => p.toLowerCase() === trimmed.toLowerCase())) {
+        return showToast("Tên này đã có rồi!");
+      }
+      players.push(trimmed);
+      savePlayers();
+      nameInput.value = "";
+      renderPlayerChips();
+      showToast(`Đã thêm ${trimmed}`);
+    }
+
+    function removePlayer(index) {
+      if (players.length <= 2) return showToast("Cần ít nhất 2 người!");
+      const removed = players.splice(index, 1)[0];
+      savePlayers();
+      renderPlayerChips();
+      showToast(`Đã xóa ${removed}`);
+    }
+
+    function renderHistory() {
+      if (!history.length) {
+        historyEl.innerHTML = '<div class="empty-history">Chưa bắt đội lần nào</div>';
+        return;
+      }
+      historyEl.innerHTML = history.map((h, i) => {
+        if (h.type === "pairs") {
+          return `
+            <div class="history-item pairs-item">
+              <div style="color:#64748b;font-size:0.75rem">#${history.length - i}</div>
+              ${h.pairs.map((p, j) => `
+                <div class="pair-line">
+                  <span>Trận ${j + 1}: ${p[0]}</span>
+                  <span>${p[1]}</span>
+                </div>
+              `).join("")}
+              ${h.bench?.length ? `<div style="color:#fbbf24;font-size:0.8rem">🪑 ${h.bench.join(", ")}</div>` : ""}
+            </div>
+          `;
+        }
+        const benchNote = h.bench?.length ? ` (🪑 ${h.bench.join(", ")})` : "";
+        return `
+          <div class="history-item">
+            <span>${h.a.join(", ")}</span>
+            <span style="color:#64748b">#${history.length - i}</span>
+            <span>${h.b.join(", ")}${benchNote}</span>
+          </div>
+        `;
+      }).join("");
+    }
+
+    async function doShuffle() {
+      if (isShuffling || players.length < 2) return;
+      isShuffling = true;
+      shuffleBtn.disabled = true;
+      shuffleBtn.textContent = "⏳ Đang bắt đội...";
+
+      for (let round = 0; round < 12; round++) {
+        const fake = shuffle(players);
+        if (mode === "1v1") {
+          const pairs = [];
+          for (let i = 0; i + 1 < fake.length; i += 2) pairs.push([fake[i], fake[i + 1]]);
+          renderPairs(pairs, false, true);
+        } else {
+          const count = mode === "2v2" ? 2 : Math.ceil(fake.length / 2);
+          teamAEl.innerHTML = fake.slice(0, count).map(n =>
+            `<div class="player shuffling">${n}</div>`
+          ).join("");
+          teamBEl.innerHTML = fake.slice(count, count * 2).map(n =>
+            `<div class="player shuffling">${n}</div>`
+          ).join("");
+        }
+        await new Promise(r => setTimeout(r, 80 + round * 8));
+      }
+
+      const result = getSplit();
+      renderResult(result, true);
+      history.unshift(JSON.parse(JSON.stringify(result)));
+      if (history.length > 10) history.pop();
+      renderHistory();
+
+      shuffleBtn.disabled = false;
+      shuffleBtn.textContent = "🎲 Bắt Đội Ngẫu Nhiên";
+      isShuffling = false;
+    }
+
+    document.querySelectorAll(".mode-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        if (btn.disabled) return;
+        document.querySelectorAll(".mode-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        mode = btn.dataset.mode;
+        updateModeButtons();
+        renderResult(getSplit());
+      });
+    });
+
+    document.getElementById("add-btn").addEventListener("click", () => addPlayer(nameInput.value));
+    nameInput.addEventListener("keydown", e => { if (e.key === "Enter") addPlayer(nameInput.value); });
+    shuffleBtn.addEventListener("click", doShuffle);
+
+    document.getElementById("share-url").textContent = window.location.href;
+    document.getElementById("copy-btn").addEventListener("click", () => {
+      navigator.clipboard.writeText(window.location.href).then(() => showToast("Đã copy link!"));
+    });
+
+    renderPlayerChips();
+  </script>
+</body>
+</html>
