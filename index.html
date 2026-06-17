@@ -542,7 +542,7 @@
   <div class="toast" id="toast"></div>
 
   <script>
-    // 53 đội tuyển trong chế độ Giải Vô Địch Thế Giới — FC Mobile VN (World Game S26)
+    // 70 đội tuyển — Giải Vô Địch Thế Giới FC Mobile VN
     const NATIONAL_TEAMS = [
       { flag: "🇻🇳", name: "Việt Nam" },
       { flag: "🇦🇷", name: "Argentina" },
@@ -597,6 +597,23 @@
       { flag: "🇺🇸", name: "Mỹ" },
       { flag: "🇺🇾", name: "Uruguay" },
       { flag: "🇺🇿", name: "Uzbekistan" },
+      { flag: "🇯🇵", name: "Nhật Bản" },
+      { flag: "🇪🇬", name: "Ai Cập" },
+      { flag: "🇩🇿", name: "Algeria" },
+      { flag: "🇮🇶", name: "Iraq" },
+      { flag: "🇯🇴", name: "Jordan" },
+      { flag: "🇮🇷", name: "Iran" },
+      { flag: "🇨🇼", name: "Curacao" },
+      { flag: "🇳🇬", name: "Nigeria" },
+      { flag: "🇨🇲", name: "Cameroon" },
+      { flag: "🇨🇱", name: "Chile" },
+      { flag: "🇵🇪", name: "Peru" },
+      { flag: "🇨🇷", name: "Costa Rica" },
+      { flag: "🇯🇲", name: "Jamaica" },
+      { flag: "🇷🇸", name: "Serbia" },
+      { flag: "🇸🇰", name: "Slovakia" },
+      { flag: "🇬🇪", name: "Georgia" },
+      { flag: "🇦🇱", name: "Albania" },
       { flag: "🏴󠁧󠁢󠁷󠁬󠁳󠁿", name: "Wales" },
     ];
 
@@ -749,12 +766,12 @@
       const cls = animate ? "player reveal" : "player";
       teamAEl.innerHTML = result.a.map(n => playerCard(n, cls, teams[n])).join("");
       teamBEl.innerHTML = result.b.map(n => playerCard(n, cls, teams[n])).join("");
-      if (result.bench?.length) {
-        teamBEl.innerHTML += result.bench.map(n =>
-          `<div class="${cls}" style="opacity:0.55;font-size:0.9rem">🪑 <div class="player-name">${n}</div>${teamLabel(teams[n])}</div>`
-        ).join("");
-      }
       renderBench(result.bench);
+    }
+
+    function previewResult() {
+      currentTeams = {};
+      renderResult(getSplit());
     }
 
     function renderResult(result, animate = false) {
@@ -781,9 +798,9 @@
 
       const n = players.length;
       playerCountEl.textContent = `${n} người`;
-      subtitleEl.textContent = `${n} người · Bấm bắt đội để random ĐTQG`;
+      subtitleEl.textContent = `${n} người · ${NATIONAL_TEAMS.length} ĐTQG · Bấm bắt đội để random`;
       updateModeButtons();
-      renderResult(getSplit());
+      previewResult();
     }
 
     function updateModeButtons() {
@@ -910,7 +927,7 @@
       renderHistory();
 
       shuffleBtn.disabled = false;
-      shuffleBtn.textContent = "🎲 Bắt Đội Ngẫu Nhiên";
+      shuffleBtn.textContent = "🎲 Bắt Đội & Random ĐTQG";
       isShuffling = false;
     }
 
@@ -921,7 +938,7 @@
         btn.classList.add("active");
         mode = btn.dataset.mode;
         updateModeButtons();
-        renderResult(getSplit());
+        previewResult();
       });
     });
 
