@@ -201,11 +201,12 @@
       background: rgba(255,255,255,0.08);
       border-radius: 10px;
       padding: 12px 8px;
-      font-size: 1.1rem;
-      font-weight: 600;
       text-align: center;
       transition: all 0.15s ease;
     }
+
+    .pair-player .player-name { font-size: 1.1rem; font-weight: 600; }
+    .pair-player .player-nation { font-size: 0.75rem; color: #fbbf24; margin-top: 4px; }
 
     .pair-player.left { border-left: 3px solid #3b82f6; }
     .pair-player.right { border-right: 3px solid #ef4444; }
@@ -261,10 +262,23 @@
       border-radius: 10px;
       padding: 12px 8px;
       margin-bottom: 8px;
-      font-size: 1.15rem;
-      font-weight: 600;
       transition: all 0.15s ease;
     }
+
+    .player-name {
+      font-size: 1.15rem;
+      font-weight: 600;
+    }
+
+    .player-nation {
+      margin-top: 4px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: #fbbf24;
+      opacity: 0.95;
+    }
+
+    .player-nation.pending { color: #64748b; font-style: italic; }
 
     .player:last-child { margin-bottom: 0; }
     .player.shuffling { opacity: 0.4; transform: scale(0.95); }
@@ -471,7 +485,7 @@
 <body>
   <header>
     <h1>⚽ FC Mobile — Bắt Đội</h1>
-    <p id="subtitle">Chia đội ngẫu nhiên công bằng</p>
+    <p id="subtitle">Chia đội ngẫu nhiên · Bấm bắt đội để random ĐTQG</p>
   </header>
 
   <div class="panel">
@@ -508,7 +522,7 @@
       <button class="mode-btn" data-mode="2v2" id="mode-2v2">2 vs 2</button>
       <button class="mode-btn" data-mode="1v1" id="mode-1v1">1 vs 1</button>
     </div>
-    <button class="btn-shuffle" id="shuffle-btn">🎲 Bắt Đội Ngẫu Nhiên</button>
+    <button class="btn-shuffle" id="shuffle-btn">🎲 Bắt Đội & Random ĐTQG</button>
   </div>
 
   <div class="history">
@@ -528,12 +542,71 @@
   <div class="toast" id="toast"></div>
 
   <script>
+    // 53 đội tuyển trong chế độ Giải Vô Địch Thế Giới — FC Mobile VN (World Game S26)
+    const NATIONAL_TEAMS = [
+      { flag: "🇻🇳", name: "Việt Nam" },
+      { flag: "🇦🇷", name: "Argentina" },
+      { flag: "🇦🇺", name: "Úc" },
+      { flag: "🇦🇹", name: "Áo" },
+      { flag: "🇧🇪", name: "Bỉ" },
+      { flag: "🇧🇦", name: "Bosnia" },
+      { flag: "🇧🇷", name: "Brazil" },
+      { flag: "🇨🇻", name: "Cabo Verde" },
+      { flag: "🇨🇦", name: "Canada" },
+      { flag: "🇨🇴", name: "Colombia" },
+      { flag: "🇨🇩", name: "CHDC Congo" },
+      { flag: "🇭🇷", name: "Croatia" },
+      { flag: "🇨🇿", name: "Séc" },
+      { flag: "🇩🇰", name: "Đan Mạch" },
+      { flag: "🇪🇨", name: "Ecuador" },
+      { flag: "🏴󠁧󠁢󠁥󠁮󠁧󠁿", name: "Anh" },
+      { flag: "🇫🇮", name: "Phần Lan" },
+      { flag: "🇫🇷", name: "Pháp" },
+      { flag: "🇩🇪", name: "Đức" },
+      { flag: "🇬🇭", name: "Ghana" },
+      { flag: "🇭🇹", name: "Haiti" },
+      { flag: "🇳🇱", name: "Hà Lan" },
+      { flag: "🇭🇺", name: "Hungary" },
+      { flag: "🇮🇸", name: "Iceland" },
+      { flag: "🇮🇩", name: "Indonesia" },
+      { flag: "🇮🇹", name: "Ý" },
+      { flag: "🇨🇮", name: "Bờ Biển Ngà" },
+      { flag: "🇰🇷", name: "Hàn Quốc" },
+      { flag: "🇲🇽", name: "Mexico" },
+      { flag: "🇲🇦", name: "Ma Rốc" },
+      { flag: "🇳🇿", name: "New Zealand" },
+      { flag: "🇬🇧", name: "Bắc Ireland" },
+      { flag: "🇳🇴", name: "Na Uy" },
+      { flag: "🇵🇦", name: "Panama" },
+      { flag: "🇵🇾", name: "Paraguay" },
+      { flag: "🇵🇱", name: "Ba Lan" },
+      { flag: "🇵🇹", name: "Bồ Đào Nha" },
+      { flag: "🇶🇦", name: "Qatar" },
+      { flag: "🇮🇪", name: "Ireland" },
+      { flag: "🇷🇴", name: "Romania" },
+      { flag: "🇸🇦", name: "Ả Rập Xê Út" },
+      { flag: "🏴󠁧󠁢󠁳󠁣󠁴󠁿", name: "Scotland" },
+      { flag: "🇸🇳", name: "Senegal" },
+      { flag: "🇿🇦", name: "Nam Phi" },
+      { flag: "🇪🇸", name: "Tây Ban Nha" },
+      { flag: "🇸🇪", name: "Thụy Điển" },
+      { flag: "🇨🇭", name: "Thụy Sĩ" },
+      { flag: "🇹🇳", name: "Tunisia" },
+      { flag: "🇹🇷", name: "Thổ Nhĩ Kỳ" },
+      { flag: "🇺🇦", name: "Ukraine" },
+      { flag: "🇺🇸", name: "Mỹ" },
+      { flag: "🇺🇾", name: "Uruguay" },
+      { flag: "🇺🇿", name: "Uzbekistan" },
+      { flag: "🏴󠁧󠁢󠁷󠁬󠁳󠁿", name: "Wales" },
+    ];
+
     const DEFAULT_PLAYERS = ["Luân", "Hưng", "Hải", "Long", "Đại", "Khuê"];
     const STORAGE_KEY = "fc-mobile-players";
 
     let players = loadPlayers();
     let mode = "split";
     let isShuffling = false;
+    let currentTeams = {};
     const history = [];
 
     const pitchEl = document.getElementById("pitch");
@@ -582,6 +655,34 @@
       return a;
     }
 
+    function randomTeam() {
+      return NATIONAL_TEAMS[Math.floor(Math.random() * NATIONAL_TEAMS.length)];
+    }
+
+    function assignTeams(playerNames) {
+      const teams = {};
+      for (const name of playerNames) {
+        teams[name] = randomTeam();
+      }
+      return teams;
+    }
+
+    function teamLabel(team) {
+      return team ? `<div class="player-nation">${team.flag} ${team.name}</div>` : "";
+    }
+
+    function playerCard(name, cls, team) {
+      return `<div class="${cls}"><div class="player-name">${name}</div>${teamLabel(team)}</div>`;
+    }
+
+    function allPlayersInResult(result) {
+      if (result.type === "pairs") {
+        const names = result.pairs.flat();
+        return result.bench?.length ? [...names, ...result.bench] : names;
+      }
+      return [...result.a, ...result.b, ...(result.bench || [])];
+    }
+
     function getSplit() {
       const shuffled = shuffle(players);
       const n = shuffled.length;
@@ -617,28 +718,42 @@
     function renderBench(bench) {
       if (bench?.length) {
         benchBar.classList.add("show");
-        benchNames.textContent = bench.join(", ");
+        benchNames.textContent = bench.map(n => {
+          const t = currentTeams[n];
+          return t ? `${n} (${t.flag} ${t.name})` : n;
+        }).join(", ");
       } else {
         benchBar.classList.remove("show");
       }
     }
 
-    function renderPairs(pairs, animate = false, shuffling = false) {
+    function renderPairs(pairs, animate = false, shuffling = false, teams = currentTeams) {
       const cls = shuffling ? "pair-player shuffling" : animate ? "pair-player reveal" : "pair-player";
       pairsEl.innerHTML = pairs.map((pair, i) => `
         <div class="pair-row">
           <div class="pair-label">Trận ${i + 1}</div>
-          <div class="${cls} left">${pair[0]}</div>
+          <div class="${cls} left">
+            <div class="player-name">${pair[0]}</div>
+            ${teamLabel(teams[pair[0]])}
+          </div>
           <div class="pair-vs">VS</div>
-          <div class="${cls} right">${pair[1]}</div>
+          <div class="${cls} right">
+            <div class="player-name">${pair[1]}</div>
+            ${teamLabel(teams[pair[1]])}
+          </div>
         </div>
       `).join("");
     }
 
-    function renderTeams(result, animate = false) {
+    function renderTeams(result, animate = false, teams = currentTeams) {
       const cls = animate ? "player reveal" : "player";
-      teamAEl.innerHTML = result.a.map(n => `<div class="${cls}">${n}</div>`).join("");
-      teamBEl.innerHTML = result.b.map(n => `<div class="${cls}">${n}</div>`).join("");
+      teamAEl.innerHTML = result.a.map(n => playerCard(n, cls, teams[n])).join("");
+      teamBEl.innerHTML = result.b.map(n => playerCard(n, cls, teams[n])).join("");
+      if (result.bench?.length) {
+        teamBEl.innerHTML += result.bench.map(n =>
+          `<div class="${cls}" style="opacity:0.55;font-size:0.9rem">🪑 <div class="player-name">${n}</div>${teamLabel(teams[n])}</div>`
+        ).join("");
+      }
       renderBench(result.bench);
     }
 
@@ -666,7 +781,7 @@
 
       const n = players.length;
       playerCountEl.textContent = `${n} người`;
-      subtitleEl.textContent = `${n} người · Chia đội ngẫu nhiên công bằng`;
+      subtitleEl.textContent = `${n} người · Bấm bắt đội để random ĐTQG`;
       updateModeButtons();
       renderResult(getSplit());
     }
@@ -716,9 +831,15 @@
     function removePlayer(index) {
       if (players.length <= 2) return showToast("Cần ít nhất 2 người!");
       const removed = players.splice(index, 1)[0];
+      delete currentTeams[removed];
       savePlayers();
       renderPlayerChips();
       showToast(`Đã xóa ${removed}`);
+    }
+
+    function historyPlayerLine(name, teams) {
+      const t = teams?.[name];
+      return t ? `${name} (${t.flag} ${t.name})` : name;
     }
 
     function renderHistory() {
@@ -727,26 +848,29 @@
         return;
       }
       historyEl.innerHTML = history.map((h, i) => {
+        const teams = h.teams || {};
         if (h.type === "pairs") {
           return `
             <div class="history-item pairs-item">
               <div style="color:#64748b;font-size:0.75rem">#${history.length - i}</div>
               ${h.pairs.map((p, j) => `
                 <div class="pair-line">
-                  <span>Trận ${j + 1}: ${p[0]}</span>
-                  <span>${p[1]}</span>
+                  <span>Trận ${j + 1}: ${historyPlayerLine(p[0], teams)}</span>
+                  <span>${historyPlayerLine(p[1], teams)}</span>
                 </div>
               `).join("")}
-              ${h.bench?.length ? `<div style="color:#fbbf24;font-size:0.8rem">🪑 ${h.bench.join(", ")}</div>` : ""}
+              ${h.bench?.length ? `<div style="color:#fbbf24;font-size:0.8rem">🪑 ${h.bench.map(n => historyPlayerLine(n, teams)).join(", ")}</div>` : ""}
             </div>
           `;
         }
-        const benchNote = h.bench?.length ? ` (🪑 ${h.bench.join(", ")})` : "";
+        const benchNote = h.bench?.length
+          ? ` (🪑 ${h.bench.map(n => historyPlayerLine(n, teams)).join(", ")})`
+          : "";
         return `
           <div class="history-item">
-            <span>${h.a.join(", ")}</span>
+            <span>${h.a.map(n => historyPlayerLine(n, teams)).join(", ")}</span>
             <span style="color:#64748b">#${history.length - i}</span>
-            <span>${h.b.join(", ")}${benchNote}</span>
+            <span>${h.b.map(n => historyPlayerLine(n, teams)).join(", ")}${benchNote}</span>
           </div>
         `;
       }).join("");
@@ -760,23 +884,26 @@
 
       for (let round = 0; round < 12; round++) {
         const fake = shuffle(players);
+        const fakeTeams = assignTeams(fake);
         if (mode === "1v1") {
           const pairs = [];
           for (let i = 0; i + 1 < fake.length; i += 2) pairs.push([fake[i], fake[i + 1]]);
-          renderPairs(pairs, false, true);
+          renderPairs(pairs, false, true, fakeTeams);
         } else {
           const count = mode === "2v2" ? 2 : Math.ceil(fake.length / 2);
           teamAEl.innerHTML = fake.slice(0, count).map(n =>
-            `<div class="player shuffling">${n}</div>`
+            playerCard(n, "player shuffling", fakeTeams[n])
           ).join("");
           teamBEl.innerHTML = fake.slice(count, count * 2).map(n =>
-            `<div class="player shuffling">${n}</div>`
+            playerCard(n, "player shuffling", fakeTeams[n])
           ).join("");
         }
         await new Promise(r => setTimeout(r, 80 + round * 8));
       }
 
       const result = getSplit();
+      currentTeams = assignTeams(allPlayersInResult(result));
+      result.teams = { ...currentTeams };
       renderResult(result, true);
       history.unshift(JSON.parse(JSON.stringify(result)));
       if (history.length > 10) history.pop();
