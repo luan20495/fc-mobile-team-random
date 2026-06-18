@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-18T06:44:32.551Z",
+  "updatedAt": "2026-06-18T06:44:37.425Z",
   "players": [
     "Luân",
     "Hưng",
@@ -277,7 +277,29 @@
         ],
         "phase": "knockout",
         "league": [],
-        "playoffs": [],
+        "playoffs": [
+          {
+            "id": "mqj4x5j48brxa",
+            "type": "third",
+            "label": "Tranh hạng 3 · Ba vs Tư",
+            "home": "Khuê",
+            "away": "Hưng",
+            "homeSeed": 3,
+            "awaySeed": 4,
+            "scoreHome": null,
+            "scoreAway": null,
+            "played": false,
+            "lockedAt": null,
+            "teamHome": {
+              "name": "Bỉ",
+              "flag": "https://flagcdn.com/w80/be.png"
+            },
+            "teamAway": {
+              "name": "Đức",
+              "flag": "https://flagcdn.com/w80/de.png"
+            }
+          }
+        ],
         "knockoutRounds": [
           {
             "round": 1,
@@ -304,10 +326,10 @@
                 "id": "mqj4wps4yan42",
                 "home": "Hưng",
                 "away": "Luân",
-                "scoreHome": null,
-                "scoreAway": null,
-                "played": false,
-                "lockedAt": null,
+                "scoreHome": 1,
+                "scoreAway": 2,
+                "played": true,
+                "lockedAt": "2026-06-18T06:44:33.472Z",
                 "teamHome": {
                   "name": "Đức",
                   "flag": "https://flagcdn.com/w80/de.png"
@@ -315,6 +337,31 @@
                 "teamAway": {
                   "name": "Tây Ban Nha",
                   "flag": "https://flagcdn.com/w80/es.png"
+                }
+              }
+            ],
+            "byes": [],
+            "completed": true
+          },
+          {
+            "round": 2,
+            "label": "Chung kết",
+            "matches": [
+              {
+                "id": "mqj4x5j5lvwnd",
+                "home": "Đại",
+                "away": "Luân",
+                "scoreHome": null,
+                "scoreAway": null,
+                "played": false,
+                "lockedAt": null,
+                "teamHome": {
+                  "name": "Pháp",
+                  "flag": "https://flagcdn.com/w80/fr.png"
+                },
+                "teamAway": {
+                  "name": "Uruguay",
+                  "flag": "https://flagcdn.com/w80/uy.png"
                 }
               }
             ],
