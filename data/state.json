@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-18T06:24:25.187Z",
+  "updatedAt": "2026-06-18T06:24:28.513Z",
   "players": [
     "Luân",
     "Hưng",
@@ -185,7 +185,21 @@
         ],
         "phase": "knockout",
         "league": [],
-        "playoffs": [],
+        "playoffs": [
+          {
+            "id": "mqj47b5rknssv",
+            "type": "third",
+            "label": "Tranh hạng 3 · Ba vs Tư",
+            "home": "Khuê",
+            "away": "Luân",
+            "homeSeed": 3,
+            "awaySeed": 4,
+            "scoreHome": null,
+            "scoreAway": null,
+            "played": false,
+            "lockedAt": null
+          }
+        ],
         "knockoutRounds": [
           {
             "round": 1,
@@ -204,6 +218,23 @@
                 "id": "mqj3xp4gb9njp",
                 "home": "Hưng",
                 "away": "Luân",
+                "scoreHome": 2,
+                "scoreAway": 1,
+                "played": true,
+                "lockedAt": "2026-06-18T06:24:27.711Z"
+              }
+            ],
+            "byes": [],
+            "completed": true
+          },
+          {
+            "round": 2,
+            "label": "Chung kết",
+            "matches": [
+              {
+                "id": "mqj47b5rib81s",
+                "home": "Đại",
+                "away": "Hưng",
                 "scoreHome": null,
                 "scoreAway": null,
                 "played": false,
@@ -216,8 +247,8 @@
         ],
         "playerTeams": {
           "Luân": {
-            "name": "Pháp",
-            "flag": "https://flagcdn.com/w80/fr.png"
+            "name": "Uruguay",
+            "flag": "https://flagcdn.com/w80/uy.png"
           },
           "Hưng": {
             "name": "Ma Rốc",
@@ -228,8 +259,8 @@
             "flag": "https://flagcdn.com/w80/uy.png"
           },
           "Khuê": {
-            "name": "Brazil",
-            "flag": "https://flagcdn.com/w80/br.png"
+            "name": "Colombia",
+            "flag": "https://flagcdn.com/w80/co.png"
           }
         },
         "champion": null,
