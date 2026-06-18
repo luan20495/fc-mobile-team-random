@@ -1,0 +1,395 @@
+{
+  "version": 2,
+  "updatedAt": "2026-06-18T04:09:34.991Z",
+  "players": [
+    "Luân",
+    "Hưng",
+    "Đại",
+    "Khuê"
+  ],
+  "tournament": {
+    "cycles": [
+      {
+        "id": "mqiy8drllsh68",
+        "number": 1,
+        "createdAt": "2026-06-18T03:37:20.049Z",
+        "locked": true,
+        "format": "knockout",
+        "players": [
+          "Luân",
+          "Hưng",
+          "Đại",
+          "Khuê"
+        ],
+        "phase": "done",
+        "league": [],
+        "playoffs": [],
+        "knockoutRounds": [
+          {
+            "round": 1,
+            "label": "Bán kết",
+            "matches": [
+              {
+                "id": "mqiy8drldfeiz",
+                "home": "Đại",
+                "away": "Hưng",
+                "scoreHome": 1,
+                "scoreAway": 2,
+                "played": true,
+                "lockedAt": "2026-06-18T03:37:24.727Z"
+              },
+              {
+                "id": "mqiy8drl52iin",
+                "home": "Khuê",
+                "away": "Luân",
+                "scoreHome": 2,
+                "scoreAway": 1,
+                "played": true,
+                "lockedAt": "2026-06-18T03:37:29.351Z"
+              }
+            ],
+            "byes": [],
+            "completed": true
+          },
+          {
+            "round": 2,
+            "label": "Chung kết",
+            "matches": [
+              {
+                "id": "mqiy8kxz8n9p3",
+                "home": "Hưng",
+                "away": "Khuê",
+                "scoreHome": 2,
+                "scoreAway": 1,
+                "played": true,
+                "lockedAt": "2026-06-18T03:37:32.588Z"
+              }
+            ],
+            "byes": [],
+            "completed": true
+          }
+        ],
+        "playerTeams": {
+          "Luân": {
+            "name": "Croatia",
+            "flag": "https://flagcdn.com/w80/hr.png"
+          },
+          "Hưng": {
+            "name": "Colombia",
+            "flag": "https://flagcdn.com/w80/co.png"
+          },
+          "Đại": {
+            "name": "Tây Ban Nha",
+            "flag": "https://flagcdn.com/w80/es.png"
+          },
+          "Khuê": {
+            "name": "Uruguay",
+            "flag": "https://flagcdn.com/w80/uy.png"
+          }
+        },
+        "champion": "Hưng",
+        "completedAt": "2026-06-18T03:37:32.588Z"
+      }
+    ],
+    "activeCycleId": null
+  },
+  "teamsCache": {
+    "cachedAt": "2026-06-18T03:36:59.542Z",
+    "teams": [
+      {
+        "flag": "https://flagcdn.com/w80/za.png",
+        "name": "Nam Phi",
+        "nameEn": "South Africa",
+        "group": "A"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/br.png",
+        "name": "Brazil",
+        "nameEn": "Brazil",
+        "group": "C"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/gb-sct.png",
+        "name": "Scotland",
+        "nameEn": "Scotland",
+        "group": "C"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/tr.png",
+        "name": "Thổ Nhĩ Kỳ",
+        "nameEn": "Turkey",
+        "group": "D"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/ci.png",
+        "name": "Bờ Biển Ngà",
+        "nameEn": "Ivory Coast",
+        "group": "E"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/nl.png",
+        "name": "Hà Lan",
+        "nameEn": "Netherlands",
+        "group": "F"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/cv.png",
+        "name": "Cabo Verde",
+        "nameEn": "Cape Verde",
+        "group": "H"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/fr.png",
+        "name": "Pháp",
+        "nameEn": "France",
+        "group": "I"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/tn.png",
+        "name": "Tunisia",
+        "nameEn": "Tunisia",
+        "group": "F"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/eg.png",
+        "name": "Ai Cập",
+        "nameEn": "Egypt",
+        "group": "G"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/iq.png",
+        "name": "Iraq",
+        "nameEn": "Iraq",
+        "group": "I"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/pt.png",
+        "name": "Bồ Đào Nha",
+        "nameEn": "Portugal",
+        "group": "K"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/uz.png",
+        "name": "Uzbekistan",
+        "nameEn": "Uzbekistan",
+        "group": "K"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/co.png",
+        "name": "Colombia",
+        "nameEn": "Colombia",
+        "group": "K"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/ec.png",
+        "name": "Ecuador",
+        "nameEn": "Ecuador",
+        "group": "E"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/jp.png",
+        "name": "Nhật Bản",
+        "nameEn": "Japan",
+        "group": "F"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/nz.png",
+        "name": "New Zealand",
+        "nameEn": "New Zealand",
+        "group": "G"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/sa.png",
+        "name": "Ả Rập Xê Út",
+        "nameEn": "Saudi Arabia",
+        "group": "H"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/at.png",
+        "name": "Áo",
+        "nameEn": "Austria",
+        "group": "J"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/gh.png",
+        "name": "Ghana",
+        "nameEn": "Ghana",
+        "group": "L"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/kr.png",
+        "name": "Hàn Quốc",
+        "nameEn": "South Korea",
+        "group": "A"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/es.png",
+        "name": "Tây Ban Nha",
+        "nameEn": "Spain",
+        "group": "H"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/no.png",
+        "name": "Na Uy",
+        "nameEn": "Norway",
+        "group": "I"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/ar.png",
+        "name": "Argentina",
+        "nameEn": "Argentina",
+        "group": "J"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/cd.png",
+        "name": "CHDC Congo",
+        "nameEn": "Democratic Republic of the Congo",
+        "group": "K"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/gb-eng.png",
+        "name": "Anh",
+        "nameEn": "England",
+        "group": "L"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/cz.png",
+        "name": "Séc",
+        "nameEn": "Czech Republic",
+        "group": "A"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/ca.png",
+        "name": "Canada",
+        "nameEn": "Canada",
+        "group": "B"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/qa.png",
+        "name": "Qatar",
+        "nameEn": "Qatar",
+        "group": "B"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/ch.png",
+        "name": "Thụy Sĩ",
+        "nameEn": "Switzerland",
+        "group": "B"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/ma.png",
+        "name": "Ma Rốc",
+        "nameEn": "Morocco",
+        "group": "C"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/py.png",
+        "name": "Paraguay",
+        "nameEn": "Paraguay",
+        "group": "D"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/cw.png",
+        "name": "Curacao",
+        "nameEn": "Curaçao",
+        "group": "E"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/se.png",
+        "name": "Thụy Điển",
+        "nameEn": "Sweden",
+        "group": "F"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/dz.png",
+        "name": "Algeria",
+        "nameEn": "Algeria",
+        "group": "J"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/jo.png",
+        "name": "Jordan",
+        "nameEn": "Jordan",
+        "group": "J"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/ht.png",
+        "name": "Haiti",
+        "nameEn": "Haiti",
+        "group": "C"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/de.png",
+        "name": "Đức",
+        "nameEn": "Germany",
+        "group": "E"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/uy.png",
+        "name": "Uruguay",
+        "nameEn": "Uruguay",
+        "group": "H"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/sn.png",
+        "name": "Senegal",
+        "nameEn": "Senegal",
+        "group": "I"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/pa.png",
+        "name": "Panama",
+        "nameEn": "Panama",
+        "group": "L"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/mx.png",
+        "name": "Mexico",
+        "nameEn": "Mexico",
+        "group": "A"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/ba.png",
+        "name": "Bosnia",
+        "nameEn": "Bosnia and Herzegovina",
+        "group": "B"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/us.png",
+        "name": "Mỹ",
+        "nameEn": "United States",
+        "group": "D"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/au.png",
+        "name": "Úc",
+        "nameEn": "Australia",
+        "group": "D"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/be.png",
+        "name": "Bỉ",
+        "nameEn": "Belgium",
+        "group": "G"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/ir.png",
+        "name": "Iran",
+        "nameEn": "Iran",
+        "group": "G"
+      },
+      {
+        "flag": "https://flagcdn.com/w80/hr.png",
+        "name": "Croatia",
+        "nameEn": "Croatia",
+        "group": "L"
+      }
+    ]
+  },
+  "shuffleHistory": [],
+  "randomCup": {
+    "activeCupId": null,
+    "cups": [],
+    "playerStats": {}
+  }
+}

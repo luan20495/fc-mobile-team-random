@@ -3,7 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FC Mobile — Bắt Đội Ngẫu Nhiên</title>
+  <title>FC Mobile Cup</title>
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="icon" href="assets/icons/favicon-32.png" sizes="32x32">
+  <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <meta name="theme-color" content="#07111f">
+  <meta name="application-name" content="FC Mobile Cup">
+  <meta name="apple-mobile-web-app-title" content="FC Cup">
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -18,26 +25,83 @@
       padding: 24px 16px 40px;
     }
 
-    header { text-align: center; margin-bottom: 20px; }
+    header {
+      margin-bottom: 20px;
+      max-width: 720px;
+      width: 100%;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      text-align: left;
+    }
+
+    .brand-mark {
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      background: linear-gradient(135deg, rgba(74,222,128,0.18), rgba(59,130,246,0.15));
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+    }
+
+    .app-logo {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: block;
+      filter: drop-shadow(0 8px 20px rgba(74, 222, 128, 0.25));
+    }
+
+    .brand-text { min-width: 0; }
 
     header h1 {
-      font-size: clamp(1.5rem, 5vw, 2rem);
+      font-size: clamp(1.25rem, 4.5vw, 1.75rem);
       font-weight: 800;
-      background: linear-gradient(90deg, #4ade80, #facc15);
+      background: linear-gradient(90deg, #4ade80, #38bdf8, #facc15);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
     }
 
-    header p { margin-top: 6px; color: #94a3b8; font-size: 0.95rem; }
+    header p {
+      margin-top: 4px;
+      color: #94a3b8;
+      font-size: clamp(0.78rem, 2.5vw, 0.88rem);
+      line-height: 1.4;
+    }
+
+    .header-badges {
+      display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 10px;
+    }
+
+    .header-badge {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 4px 10px; border-radius: 20px;
+      background: rgba(56,189,248,0.12); border: 1px solid rgba(56,189,248,0.35); color: #7dd3fc;
+    }
+
+    .header-badge.green {
+      background: rgba(74,222,128,0.12); border-color: rgba(74,222,128,0.35); color: #86efac;
+    }
 
     .panel {
       width: min(720px, 100%);
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 14px;
+      border-radius: 16px;
       padding: 14px 16px;
       margin-bottom: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+      backdrop-filter: blur(8px);
     }
 
     .panel-header {
@@ -48,10 +112,9 @@
     }
 
     .panel-header h2 {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: #94a3b8;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #e2e8f0;
     }
 
     .player-count {
@@ -65,7 +128,15 @@
       flex-wrap: wrap;
       gap: 8px;
       margin-bottom: 12px;
-      min-height: 36px;
+      min-height: 40px;
+      align-items: center;
+    }
+
+    .player-chips-empty {
+      font-size: 0.82rem;
+      color: #64748b;
+      font-style: italic;
+      padding: 4px 0;
     }
 
     .chip {
@@ -368,7 +439,17 @@
       flex-wrap: wrap;
       gap: 8px;
       width: 100%;
-      max-width: 400px;
+      max-width: 520px;
+    }
+
+    .mode-section-label {
+      width: 100%;
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #64748b;
+      margin-top: 4px;
     }
 
     .mode-btn {
@@ -394,6 +475,61 @@
     .mode-btn:disabled {
       opacity: 0.35;
       cursor: not-allowed;
+    }
+
+    .mode-row select {
+      flex: 1;
+      min-width: 120px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 2px solid rgba(255,255,255,0.15);
+      background: rgba(0,0,0,0.3);
+      color: #fff;
+      font-size: 0.9rem;
+      font-weight: 600;
+      outline: none;
+    }
+
+    .country-pool-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .country-pool-row label {
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #94a3b8;
+      white-space: nowrap;
+    }
+
+    .country-pool-row select {
+      flex: 1;
+      min-width: 160px;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.15);
+      background: rgba(0,0,0,0.35);
+      color: #e2e8f0;
+      font-size: 0.82rem;
+      outline: none;
+    }
+
+    .country-pool-hint {
+      font-size: 0.72rem;
+      color: #64748b;
+    }
+
+    .mode-summary {
+      width: 100%;
+      font-size: 0.78rem;
+      color: #64748b;
+      text-align: center;
+      margin-top: 2px;
     }
 
     .history {
@@ -443,52 +579,183 @@
       gap: 8px;
     }
 
-    .empty-history { color: #475569; font-size: 0.85rem; font-style: italic; }
+    .empty-history { color: #64748b; font-size: 0.88rem; text-align: center; padding: 16px 8px; }
 
-    .share-box {
-      margin-top: 16px;
+    .share-box { display: none; }
+
+    .advanced-settings {
+      margin-top: 12px;
       width: min(720px, 100%);
-      background: rgba(59,130,246,0.1);
-      border: 1px solid rgba(59,130,246,0.3);
-      border-radius: 12px;
-      padding: 12px 16px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
+      font-size: 0.8rem;
+      color: #64748b;
     }
 
-    .share-box p { font-size: 0.85rem; color: #94a3b8; flex: 1; min-width: 180px; }
-    .share-box code { color: #60a5fa; font-size: 0.8rem; word-break: break-all; }
+    .advanced-settings > summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 10px 0;
+      color: #64748b;
+      font-size: 0.78rem;
+      opacity: 0.75;
+    }
 
-    .btn-copy {
+    .advanced-settings > summary::-webkit-details-marker { display: none; }
+    .advanced-settings[open] > summary { opacity: 1; color: #94a3b8; margin-bottom: 8px; }
+
+    .advanced-block {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin-bottom: 10px;
+    }
+
+    .advanced-block h4 {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #64748b;
+      margin-bottom: 8px;
+    }
+
+    .advanced-block p {
+      font-size: 0.78rem;
+      color: #64748b;
+      margin-bottom: 8px;
+      line-height: 1.45;
+    }
+
+    .sync-settings { margin-top: 0; width: 100%; }
+    .sync-settings summary { display: none; }
+    .sync-settings .sync-row { margin-top: 0; }
+    .sync-row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    .sync-row input {
+      flex: 1;
+      min-width: 180px;
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 2px solid rgba(255,255,255,0.15);
+      background: rgba(0,0,0,0.3);
+      color: #fff;
+      font-size: 0.85rem;
+      outline: none;
+    }
+    .sync-status {
+      font-size: 0.78rem;
+      color: #64748b;
+      margin-top: 20px;
+      text-align: center;
+      width: min(720px, 100%);
+    }
+    .sync-status.ok { color: #4ade80; }
+    .sync-status.error { color: #f87171; }
+    .sync-status.pending { color: #94a3b8; }
+    .sync-status.warn { color: #fbbf24; }
+
+    .sync-hint-banner {
+      width: min(720px, 100%);
+      margin: 10px auto 0;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 0.78rem;
+      line-height: 1.45;
+      color: #fde68a;
+      background: rgba(250,204,21,0.08);
+      border: 1px solid rgba(250,204,21,0.25);
+      text-align: left;
+    }
+
+    .sync-hint-banner strong { color: #fcd34d; }
+
+    .sync-hint-banner a {
+      color: #38bdf8;
+      text-decoration: underline;
+      cursor: pointer;
+    }
       padding: 8px 14px;
       border: none;
       border-radius: 8px;
-      background: #3b82f6;
-      color: #fff;
+      background: #334155;
+      color: #e2e8f0;
       font-weight: 600;
       font-size: 0.85rem;
       cursor: pointer;
       white-space: nowrap;
     }
 
-    .btn-copy:hover { background: #2563eb; }
+    .btn-copy:hover { background: #475569; }
+
+    .btn-primary {
+      padding: 14px 20px;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 6px 20px rgba(34,197,94,0.35);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(34,197,94,0.45);
+    }
+
+    .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+    .btn-primary.cup { background: linear-gradient(135deg, #0ea5e9, #0284c7); box-shadow: 0 6px 20px rgba(14,165,233,0.35); }
+    .btn-primary.cup:hover:not(:disabled) { box-shadow: 0 8px 24px rgba(14,165,233,0.45); }
+
+    .btn-ghost {
+      padding: 8px 12px;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      background: transparent;
+      color: #94a3b8;
+      font-weight: 600;
+      font-size: 0.8rem;
+      cursor: pointer;
+    }
+
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.25); color: #e2e8f0; }
+
+    .view-hint {
+      font-size: 0.85rem;
+      color: #94a3b8;
+      text-align: center;
+      margin-bottom: 14px;
+      line-height: 1.5;
+      padding: 0 8px;
+    }
+
+    .view-hint strong { color: #4ade80; font-weight: 600; }
 
     .toast {
       position: fixed;
       bottom: 24px;
       left: 50%;
       transform: translateX(-50%) translateY(80px);
-      background: #166534;
+      background: linear-gradient(135deg, #14532d, #166534);
       color: #fff;
-      padding: 10px 20px;
-      border-radius: 10px;
+      padding: 12px 22px;
+      border-radius: 12px;
       font-weight: 600;
       font-size: 0.9rem;
       opacity: 0;
       transition: all 0.3s ease;
       z-index: 100;
+      border: 1px solid rgba(74,222,128,0.4);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.45);
+      max-width: min(90vw, 360px);
+      text-align: center;
+    }
+
+    .toast.error {
+      background: linear-gradient(135deg, #7f1d1d, #991b1b);
+      border-color: rgba(248,113,113,0.4);
     }
 
     .toast.show {
@@ -505,7 +772,7 @@
 
     .app-tabs {
       display: flex;
-      gap: 8px;
+      gap: 6px;
       width: min(720px, 100%);
       margin-bottom: 16px;
       flex-wrap: wrap;
@@ -513,21 +780,28 @@
     }
 
     .app-tab {
-      padding: 10px 16px;
-      border: 2px solid rgba(255,255,255,0.15);
+      padding: 8px 12px;
+      border: 2px solid rgba(255,255,255,0.12);
       border-radius: 10px;
-      background: rgba(255,255,255,0.05);
+      background: rgba(255,255,255,0.04);
       color: #94a3b8;
-      font-size: 0.85rem;
+      font-size: 0.78rem;
       font-weight: 600;
       cursor: pointer;
+      transition: all 0.15s;
     }
 
+    .app-tab:hover:not(.active) { border-color: rgba(255,255,255,0.22); color: #cbd5e1; }
+
     .app-tab.active {
-      border-color: #facc15;
-      background: rgba(250,204,21,0.12);
-      color: #facc15;
+      border-color: #4ade80;
+      background: rgba(74,222,128,0.12);
+      color: #4ade80;
     }
+
+    .app-tab.tab-cup.active { border-color: #38bdf8; background: rgba(56,189,248,0.12); color: #38bdf8; }
+    .app-tab.tab-tournament.active { border-color: #facc15; background: rgba(250,204,21,0.12); color: #facc15; }
+    .app-tab.tab-stats.active { border-color: #a78bfa; background: rgba(167,139,250,0.12); color: #c4b5fd; }
 
     .view { display: none; width: min(720px, 100%); }
     .view.active { display: block; }
@@ -712,6 +986,102 @@
       cursor: pointer;
     }
 
+    .profile-hero {
+      display: flex; align-items: center; gap: 16px;
+      padding: 18px; margin-bottom: 14px;
+      background: linear-gradient(135deg, rgba(74,222,128,0.12), rgba(56,189,248,0.08));
+      border: 1px solid rgba(74,222,128,0.25); border-radius: 14px;
+    }
+
+    .profile-avatar {
+      width: 56px; height: 56px; border-radius: 14px; flex-shrink: 0;
+      background: linear-gradient(135deg, #16a34a, #4ade80);
+      color: #052e16; font-size: 1.5rem; font-weight: 900;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 16px rgba(74,222,128,0.25);
+    }
+
+    .profile-hero-text h2 { font-size: 1.2rem; margin-bottom: 4px; color: #f8fafc; }
+    .profile-hero-text .profile-tag {
+      font-size: 0.75rem; color: #4ade80; font-weight: 600;
+    }
+
+    .profile-back-btn {
+      margin-left: auto; padding: 6px 12px; border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.15); background: rgba(0,0,0,0.25);
+      color: #94a3b8; font-size: 0.78rem; cursor: pointer;
+    }
+
+    .profile-logout-btn {
+      margin-left: auto; padding: 6px 12px; border-radius: 8px;
+      border: 1px solid rgba(248,113,113,0.35); background: rgba(248,113,113,0.1);
+      color: #f87171; font-size: 0.78rem; cursor: pointer; white-space: nowrap;
+    }
+
+    .profile-data-note {
+      font-size: 0.75rem; color: #64748b; line-height: 1.45;
+      margin-bottom: 14px; padding: 10px 12px;
+      background: rgba(0,0,0,0.2); border-radius: 10px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .profile-stats-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 480px) {
+      .profile-stats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .profile-stat {
+      text-align: center; padding: 12px 8px;
+      background: rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+    }
+
+    .profile-stat .val { font-size: 1.25rem; font-weight: 800; color: #facc15; line-height: 1.2; }
+    .profile-stat .lbl { font-size: 0.65rem; color: #64748b; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 4px; }
+
+    .profile-section {
+      margin-bottom: 14px; padding: 12px;
+      background: rgba(0,0,0,0.2); border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .profile-section h3 {
+      font-size: 0.78rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: 0.08em; color: #94a3b8; margin-bottom: 10px;
+    }
+
+    .profile-shuffle-item {
+      font-size: 0.82rem; color: #cbd5e1; padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .profile-shuffle-item:last-child { border-bottom: none; }
+
+    .profile-shuffle-meta { font-size: 0.72rem; color: #64748b; margin-bottom: 2px; }
+
+    .profile-others {
+      margin-top: 16px; padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .profile-others summary {
+      cursor: pointer; font-size: 0.82rem; color: #64748b;
+      margin-bottom: 10px; list-style: none;
+    }
+
+    .profile-others summary::-webkit-details-marker { display: none; }
+
+    .profile-active-banner {
+      padding: 10px 12px; border-radius: 10px; font-size: 0.85rem; margin-bottom: 12px;
+    }
+
+    .profile-active-banner.green { background: rgba(74,222,128,0.1); color: #4ade80; }
+    .profile-active-banner.blue { background: rgba(56,189,248,0.1); color: #38bdf8; }
+
     .mini-bracket {
       display: grid;
       gap: 6px;
@@ -733,6 +1103,114 @@
     }
 
     .modal-overlay.show { display: flex; }
+
+    .welcome-gate {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 500;
+      background: radial-gradient(ellipse at top, rgba(74,222,128,0.12) 0%, transparent 55%),
+        linear-gradient(165deg, #0a1628 0%, #0f172a 45%, #0a1628 100%);
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .welcome-gate.show { display: flex; }
+
+    .welcome-card {
+      width: min(400px, 100%);
+      background: rgba(15,23,42,0.95);
+      border: 1px solid rgba(74,222,128,0.25);
+      border-radius: 18px;
+      padding: 28px 24px;
+      text-align: center;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.45);
+    }
+
+    .welcome-card .welcome-logo {
+      width: 56px; height: 56px; margin: 0 auto 12px;
+    }
+
+    .welcome-card h2 {
+      font-size: 1.25rem; margin-bottom: 6px; color: #f8fafc;
+    }
+
+    .welcome-card .welcome-sub {
+      font-size: 0.85rem; color: #94a3b8; margin-bottom: 18px; line-height: 1.45;
+    }
+
+    .welcome-card input {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 2px solid rgba(255,255,255,0.12);
+      background: rgba(0,0,0,0.35);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      text-align: center;
+      outline: none;
+      margin-bottom: 8px;
+    }
+
+    .welcome-card input:focus { border-color: rgba(74,222,128,0.55); }
+
+    .welcome-error {
+      min-height: 1.25rem;
+      font-size: 0.82rem;
+      color: #f87171;
+      margin-bottom: 4px;
+    }
+
+    .welcome-taken {
+      font-size: 0.75rem;
+      color: #64748b;
+      margin-bottom: 14px;
+      line-height: 1.4;
+      word-break: break-word;
+    }
+
+    .welcome-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .welcome-actions button { flex: 1; min-width: 120px; }
+
+    .welcome-random-btn {
+      padding: 11px 14px;
+      border-radius: 10px;
+      border: 2px solid rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.06);
+      color: #cbd5e1;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .welcome-random-btn:hover { border-color: rgba(56,189,248,0.45); color: #38bdf8; }
+
+    .welcome-continue-btn {
+      padding: 11px 14px;
+      border-radius: 10px;
+      border: none;
+      background: linear-gradient(135deg, #16a34a, #4ade80);
+      color: #052e16;
+      font-size: 0.92rem;
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .welcome-continue-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+    .my-name-badge {
+      font-size: 0.72rem;
+      color: #4ade80;
+      font-weight: 600;
+      margin-left: 8px;
+    }
 
     .modal {
       width: min(360px, 100%);
@@ -789,11 +1267,81 @@
     .modal-actions button { flex: 1; }
 
     .empty-state {
-      color: #475569;
-      font-size: 0.85rem;
-      font-style: italic;
+      color: #94a3b8;
+      font-size: 0.9rem;
       text-align: center;
-      padding: 20px;
+      padding: 28px 16px;
+      line-height: 1.55;
+    }
+
+    .empty-state .empty-icon { font-size: 2rem; margin-bottom: 8px; opacity: 0.9; }
+    .empty-state .empty-cta { font-size: 0.82rem; color: #64748b; margin-top: 10px; }
+    .empty-state .empty-cta strong { color: #4ade80; font-weight: 600; }
+
+    .status-pill {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-left: 6px;
+      vertical-align: middle;
+    }
+
+    .status-pill.win { background: rgba(74,222,128,0.2); color: #4ade80; }
+    .status-pill.lose { background: rgba(248,113,113,0.15); color: #f87171; }
+    .status-pill.wait { background: rgba(56,189,248,0.15); color: #38bdf8; }
+    .status-pill.champ { background: rgba(250,204,21,0.2); color: #facc15; }
+
+    .cup-match-card.pending { border-color: rgba(56,189,248,0.5); box-shadow: 0 0 0 1px rgba(56,189,248,0.15); }
+    .cup-match-card.completed { opacity: 0.95; }
+
+    .match-card.pending { border-color: rgba(56,189,248,0.4); }
+    .match-card .status-pill { margin-left: 0; margin-top: 4px; }
+
+    .history-collapsible summary {
+      cursor: pointer;
+      font-size: 0.78rem;
+      color: #64748b;
+      margin-bottom: 8px;
+      list-style: none;
+    }
+    .history-collapsible summary::-webkit-details-marker { display: none; }
+
+    .cup-history-panel { margin-top: 12px; }
+    .cup-history-panel > summary {
+      cursor: pointer;
+      font-size: 0.78rem;
+      color: #64748b;
+      padding: 8px 0;
+      list-style: none;
+    }
+    .cup-history-panel > summary::-webkit-details-marker { display: none; }
+
+    @media (max-width: 640px) {
+      .stats-table thead { display: none; }
+      .stats-table, .stats-table tbody, .stats-table tr, .stats-table td { display: block; width: 100%; }
+      .stats-table tr {
+        background: rgba(255,255,255,0.04);
+        border-radius: 10px;
+        margin-bottom: 8px;
+        padding: 10px 12px;
+        border-bottom: none;
+      }
+      .stats-table td {
+        text-align: left;
+        padding: 3px 0;
+        border: none;
+        font-size: 0.85rem;
+      }
+      .stats-table td:first-child { font-weight: 700; font-size: 0.95rem; color: #e2e8f0; margin-bottom: 4px; }
+      .stats-table td::before {
+        content: attr(data-label);
+        color: #64748b;
+        font-size: 0.72rem;
+        margin-right: 6px;
+      }
     }
 
     .badge {
@@ -849,7 +1397,7 @@
 
     .fc-knockout-stages {
       display: grid;
-      grid-template-columns: 1fr 0.75fr 90px 0.75fr 1fr;
+      grid-template-columns: 1.15fr 0.7fr 96px 0.7fr 1.15fr;
       gap: 4px;
       min-width: 520px;
       margin-bottom: 8px;
@@ -858,16 +1406,32 @@
     .fc-ks {
       text-align: center; font-size: 0.58rem; font-weight: 800;
       letter-spacing: 0.1em; text-transform: uppercase; color: #8b5cf6;
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+    }
+
+    .fc-ko-random-btn {
+      padding: 3px 8px; border-radius: 6px;
+      border: 1px solid rgba(250,204,21,0.45);
+      background: rgba(250,204,21,0.12);
+      color: #fcd34d; font-size: 0.58rem; font-weight: 700;
+      cursor: pointer; letter-spacing: 0; text-transform: none;
+      white-space: nowrap;
+    }
+
+    .fc-ko-random-btn:hover {
+      background: rgba(250,204,21,0.22);
+      border-color: rgba(250,204,21,0.65);
     }
     .fc-ks-center { color: #facc15; font-size: 0.62rem; }
 
     .fc-knockout-main {
       display: grid;
-      grid-template-columns: 1fr 0.75fr 90px 0.75fr 1fr;
+      grid-template-columns: 1.15fr 0.7fr 96px 0.7fr 1.15fr;
+      grid-template-rows: 1fr 1fr;
       align-items: center;
       gap: 0;
       min-width: 520px;
-      min-height: 200px;
+      min-height: 220px;
       position: relative;
     }
 
@@ -875,15 +1439,47 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(ellipse at center 55%, rgba(250,204,21,0.08) 0%, transparent 65%);
+      background: radial-gradient(ellipse at center 50%, rgba(250,204,21,0.1) 0%, transparent 62%);
       pointer-events: none;
+    }
+
+    .fc-k-side.left {
+      grid-column: 1;
+      grid-row: 1;
+      justify-self: stretch;
+      padding-right: 4px;
+    }
+
+    .fc-k-side.right {
+      grid-column: 5;
+      grid-row: 2;
+      justify-self: stretch;
+      padding-left: 4px;
+    }
+
+    .fc-bk-col.left {
+      grid-column: 2;
+      grid-row: 1;
+      justify-self: center;
+    }
+
+    .fc-bk-col.right {
+      grid-column: 4;
+      grid-row: 2;
+      justify-self: center;
+    }
+
+    .fc-k-center {
+      grid-column: 3;
+      grid-row: 1 / 3;
+      align-self: center;
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; gap: 6px; z-index: 2; text-align: center;
     }
 
     .fc-k-side {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      gap: 48px;
       z-index: 1;
     }
 
@@ -893,51 +1489,68 @@
       position: relative;
       display: flex;
       flex-direction: column;
-      gap: 5px;
+      gap: 6px;
       width: 100%;
-      max-width: 148px;
+      max-width: 172px;
     }
 
-    .fc-k-side.right .fc-pair-group { margin-left: auto; }
+    .fc-k-side.left .fc-pair-group { margin-left: auto; }
+    .fc-k-side.right .fc-pair-group { margin-right: auto; }
+
+    .fc-pair-group.clickable { cursor: pointer; }
+    .fc-pair-group.clickable:hover .fc-slot {
+      border-color: rgba(74,222,128,0.55);
+      box-shadow: 0 0 10px rgba(74,222,128,0.15);
+    }
 
     .fc-pair-group.left-out::after {
       content: "";
       position: absolute;
-      right: -28px; top: 50%;
-      width: 28px; height: 2px;
-      background: rgba(167,139,250,0.65);
+      right: -32px; top: 50%;
+      width: 32px; height: 2px;
+      background: rgba(167,139,250,0.7);
       transform: translateY(-50%);
     }
     .fc-pair-group.left-out::before {
       content: "";
       position: absolute;
-      right: -2px; top: 12%; bottom: 12%;
-      width: 2px; background: rgba(167,139,250,0.65);
+      right: -2px; top: 14%; bottom: 14%;
+      width: 2px; background: rgba(167,139,250,0.7);
     }
 
     .fc-pair-group.right-out::after {
       content: "";
       position: absolute;
-      left: -28px; top: 50%;
-      width: 28px; height: 2px;
-      background: rgba(167,139,250,0.65);
+      left: -32px; top: 50%;
+      width: 32px; height: 2px;
+      background: rgba(167,139,250,0.7);
       transform: translateY(-50%);
     }
     .fc-pair-group.right-out::before {
       content: "";
       position: absolute;
-      left: -2px; top: 12%; bottom: 12%;
-      width: 2px; background: rgba(167,139,250,0.65);
+      left: -2px; top: 14%; bottom: 14%;
+      width: 2px; background: rgba(167,139,250,0.7);
     }
 
     .fc-slot {
-      display: flex; align-items: center; gap: 5px;
+      display: flex; align-items: center; gap: 6px;
       background: linear-gradient(90deg, #4c1d95 0%, #2e1065 100%);
-      border-radius: 8px; padding: 7px 8px;
+      border-radius: 10px; padding: 8px 10px;
       border: 1px solid rgba(139,92,246,0.45);
       font-size: 0.76rem; color: #ede9fe;
       min-width: 0;
     }
+    .fc-slot.fc-slot-left {
+      flex-direction: row;
+      background: linear-gradient(90deg, #3b0764 0%, #4c1d95 55%, #2e1065 100%);
+    }
+    .fc-slot.fc-slot-right {
+      flex-direction: row;
+      background: linear-gradient(270deg, #3b0764 0%, #4c1d95 55%, #2e1065 100%);
+    }
+    .fc-slot.fc-slot-right .fc-name { text-align: right; margin-left: auto; }
+    .fc-slot.fc-slot-left .fc-name { flex: 1; }
     .fc-slot.winner {
       background: linear-gradient(90deg, #15803d 0%, #166534 100%);
       border-color: rgba(74,222,128,0.6); color: #bbf7d0; font-weight: 700;
@@ -955,6 +1568,15 @@
     .fc-seed.bronze { background: linear-gradient(135deg, #92400e, #d97706); color: #fff; }
 
     .fc-name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .fc-name-block { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+    .fc-name-block .fc-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .fc-slot-nation {
+      font-size: 0.65rem; color: #fbbf24; font-weight: 500;
+      display: inline-flex; align-items: center; gap: 4px;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%;
+    }
+    .fc-slot-nation img { width: 14px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+    .fc-slot.has-nation { align-items: center; padding-top: 6px; padding-bottom: 6px; }
     .fc-score-box {
       flex-shrink: 0; min-width: 22px; text-align: center;
       background: rgba(0,0,0,0.45); border-radius: 4px;
@@ -962,16 +1584,15 @@
     }
 
     .fc-bk-col {
-      display: flex; flex-direction: column; justify-content: center;
-      gap: 48px; z-index: 1;
+      display: flex; flex-direction: column; z-index: 1;
     }
 
     .fc-bk-match {
       position: relative;
-      background: rgba(15,8,30,0.8);
-      border: 1px solid rgba(250,204,21,0.4);
-      border-radius: 8px; padding: 6px 8px;
-      text-align: center; min-width: 56px;
+      background: rgba(15,8,30,0.85);
+      border: 1px solid rgba(250,204,21,0.45);
+      border-radius: 10px; padding: 8px 10px;
+      text-align: center; min-width: 62px;
     }
     .fc-bk-match.clickable { cursor: pointer; }
     .fc-bk-match.clickable:hover {
@@ -987,19 +1608,29 @@
 
     .fc-bk-match.left-bk::after {
       content: ""; position: absolute;
-      right: -28px; top: 50%; width: 28px; height: 2px;
-      background: rgba(167,139,250,0.65); transform: translateY(-50%);
+      right: -32px; top: 50%; width: 32px; height: 2px;
+      background: rgba(167,139,250,0.7); transform: translateY(-50%);
     }
     .fc-bk-match.right-bk::after {
       content: ""; position: absolute;
-      left: -28px; top: 50%; width: 28px; height: 2px;
-      background: rgba(167,139,250,0.65); transform: translateY(-50%);
+      left: -32px; top: 50%; width: 32px; height: 2px;
+      background: rgba(167,139,250,0.7); transform: translateY(-50%);
     }
 
-    .fc-k-center {
-      display: flex; flex-direction: column; align-items: center;
-      justify-content: center; gap: 6px; z-index: 2; text-align: center;
+    .fc-bk-match.left-bk::before {
+      content: ""; position: absolute;
+      right: -34px; top: 50%; bottom: auto;
+      width: 2px; height: 50%;
+      background: rgba(167,139,250,0.45);
+      transform: translateY(0);
     }
+
+    .fc-bk-match.right-bk::before {
+      content: ""; position: absolute;
+      left: -34px; top: 0; height: 50%;
+      width: 2px; background: rgba(167,139,250,0.45);
+    }
+
     .fc-trophy-hero {
       font-size: 2.6rem; line-height: 1;
       filter: drop-shadow(0 0 16px rgba(250,204,21,0.55));
@@ -1040,9 +1671,51 @@
     .fc-league-pair.clickable { cursor: pointer; }
     .fc-league-pair.clickable:hover .fc-slot { border-color: #4ade80; }
 
+    .fc-bye-chip {
+      font-size: 0.68rem; color: #fbbf24; background: rgba(250,204,21,0.1);
+      border: 1px dashed rgba(250,204,21,0.35); border-radius: 8px;
+      padding: 6px 8px; margin-bottom: 6px; line-height: 1.35;
+    }
+
+    .fc-knockout-champ {
+      text-align: center; padding: 16px; margin-top: 10px;
+      background: linear-gradient(135deg, rgba(250,204,21,0.12), rgba(74,222,128,0.08));
+      border: 1px solid rgba(250,204,21,0.3); border-radius: 12px;
+    }
+
+    .fc-knockout-champ .fc-champ-name { font-size: 1rem; max-width: none; }
+
     .fc-match-tag {
       font-size: 0.55rem; color: #6d28d9; text-align: center;
       letter-spacing: 0.06em; text-transform: uppercase;
+      display: flex; flex-direction: column; align-items: center; gap: 4px;
+    }
+
+    .fc-knockout-main.fc-ko-mirror {
+      grid-template-columns: 1.15fr 0.7fr 1.35fr 0.7fr 1.15fr;
+    }
+
+    .fc-knockout-main.fc-ko-mirror .fc-k-center { min-width: 118px; }
+
+    .fc-k-center .fc-pair-group {
+      max-width: 148px;
+      margin: 0 auto 6px;
+    }
+
+    .fc-k-center .fc-pair-group::before,
+    .fc-k-center .fc-pair-group::after { display: none; }
+
+    .fc-k-side.stacked {
+      grid-row: 1 / 3;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    .fc-k-side.stacked .fc-pair-group { max-width: 156px; }
+
+    .fc-ko-wait-final {
+      font-size: 0.62rem; font-weight: 700; letter-spacing: 0.08em;
+      text-transform: uppercase; color: #7c3aed; margin-bottom: 6px;
     }
 
     .fc-waiting-tree {
@@ -1051,34 +1724,255 @@
     }
 
     .cycle-card .fc-diagram { margin-top: 10px; margin-bottom: 0; }
+
+    /* ── NvN matches ── */
+    .pitch.mode-nvn::after { display: none; }
+    .pitch.mode-nvn .teams, .pitch.mode-nvn .vs { display: none; }
+    .pitch.mode-nvn .pairs { display: flex; flex-direction: column; gap: 10px; }
+
+    .nvn-team-block {
+      background: rgba(255,255,255,0.08);
+      border-radius: 10px;
+      padding: 12px 10px;
+      text-align: center;
+      transition: all 0.15s ease;
+    }
+
+    .nvn-team-block .player-name { font-size: 1.1rem; font-weight: 600; }
+    .nvn-team-block .player-nation { font-size: 0.75rem; color: #fbbf24; margin-top: 4px; }
+
+    .nvn-team-block .team-side-label {
+      font-size: 0.65rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.08em; margin-bottom: 6px; color: #94a3b8;
+    }
+
+    .nvn-team-block.blue { border-left: 3px solid #3b82f6; }
+    .nvn-team-block.blue .team-side-label { color: #60a5fa; }
+    .nvn-team-block.red { border-right: 3px solid #ef4444; }
+    .nvn-team-block.red .team-side-label { color: #f87171; }
+    .nvn-team-block.shuffling { opacity: 0.4; transform: scale(0.95); }
+    .nvn-team-block.reveal { animation: pop 0.4s ease; }
+
+    /* ── Random Cup ── */
+    .cup-setup-grid {
+      display: grid; gap: 12px;
+      grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 520px) {
+      .cup-setup-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .cup-field label {
+      display: block; font-size: 0.72rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      color: #64748b; margin-bottom: 6px;
+    }
+
+    .cup-field input, .cup-field select {
+      width: 100%; padding: 10px 12px; border-radius: 10px;
+      border: 2px solid rgba(255,255,255,0.12);
+      background: rgba(0,0,0,0.3); color: #fff; font-size: 0.9rem; outline: none;
+    }
+
+    .cup-mode-row { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    .cup-mode-btn {
+      flex: 1; min-width: 80px; padding: 10px 8px;
+      border: 2px solid rgba(255,255,255,0.15); border-radius: 10px;
+      background: rgba(255,255,255,0.04); color: #94a3b8;
+      font-size: 0.82rem; font-weight: 600; cursor: pointer;
+    }
+
+    .cup-mode-btn.active {
+      border-color: #38bdf8; background: rgba(56,189,248,0.15); color: #38bdf8;
+    }
+
+    .cup-mode-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+    .cup-toggle {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.85rem; color: #94a3b8; cursor: pointer;
+    }
+
+    .cup-toggle input { width: 18px; height: 18px; accent-color: #38bdf8; }
+
+    .cup-bracket-wrap {
+      background: linear-gradient(165deg, #0a1628 0%, #0c2340 50%, #0a1628 100%);
+      border: 1px solid rgba(56,189,248,0.25);
+      border-radius: 16px; padding: 14px; margin-top: 14px;
+    }
+
+    .cup-bracket-title {
+      font-size: 0.72rem; font-weight: 800; letter-spacing: 0.12em;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+
+    .cup-bracket-title.winners { color: #4ade80; }
+    .cup-bracket-title.losers { color: #f87171; }
+    .cup-bracket-title.main { color: #38bdf8; }
+
+    .cup-match-card {
+      background: rgba(0,0,0,0.35);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px; padding: 10px 12px; margin-bottom: 8px;
+      cursor: pointer; transition: border-color 0.15s, box-shadow 0.15s;
+    }
+
+    .cup-match-card.pending { border-color: rgba(56,189,248,0.45); }
+    .cup-match-card.pending:hover { border-color: #38bdf8; box-shadow: 0 0 16px rgba(56,189,248,0.2); }
+    .cup-match-card.completed { border-color: rgba(100,116,139,0.4); cursor: default; opacity: 0.88; }
+    .cup-match-card .cup-match-meta {
+      font-size: 0.65rem; color: #64748b; margin-bottom: 8px;
+      text-transform: uppercase; letter-spacing: 0.06em;
+    }
+
+    .cup-side {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 8px; padding: 6px 0; font-size: 0.88rem; flex-wrap: wrap;
+    }
+
+    .cup-side.winner { color: #4ade80; font-weight: 700; }
+    .cup-side.loser { color: #f87171; opacity: 0.75; }
+
+    .cup-side-info { display: flex; align-items: center; gap: 8px; min-width: 0; }
+    .cup-side-info .cup-name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .cup-country { font-size: 0.72rem; color: #fbbf24; display: flex; align-items: center; gap: 4px; }
+
+    .cup-score-pill {
+      font-weight: 800; color: #facc15; background: rgba(0,0,0,0.4);
+      padding: 2px 8px; border-radius: 6px; font-size: 0.85rem; flex-shrink: 0;
+    }
+
+    .cup-round-block { margin-bottom: 16px; }
+
+    .cup-champion-banner {
+      text-align: center; padding: 20px;
+      background: linear-gradient(135deg, rgba(250,204,21,0.15), rgba(74,222,128,0.1));
+      border: 1px solid rgba(250,204,21,0.35); border-radius: 14px; margin-bottom: 14px;
+    }
+
+    .cup-champion-banner .trophy { font-size: 2.5rem; }
+    .cup-champion-banner .name { font-size: 1.1rem; font-weight: 800; color: #facc15; margin-top: 6px; }
+
+    .filter-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+
+    .filter-chip {
+      padding: 6px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.04);
+      color: #94a3b8; cursor: pointer;
+    }
+
+    .filter-chip.active { border-color: #4ade80; background: rgba(74,222,128,0.12); color: #4ade80; }
+
+    .stats-table {
+      width: 100%; border-collapse: collapse; font-size: 0.82rem;
+    }
+
+    .stats-table th, .stats-table td {
+      padding: 10px 8px; text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .stats-table th { color: #64748b; font-size: 0.7rem; text-transform: uppercase; }
+    .stats-table td:first-child, .stats-table th:first-child { text-align: left; }
+    .stats-table tr:hover td { background: rgba(255,255,255,0.03); }
+
+    .modal-teams {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 14px;
+    }
+
+    .modal-team-box {
+      background: rgba(0,0,0,0.3); border-radius: 10px; padding: 10px; text-align: center;
+    }
+
+    .modal-team-box .mt-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }
+    .modal-team-box .mt-country { font-size: 0.78rem; color: #fbbf24; }
+
+    .modal-win-btns { display: flex; gap: 8px; margin-bottom: 14px; }
+    .modal-win-btns button { flex: 1; }
+
+    .btn-export {
+      padding: 8px 14px; border: 1px solid rgba(167,139,250,0.4);
+      border-radius: 8px; background: rgba(167,139,250,0.12);
+      color: #c4b5fd; font-weight: 600; font-size: 0.82rem; cursor: pointer;
+    }
+
+    .btn-export:hover { background: rgba(167,139,250,0.22); }
+
+    .cup-bye-card {
+      background: rgba(56,189,248,0.08);
+      border: 1px dashed rgba(56,189,248,0.4);
+      border-radius: 10px; padding: 10px 12px; margin-bottom: 8px;
+      font-size: 0.85rem; color: #7dd3fc;
+    }
+
+    .cup-bye-card .bye-badge {
+      display: inline-block; font-size: 0.65rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.06em;
+      background: rgba(56,189,248,0.2); color: #38bdf8;
+      padding: 2px 8px; border-radius: 10px; margin-bottom: 6px;
+    }
+
+    .badge.saved { background: rgba(100,116,139,0.3); color: #94a3b8; }
+
+    @media (max-width: 480px) {
+      body { padding: 16px 12px 32px; }
+      .brand { gap: 10px; }
+      .brand-mark { width: 44px; height: 44px; border-radius: 14px; }
+      .app-logo { width: 38px; height: 38px; border-radius: 12px; }
+      header h1 { font-size: 1.15rem; }
+      header p { font-size: 0.75rem; }
+      .modal { max-height: 90dvh; overflow-y: auto; padding: 16px; }
+      .modal-teams { grid-template-columns: 1fr; }
+      .cup-bracket-wrap { padding: 10px; }
+      .cup-side { flex-direction: column; align-items: flex-start; }
+    }
   </style>
 </head>
 <body>
   <header>
-    <h1>⚽ FC Mobile — Bắt Đội</h1>
-    <p id="subtitle">Chia đội ngẫu nhiên · Bấm bắt đội để random ĐTQG</p>
-    <p class="team-status loading" id="team-status">Đang tải 48 đội WC 2026...</p>
+    <div class="brand">
+      <div class="brand-mark">
+        <img class="app-logo" src="assets/icons/logo-mark.svg" width="48" height="48" alt="">
+      </div>
+      <div class="brand-text">
+        <h1>FC Mobile Cup</h1>
+        <p id="subtitle">Bắt đội nhanh · Random Cup · Thống kê nhiều máy</p>
+      </div>
+    </div>
   </header>
 
   <nav class="app-tabs">
-    <button class="app-tab active" data-view="shuffle">🎲 Bắt Đội</button>
-    <button class="app-tab" data-view="tournament">🏆 Giải Nhất Nhì</button>
-    <button class="app-tab" data-view="profile">📊 Lịch sử cá nhân</button>
+    <button class="app-tab active" data-view="shuffle">Bắt đội</button>
+    <button class="app-tab tab-cup" data-view="randomcup">Random Cup</button>
+    <button class="app-tab tab-tournament" data-view="tournament">Giải Nhất Nhì</button>
+    <button class="app-tab" data-view="profile">Profile</button>
+    <button class="app-tab tab-stats" data-view="stats">Thống kê</button>
   </nav>
 
   <div class="panel" style="width:min(720px,100%);margin-bottom:16px">
     <div class="panel-header">
-      <h2>👥 Người chơi</h2>
-      <span class="player-count" id="player-count">6 người</span>
+      <h2>Người chơi<span class="my-name-badge" id="my-name-badge"></span></h2>
+      <span class="player-count" id="player-count">0 người</span>
     </div>
     <div class="player-chips" id="player-chips"></div>
     <div class="add-row">
-      <input type="text" id="name-input" placeholder="Nhập tên mới..." maxlength="20" />
-      <button class="btn-add" id="add-btn">+ Thêm</button>
+      <input type="text" id="name-input" placeholder="Tên người chơi..." maxlength="20" />
+      <button class="btn-add" id="add-btn">Thêm</button>
+    </div>
+    <div class="country-pool-row">
+      <label for="country-pool-select">ĐTQG random</label>
+      <select id="country-pool-select" aria-label="Nguồn danh sách đội tuyển">
+        <option value="all">Tất cả (API)</option>
+        <option value="fc16">Giải 16 đội (FC Mobile)</option>
+      </select>
+      <span class="country-pool-hint" id="country-pool-hint"></span>
     </div>
   </div>
 
   <div id="view-shuffle" class="view active">
+  <p class="view-hint">Chọn <strong>1 vs 1</strong> hoặc <strong>N vs N</strong>, rồi bấm <strong>Random</strong>.</p>
   <div class="pitch" id="pitch">
     <div class="teams">
       <div class="team team-a">
@@ -1095,64 +1989,178 @@
     <div class="bench-bar" id="bench-bar">🪑 Dự bị: <span id="bench-names"></span></div>
   </div>
 
-  <div class="controls">
+    <div class="controls">
     <div class="mode-row" id="mode-row">
-      <button class="mode-btn active" data-mode="split" id="mode-split">Chia 2 đội</button>
-      <button class="mode-btn" data-mode="2v2" id="mode-2v2">2 vs 2</button>
-      <button class="mode-btn" data-mode="1v1" id="mode-1v1">1 vs 1</button>
+      <span class="mode-section-label">Chế độ</span>
+      <button type="button" class="mode-btn active" data-shuffle-mode="1v1" id="mode-1v1">1 vs 1</button>
+      <button type="button" class="mode-btn" data-shuffle-mode="nvn" id="mode-nvn">N vs N</button>
     </div>
-    <button class="btn-shuffle" id="shuffle-btn">🎲 Bắt Đội & Random ĐTQG</button>
+    <div class="mode-row" id="nvn-size-row" style="display:none">
+      <span class="mode-section-label">Mỗi đội</span>
+      <select id="shuffle-team-size" aria-label="Số người mỗi đội">
+        <option value="2">2 người (2v2)</option>
+        <option value="3">3 người (3v3)</option>
+        <option value="4">4 người (4v4)</option>
+        <option value="5">5 người (5v5)</option>
+      </select>
+    </div>
+    <p class="mode-summary" id="mode-summary"></p>
+    <button class="btn-shuffle" id="shuffle-btn">🎲 Random</button>
   </div>
 
-  <div class="history">
-    <h3>Lịch sử bắt đội</h3>
+  <details class="history-collapsible" style="width:min(720px,100%);margin-top:20px">
+    <summary>Lịch sử bắt đội gần đây</summary>
     <div class="history-list" id="history">
-      <div class="empty-history">Chưa bắt đội lần nào</div>
+      <div class="empty-history">Chưa random lần nào</div>
     </div>
+  </details>
   </div>
 
-  <div class="share-box">
-    <p>📱 Gửi link này cho anh em dùng chung:</p>
-    <code id="share-url"></code>
-    <button class="btn-copy" id="copy-btn">Copy link</button>
-  </div>
+  <div id="view-randomcup" class="view">
+    <p class="view-hint">Tạo giải loại trực tiếp, bấm từng trận để <strong>nhập kết quả</strong>.</p>
+    <div class="panel">
+      <div class="tournament-header">
+        <div>
+          <h2 style="font-size:1rem;margin-bottom:4px">🏅 Random Cup</h2>
+          <div class="tournament-meta" id="cup-status">Chưa có giải đang chạy</div>
+        </div>
+      </div>
+      <div class="cup-setup-grid" id="cup-setup">
+        <div class="cup-field">
+          <label>Tên giải (nhóm / mùa)</label>
+          <input type="text" id="cup-key-input" placeholder="VD: Tháng 6" maxlength="40" />
+        </div>
+        <div class="cup-field">
+          <label>Chế độ</label>
+          <div class="cup-mode-row">
+            <button type="button" class="cup-mode-btn active" data-cup-mode="1v1" id="cup-mode-1v1">1 vs 1</button>
+            <button type="button" class="cup-mode-btn" data-cup-mode="nvn" id="cup-mode-nvn">N vs N</button>
+          </div>
+        </div>
+        <div class="cup-field" id="cup-team-size-wrap" style="display:none">
+          <label>Số người mỗi đội</label>
+          <select id="cup-team-size">
+            <option value="2">2 người</option>
+            <option value="3">3 người</option>
+            <option value="4">4 người</option>
+            <option value="5">5 người</option>
+          </select>
+        </div>
+        <div class="cup-field">
+          <label class="cup-toggle">
+            <input type="checkbox" id="cup-reroll-countries" checked />
+            Đổi đội tuyển mỗi vòng
+          </label>
+        </div>
+      </div>
+      <button class="btn-primary cup" id="create-cup-btn" style="width:100%;margin-top:12px">Tạo giải</button>
+      <div id="cup-active-wrap"></div>
+    </div>
+    <details class="cup-history-panel panel">
+      <summary>Giải đã tạo trước đây</summary>
+      <div class="filter-row" id="cup-filter-row">
+        <button type="button" class="filter-chip active" data-cup-filter="all">Tất cả</button>
+        <button type="button" class="filter-chip" data-cup-filter="running">Đang chơi</button>
+        <button type="button" class="filter-chip" data-cup-filter="done">Đã xong</button>
+      </div>
+      <div class="profile-search">
+        <input type="text" id="cup-search-input" placeholder="Tìm tên giải..." maxlength="40" />
+      </div>
+      <div class="cycle-list" id="cup-history-list">
+        <div class="empty-state">
+          <div class="empty-icon">🏅</div>
+          Chưa có giải nào
+          <div class="empty-cta">Bấm <strong>Tạo giải</strong> ở trên để bắt đầu</div>
+        </div>
+      </div>
+    </details>
   </div>
 
   <div id="view-tournament" class="view">
+    <p class="view-hint" id="tournament-view-hint">Loại trực tiếp hoặc vòng tròn — mỗi người được <strong>random ĐTQG</strong> khi tạo giải.</p>
     <div class="panel">
       <div class="tournament-header">
         <div>
           <h2 style="font-size:1rem;margin-bottom:4px">🏆 Giải Nhất Nhì</h2>
-          <div class="tournament-meta" id="tournament-status">Vòng tròn → Nhất vs Nhì, Ba vs Tư</div>
+          <div class="tournament-meta" id="tournament-status">Chưa có giải đang chạy</div>
         </div>
-        <button class="btn-secondary btn-gold" id="new-cycle-btn">+ Giải mới</button>
       </div>
-      <p style="font-size:0.8rem;color:#64748b;margin-bottom:12px">
-        Đá vòng tròn tính điểm (thắng 3, hòa 1) → xếp hạng → playoff Nhất vs Nhì, Ba vs Tư.
-        Giải cũ khóa sau khi xong; giải mới có thể đổi số người.
-      </p>
+      <div class="tournament-setup" style="margin-bottom:12px">
+        <span class="mode-section-label">Thể thức</span>
+        <div class="mode-row" id="tournament-format-row">
+          <button type="button" class="mode-btn active" data-tournament-format="knockout" id="format-knockout">Loại trực tiếp</button>
+          <button type="button" class="mode-btn" data-tournament-format="league" id="format-league">Vòng tròn</button>
+        </div>
+      </div>
+      <button class="btn-primary" id="new-cycle-btn" style="width:100%;margin-bottom:14px">Tạo giải mới</button>
       <div id="standings-wrap"></div>
       <div id="fc-bracket-active"></div>
     </div>
-    <div class="panel">
-      <h2 style="font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1em;color:#94a3b8;margin-bottom:10px">Các giải đã qua</h2>
+    <details class="cup-history-panel panel" id="past-tournaments-panel">
+      <summary id="past-tournaments-summary">Giải đã xong</summary>
       <div class="cycle-list" id="past-cycles">
-        <div class="empty-state">Chưa có giải nào</div>
+        <div class="empty-state">
+          <div class="empty-icon">🏆</div>
+          Chưa có giải nào
+          <div class="empty-cta">Bấm <strong>Tạo giải mới</strong> để bắt đầu</div>
+        </div>
       </div>
-    </div>
+    </details>
   </div>
 
   <div id="view-profile" class="view">
     <div class="panel">
-      <h2 style="font-size:1rem;margin-bottom:8px">📊 Lịch sử theo tên</h2>
-      <p style="font-size:0.8rem;color:#64748b;margin-bottom:12px">Nhập tên để xem sơ đồ các giải đã tham gia</p>
-      <div class="profile-search">
-        <input type="text" id="profile-name-input" placeholder="VD: Luân" maxlength="20" />
-        <button class="btn-secondary" id="profile-search-btn">Xem</button>
+      <div class="profile-hero" id="profile-hero">
+        <div class="profile-avatar" id="profile-hero-avatar">?</div>
+        <div class="profile-hero-text">
+          <h2 id="profile-hero-name">—</h2>
+          <div class="profile-tag" id="profile-hero-tag">Thành viên</div>
+        </div>
+        <button type="button" class="profile-back-btn" id="profile-back-btn" style="display:none">← Của tôi</button>
+        <button type="button" class="profile-logout-btn" id="profile-logout-btn" style="display:none">Đăng xuất</button>
       </div>
-      <div class="profile-chips" id="profile-chips"></div>
+      <p class="profile-data-note" id="profile-data-note" style="display:none"></p>
+      <div class="profile-stats-grid" id="profile-stats-grid"></div>
+      <div id="profile-active-banners"></div>
       <div id="profile-results">
-        <div class="empty-state">Chọn hoặc nhập tên người chơi</div>
+        <div class="empty-state">Đang tải...</div>
+      </div>
+      <details class="profile-others">
+        <summary>Xem người khác</summary>
+        <div class="profile-search">
+          <input type="text" id="profile-name-input" placeholder="Tên người chơi..." maxlength="20" />
+          <button class="btn-ghost" id="profile-search-btn">Xem</button>
+        </div>
+        <div class="profile-chips" id="profile-chips"></div>
+      </details>
+    </div>
+  </div>
+
+  <div id="view-stats" class="view">
+    <div class="panel">
+      <h2 style="font-size:1rem;margin-bottom:8px">📈 Thống kê</h2>
+      <p class="view-hint" style="margin-bottom:14px">Thắng, thua, vô địch từ Random Cup</p>
+      <div id="stats-table-wrap">
+        <div class="empty-state">
+          <div class="empty-icon">📈</div>
+          Chưa có số liệu
+          <div class="empty-cta">Chơi <strong>Random Cup</strong> để tích lũy thống kê</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="welcome-gate show" id="welcome-gate">
+    <div class="welcome-card">
+      <img class="welcome-logo" src="assets/icons/logo-mark.svg" width="56" height="56" alt="">
+      <h2>FC Mobile Cup</h2>
+      <p class="welcome-sub">Đặt <strong>tên profile</strong> trên máy này.<br>Dữ liệu giải <strong>tự đồng bộ nhóm</strong> — mở link app là dùng chung.</p>
+      <input type="text" id="welcome-name-input" placeholder="Tên của bạn..." maxlength="20" autocomplete="nickname" />
+      <div class="welcome-error" id="welcome-error"></div>
+      <div class="welcome-taken" id="welcome-taken"></div>
+      <div class="welcome-actions">
+        <button type="button" class="welcome-random-btn" id="welcome-random-btn">🎲 Random tên</button>
+        <button type="button" class="welcome-continue-btn" id="welcome-continue-btn" disabled>Tiếp tục</button>
       </div>
     </div>
   </div>
@@ -1160,30 +2168,146 @@
   <div class="modal-overlay" id="score-modal">
     <div class="modal">
       <h3 id="modal-title">Nhập kết quả</h3>
-      <div class="score-inputs">
+      <div class="modal-teams" id="modal-teams" style="display:none">
+        <div class="modal-team-box" id="modal-team-a">
+          <div class="mt-name" id="modal-a-name">A</div>
+          <div class="mt-country" id="modal-a-country"></div>
+        </div>
+        <div class="modal-team-box" id="modal-team-b">
+          <div class="mt-name" id="modal-b-name">B</div>
+          <div class="mt-country" id="modal-b-country"></div>
+        </div>
+      </div>
+      <div class="score-inputs" id="modal-score-row">
         <span id="modal-home-name">A</span>
         <input type="number" id="score-home" min="0" max="99" value="0" />
         <span>:</span>
         <input type="number" id="score-away" min="0" max="99" value="0" />
         <span id="modal-away-name">B</span>
       </div>
-      <div class="quick-result">
+      <div class="quick-result" id="modal-quick-scores">
+        <button type="button" data-scores="2,0">2-0</button>
+        <button type="button" data-scores="2,1">2-1</button>
+        <button type="button" data-scores="1,0">1-0</button>
+        <button type="button" data-scores="3,2">3-2</button>
+      </div>
+      <div class="quick-result" id="modal-quick-tournament">
         <button type="button" id="quick-home-win">Thắng trái</button>
         <button type="button" id="quick-draw">Hòa</button>
         <button type="button" id="quick-away-win">Thắng phải</button>
       </div>
+      <div class="modal-win-btns" id="modal-cup-win" style="display:none">
+        <button type="button" class="btn-secondary" id="cup-win-a">🏆 Thắng bên trái</button>
+        <button type="button" class="btn-secondary" id="cup-win-b">🏆 Thắng bên phải</button>
+      </div>
       <div class="modal-actions">
-        <button class="btn-secondary" id="modal-cancel">Huỷ</button>
-        <button class="btn-secondary btn-gold" id="modal-save">Lưu & Khóa</button>
+        <button class="btn-ghost" id="modal-cancel">Huỷ</button>
+        <button class="btn-primary" id="modal-save" style="flex:1.5">Lưu kết quả</button>
       </div>
     </div>
   </div>
 
-  <footer>Mỗi máy lưu danh sách riêng · Thêm/bớt tên tùy ý</footer>
+  <footer class="sync-status pending" id="sync-status">Đang tải...</footer>
+  <div class="sync-hint-banner" id="sync-hint-banner" hidden></div>
+
+  <details class="advanced-settings">
+    <summary>⚙️ Cài đặt nâng cao</summary>
+
+    <div class="advanced-block">
+      <h4>Đồng bộ dữ liệu</h4>
+      <p>Mặc định <strong>tự đồng bộ nhóm</strong> qua cloud — không cần cấu hình. Phần dưới chỉ khi dùng server riêng.</p>
+      <div class="sync-row">
+        <input type="url" id="sync-api-input" placeholder="URL mặc định: fc-mobile-sync…workers.dev" autocomplete="off" />
+      </div>
+      <div class="sync-row" style="margin-top:8px">
+        <input type="password" id="sync-key-input" placeholder="Để trống = mã nhóm mặc định" autocomplete="off" />
+        <button class="btn-copy" id="sync-api-save">Lưu</button>
+        <button class="btn-ghost" id="gh-sync-btn">Tải lại</button>
+      </div>
+    </div>
+
+    <div class="advanced-block share-box" style="display:block">
+      <h4>Chia sẻ app</h4>
+      <p>Gửi link cho anh em cùng dùng.</p>
+      <div class="sync-row">
+        <code id="share-url" style="flex:1;font-size:0.75rem;color:#94a3b8;word-break:break-all"></code>
+        <button class="btn-ghost" id="copy-btn">Copy link</button>
+      </div>
+    </div>
+
+    <div class="advanced-block">
+      <h4>Sao lưu</h4>
+      <p>Tải file JSON để giữ bản backup.</p>
+      <button class="btn-ghost" id="export-json-btn">Tải backup JSON</button>
+    </div>
+
+    <div class="advanced-block">
+      <h4>Reset dữ liệu</h4>
+      <p>Xóa toàn bộ người chơi, giải, lịch sử và profile trên máy này.</p>
+      <button class="btn-ghost" id="reset-all-btn" style="color:#f87171;border-color:rgba(248,113,113,0.35)">🗑 Xóa toàn bộ &amp; chạy lại</button>
+    </div>
+  </details>
   <div class="toast" id="toast"></div>
 
   <script>
     const TEAMS_API = "https://worldcup26.ir/get/teams";
+
+    const GH_BRANCH = "main";
+    const STATE_PATH = "data/state.json";
+    const STATE_URL = "data/state.json";
+    const SYNC_API_URL_KEY = "fc-mobile-sync-api-url";
+    const SYNC_API_URL_KEY_LEGACY = "fc-mobile-sync-api";
+    const SYNC_WRITE_KEY = "fc-mobile-sync-key";
+    /** URL Worker production — mọi máy dùng mặc định, không cần cấu hình */
+    const SYNC_API_URL_DEFAULT = "https://fc-mobile-sync.luannth.workers.dev";
+    /** Mã nhóm (cùng giá trị secret WRITE_KEY trên Worker) */
+    const SYNC_WRITE_KEY_DEFAULT = "fc-mobile-cup";
+    const CLIENT_ID_KEY = "fc-mobile-client-id";
+    const USER_NAME_KEY = "fc-mobile-user-name";
+    const LOCAL_STATE_KEY = "fc-mobile-local-state";
+    const PROFILE_PLAYER_MIGRATED_KEY = "fc-mobile-profile-player-migrated";
+    const TOKEN_KEY = "fc-mobile-gh-token";
+    const LEGACY_STORAGE_KEY = "fc-mobile-players";
+    const LEGACY_TOURNAMENT_KEY = "fc-mobile-tournament";
+    const LEGACY_TEAMS_CACHE_KEY = "fc-mobile-wc-teams";
+    const COUNTRY_POOL_KEY = "fc-mobile-country-pool";
+    const ACTIVE_VIEW_KEY = "fc-mobile-active-view";
+    const VALID_VIEWS = ["shuffle", "randomcup", "tournament", "profile", "stats"];
+
+    /** 16 đội bracket FC Mobile (World's Game) */
+    const FC16_PRESET = [
+      "Argentina", "Netherlands", "England", "Italy", "Portugal", "Turkey",
+      "Senegal", "Colombia", "Belgium", "Brazil", "France", "Germany",
+      "Croatia", "Spain", "Uruguay", "Morocco",
+    ];
+
+    const FC16_FALLBACK = {
+      Argentina: { flag: "https://flagcdn.com/w80/ar.png", name: "Argentina", nameEn: "Argentina" },
+      Netherlands: { flag: "https://flagcdn.com/w80/nl.png", name: "Hà Lan", nameEn: "Netherlands" },
+      England: { flag: "https://flagcdn.com/w80/gb-eng.png", name: "Anh", nameEn: "England" },
+      Italy: { flag: "https://flagcdn.com/w80/it.png", name: "Ý", nameEn: "Italy" },
+      Portugal: { flag: "https://flagcdn.com/w80/pt.png", name: "Bồ Đào Nha", nameEn: "Portugal" },
+      Turkey: { flag: "https://flagcdn.com/w80/tr.png", name: "Thổ Nhĩ Kỳ", nameEn: "Turkey" },
+      Senegal: { flag: "https://flagcdn.com/w80/sn.png", name: "Senegal", nameEn: "Senegal" },
+      Colombia: { flag: "https://flagcdn.com/w80/co.png", name: "Colombia", nameEn: "Colombia" },
+      Belgium: { flag: "https://flagcdn.com/w80/be.png", name: "Bỉ", nameEn: "Belgium" },
+      Brazil: { flag: "https://flagcdn.com/w80/br.png", name: "Brazil", nameEn: "Brazil" },
+      France: { flag: "https://flagcdn.com/w80/fr.png", name: "Pháp", nameEn: "France" },
+      Germany: { flag: "https://flagcdn.com/w80/de.png", name: "Đức", nameEn: "Germany" },
+      Croatia: { flag: "https://flagcdn.com/w80/hr.png", name: "Croatia", nameEn: "Croatia" },
+      Spain: { flag: "https://flagcdn.com/w80/es.png", name: "Tây Ban Nha", nameEn: "Spain" },
+      Uruguay: { flag: "https://flagcdn.com/w80/uy.png", name: "Uruguay", nameEn: "Uruguay" },
+      Morocco: { flag: "https://flagcdn.com/w80/ma.png", name: "Ma Rốc", nameEn: "Morocco" },
+    };
+
+    const GH_REPO = (() => {
+      if (window.location.hostname.endsWith(".github.io")) {
+        const user = window.location.hostname.split(".")[0];
+        const repo = window.location.pathname.replace(/^\/+|\/+$/g, "").split("/")[0];
+        if (user && repo) return `${user}/${repo}`;
+      }
+      return "luan20495/fc-mobile-team-random";
+    })();
 
     const VN_NAMES = {
       "Mexico": "Mexico",
@@ -1234,6 +2358,7 @@
       "Croatia": "Croatia",
       "Ghana": "Ghana",
       "Panama": "Panama",
+      "Italy": "Ý",
     };
 
     const FALLBACK_TEAMS = [
@@ -1245,24 +2370,720 @@
     ];
 
     let NATIONAL_TEAMS = [...FALLBACK_TEAMS];
+    let allNationalTeams = [...FALLBACK_TEAMS];
+    let countryPoolMode = localStorage.getItem(COUNTRY_POOL_KEY) || "all";
 
-    const DEFAULT_PLAYERS = ["Luân", "Hưng", "Hải", "Long", "Đại", "Khuê"];
-    const STORAGE_KEY = "fc-mobile-players";
-    const TOURNAMENT_KEY = "fc-mobile-tournament";
+    const DEFAULT_PLAYERS = ["Luân", "Hưng", "Đại", "Khuê"];
 
-    let tournamentData = loadTournamentData();
+    let tournamentData = { cycles: [], activeCycleId: null };
+    let randomCupData = { activeCupId: null, cups: [], playerStats: {} };
+    let shuffleHistory = [];
+    let stateTeamsCache = null;
+    let stateSha = null;
+    let saveTimer = null;
+    let lastKnownUpdatedAt = null;
+    let pollTimer = null;
+    let isSaving = false;
+    let hasUnsavedLocalChanges = false;
+    let pendingRemoteUpdate = false;
     let pendingMatch = null;
+    let scoreModalContext = null;
+    let cupSetupMode = "1v1";
+    let tournamentFormat = "knockout";
+    let cupFilter = "all";
+    let viewingCupId = null;
 
-    function loadTournamentData() {
+    function toBase64Utf8(str) {
+      return btoa(unescape(encodeURIComponent(str)));
+    }
+
+    function getSyncApiUrl() {
+      const saved = localStorage.getItem(SYNC_API_URL_KEY)
+        ?? localStorage.getItem(SYNC_API_URL_KEY_LEGACY);
+      if (saved !== null && saved.trim() !== "") return saved.replace(/\/$/, "");
+      if (SYNC_API_URL_DEFAULT) return SYNC_API_URL_DEFAULT.replace(/\/$/, "");
+      return "";
+    }
+
+    function getSyncWriteKey() {
+      const saved = localStorage.getItem(SYNC_WRITE_KEY);
+      if (saved !== null && saved.trim() !== "") return saved;
+      return SYNC_WRITE_KEY_DEFAULT || "";
+    }
+
+    function isSyncReadConfigured() {
+      return !!getSyncApiUrl();
+    }
+
+    function isSyncWriteConfigured() {
+      return !!(getSyncApiUrl() && getSyncWriteKey());
+    }
+
+    function markDirty() {
+      hasUnsavedLocalChanges = true;
+    }
+
+    function clearDirty() {
+      hasUnsavedLocalChanges = false;
+      pendingRemoteUpdate = false;
+    }
+
+    function getClientId() {
+      let id = localStorage.getItem(CLIENT_ID_KEY);
+      if (!id) {
+        id = uid();
+        localStorage.setItem(CLIENT_ID_KEY, id);
+      }
+      return id;
+    }
+
+    function getUserName() {
+      return (localStorage.getItem(USER_NAME_KEY) || "").trim();
+    }
+
+    function setUserName(name) {
+      localStorage.setItem(USER_NAME_KEY, name.trim());
+    }
+
+    function clearUserName() {
+      localStorage.removeItem(USER_NAME_KEY);
+    }
+
+    function logoutProfile() {
+      if (!getUserName()) return;
+      if (!confirm("Đăng xuất profile trên máy này?\nDữ liệu nhóm vẫn giữ nguyên — nhập lại đúng tên để xem lại.")) return;
+      clearUserName();
+      updateMyNameBadge();
+      const welcomeInput = document.getElementById("welcome-name-input");
+      if (welcomeInput) welcomeInput.value = "";
+      setWelcomeError("");
+      updateWelcomeTakenHint();
+      showWelcomeGate();
+      document.getElementById("welcome-continue-btn")?.removeAttribute("disabled");
+      switchView("shuffle");
+      showToast("Đã đăng xuất ✓");
+    }
+
+    function isPlayerNameTaken(name) {
+      const lc = name.trim().toLowerCase();
+      if (!lc) return false;
+      return players.some(p => p.toLowerCase() === lc);
+    }
+
+    const RANDOM_NAME_PREFIXES = ["Siêu", "Pro", "Cute", "Bé", "Anh", "Em", "Mr", "Ms", "Baby", "King"];
+    const RANDOM_NAME_ROOTS = ["Luân", "Hưng", "Long", "Gà", "Cá", "Bò", "Hổ", "Rồng", "Sói", "Vua", "Thần", "Ngầu", "Xinh", "Béo", "Gấu"];
+
+    function generateRandomName() {
+      for (let i = 0; i < 32; i++) {
+        const prefix = RANDOM_NAME_PREFIXES[Math.floor(Math.random() * RANDOM_NAME_PREFIXES.length)];
+        const root = RANDOM_NAME_ROOTS[Math.floor(Math.random() * RANDOM_NAME_ROOTS.length)];
+        const suffix = Math.floor(Math.random() * 90 + 10);
+        const name = `${prefix}${root}${suffix}`;
+        if (!isPlayerNameTaken(name)) return name;
+      }
+      return `Player${Date.now() % 100000}`;
+    }
+
+    function updateWelcomeTakenHint() {
+      const el = document.getElementById("welcome-taken");
+      if (!el) return;
+      if (players.length) {
+        el.textContent = `Người chơi trong nhóm: ${players.join(", ")} (thêm/sửa ở tab chính)`;
+      } else {
+        el.textContent = "Chưa có người chơi — thêm tên sau khi vào app.";
+      }
+    }
+
+    function showWelcomeGate() {
+      const gate = document.getElementById("welcome-gate");
+      if (!gate) return;
+      gate.classList.add("show");
+      updateWelcomeTakenHint();
+      const input = document.getElementById("welcome-name-input");
+      if (input && !input.value) input.focus();
+    }
+
+    function hideWelcomeGate() {
+      document.getElementById("welcome-gate")?.classList.remove("show");
+    }
+
+    function setWelcomeError(msg) {
+      const el = document.getElementById("welcome-error");
+      if (el) el.textContent = msg || "";
+    }
+
+    function detachProfileFromPlayers() {
+      const me = getUserName();
+      if (!me) return false;
+      const idx = players.findIndex(p => p.toLowerCase() === me.toLowerCase());
+      if (idx < 0) return false;
+      players.splice(idx, 1);
+      savePlayers();
+      return true;
+    }
+
+    function saveStateLocally() {
       try {
-        const saved = localStorage.getItem(TOURNAMENT_KEY);
-        if (saved) return JSON.parse(saved);
+        localStorage.setItem(LOCAL_STATE_KEY, JSON.stringify(buildStateObject()));
       } catch {}
-      return { cycles: [], activeCycleId: null };
+    }
+
+    function loadStateLocally() {
+      try {
+        const raw = localStorage.getItem(LOCAL_STATE_KEY);
+        return raw ? JSON.parse(raw) : null;
+      } catch {
+        return null;
+      }
+    }
+
+    function shouldPreferLocalState(remote, local) {
+      if (!local) return false;
+      if (isEmptyGithubState(remote) && !isEmptyGithubState(local)) return true;
+      if (getSyncApiUrl() && !isEmptyGithubState(remote)) {
+        if (local.updatedAt && remote.updatedAt && local.updatedAt > remote.updatedAt) return true;
+        return false;
+      }
+      if (!getUserName()) return false;
+      if (local.updatedAt && remote?.updatedAt && local.updatedAt > remote.updatedAt) return true;
+      return false;
+    }
+
+    function isUsingDefaultSync() {
+      return !localStorage.getItem(SYNC_API_URL_KEY)
+        && !localStorage.getItem(SYNC_API_URL_KEY_LEGACY)
+        && !!SYNC_API_URL_DEFAULT;
+    }
+
+    function updatePersistStatus() {
+      updateSyncHintBanner();
+      if (isSyncWriteConfigured()) {
+        if (cloudSyncVerified) {
+          setSyncStatus(isUsingDefaultSync() ? "Đồng bộ nhóm ✓" : "Đã đồng bộ cloud ✓", "ok");
+        } else {
+          setSyncStatus("Chưa lưu cloud · chỉ trên máy", "warn");
+        }
+        return;
+      }
+      if (isSyncReadConfigured() && !getSyncWriteKey()) {
+        setSyncStatus("Chỉ đọc cloud · thiếu mã lưu", "warn");
+        return;
+      }
+      const name = getUserName();
+      if (name) {
+        setSyncStatus(`Chỉ lưu trên máy này · ${name}`, "warn");
+      } else {
+        setSyncStatus("Nhập profile để lưu máy", "pending");
+      }
+    }
+
+    function updateSyncHintBanner() {
+      const el = document.getElementById("sync-hint-banner");
+      if (!el) return;
+      if (isSyncWriteConfigured()) {
+        el.hidden = true;
+        return;
+      }
+      el.hidden = false;
+      if (isSyncReadConfigured() && !getSyncWriteKey()) {
+        el.innerHTML = "Đã có URL đồng bộ nhưng <strong>thiếu mã lưu</strong> — máy này chỉ xem được, không ghi lên cloud.";
+        return;
+      }
+      if (isSyncWriteConfigured() && !cloudSyncVerified) {
+        el.innerHTML = "Cloud chưa nhận data — thường do <strong>token GitHub thiếu quyền repo</strong>. Sửa trong Worker (<code>wrangler secret put GITHUB_TOKEN</code>) rồi thử lại.";
+        return;
+      }
+      el.innerHTML = "Không kết nối được cloud — dữ liệu tạm lưu trên máy.";
+    }
+
+    function migrateProfilePlayerSeparation() {
+      if (localStorage.getItem(PROFILE_PLAYER_MIGRATED_KEY)) return;
+      if (detachProfileFromPlayers()) scheduleSaveToGithub();
+      localStorage.setItem(PROFILE_PLAYER_MIGRATED_KEY, "1");
+    }
+
+    function finishWelcomeGate() {
+      const input = document.getElementById("welcome-name-input");
+      const trimmed = input?.value.trim() || "";
+      if (!trimmed) {
+        setWelcomeError("Nhập tên trước nhé!");
+        input?.focus();
+        return;
+      }
+      setUserName(trimmed);
+      setWelcomeError("");
+      hideWelcomeGate();
+      refreshAllFromState();
+      updatePersistStatus();
+      showToast(`Profile: ${trimmed} ✓`);
+    }
+
+    function updateMyNameBadge() {
+      const badge = document.getElementById("my-name-badge");
+      if (!badge) return;
+      const me = getUserName();
+      badge.textContent = me ? ` · Bạn: ${me}` : "";
+    }
+
+    function canWriteState() {
+      if (getSyncApiUrl()) return !!getSyncWriteKey();
+      return !!getGhToken();
+    }
+
+    function getGhToken() {
+      return localStorage.getItem(TOKEN_KEY) || "";
+    }
+
+    function setSyncStatus(msg, type = "pending") {
+      const el = document.getElementById("sync-status");
+      if (!el) return;
+      el.textContent = msg;
+      el.className = `sync-status ${type}`;
+    }
+
+    function applyState(state) {
+      if (!state || typeof state !== "object") return;
+      if (Array.isArray(state.players) && state.players.length >= 2) {
+        players = state.players;
+      }
+      if (state.tournament && typeof state.tournament === "object") {
+        tournamentData = state.tournament;
+        tournamentData.cycles.forEach(ensureCycleShape);
+      }
+      if (state.teamsCache?.teams?.length) {
+        stateTeamsCache = state.teamsCache;
+      }
+      shuffleHistory = Array.isArray(state.shuffleHistory) ? state.shuffleHistory : [];
+      randomCupData = {
+        activeCupId: state.randomCup?.activeCupId ?? null,
+        cups: Array.isArray(state.randomCup?.cups) ? state.randomCup.cups : [],
+        playerStats: state.randomCup?.playerStats || {},
+      };
+      randomCupData.cups.forEach(ensureCupShape);
+      if (state.updatedAt) lastKnownUpdatedAt = state.updatedAt;
+      recomputePlayerStats();
+    }
+
+    function ensureCupShape(cup) {
+      if (!cup.competitors) cup.competitors = [];
+      if (!cup.rounds) cup.rounds = [];
+      if (!cup.bracketPools) cup.bracketPools = { winners: [], losers: [] };
+      if (!cup.eliminated) cup.eliminated = [];
+      if (!cup.bench) cup.bench = [];
+      if (!cup.round0Byes) cup.round0Byes = [];
+    }
+
+    function buildStateObject() {
+      return {
+        version: 2,
+        updatedAt: new Date().toISOString(),
+        players,
+        tournament: tournamentData,
+        teamsCache: stateTeamsCache,
+        shuffleHistory,
+        randomCup: randomCupData,
+      };
+    }
+
+    function createEmptyState() {
+      return {
+        version: 2,
+        updatedAt: new Date().toISOString(),
+        players: [],
+        tournament: { cycles: [], activeCycleId: null },
+        teamsCache: null,
+        shuffleHistory: [],
+        randomCup: { activeCupId: null, cups: [], playerStats: {} },
+      };
+    }
+
+    function resetAllAppData() {
+      if (!confirm("Xóa TOÀN BỘ dữ liệu?\n\n• Người chơi, giải, lịch sử\n• Profile trên máy này\n\nKhông thể hoàn tác.")) return;
+
+      localStorage.removeItem(LOCAL_STATE_KEY);
+      localStorage.removeItem(USER_NAME_KEY);
+      localStorage.removeItem(PROFILE_PLAYER_MIGRATED_KEY);
+      clearLegacyLocalStorage();
+
+      players = [];
+      tournamentData = { cycles: [], activeCycleId: null };
+      randomCupData = { activeCupId: null, cups: [], playerStats: {} };
+      shuffleHistory = [];
+      stateTeamsCache = null;
+      viewingCupId = null;
+      tournamentFormat = "knockout";
+      clearDirty();
+
+      const empty = createEmptyState();
+      localStorage.setItem(LOCAL_STATE_KEY, JSON.stringify(empty));
+      lastKnownUpdatedAt = empty.updatedAt;
+      recomputePlayerStats();
+
+      const welcomeInput = document.getElementById("welcome-name-input");
+      if (welcomeInput) welcomeInput.value = "";
+      setWelcomeError("");
+      updateWelcomeTakenHint();
+      showWelcomeGate();
+      document.getElementById("welcome-continue-btn")?.removeAttribute("disabled");
+      switchView("shuffle");
+      refreshAllFromState();
+      updateMyNameBadge();
+      updatePersistStatus();
+      scheduleSaveToGithub();
+      showToast("Đã xóa toàn bộ · nhập profile mới");
+    }
+
+    function hasLegacyLocalData() {
+      return !!(
+        localStorage.getItem(LEGACY_STORAGE_KEY)
+        || localStorage.getItem(LEGACY_TOURNAMENT_KEY)
+        || localStorage.getItem(LEGACY_TEAMS_CACHE_KEY)
+      );
+    }
+
+    let cloudSyncVerified = false;
+
+    function syncErrorToVn(err) {
+      const s = String(err || "").toLowerCase();
+      if (s.includes("resource not accessible") || s.includes("github_write_failed")) {
+        return "Token GitHub thiếu quyền ghi repo — tạo token classic, tick repo";
+      }
+      if (s.includes("unauthorized") || s.includes("401")) return "Mã nhóm không đúng";
+      if (s.includes("conflict") || s.includes("409")) return "Có bản mới trên cloud — bấm Tải lại";
+      if (s.includes("server_misconfigured")) return "Worker chưa có GITHUB_TOKEN";
+      return "Chưa lưu được lên cloud";
+    }
+
+    function isEmptyGithubState(state) {
+      if (!state) return true;
+      if (state.tournament?.cycles?.length) return false;
+      if (state.randomCup?.cups?.length) return false;
+      if (state.shuffleHistory?.length) return false;
+      if (state.players?.length >= 2
+        && JSON.stringify(state.players) !== JSON.stringify(DEFAULT_PLAYERS)) return false;
+      return true;
+    }
+
+    function clearLegacyLocalStorage() {
+      localStorage.removeItem(LEGACY_STORAGE_KEY);
+      localStorage.removeItem(LEGACY_TOURNAMENT_KEY);
+      localStorage.removeItem(LEGACY_TEAMS_CACHE_KEY);
+    }
+
+    function migrateLegacyLocalStorage() {
+      let changed = false;
+      try {
+        const rawPlayers = localStorage.getItem(LEGACY_STORAGE_KEY);
+        if (rawPlayers) {
+          const parsed = JSON.parse(rawPlayers);
+          if (Array.isArray(parsed) && parsed.length >= 2) {
+            players = parsed;
+            changed = true;
+          }
+        }
+        const rawTournament = localStorage.getItem(LEGACY_TOURNAMENT_KEY);
+        if (rawTournament) {
+          const parsed = JSON.parse(rawTournament);
+          if (parsed?.cycles?.length) {
+            tournamentData = parsed;
+            changed = true;
+          }
+        }
+        const rawTeams = localStorage.getItem(LEGACY_TEAMS_CACHE_KEY);
+        if (rawTeams) {
+          const parsed = JSON.parse(rawTeams);
+          if (parsed?.teams?.length) {
+            stateTeamsCache = parsed;
+            changed = true;
+          }
+        }
+        if (changed) clearLegacyLocalStorage();
+      } catch {}
+      return changed;
+    }
+
+    async function fetchStateFromRemote() {
+      const apiUrl = getSyncApiUrl();
+      if (apiUrl) {
+        try {
+          const res = await fetch(`${apiUrl}/state?t=${Date.now()}`, { cache: "no-store" });
+          if (res.ok) {
+            const data = await res.json();
+            if (data && !data.error) return data;
+          }
+        } catch {}
+      }
+      try {
+        const res = await fetch(`${STATE_URL}?t=${Date.now()}`, { cache: "no-store" });
+        if (res.ok) return res.json();
+      } catch {}
+      return createEmptyState();
+    }
+
+    async function reloadRemoteState(force = false) {
+      setSyncStatus("Đang tải...", "pending");
+      try {
+        const state = await fetchStateFromRemote();
+        if (!force && hasUnsavedLocalChanges && state.updatedAt && state.updatedAt !== lastKnownUpdatedAt) {
+          pendingRemoteUpdate = true;
+          setSyncStatus("Có dữ liệu mới · Tải lại", "warn");
+          showToast("Có dữ liệu mới, bấm tải lại", true);
+          return false;
+        }
+        applyState(state);
+        if (force) clearDirty();
+        refreshAllFromState();
+        setSyncStatus("Đã lưu ✓", "ok");
+        return true;
+      } catch {
+        setSyncStatus("Chưa tải được", "error");
+        return false;
+      }
+    }
+
+    function refreshAllFromState() {
+      renderPlayerChips();
+      renderHistory();
+      renderTournament();
+      renderRandomCup();
+      renderStats();
+      if (document.getElementById("view-profile")?.classList.contains("active")) {
+        renderProfile(getUserName());
+      }
+      const cached = loadTeamsCache();
+      if (cached) applyTeams(cached, true);
+    }
+
+    async function pollRemoteState() {
+      if (document.hidden || isSaving) return;
+      try {
+        const state = await fetchStateFromRemote();
+        if (!state.updatedAt || state.updatedAt === lastKnownUpdatedAt) return;
+        if (hasUnsavedLocalChanges) {
+          pendingRemoteUpdate = true;
+          setSyncStatus("Có dữ liệu mới · Tải lại", "warn");
+          return;
+        }
+        applyState(state);
+        refreshAllFromState();
+        setSyncStatus("Đã lưu ✓", "ok");
+      } catch {}
+    }
+
+    function startSyncPolling() {
+      if (!getSyncApiUrl() && !STATE_URL) return;
+      clearInterval(pollTimer);
+      pollTimer = setInterval(pollRemoteState, 10000);
+      document.addEventListener("visibilitychange", () => {
+        if (!document.hidden) pollRemoteState();
+      });
+    }
+
+    async function loadStateFromGithub() {
+      const local = loadStateLocally();
+      const hadLocal = !!local;
+      try {
+        const remote = await fetchStateFromRemote();
+        const state = shouldPreferLocalState(remote, local) ? local : remote;
+        const fromRemote = state === remote;
+        applyState(state);
+        saveStateLocally();
+        clearDirty();
+        if (!fromRemote && !isEmptyGithubState(local) && isEmptyGithubState(remote)) {
+          scheduleSaveToGithub();
+        } else if (fromRemote && !isEmptyGithubState(remote)) {
+          cloudSyncVerified = true;
+        }
+        if (hasLegacyLocalData()) {
+          if (isEmptyGithubState(state)) {
+            migrateLegacyLocalStorage();
+            scheduleSaveToGithub();
+          } else {
+            clearLegacyLocalStorage();
+          }
+        }
+        if (canWriteState()) {
+          if (cloudSyncVerified) {
+            setSyncStatus(isUsingDefaultSync() ? "Đồng bộ nhóm ✓" : "Đã đồng bộ cloud ✓", "ok");
+          } else {
+            updatePersistStatus();
+          }
+          updateSyncHintBanner();
+        } else {
+          updatePersistStatus();
+        }
+        if (fromRemote && !hadLocal && !isEmptyGithubState(remote)) {
+          showToast("Đã tải dữ liệu nhóm từ cloud");
+        }
+        return true;
+      } catch {
+        if (local) {
+          applyState(local);
+          clearDirty();
+          updatePersistStatus();
+          return true;
+        }
+        if (migrateLegacyLocalStorage()) {
+          scheduleSaveToGithub();
+        } else {
+          updatePersistStatus();
+        }
+        return false;
+      }
+    }
+
+    async function refreshStateSha() {
+      const token = getGhToken();
+      if (!token) return;
+      try {
+        const res = await fetch(
+          `https://api.github.com/repos/${GH_REPO}/contents/${STATE_PATH}?ref=${GH_BRANCH}`,
+          { headers: { Authorization: `Bearer ${token}`, Accept: "application/vnd.github+json" } }
+        );
+        if (res.ok) {
+          stateSha = (await res.json()).sha;
+        } else if (res.status === 404) {
+          stateSha = null;
+        }
+      } catch {}
+    }
+
+    async function saveStateViaWorker(force = false) {
+      const apiUrl = getSyncApiUrl();
+      if (!apiUrl) return false;
+      const writeKey = getSyncWriteKey();
+      if (!writeKey) {
+        setSyncStatus("Chưa lưu cloud", "error");
+        showToast("Chưa có mã lưu", true);
+        return false;
+      }
+      const state = buildStateObject();
+      isSaving = true;
+      setSyncStatus("Đang lưu...", "pending");
+      try {
+        const res = await fetch(`${apiUrl}/state`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-Sync-Key": writeKey,
+          },
+          body: JSON.stringify({
+            state,
+            clientId: getClientId(),
+            updatedAt: state.updatedAt,
+            baseUpdatedAt: force ? null : lastKnownUpdatedAt,
+          }),
+        });
+        const data = await res.json().catch(() => ({}));
+        if (res.status === 409 && !force) {
+          pendingRemoteUpdate = true;
+          cloudSyncVerified = false;
+          setSyncStatus("Có bản mới · Tải lại", "warn");
+          if (confirm("Cloud có bản mới hơn.\n\nOK = ghi đè cloud bằng data máy này\nHuỷ = giữ cloud, bấm Tải lại sau")) {
+            return saveStateViaWorker(true);
+          }
+          showToast("Chưa lưu — bấm Tải lại để lấy cloud", true);
+          return false;
+        }
+        if (res.status === 401) {
+          cloudSyncVerified = false;
+          setSyncStatus("Chưa lưu cloud", "error");
+          showToast("Mã nhóm không đúng", true);
+          return false;
+        }
+        if (!res.ok) {
+          cloudSyncVerified = false;
+          const msg = syncErrorToVn(data.error || data.message);
+          setSyncStatus("Chưa lưu cloud", "error");
+          showToast(msg, true);
+          updateSyncHintBanner();
+          return false;
+        }
+        lastKnownUpdatedAt = data.updatedAt || state.updatedAt;
+        clearDirty();
+        cloudSyncVerified = true;
+        setSyncStatus(isUsingDefaultSync() ? "Đồng bộ nhóm ✓" : "Đã đồng bộ cloud ✓", "ok");
+        updateSyncHintBanner();
+        setTimeout(pollRemoteState, 3000);
+        return true;
+      } catch {
+        cloudSyncVerified = false;
+        setSyncStatus("Chưa lưu cloud", "error");
+        updateSyncHintBanner();
+        return false;
+      } finally {
+        isSaving = false;
+      }
+    }
+
+    async function saveStateViaDirectToken() {
+      const token = getGhToken();
+      if (!token) return false;
+      if (!stateSha) await refreshStateSha();
+      const json = JSON.stringify(buildStateObject(), null, 2);
+      const body = {
+        message: "chore: sync app state",
+        content: toBase64Utf8(json),
+        branch: GH_BRANCH,
+      };
+      if (stateSha) body.sha = stateSha;
+      const res = await fetch(
+        `https://api.github.com/repos/${GH_REPO}/contents/${STATE_PATH}`,
+        {
+          method: "PUT",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            Accept: "application/vnd.github+json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body),
+        }
+      );
+      if (!res.ok) return false;
+      const data = await res.json();
+      stateSha = data.content.sha;
+      lastKnownUpdatedAt = buildStateObject().updatedAt;
+      clearDirty();
+      return true;
+    }
+
+    async function saveStateToGithub() {
+      saveStateLocally();
+      if (!canWriteState()) {
+        clearDirty();
+        updatePersistStatus();
+        return;
+      }
+      if (getSyncApiUrl()) {
+        await saveStateViaWorker();
+        return;
+      }
+      if (!getGhToken()) {
+        setSyncStatus("Chưa lưu được", "error");
+        showToast("Chưa lưu được", true);
+        return;
+      }
+      isSaving = true;
+      setSyncStatus("Đang lưu...", "pending");
+      try {
+        const ok = await saveStateViaDirectToken();
+        setSyncStatus(ok ? "Đã lưu ✓" : "Chưa lưu được", ok ? "ok" : "error");
+        if (ok) clearDirty();
+      } catch {
+        setSyncStatus("Chưa lưu được", "error");
+      } finally {
+        isSaving = false;
+      }
+    }
+
+    function scheduleSaveToGithub() {
+      markDirty();
+      clearTimeout(saveTimer);
+      saveTimer = setTimeout(saveStateToGithub, 800);
     }
 
     function saveTournamentData() {
-      localStorage.setItem(TOURNAMENT_KEY, JSON.stringify(tournamentData));
+      scheduleSaveToGithub();
     }
 
     function uid() {
@@ -1270,7 +3091,182 @@
     }
 
     function getActiveCycle() {
-      return tournamentData.cycles.find(c => c.id === tournamentData.activeCycleId) || null;
+      const c = tournamentData.cycles.find(c => c.id === tournamentData.activeCycleId) || null;
+      if (c) ensureCycleShape(c);
+      return c;
+    }
+
+    function ensureCycleShape(cycle) {
+      if (!cycle.format) cycle.format = cycle.knockoutRounds?.length ? "knockout" : "league";
+      if (!Array.isArray(cycle.knockoutRounds)) cycle.knockoutRounds = [];
+      if (!Array.isArray(cycle.league)) cycle.league = [];
+      if (!Array.isArray(cycle.playoffs)) cycle.playoffs = [];
+      if (!cycle.playerTeams || typeof cycle.playerTeams !== "object") {
+        cycle.playerTeams = assignTeamsForCycle(cycle.players || []);
+      }
+    }
+
+    function assignTeamsForCycle(playerList) {
+      return assignTeamsForPlayerNames(playerList);
+    }
+
+    function assignTeamsForPlayerNames(playerNames) {
+      const pool = shuffle([...NATIONAL_TEAMS]);
+      const teams = {};
+      playerNames.forEach((name, i) => {
+        const t = pool[i % pool.length] || randomTeam();
+        teams[name] = { name: t.name, flag: t.flag };
+      });
+      return teams;
+    }
+
+    function getKnockoutRoundPlayers(round) {
+      const names = new Set();
+      (round.byes || []).forEach(n => names.add(n));
+      round.matches.forEach(m => {
+        names.add(m.home);
+        names.add(m.away);
+      });
+      return [...names];
+    }
+
+    function canRandomizeKnockoutRound(cycle, roundIndex) {
+      if (!cycle || cycle.locked || cycle.format !== "knockout") return false;
+      const rounds = cycle.knockoutRounds || [];
+      const round = rounds[roundIndex];
+      if (!round || round.completed) return false;
+      if (round.matches.some(m => m.played)) return false;
+      for (let i = 0; i < roundIndex; i++) {
+        if (!rounds[i]?.completed) return false;
+      }
+      return true;
+    }
+
+    function reshuffleKnockoutRoundPairings(round, entrantNames) {
+      let pool = shuffle([...entrantNames]);
+      const byes = [];
+      if (pool.length % 2 === 1) byes.push(pool.shift());
+      const matches = [];
+      for (let i = 0; i < pool.length; i += 2) {
+        matches.push({
+          id: uid(),
+          home: pool[i],
+          away: pool[i + 1],
+          scoreHome: null,
+          scoreAway: null,
+          played: false,
+          lockedAt: null,
+        });
+      }
+      round.matches = matches;
+      round.byes = byes;
+      round.completed = false;
+    }
+
+    function rerandomizeKnockoutRound(cycle, roundIndex) {
+      if (!canRandomizeKnockoutRound(cycle, roundIndex)) {
+        showToast("Không random được — vòng này đã có kết quả", true);
+        return;
+      }
+      const round = cycle.knockoutRounds[roundIndex];
+      if (roundIndex === 0) {
+        cycle.knockoutRounds = cycle.knockoutRounds.slice(0, 1);
+        cycle.champion = null;
+        cycle.phase = "knockout";
+        reshuffleKnockoutRoundPairings(round, cycle.players);
+        cycle.playerTeams = assignTeamsForPlayerNames(cycle.players);
+        showToast("Đã random lại cặp + ĐTQG");
+      } else {
+        const names = getKnockoutRoundPlayers(round);
+        cycle.playerTeams = { ...cycle.playerTeams, ...assignTeamsForPlayerNames(names) };
+        showToast("Đã random lại ĐTQG vòng này");
+      }
+      saveTournamentData();
+      renderTournament();
+    }
+
+    function koRoundRandomBtn(cycle, roundIndex, interactive) {
+      if (!interactive || !canRandomizeKnockoutRound(cycle, roundIndex)) return "";
+      const first = roundIndex === 0;
+      const title = first ? "Random lại cặp đấu + quốc gia" : "Random lại quốc gia";
+      const label = first ? "🎲 Random" : "🎲 ĐTQG";
+      return `<button type="button" class="fc-ko-random-btn" data-ko-round="${roundIndex}" title="${title}">${label}</button>`;
+    }
+
+    function getCycleTeam(cycle, playerName) {
+      return cycle?.playerTeams?.[playerName] || null;
+    }
+
+    function allKnockoutMatches(cycle) {
+      return (cycle.knockoutRounds || []).flatMap(r => r.matches);
+    }
+
+    function findKnockoutMatch(cycle, matchId) {
+      for (const round of cycle.knockoutRounds || []) {
+        const m = round.matches.find(x => x.id === matchId);
+        if (m) return m;
+      }
+      return null;
+    }
+
+    function knockoutRoundLabel(entrantCount, roundNum) {
+      if (entrantCount === 2) return "Chung kết";
+      if (entrantCount === 4) return "Bán kết";
+      if (entrantCount === 8) return "Tứ kết";
+      return roundNum === 1 ? "Vòng loại" : `Vòng ${roundNum}`;
+    }
+
+    function generateKnockoutRound(cycle, entrantNames, shuffleSeeds = false) {
+      let pool = shuffleSeeds ? shuffle([...entrantNames]) : [...entrantNames];
+      const byes = [];
+      if (pool.length % 2 === 1) {
+        byes.push(pool.shift());
+      }
+      const roundNum = cycle.knockoutRounds.length + 1;
+      const totalInRound = pool.length + byes.length;
+      const matches = [];
+      for (let i = 0; i < pool.length; i += 2) {
+        matches.push({
+          id: uid(),
+          home: pool[i],
+          away: pool[i + 1],
+          scoreHome: null,
+          scoreAway: null,
+          played: false,
+          lockedAt: null,
+        });
+      }
+      cycle.knockoutRounds.push({
+        round: roundNum,
+        label: knockoutRoundLabel(totalInRound, roundNum),
+        matches,
+        byes,
+        completed: false,
+      });
+    }
+
+    function maybeAdvanceKnockout(cycle) {
+      if (cycle.format !== "knockout" || cycle.phase !== "knockout") return;
+      const current = cycle.knockoutRounds[cycle.knockoutRounds.length - 1];
+      if (!current || current.completed) return;
+      if (!current.matches.every(m => m.played)) return;
+
+      current.completed = true;
+      const winners = current.matches.map(m =>
+        m.scoreHome > m.scoreAway ? m.home : m.away
+      );
+      const nextEntrants = [...current.byes, ...winners];
+
+      if (nextEntrants.length === 1) {
+        cycle.champion = nextEntrants[0];
+        cycle.phase = "done";
+        cycle.locked = true;
+        cycle.completedAt = new Date().toISOString();
+        tournamentData.activeCycleId = null;
+        return;
+      }
+
+      generateKnockoutRound(cycle, nextEntrants, false);
     }
 
     function getLockedCycles() {
@@ -1385,6 +3381,10 @@
     }
 
     function maybeAdvancePhase(cycle) {
+      if (cycle.format === "knockout") {
+        maybeAdvanceKnockout(cycle);
+        return;
+      }
       if (cycle.phase === "league" && leagueComplete(cycle)) {
         if (cycle.players.length >= 4) {
           cycle.phase = "playoffs";
@@ -1407,65 +3407,127 @@
     function startNewCycle() {
       const active = getActiveCycle();
       if (active && !active.locked) {
-        const done = active.league.filter(m => m.played).length;
-        const total = active.league.length;
-        if (!confirm(`Giải #${active.number} đang đá dở (${done}/${total} trận vòng tròn). Bắt đầu giải mới sẽ khóa giải này lại. Tiếp tục?`)) return;
+        const formatLabel = active.format === "knockout" ? "loại trực tiếp" : "vòng tròn";
+        let progress = "";
+        if (active.format === "knockout") {
+          const all = allKnockoutMatches(active);
+          progress = `${all.filter(m => m.played).length}/${all.length} trận`;
+        } else {
+          progress = `${active.league.filter(m => m.played).length}/${active.league.length} trận vòng tròn`;
+        }
+        if (!confirm(`Giải #${active.number} (${formatLabel}) đang đá dở (${progress}). Bắt đầu giải mới sẽ khóa giải này lại. Tiếp tục?`)) return;
         active.locked = true;
         active.phase = "done";
         active.completedAt = new Date().toISOString();
       }
-      if (players.length < 3) return showToast("Cần ít nhất 3 người cho giải Nhất Nhì!");
+      const format = tournamentFormat;
+      if (format === "league" && players.length < 3) return showToast("Vòng tròn cần ít nhất 3 người", true);
+      if (format === "knockout" && players.length < 2) return showToast("Loại trực tiếp cần ít nhất 2 người", true);
+
       const cycle = {
         id: uid(),
         number: tournamentData.cycles.length + 1,
         createdAt: new Date().toISOString(),
         locked: false,
+        format,
         players: [...players],
-        phase: "league",
-        league: generateRoundRobin(players),
+        phase: format === "knockout" ? "knockout" : "league",
+        league: format === "league" ? generateRoundRobin(players) : [],
         playoffs: [],
+        knockoutRounds: [],
+        playerTeams: assignTeamsForCycle(players),
+        champion: null,
         completedAt: null,
       };
+      if (format === "knockout") {
+        generateKnockoutRound(cycle, players, true);
+      }
       tournamentData.cycles.push(cycle);
       tournamentData.activeCycleId = cycle.id;
       saveTournamentData();
       renderTournament();
-      showToast(`Bắt đầu Giải #${cycle.number} · ${players.length} người`);
+      showToast(format === "knockout" ? "Đã tạo giải · random ĐTQG ✓" : "Đã tạo giải vòng tròn · random ĐTQG ✓");
       switchView("tournament");
     }
 
-    function openScoreModal(match, phase) {
+    function openScoreModal(match, phase, roundLabel) {
+      scoreModalContext = { type: "tournament", match, phase, roundLabel };
       pendingMatch = { match, phase };
+      const cycle = getActiveCycle();
+      const hTeam = cycle ? getCycleTeam(cycle, match.home) : null;
+      const aTeam = cycle ? getCycleTeam(cycle, match.away) : null;
+      const showTeams = !!(hTeam || aTeam);
+      document.getElementById("modal-teams").style.display = showTeams ? "grid" : "none";
+      if (showTeams) {
+        document.getElementById("modal-a-name").textContent = match.home;
+        document.getElementById("modal-b-name").textContent = match.away;
+        document.getElementById("modal-a-country").innerHTML = hTeam
+          ? `${flagHtml(hTeam.flag)} ${hTeam.name}` : "—";
+        document.getElementById("modal-b-country").innerHTML = aTeam
+          ? `${flagHtml(aTeam.flag)} ${aTeam.name}` : "—";
+      }
+      document.getElementById("modal-score-row").style.display = "flex";
+      document.getElementById("modal-quick-scores").style.display = "none";
+      document.getElementById("modal-quick-tournament").style.display = "flex";
+      document.getElementById("modal-cup-win").style.display = "none";
       document.getElementById("modal-home-name").textContent = match.home;
       document.getElementById("modal-away-name").textContent = match.away;
-      document.getElementById("modal-title").textContent = phase === "playoffs" ? match.label : `Vòng ${match.round}`;
+      document.getElementById("modal-title").textContent = match.played
+        ? `Sửa · ${phase === "knockout" ? (scoreModalContext.roundLabel || "Loại trực tiếp") : phase === "playoffs" ? match.label : `Vòng ${match.round}`}`
+        : (phase === "knockout" ? (scoreModalContext.roundLabel || "Loại trực tiếp") : phase === "playoffs" ? match.label : `Vòng ${match.round}`);
       document.getElementById("score-home").value = match.played ? match.scoreHome : 0;
       document.getElementById("score-away").value = match.played ? match.scoreAway : 0;
+      document.getElementById("modal-save").textContent = match.played ? "Cập nhật" : "Lưu kết quả";
       document.getElementById("score-modal").classList.add("show");
     }
 
     function closeScoreModal() {
       pendingMatch = null;
+      scoreModalContext = null;
       document.getElementById("score-modal").classList.remove("show");
     }
 
+    function updatePastTournamentsPanel(locked) {
+      const panel = document.getElementById("past-tournaments-panel");
+      const summary = document.getElementById("past-tournaments-summary");
+      const list = locked || getLockedCycles();
+      if (summary) {
+        summary.textContent = list.length ? `Giải đã xong (${list.length})` : "Giải đã xong";
+      }
+      if (panel && list.length) panel.open = true;
+    }
+
     function saveMatchScore(scoreHome, scoreAway) {
-      if (!pendingMatch) return;
+      if (!scoreModalContext || scoreModalContext.type !== "tournament") return;
       const cycle = getActiveCycle();
       if (!cycle || cycle.locked) return;
-      const { match, phase } = pendingMatch;
-      const list = phase === "league" ? cycle.league : cycle.playoffs;
-      const target = list.find(m => m.id === match.id);
-      if (!target || target.played) return;
+      const { match, phase } = scoreModalContext;
+      let target = null;
+      if (phase === "knockout") {
+        target = findKnockoutMatch(cycle, match.id);
+      } else {
+        const list = phase === "league" ? cycle.league : cycle.playoffs;
+        target = list.find(m => m.id === match.id);
+      }
+      if (!target) return;
+      if (target.played && !confirm("Sửa tỉ số trận đã khóa?")) return;
+      const wasPlayed = target.played;
+      const wasLocked = cycle.locked;
       target.scoreHome = scoreHome;
       target.scoreAway = scoreAway;
       target.played = true;
       target.lockedAt = new Date().toISOString();
-      maybeAdvancePhase(cycle);
+      if (!wasPlayed) maybeAdvancePhase(cycle);
+      const justFinished = !wasLocked && cycle.locked;
       saveTournamentData();
       closeScoreModal();
       renderTournament();
-      showToast("Đã lưu kết quả · trận đã khóa");
+      if (justFinished) {
+        updatePastTournamentsPanel();
+        showToast(`Vô địch: ${getChampion(cycle)} 🏆 · xem Giải đã xong bên dưới`);
+      } else {
+        showToast(wasPlayed ? "Đã cập nhật ✓" : "Đã lưu ✓");
+      }
     }
 
     function seedClass(seed) {
@@ -1475,28 +3537,45 @@
       return "";
     }
 
-    function fcSlot(name, score, isWinner, seed) {
+    function fcSlot(name, score, isWinner, seed, side, team) {
       const icon = seed
         ? `<span class="fc-seed ${seedClass(seed)}">${seed}</span>`
         : `<span class="fc-avatar">${name.charAt(0)}</span>`;
+      const scoreBox = `<span class="fc-score-box">${score ?? "-"}</span>`;
+      const nation = team
+        ? `<span class="fc-slot-nation">${flagHtml(team.flag)} ${team.name}</span>`
+        : "";
+      const nameEl = team
+        ? `<span class="fc-name-block"><span class="fc-name">${name}</span>${nation}</span>`
+        : `<span class="fc-name">${name}</span>`;
+      const nationClass = team ? " has-nation" : "";
+      if (side === "left") {
+        return `
+          <div class="fc-slot fc-slot-left${nationClass} ${isWinner ? "winner" : ""}">
+            ${scoreBox}${icon}${nameEl}
+          </div>`;
+      }
+      if (side === "right") {
+        return `
+          <div class="fc-slot fc-slot-right${nationClass} ${isWinner ? "winner" : ""}">
+            ${nameEl}${icon}${scoreBox}
+          </div>`;
+      }
       return `
-        <div class="fc-slot ${isWinner ? "winner" : ""}">
-          ${icon}
-          <span class="fc-name">${name}</span>
-          <span class="fc-score-box">${score ?? "-"}</span>
-        </div>
-      `;
+        <div class="fc-slot${nationClass} ${isWinner ? "winner" : ""}">
+          ${icon}${nameEl}${scoreBox}
+        </div>`;
     }
 
-    function fcBkBox(match, side, interactive, highlightPlayer) {
+    function fcBkBox(match, side, interactive, highlightPlayer, phase = "playoffs", roundLabel = "", labelText = null) {
       const cycle = getActiveCycle();
       const clickable = interactive && match && !match.played && cycle && !cycle.locked;
       const played = match?.played;
       const score = played ? `${match.scoreHome}:${match.scoreAway}` : "-:-";
-      const label = match?.type === "third" ? "Hạng 3" : "CK";
+      const label = labelText || (match?.type === "third" ? "Hạng 3" : "CK");
       const hl = highlightPlayer && match && (match.home === highlightPlayer || match.away === highlightPlayer);
       const attrs = match
-        ? `data-match-id="${match.id}" data-phase="playoffs"`
+        ? `data-match-id="${match.id}" data-phase="${phase}"${roundLabel ? ` data-round-label="${roundLabel}"` : ""}`
         : "";
       return `
         <div class="fc-bk-match ${side}-bk ${clickable ? "clickable" : ""}"
@@ -1508,8 +3587,212 @@
       `;
     }
 
-    function fcPairSlots(home, away, homeScore, awayScore, homeSeed, awaySeed, homeWin, awayWin) {
-      return `${fcSlot(home, homeScore, homeWin, homeSeed)}${fcSlot(away, awayScore, awayWin, awaySeed)}`;
+    function fcPairSlots(home, away, homeScore, awayScore, homeSeed, awaySeed, homeWin, awayWin, side, cycle) {
+      return `${fcSlot(home, homeScore, homeWin, homeSeed, side, getCycleTeam(cycle, home))}${fcSlot(away, awayScore, awayWin, awaySeed, side, getCycleTeam(cycle, away))}`;
+    }
+
+    function fcPairGroup(home, away, homeScore, awayScore, homeSeed, awaySeed, homeWin, awayWin, side, match, interactive, highlightPlayer, cycle, phase = "playoffs", roundLabel = "", connector = true) {
+      const cycleRef = cycle || getActiveCycle();
+      const clickable = interactive && match && !match.played && cycleRef && !cycleRef.locked;
+      const hl = highlightPlayer && match && (match.home === highlightPlayer || match.away === highlightPlayer);
+      const sideClass = connector ? (side === "right" ? "right-out" : side === "left" ? "left-out" : "") : "";
+      const attrs = match
+        ? `data-match-id="${match.id}" data-phase="${phase}"${roundLabel ? ` data-round-label="${roundLabel}"` : ""}`
+        : "";
+      return `
+        <div class="fc-pair-group ${sideClass} ${clickable ? "clickable" : ""}"
+             ${attrs} ${clickable ? 'title="Bấm nhập kết quả"' : ""}
+             ${hl ? 'style="filter:drop-shadow(0 0 4px #facc15)"' : ""}>
+          ${fcPairSlots(home, away, homeScore, awayScore, homeSeed, awaySeed, homeWin, awayWin, side, cycleRef)}
+        </div>`;
+    }
+
+    function matchWinner(m) {
+      if (!m?.played) return null;
+      return m.scoreHome > m.scoreAway ? m.home : m.away;
+    }
+
+    function matchWinFlags(m) {
+      if (!m?.played) return { hWin: false, aWin: false };
+      return {
+        hWin: m.scoreHome > m.scoreAway,
+        aWin: m.scoreAway > m.scoreHome,
+      };
+    }
+
+    function fcPairGroupFromMatch(match, side, interactive, highlightPlayer, cycle, phase, roundLabel, connector = true) {
+      if (!match) {
+        return `<div class="fc-pair-group"><div class="fc-slot dim"><span class="fc-name">···</span></div></div>`;
+      }
+      const played = match.played;
+      const { hWin, aWin } = matchWinFlags(match);
+      return fcPairGroup(
+        match.home, match.away,
+        played ? match.scoreHome : null,
+        played ? match.scoreAway : null,
+        null, null, hWin, aWin,
+        side, match, interactive, highlightPlayer, cycle,
+        phase, roundLabel, connector
+      );
+    }
+
+    function bkShortLabel(label) {
+      if (!label) return "Trận";
+      if (/chung kết/i.test(label)) return "CK";
+      if (/bán kết/i.test(label)) return "BK";
+      if (/tứ kết/i.test(label)) return "TK";
+      return label.slice(0, 4);
+    }
+
+    function renderKnockoutMirroredFour(cycle, interactive, highlightPlayer) {
+      const semiRound = cycle.knockoutRounds[0];
+      const semi1 = semiRound?.matches[0];
+      const semi2 = semiRound?.matches[1];
+      const finalRound = cycle.knockoutRounds[1];
+      const final = finalRound?.matches[0];
+      const semiLabel = semiRound?.label || "Bán kết";
+      const finalLabel = finalRound?.label || "Chung kết";
+      const champ = cycle.champion || matchWinner(final) || "···";
+
+      return `
+        <div class="fc-knockout-scroll">
+          <div class="fc-knockout-stages">
+            <div class="fc-ks"><span>${semiLabel}</span>${koRoundRandomBtn(cycle, 0, interactive)}</div>
+            <div class="fc-ks"></div>
+            <div class="fc-ks fc-ks-center"><span>${final ? finalLabel : "Chung kết"}</span>${finalRound ? koRoundRandomBtn(cycle, 1, interactive) : ""}</div>
+            <div class="fc-ks"></div>
+            <div class="fc-ks"><span>${semiLabel}</span></div>
+          </div>
+          <div class="fc-knockout-main fc-ko-mirror">
+            <div class="fc-k-side left">
+              ${fcPairGroupFromMatch(semi1, "left", interactive, highlightPlayer, cycle, "knockout", semiLabel)}
+            </div>
+            <div class="fc-bk-col left">
+              ${fcBkBox(semi1, "left", interactive, highlightPlayer, "knockout", semiLabel, bkShortLabel(semiLabel))}
+            </div>
+            <div class="fc-k-center">
+              ${final
+                ? fcPairGroupFromMatch(final, null, interactive, highlightPlayer, cycle, "knockout", finalLabel, false)
+                : `<div class="fc-ko-wait-final">Chờ ${finalLabel.toLowerCase()}</div>`}
+              <div class="fc-trophy-hero">🏆</div>
+              <div class="fc-trophy-text">Vô địch</div>
+              <div class="fc-champ-name">${champ}</div>
+            </div>
+            <div class="fc-bk-col right">
+              ${fcBkBox(semi2, "right", interactive, highlightPlayer, "knockout", semiLabel, bkShortLabel(semiLabel))}
+            </div>
+            <div class="fc-k-side right">
+              ${fcPairGroupFromMatch(semi2, "right", interactive, highlightPlayer, cycle, "knockout", semiLabel)}
+            </div>
+          </div>
+        </div>`;
+    }
+
+    function renderKnockoutMirroredTwo(cycle, interactive, highlightPlayer) {
+      const finalRound = cycle.knockoutRounds[0];
+      const final = finalRound?.matches[0];
+      const finalLabel = finalRound?.label || "Chung kết";
+      const champ = cycle.champion || matchWinner(final) || "···";
+
+      return `
+        <div class="fc-knockout-scroll">
+          <div class="fc-knockout-stages">
+            <div class="fc-ks"></div>
+            <div class="fc-ks"><span>${finalLabel}</span>${koRoundRandomBtn(cycle, 0, interactive)}</div>
+            <div class="fc-ks fc-ks-center">Vô địch</div>
+            <div class="fc-ks"></div>
+            <div class="fc-ks"></div>
+          </div>
+          <div class="fc-knockout-main fc-ko-mirror">
+            <div class="fc-k-side left">
+              ${fcPairGroupFromMatch(final, "left", interactive, highlightPlayer, cycle, "knockout", finalLabel)}
+            </div>
+            <div class="fc-bk-col left">
+              ${fcBkBox(final, "left", interactive, highlightPlayer, "knockout", finalLabel, "CK")}
+            </div>
+            <div class="fc-k-center">
+              <div class="fc-trophy-hero">🏆</div>
+              <div class="fc-trophy-text">Vô địch</div>
+              <div class="fc-champ-name">${champ}</div>
+            </div>
+            <div class="fc-bk-col right"></div>
+            <div class="fc-k-side right"></div>
+          </div>
+        </div>`;
+    }
+
+    function renderKnockoutMirroredEight(cycle, interactive, highlightPlayer) {
+      const qfRound = cycle.knockoutRounds[0];
+      const sfRound = cycle.knockoutRounds[1];
+      const finalRound = cycle.knockoutRounds[2];
+      const final = finalRound?.matches[0];
+      const qf = qfRound?.matches || [];
+      const sf1 = sfRound?.matches[0];
+      const sf2 = sfRound?.matches[1];
+      const qfLabel = qfRound?.label || "Tứ kết";
+      const sfLabel = sfRound?.label || "Bán kết";
+      const finalLabel = finalRound?.label || "Chung kết";
+      const champ = cycle.champion || matchWinner(final) || "···";
+
+      const qfPair = (m, side) => fcPairGroupFromMatch(m, side, interactive, highlightPlayer, cycle, "knockout", qfLabel, false);
+
+      return `
+        <div class="fc-knockout-scroll">
+          <div class="fc-knockout-stages">
+            <div class="fc-ks"><span>${qfLabel}</span>${koRoundRandomBtn(cycle, 0, interactive)}</div>
+            <div class="fc-ks"><span>${sfRound ? sfLabel : ""}</span>${sfRound ? koRoundRandomBtn(cycle, 1, interactive) : ""}</div>
+            <div class="fc-ks fc-ks-center"><span>${final ? finalLabel : "Chung kết"}</span>${finalRound ? koRoundRandomBtn(cycle, 2, interactive) : ""}</div>
+            <div class="fc-ks"><span>${sfRound ? sfLabel : ""}</span></div>
+            <div class="fc-ks"><span>${qfLabel}</span></div>
+          </div>
+          <div class="fc-knockout-main fc-ko-mirror">
+            <div class="fc-k-side left stacked">
+              ${qfPair(qf[0], "left")}
+              ${qfPair(qf[1], "left")}
+            </div>
+            <div class="fc-bk-col left">
+              ${sf1
+                ? fcPairGroupFromMatch(sf1, "left", interactive, highlightPlayer, cycle, "knockout", sfLabel)
+                : ""}
+            </div>
+            <div class="fc-k-center">
+              ${final
+                ? fcPairGroupFromMatch(final, null, interactive, highlightPlayer, cycle, "knockout", finalLabel, false)
+                : `<div class="fc-ko-wait-final">Chờ ${finalLabel.toLowerCase()}</div>`}
+              <div class="fc-trophy-hero">🏆</div>
+              <div class="fc-trophy-text">Vô địch</div>
+              <div class="fc-champ-name">${champ}</div>
+            </div>
+            <div class="fc-bk-col right">
+              ${sf2
+                ? fcPairGroupFromMatch(sf2, "right", interactive, highlightPlayer, cycle, "knockout", sfLabel)
+                : ""}
+            </div>
+            <div class="fc-k-side right stacked">
+              ${qfPair(qf[2], "right")}
+              ${qfPair(qf[3], "right")}
+            </div>
+          </div>
+        </div>`;
+    }
+
+    function renderKnockoutMirrored(cycle, interactive, highlightPlayer) {
+      const rounds = cycle.knockoutRounds || [];
+      if (!rounds.length) {
+        return `<div class="fc-knockout-scroll"><div class="fc-waiting-tree">Chưa có trận — tạo giải mới</div></div>`;
+      }
+
+      const r0 = rounds[0]?.matches?.length || 0;
+      if (r0 === 1 && rounds.length === 1) {
+        return renderKnockoutMirroredTwo(cycle, interactive, highlightPlayer);
+      }
+      if (r0 === 2) {
+        return renderKnockoutMirroredFour(cycle, interactive, highlightPlayer);
+      }
+      if (r0 === 4) {
+        return renderKnockoutMirroredEight(cycle, interactive, highlightPlayer);
+      }
+      return renderKnockoutColumns(cycle, interactive, highlightPlayer);
     }
 
     function renderKnockoutTree(cycle, standings, finalMatch, thirdMatch, interactive, highlightPlayer) {
@@ -1542,21 +3825,22 @@
         <div class="fc-knockout-scroll">
           <div class="fc-knockout-stages">
             <div class="fc-ks">Vòng loại</div>
-            <div class="fc-ks">Bán kết</div>
-            <div class="fc-ks fc-ks-center">Chung kết</div>
-            <div class="fc-ks">Bán kết</div>
+            <div class="fc-ks">Chung kết</div>
+            <div class="fc-ks fc-ks-center">Vô địch</div>
+            <div class="fc-ks">Hạng 3</div>
             <div class="fc-ks">Vòng loại</div>
           </div>
           <div class="fc-knockout-main">
             <div class="fc-k-side left">
-              <div class="fc-pair-group left-out">
-                ${fcPairSlots(h1, h2,
-                  fPlayed ? finalMatch.scoreHome : null,
-                  fPlayed ? finalMatch.scoreAway : null,
-                  finalMatch?.homeSeed || 1, finalMatch?.awaySeed || 2, fHW, fAW)}
-              </div>
+              ${fcPairGroup(h1, h2,
+                fPlayed ? finalMatch.scoreHome : null,
+                fPlayed ? finalMatch.scoreAway : null,
+                finalMatch?.homeSeed || 1, finalMatch?.awaySeed || 2, fHW, fAW,
+                "left", finalMatch, interactive, highlightPlayer, cycle)}
             </div>
-            <div class="fc-bk-col">${fcBkBox(finalMatch, "left", interactive, highlightPlayer)}<div></div></div>
+            <div class="fc-bk-col left">
+              ${fcBkBox(finalMatch, "left", interactive, highlightPlayer)}
+            </div>
             <div class="fc-k-center">
               <div class="fc-trophy-hero">🏆</div>
               <div class="fc-trophy-text">Vô địch</div>
@@ -1564,14 +3848,15 @@
               <div class="fc-trophy-hero bronze">🥉</div>
               <div class="fc-third-name">${third}</div>
             </div>
-            <div class="fc-bk-col"><div></div>${fcBkBox(thirdMatch, "right", interactive, highlightPlayer)}</div>
+            <div class="fc-bk-col right">
+              ${fcBkBox(thirdMatch, "right", interactive, highlightPlayer)}
+            </div>
             <div class="fc-k-side right">
-              <div class="fc-pair-group right-out">
-                ${fcPairSlots(h3, h4,
-                  tPlayed ? thirdMatch.scoreHome : null,
-                  tPlayed ? thirdMatch.scoreAway : null,
-                  thirdMatch?.homeSeed || 3, thirdMatch?.awaySeed || 4, tHW, tAW)}
-              </div>
+              ${fcPairGroup(h3, h4,
+                tPlayed ? thirdMatch.scoreHome : null,
+                tPlayed ? thirdMatch.scoreAway : null,
+                thirdMatch?.homeSeed || 3, thirdMatch?.awaySeed || 4, tHW, tAW,
+                "right", thirdMatch, interactive, highlightPlayer, cycle)}
             </div>
           </div>
         </div>`;
@@ -1595,8 +3880,8 @@
                    data-match-id="${m.id}" data-phase="league"
                    ${hl ? 'style="filter:drop-shadow(0 0 4px #facc15)"' : ""}>
                 <div class="fc-match-tag">V${round}</div>
-                ${fcSlot(m.home, played ? m.scoreHome : null, hWin, null)}
-                ${fcSlot(m.away, played ? m.scoreAway : null, aWin, null)}
+                ${fcSlot(m.home, played ? m.scoreHome : null, hWin, null, null, getCycleTeam(cycle, m.home))}
+                ${fcSlot(m.away, played ? m.scoreAway : null, aWin, null, null, getCycleTeam(cycle, m.away))}
               </div>`;
           }).join("")}
         </div>
@@ -1623,16 +3908,88 @@
 
     function renderStandingsBar(cycle) {
       const standings = computeStandings(cycle);
-      return `<div class="fc-standings-bar">${standings.map((s, i) => `
-        <span class="fc-rank-chip ${i < 4 ? "top" : ""}">
-          <span class="rk">#${i + 1}</span>${s.name} <strong>${s.pts}đ</strong>
-        </span>
-      `).join("")}</div>`;
+      return `<div class="fc-standings-bar">${standings.map((s, i) => {
+        const t = getCycleTeam(cycle, s.name);
+        const flag = t ? `${flagHtml(t.flag)} ` : "";
+        return `<span class="fc-rank-chip ${i < 4 ? "top" : ""}">
+          <span class="rk">#${i + 1}</span>${flag}${s.name} <strong>${s.pts}đ</strong>
+        </span>`;
+      }).join("")}</div>`;
+    }
+
+    function renderPlayerSeedBar(cycle) {
+      return `<div class="fc-standings-bar">${cycle.players.map((n, i) => {
+        const t = getCycleTeam(cycle, n);
+        const flag = t ? `${flagHtml(t.flag)} ` : "";
+        const nation = t ? `<span style="font-size:0.68rem;color:#fbbf24;font-weight:500"> ${t.name}</span>` : "";
+        return `<span class="fc-rank-chip"><span class="rk">#${i + 1}</span>${flag}${n}${nation}</span>`;
+      }).join("")}</div>`;
+    }
+
+    function renderKnockoutColumns(cycle, interactive, highlightPlayer) {
+      const cycleActive = getActiveCycle();
+      const canClick = interactive && cycleActive && !cycleActive.locked;
+
+      const cols = (cycle.knockoutRounds || []).map((round, roundIdx) => `
+        <div class="fc-league-col">
+          <div class="fc-match-tag">${round.label}${koRoundRandomBtn(cycle, roundIdx, interactive)}</div>
+          ${round.byes.length ? `<div class="fc-bye-chip">🎯 Bye: ${round.byes.join(", ")}</div>` : ""}
+          ${round.matches.map(m => {
+            const played = m.played;
+            const hWin = played && m.scoreHome > m.scoreAway;
+            const aWin = played && m.scoreAway > m.scoreHome;
+            const clickable = canClick && !played;
+            const hl = highlightPlayer && (m.home === highlightPlayer || m.away === highlightPlayer);
+            return `
+              <div class="fc-league-pair ${clickable ? "clickable" : ""}"
+                   data-match-id="${m.id}" data-phase="knockout" data-round-label="${round.label}"
+                   ${hl ? 'style="filter:drop-shadow(0 0 4px #facc15)"' : ""}>
+                ${fcSlot(m.home, played ? m.scoreHome : null, hWin, null, null, getCycleTeam(cycle, m.home))}
+                ${fcSlot(m.away, played ? m.scoreAway : null, aWin, null, null, getCycleTeam(cycle, m.away))}
+              </div>`;
+          }).join("")}
+        </div>
+      `).join("");
+
+      const stageLabels = (cycle.knockoutRounds || []).map(r => `<span>${r.label}</span>`).join("");
+      return `
+        <div class="fc-league-scroll">
+          <div class="fc-league-stages">${stageLabels}</div>
+          <div class="fc-league-body">${cols}</div>
+        </div>`;
     }
 
     function renderFcDiagram(cycle, interactive = false, highlightPlayer = null) {
       if (!cycle) {
-        return `<div class="fc-diagram"><div class="empty-state" style="color:#7c3aed">Bấm <strong>+ Giải mới</strong> để tạo sơ đồ</div></div>`;
+        return `<div class="fc-diagram"><div class="empty-state">
+          <div class="empty-icon">🏆</div>
+          Chưa có giải nào
+          <div class="empty-cta">Bấm <strong>Tạo giải mới</strong> để bắt đầu</div>
+        </div></div>`;
+      }
+
+      ensureCycleShape(cycle);
+
+      if (cycle.format === "knockout") {
+        const badge = cycle.locked ? "ĐÃ KHÓA" : cycle.phase === "done" ? "HOÀN TẤT" : "LOẠI TRỰC TIẾP";
+        const champ = cycle.champion || getChampion(cycle);
+        const champBlock = cycle.champion ? `
+          <div class="fc-knockout-champ">
+            <div class="fc-trophy-hero">🏆</div>
+            <div class="fc-trophy-text">Vô địch</div>
+            <div class="fc-champ-name">${champ}</div>
+          </div>` : "";
+        return `
+          <div class="fc-diagram" data-cycle-id="${cycle.id}">
+            <div class="fc-diagram-head">
+              <div class="fc-title">⚽ GIẢI NHẤT NHÌ #${cycle.number}</div>
+              <div class="fc-sub">${badge} · ${cycle.players.length} người</div>
+            </div>
+            ${renderPlayerSeedBar(cycle)}
+            <div class="fc-section-divider">Loại trực tiếp</div>
+            ${renderKnockoutMirrored(cycle, interactive, highlightPlayer)}
+            ${champBlock}
+          </div>`;
       }
 
       const standings = computeStandings(cycle);
@@ -1671,16 +4028,33 @@
       `;
     }
 
+    function bindKnockoutRandom(container) {
+      if (!container) return;
+      container.querySelectorAll(".fc-ko-random-btn").forEach(btn => {
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          const cycle = getActiveCycle();
+          if (!cycle || cycle.locked) return;
+          rerandomizeKnockoutRound(cycle, parseInt(btn.dataset.koRound, 10));
+        });
+      });
+    }
+
     function bindBracketClicks(container) {
       if (!container) return;
-      container.querySelectorAll("[data-match-id].clickable, .fc-league-pair.clickable, .fc-bk-match.clickable").forEach(el => {
+      container.querySelectorAll("[data-match-id].clickable, .fc-league-pair.clickable, .fc-bk-match.clickable, .fc-pair-group.clickable").forEach(el => {
         el.addEventListener("click", () => {
           const cycle = getActiveCycle();
           if (!cycle) return;
           const phase = el.dataset.phase;
-          const list = phase === "league" ? cycle.league : cycle.playoffs;
-          const match = list.find(m => m.id === el.dataset.matchId);
-          if (match && !match.played) openScoreModal(match, phase);
+          let match = null;
+          if (phase === "knockout") {
+            match = findKnockoutMatch(cycle, el.dataset.matchId);
+          } else {
+            const list = phase === "league" ? cycle.league : cycle.playoffs;
+            match = list.find(m => m.id === el.dataset.matchId);
+          }
+          if (match) openScoreModal(match, phase, el.dataset.roundLabel);
         });
       });
     }
@@ -1706,6 +4080,41 @@
       `;
     }
 
+    function updateTournamentSetup() {
+      const btnKo = document.getElementById("format-knockout");
+      const btnLg = document.getElementById("format-league");
+      const newBtn = document.getElementById("new-cycle-btn");
+      const hint = document.getElementById("tournament-view-hint");
+      const formatRow = document.getElementById("tournament-format-row");
+      const active = getActiveCycle();
+
+      if (active) {
+        const fmt = active.format || "league";
+        if (btnKo) btnKo.classList.toggle("active", fmt === "knockout");
+        if (btnLg) btnLg.classList.toggle("active", fmt === "league");
+        if (formatRow) formatRow.style.pointerEvents = "none";
+        if (formatRow) formatRow.style.opacity = "0.55";
+      } else {
+        if (btnKo) btnKo.classList.toggle("active", tournamentFormat === "knockout");
+        if (btnLg) btnLg.classList.toggle("active", tournamentFormat === "league");
+        if (formatRow) formatRow.style.pointerEvents = "";
+        if (formatRow) formatRow.style.opacity = "";
+      }
+
+      if (hint) {
+        const fmt = active?.format || tournamentFormat;
+        hint.innerHTML = fmt === "knockout"
+          ? "<strong>Loại trực tiếp</strong> — vòng 1: 🎲 Random (cặp + ĐTQG), vòng sau: 🎲 ĐTQG."
+          : "Vòng tròn + playoff — random <strong>ĐTQG</strong> khi tạo giải.";
+      }
+      if (active || !newBtn) return;
+      const minOk = tournamentFormat === "knockout" ? players.length >= 2 : players.length >= 3;
+      newBtn.disabled = !minOk;
+      newBtn.textContent = !minOk
+        ? (tournamentFormat === "knockout" ? "Cần ít nhất 2 người" : "Cần ít nhất 3 người")
+        : "Tạo giải mới";
+    }
+
     function renderTournament() {
       const active = getActiveCycle();
       const statusEl = document.getElementById("tournament-status");
@@ -1715,24 +4124,48 @@
       const newBtn = document.getElementById("new-cycle-btn");
 
       if (!active) {
-        statusEl.innerHTML = `Chưa có giải đang chạy · <strong>${players.length} người</strong> sẵn sàng`;
+        statusEl.textContent = `${players.length} người sẵn sàng`;
         standingsWrap.innerHTML = "";
-        bracketEl.innerHTML = renderFcDiagram(null);
-        newBtn.disabled = players.length < 3;
+        const locked = getLockedCycles();
+        if (locked.length) {
+          bracketEl.innerHTML = `<div class="fc-diagram"><div class="empty-state">
+            <div class="empty-icon">🏆</div>
+            Không có giải đang chạy
+            <div class="empty-cta">Cuộn xuống <strong>Giải đã xong (${locked.length})</strong> để xem lịch sử</div>
+          </div></div>`;
+        } else {
+          bracketEl.innerHTML = renderFcDiagram(null);
+        }
+        updateTournamentSetup();
       } else {
-        const played = active.league.filter(m => m.played).length;
-        const total = active.league.length;
-        const phaseLabel = active.phase === "league" ? "Vòng tròn" : active.phase === "playoffs" ? "Playoff" : "Hoàn tất";
-        statusEl.innerHTML = `Giải #${active.number} · <strong>${phaseLabel}</strong> · ${played}/${total} trận VL`;
+        if (active.format === "knockout") {
+          const all = allKnockoutMatches(active);
+          const played = all.filter(m => m.played).length;
+          const phaseLabel = active.phase === "done" ? "Hoàn tất" : "Loại trực tiếp";
+          statusEl.innerHTML = `Giải #${active.number} · <strong>${phaseLabel}</strong> · ${played}/${all.length} trận`;
+        } else {
+          const played = active.league.filter(m => m.played).length;
+          const total = active.league.length;
+          const phaseLabel = active.phase === "league" ? "Vòng tròn" : active.phase === "playoffs" ? "Playoff" : "Hoàn tất";
+          statusEl.innerHTML = `Giải #${active.number} · <strong>${phaseLabel}</strong> · ${played}/${total} trận VL`;
+        }
         standingsWrap.innerHTML = "";
         bracketEl.innerHTML = renderFcDiagram(active, true);
         bindBracketClicks(bracketEl);
+        bindKnockoutRandom(bracketEl);
         newBtn.disabled = false;
+        newBtn.textContent = "Tạo giải mới";
+        updateTournamentSetup();
       }
 
       const locked = getLockedCycles();
+      updatePastTournamentsPanel(locked);
       if (!locked.length) {
-        pastEl.innerHTML = '<div class="empty-state">Chưa có giải nào hoàn tất</div>';
+        pastEl.innerHTML = `<div class="empty-state">
+          <div class="empty-icon">🏆</div>
+          Chưa có giải nào
+          <div class="empty-cta">Bấm <strong>Tạo giải mới</strong> để bắt đầu</div>
+        </div>`;
       } else {
         pastEl.innerHTML = locked.map(c => renderCycleSummary(c)).join("");
       }
@@ -1740,16 +4173,25 @@
     }
 
     function getChampion(cycle) {
+      if (cycle.champion) return cycle.champion;
+      if (cycle.format === "knockout") {
+        const last = cycle.knockoutRounds?.[cycle.knockoutRounds.length - 1];
+        const final = last?.matches?.length === 1 && last.matches[0].played ? last.matches[0] : null;
+        if (final) return final.scoreHome > final.scoreAway ? final.home : final.away;
+        return "?";
+      }
       const final = cycle.playoffs.find(m => m.type === "final" && m.played);
       if (final) return final.scoreHome > final.scoreAway ? final.home : final.away;
       return computeStandings(cycle)[0]?.name || "?";
     }
 
     function renderCycleSummary(cycle, highlightPlayer) {
-      const standings = computeStandings(cycle);
+      ensureCycleShape(cycle);
+      const standings = cycle.format === "knockout" ? [] : computeStandings(cycle);
       const champion = getChampion(cycle);
       const date = new Date(cycle.completedAt || cycle.createdAt).toLocaleDateString("vi-VN");
-      const playerRank = highlightPlayer
+      const formatNote = cycle.format === "knockout" ? "Loại TT" : "Vòng tròn";
+      const playerRank = cycle.format !== "knockout" && highlightPlayer
         ? standings.findIndex(s => s.name.toLowerCase() === highlightPlayer.toLowerCase()) + 1
         : 0;
       const rankNote = playerRank > 0 ? ` · Hạng ${playerRank}` : "";
@@ -1759,63 +4201,770 @@
       return `
         <div class="cycle-card ${cycle.locked ? "locked" : ""}">
           <h4>Giải #${cycle.number} ${badge}</h4>
-          <div class="cycle-info">${date} · VĐ: <strong style="color:#facc15">${champion}</strong>${rankNote}</div>
+          <div class="cycle-info">${date} · ${formatNote} · VĐ: <strong style="color:#facc15">${champion}</strong>${rankNote}</div>
           ${renderFcDiagram(cycle, false, highlightPlayer)}
         </div>
       `;
     }
 
-    function renderProfile(name) {
-      const trimmed = name.trim();
-      const resultsEl = document.getElementById("profile-results");
-      if (!trimmed) {
-        resultsEl.innerHTML = '<div class="empty-state">Chọn hoặc nhập tên người chơi</div>';
-        return;
-      }
-      const allCycles = tournamentData.cycles.filter(c =>
-        c.players.some(p => p.toLowerCase() === trimmed.toLowerCase())
-      ).reverse();
-      if (!allCycles.length) {
-        resultsEl.innerHTML = `<div class="empty-state">${trimmed} chưa tham gia giải nào</div>`;
-        return;
-      }
-      const canonical = allCycles[0].players.find(p => p.toLowerCase() === trimmed.toLowerCase()) || trimmed;
-      const active = getActiveCycle();
-      const activeNote = active?.players.some(p => p.toLowerCase() === trimmed.toLowerCase())
-        ? `<div style="margin-bottom:12px;padding:10px;background:rgba(74,222,128,0.1);border-radius:8px;font-size:0.85rem;color:#4ade80">Đang thi đấu Giải #${active.number}</div>`
-        : "";
-      resultsEl.innerHTML = activeNote + allCycles.map(c => renderCycleSummary(c, canonical)).join("");
+    function computeProfileSummary(name) {
+      const lc = name.toLowerCase();
+      const match = n => n.toLowerCase() === lc;
+      const cycles = tournamentData.cycles.filter(c => c.players.some(match)).reverse();
+      const cups = randomCupData.cups.filter(c => c.players.some(match)).reverse();
+      const shuffles = shuffleHistory.filter(h => {
+        if (h.players?.some(match)) return true;
+        try {
+          return allPlayersInResult(h).some(match);
+        } catch {
+          return false;
+        }
+      });
+      let tourneyWins = 0;
+      cycles.forEach(c => {
+        if (c.locked && match(getChampion(c))) tourneyWins++;
+      });
+      const cupWins = cups.filter(c => c.champion && match(c.champion)).length;
+      const statsKey = Object.keys(randomCupData.playerStats).find(k => k.toLowerCase() === lc);
+      const cupStats = statsKey ? randomCupData.playerStats[statsKey] : null;
+      return { cycles, cups, shuffles, tourneyWins, cupWins, cupStats };
     }
 
-    function renderProfileChips() {
-      const el = document.getElementById("profile-chips");
-      const names = [...new Set([
-        ...players,
-        ...tournamentData.cycles.flatMap(c => c.players),
-      ])];
-      el.innerHTML = names.map(n =>
-        `<button type="button" class="profile-chip" data-name="${n}">${n}</button>`
+    function renderProfileStatsGrid(summary) {
+      const el = document.getElementById("profile-stats-grid");
+      if (!el) return;
+      const s = summary.cupStats;
+      const items = [
+        { val: summary.tourneyWins, lbl: "Vô địch NN" },
+        { val: summary.cupWins, lbl: "Vô địch Cup" },
+        { val: summary.cycles.length, lbl: "Giải NN" },
+        { val: summary.cups.length, lbl: "Random Cup" },
+        { val: summary.shuffles.length, lbl: "Bắt đội" },
+        { val: s ? `${s.winRate}%` : "—", lbl: "Win rate" },
+      ];
+      el.innerHTML = items.map(i =>
+        `<div class="profile-stat"><div class="val">${i.val}</div><div class="lbl">${i.lbl}</div></div>`
       ).join("");
-      el.querySelectorAll(".profile-chip").forEach(btn => {
-        btn.addEventListener("click", () => {
-          document.getElementById("profile-name-input").value = btn.dataset.name;
-          renderProfile(btn.dataset.name);
+    }
+
+    function renderProfileShuffleSection(shuffles, name) {
+      if (!shuffles.length) {
+        return `<div class="profile-section"><h3>🎲 Bắt đội gần đây</h3>
+          <div class="empty-state" style="padding:12px">Chưa có lịch sử bắt đội</div></div>`;
+      }
+      const items = shuffles.slice(0, 8).map(h => {
+        const teams = h.teams || {};
+        const meta = `${(h.createdAt || h.at) ? new Date(h.createdAt || h.at).toLocaleString("vi-VN") : ""} · ${modeLabel(h)}`;
+        let body = "";
+        if (h.type === "nvn" && h.matches?.length) {
+          body = h.matches.map((m, j) =>
+            `Trận ${j + 1}: ${m.a.map(n => historyPlayerLine(n, teams)).join(", ")} vs ${m.b.map(n => historyPlayerLine(n, teams)).join(", ")}`
+          ).join("<br>");
+        } else if (h.a && h.b) {
+          body = `${h.a.map(n => historyPlayerLine(n, teams)).join(", ")} vs ${h.b.map(n => historyPlayerLine(n, teams)).join(", ")}`;
+        }
+        return `<div class="profile-shuffle-item"><div class="profile-shuffle-meta">${meta}</div>${body}</div>`;
+      }).join("");
+      return `<div class="profile-section"><h3>🎲 Bắt đội gần đây</h3>${items}</div>`;
+    }
+
+    function renderProfile(name) {
+      const me = getUserName();
+      const trimmed = (name || me || "").trim();
+      const resultsEl = document.getElementById("profile-results");
+      const heroName = document.getElementById("profile-hero-name");
+      const heroAvatar = document.getElementById("profile-hero-avatar");
+      const heroTag = document.getElementById("profile-hero-tag");
+      const backBtn = document.getElementById("profile-back-btn");
+      const logoutBtn = document.getElementById("profile-logout-btn");
+      const dataNote = document.getElementById("profile-data-note");
+      const bannersEl = document.getElementById("profile-active-banners");
+
+      if (!trimmed) {
+        if (heroName) heroName.textContent = "—";
+        if (heroAvatar) heroAvatar.textContent = "?";
+        if (heroTag) heroTag.textContent = "Chưa có tên";
+        if (backBtn) backBtn.style.display = "none";
+        if (logoutBtn) logoutBtn.style.display = "none";
+        if (dataNote) dataNote.style.display = "none";
+        document.getElementById("profile-stats-grid").innerHTML = "";
+        resultsEl.innerHTML = '<div class="empty-state">Nhập tên khi vào app để xem profile</div>';
+        return;
+      }
+
+      const isMe = me && trimmed.toLowerCase() === me.toLowerCase();
+      if (heroName) heroName.textContent = trimmed;
+      if (heroAvatar) heroAvatar.textContent = trimmed.charAt(0).toUpperCase();
+      if (heroTag) heroTag.textContent = isMe ? "Profile của bạn" : "Đang xem người khác";
+      if (backBtn) backBtn.style.display = me && !isMe ? "inline-block" : "none";
+      if (logoutBtn) logoutBtn.style.display = isMe ? "inline-block" : "none";
+      if (dataNote) {
+        if (isMe) {
+          dataNote.style.display = "block";
+          dataNote.textContent = "Profile chỉ là tên trên máy này. Lịch sử lọc theo tên khi bạn có trong danh sách người chơi. Dữ liệu nhóm lấy từ cloud nếu đã cấu hình Đồng bộ.";
+        } else {
+          dataNote.style.display = "none";
+        }
+      }
+
+      const summary = computeProfileSummary(trimmed);
+      renderProfileStatsGrid(summary);
+
+      const lc = trimmed.toLowerCase();
+      const active = getActiveCycle();
+      const activeCup = getActiveCup();
+      let banners = "";
+      if (active?.players.some(p => p.toLowerCase() === lc)) {
+        banners += `<div class="profile-active-banner green">⚽ Đang thi đấu Giải Nhất Nhì #${active.number}</div>`;
+      }
+      if (activeCup?.players.some(p => p.toLowerCase() === lc)) {
+        banners += `<div class="profile-active-banner blue">🏅 Đang thi đấu Random Cup: ${activeCup.key}</div>`;
+      }
+      if (bannersEl) bannersEl.innerHTML = banners;
+
+      if (!summary.cycles.length && !summary.cups.length && !summary.shuffles.length && !summary.cupStats) {
+        resultsEl.innerHTML = renderProfileShuffleSection([], trimmed)
+          + `<div class="empty-state" style="margin-top:12px">${trimmed} chưa tham gia giải nào</div>`;
+        return;
+      }
+
+      const canonical = trimmed;
+      let html = renderProfileShuffleSection(summary.shuffles, trimmed);
+
+      if (summary.cycles.length) {
+        html += `<div class="profile-section"><h3>🏆 Giải Nhất Nhì</h3>`;
+        html += summary.cycles.map(c => renderCycleSummary(c, canonical)).join("");
+        html += `</div>`;
+      }
+
+      if (summary.cups.length) {
+        html += `<div class="profile-section"><h3>🏅 Random Cup</h3>`;
+        html += summary.cups.map(c => `
+          <div class="cycle-card" style="cursor:pointer" data-profile-cup="${c.id}">
+            <h4>${c.key} <span class="badge ${c.status === "running" ? "active" : "locked"}">${c.status === "running" ? "Đang đá" : "Xong"}</span></h4>
+            <div class="cycle-info">${new Date(c.completedAt || c.createdAt).toLocaleDateString("vi-VN")}
+              ${c.champion ? `· VĐ: <strong style="color:#facc15">${c.champion}</strong>` : ""}
+            </div>
+            ${renderCupBracket(c, false)}
+          </div>`).join("");
+        html += `</div>`;
+      }
+
+      if (summary.cupStats) {
+        html = `<div class="profile-active-banner" style="background:rgba(167,139,250,0.1);color:#c4b5fd;margin-bottom:12px">
+          Random Cup: ${summary.cupStats.wins}T · ${summary.cupStats.losses}B · ${summary.cupStats.championships} vô địch
+        </div>` + html;
+      }
+
+      resultsEl.innerHTML = html;
+      resultsEl.querySelectorAll("[data-profile-cup]").forEach(el => {
+        el.addEventListener("click", () => {
+          viewingCupId = el.dataset.profileCup;
+          switchView("randomcup");
         });
       });
     }
 
-    function switchView(view) {
-      document.querySelectorAll(".app-tab").forEach(t => t.classList.toggle("active", t.dataset.view === view));
-      document.querySelectorAll(".view").forEach(v => v.classList.toggle("active", v.id === `view-${view}`));
-      if (view === "tournament") renderTournament();
-      if (view === "profile") renderProfile(document.getElementById("profile-name-input").value);
+    function renderProfileChips() {
+      const el = document.getElementById("profile-chips");
+      if (!el) return;
+      const me = getUserName().toLowerCase();
+      const names = [...new Set([
+        ...players,
+        ...tournamentData.cycles.flatMap(c => c.players),
+      ])].filter(n => !me || n.toLowerCase() !== me);
+      el.innerHTML = names.length
+        ? names.map(n => `<button type="button" class="profile-chip" data-name="${n}">${n}</button>`).join("")
+        : '<span style="font-size:0.78rem;color:#64748b">Chưa có người khác</span>';
+      el.querySelectorAll(".profile-chip").forEach(btn => {
+        btn.addEventListener("click", () => {
+          document.getElementById("profile-name-input").value = btn.dataset.name;
+          renderProfile(btn.dataset.name);
+          switchView("profile");
+        });
+      });
     }
 
-    let players = loadPlayers();
-    let mode = "split";
+    /* ── Random Cup ── */
+    function pickRandomCountry() {
+      const t = randomTeam();
+      return { name: t.name, flag: t.flag };
+    }
+
+    function cloneCompetitor(c, reroll) {
+      const copy = JSON.parse(JSON.stringify(c));
+      if (reroll) copy.country = pickRandomCountry();
+      return copy;
+    }
+
+    function buildCompetitorsFromPlayers(playerList, mode, tSize) {
+      const shuffled = shuffle(playerList);
+      const size = mode === "1v1" ? 1 : tSize;
+      const competitors = [];
+      const usable = Math.floor(shuffled.length / size) * size;
+      for (let i = 0; i < usable; i += size) {
+        const members = shuffled.slice(i, i + size);
+        competitors.push({
+          id: uid(),
+          type: size === 1 ? "solo" : "team",
+          name: size === 1 ? members[0] : members.join(" · "),
+          members,
+          country: pickRandomCountry(),
+        });
+      }
+      return { competitors, bench: shuffled.slice(usable) };
+    }
+
+    function getActiveCup() {
+      return randomCupData.cups.find(c => c.id === randomCupData.activeCupId) || null;
+    }
+
+    function getCupById(id) {
+      return randomCupData.cups.find(c => c.id === id) || null;
+    }
+
+    function createCupMatch(a, b, roundIndex, bracket) {
+      return {
+        id: uid(),
+        roundIndex,
+        bracket,
+        a: JSON.parse(JSON.stringify(a)),
+        b: JSON.parse(JSON.stringify(b)),
+        scoreA: null,
+        scoreB: null,
+        winnerId: null,
+        loserId: null,
+        status: "pending",
+      };
+    }
+
+    function pairCompetitorIds(ids, cup, bracket, roundIndex, reroll) {
+      const pool = shuffle(ids.filter(id => cup.competitors.some(c => c.id === id)));
+      const matches = [];
+      const byes = [];
+      while (pool.length >= 2) {
+        const a = cup.competitors.find(c => c.id === pool.shift());
+        const b = cup.competitors.find(c => c.id === pool.shift());
+        if (!a || !b) break;
+        matches.push(createCupMatch(cloneCompetitor(a, reroll), cloneCompetitor(b, reroll), roundIndex, bracket));
+      }
+      if (pool.length === 1) byes.push(pool[0]);
+      return { matches, byes };
+    }
+
+    function startRandomCup() {
+      const key = document.getElementById("cup-key-input").value.trim() || "default";
+      const active = getActiveCup();
+      if (active && active.status === "running") {
+        if (!confirm("Giải Random Cup đang diễn ra. Tạo giải mới? Giải hiện tại vẫn được lưu.")) return;
+        randomCupData.activeCupId = null;
+      }
+      const mode = cupSetupMode;
+      const tSize = mode === "1v1" ? 1 : parseInt(document.getElementById("cup-team-size").value, 10);
+      const minNeeded = mode === "1v1" ? 2 : tSize * 2;
+      if (players.length < minNeeded) {
+        return showToast(`Cần ít nhất ${minNeeded} người`, true);
+      }
+      const { competitors, bench } = buildCompetitorsFromPlayers(players, mode, tSize);
+      if (competitors.length < 2) return showToast("Không đủ đội để tạo giải", true);
+      const reroll = document.getElementById("cup-reroll-countries").checked;
+      const { matches, byes } = pairCompetitorIds(competitors.map(c => c.id), { competitors }, "main", 0, false);
+      const cup = {
+        id: uid(),
+        key,
+        createdAt: new Date().toISOString(),
+        completedAt: null,
+        status: "running",
+        mode,
+        teamSize: tSize,
+        players: [...players],
+        rerollCountriesEachRound: reroll,
+        bench,
+        competitors,
+        bracketPools: { winners: [...byes], losers: [] },
+        round0Byes: [...byes],
+        eliminated: [],
+        rounds: [{ id: uid(), index: 0, bracket: "main", matches, advanced: false }],
+        champion: null,
+      };
+      randomCupData.cups.push(cup);
+      randomCupData.activeCupId = cup.id;
+      viewingCupId = null;
+      scheduleSaveToGithub();
+      renderRandomCup();
+      switchView("randomcup");
+      showToast("Đã tạo giải ✓");
+    }
+
+    function cupHasPendingWinnersMatches(cup) {
+      return cup.rounds.some(r =>
+        (r.bracket === "winners" || (r.bracket === "main" && !r.isFinal)) &&
+        r.matches.some(m => m.status === "pending")
+      );
+    }
+
+    function canCrownWinner(cup) {
+      const w = cup.bracketPools.winners;
+      if (w.length !== 1) return false;
+      if (cupHasPendingWinnersMatches(cup)) return false;
+      const mainOpen = cup.rounds.some(r =>
+        r.bracket === "main" && !r.isFinal &&
+        r.matches.some(m => m.status === "pending")
+      );
+      return !mainOpen;
+    }
+
+    function resetCupProgress(cup) {
+      cup.bracketPools = { winners: [...(cup.round0Byes || [])], losers: [] };
+      cup.eliminated = [];
+      cup.champion = null;
+      cup.status = "running";
+      cup.completedAt = null;
+      randomCupData.activeCupId = cup.id;
+    }
+
+    function replayCupAdvancement(cup) {
+      for (let i = 0; i < 100; i++) {
+        maybeAdvanceCup(cup);
+        if (cup.status === "done") return;
+        const hasPending = cup.rounds.some(r => r.matches.some(m => m.status === "pending"));
+        if (hasPending) return;
+        const canAdvance = cup.rounds.some(r =>
+          !r.advanced && r.matches.length && r.matches.every(m => m.status === "completed")
+        );
+        if (!canAdvance) return;
+      }
+    }
+
+    function finishCup(cup, winnerId) {
+      const comp = cup.competitors.find(c => c.id === winnerId);
+      cup.champion = comp?.name || "?";
+      cup.status = "done";
+      cup.completedAt = new Date().toISOString();
+      randomCupData.activeCupId = null;
+      recomputePlayerStats();
+      scheduleSaveToGithub();
+    }
+
+    function maybeAdvanceCup(cup) {
+      const round = cup.rounds.find(r => r.matches.length && r.matches.every(m => m.status === "completed") && !r.advanced);
+      if (!round) {
+        if (canCrownWinner(cup)) {
+          finishCup(cup, cup.bracketPools.winners[0]);
+          renderRandomCup();
+          renderStats();
+          showToast(`Vô địch: ${cup.champion} 🏆`);
+        }
+        return;
+      }
+
+      round.advanced = true;
+      const winners = [];
+      const toLosers = [];
+      const losersStay = [];
+      const eliminated = [];
+
+      round.matches.forEach(m => {
+        winners.push(m.winnerId);
+        if (round.bracket === "losers") {
+          losersStay.push(m.winnerId);
+          eliminated.push(m.loserId);
+        } else {
+          toLosers.push(m.loserId);
+        }
+      });
+
+      if (round.bracket === "main" && round.index === 0) {
+        cup.bracketPools.winners = [...cup.bracketPools.winners, ...winners];
+        cup.bracketPools.losers = [...toLosers];
+      } else if (round.bracket === "winners") {
+        cup.bracketPools.winners = [...(round.byes || []), ...winners];
+        cup.bracketPools.losers = [...cup.bracketPools.losers, ...toLosers];
+      } else if (round.bracket === "losers") {
+        cup.bracketPools.losers = [...(round.byes || []), ...losersStay];
+        cup.eliminated = [...cup.eliminated, ...eliminated];
+      }
+
+      if (canCrownWinner(cup)) {
+        finishCup(cup, cup.bracketPools.winners[0]);
+        renderRandomCup();
+        renderStats();
+        showToast(`Vô địch: ${cup.champion} 🏆`);
+        return;
+      }
+
+      const nextIdx = cup.rounds.length;
+      const reroll = cup.rerollCountriesEachRound;
+      const wPair = pairCompetitorIds(cup.bracketPools.winners, cup, "winners", nextIdx, reroll);
+      const lPair = pairCompetitorIds(cup.bracketPools.losers, cup, "losers", nextIdx, reroll);
+      cup.bracketPools.winners = wPair.byes;
+      cup.bracketPools.losers = lPair.byes;
+
+      if (wPair.matches.length) {
+        cup.rounds.push({ id: uid(), index: nextIdx, bracket: "winners", matches: wPair.matches, advanced: false, byes: wPair.byes });
+      } else if (wPair.byes.length === 1 && !lPair.matches.length) {
+        cup.bracketPools.winners = wPair.byes;
+      }
+      if (lPair.matches.length) {
+        cup.rounds.push({ id: uid(), index: nextIdx, bracket: "losers", matches: lPair.matches, advanced: false, byes: lPair.byes });
+      } else if (lPair.byes.length) {
+        cup.bracketPools.losers = lPair.byes;
+      }
+
+      if (canCrownWinner(cup)) {
+        finishCup(cup, cup.bracketPools.winners[0]);
+      }
+      renderRandomCup();
+      renderStats();
+    }
+
+    function saveCupMatchScore(scoreA, scoreB) {
+      if (!scoreModalContext || scoreModalContext.type !== "cup") return;
+      const cup = getCupById(scoreModalContext.cupId);
+      if (!cup || cup.status !== "running") return;
+      const round = cup.rounds.find(r => r.id === scoreModalContext.roundId);
+      const match = round?.matches.find(m => m.id === scoreModalContext.matchId);
+      if (!match) return;
+      if (scoreA === scoreB) return showToast("Phải có bên thắng", true);
+
+      const wasCompleted = match.status === "completed";
+      if (wasCompleted) {
+        if (!confirm("Sửa kết quả sẽ tạo lại các vòng sau. Tiếp tục?")) return;
+        const idx = cup.rounds.findIndex(r => r.id === round.id);
+        cup.rounds = cup.rounds.slice(0, idx + 1);
+        cup.rounds.forEach(r => { r.advanced = false; });
+        resetCupProgress(cup);
+      }
+
+      match.scoreA = scoreA;
+      match.scoreB = scoreB;
+      match.winnerId = scoreA > scoreB ? match.a.id : match.b.id;
+      match.loserId = scoreA > scoreB ? match.b.id : match.a.id;
+      match.status = "completed";
+
+      replayCupAdvancement(cup);
+      recomputePlayerStats();
+      scheduleSaveToGithub();
+      closeScoreModal();
+      renderRandomCup();
+      renderStats();
+      showToast(wasCompleted ? "Đã cập nhật ✓" : "Đã lưu ✓");
+    }
+
+    function saveCupMatchWinner(side) {
+      if (!scoreModalContext || scoreModalContext.type !== "cup") return;
+      const scores = side === "a" ? [2, 1] : [1, 2];
+      saveCupMatchScore(scores[0], scores[1]);
+    }
+
+    function openCupScoreModal(cup, round, match) {
+      const readOnly = cup.status !== "running" || viewingCupId;
+      scoreModalContext = { type: "cup", cupId: cup.id, roundId: round.id, matchId: match.id, readOnly };
+      document.getElementById("modal-teams").style.display = "grid";
+      document.getElementById("modal-score-row").style.display = "flex";
+      document.getElementById("modal-quick-scores").style.display = "flex";
+      document.getElementById("modal-quick-tournament").style.display = "none";
+      document.getElementById("modal-cup-win").style.display = readOnly ? "none" : "flex";
+      document.getElementById("modal-a-name").textContent = match.a.name;
+      document.getElementById("modal-b-name").textContent = match.b.name;
+      document.getElementById("modal-a-country").innerHTML = `${flagHtml(match.a.country.flag)} ${match.a.country.name}`;
+      document.getElementById("modal-b-country").innerHTML = `${flagHtml(match.b.country.flag)} ${match.b.country.name}`;
+      document.getElementById("modal-home-name").textContent = match.a.name;
+      document.getElementById("modal-away-name").textContent = match.b.name;
+      const bracketLabel = round.bracket === "winners" ? "Nhánh thắng" : round.bracket === "losers" ? "Nhánh thua" : "Vòng " + (round.index + 1);
+      document.getElementById("modal-title").textContent = `${bracketLabel} · ${match.status === "completed" ? "Xem/Sửa" : "Nhập kết quả"}`;
+      document.getElementById("score-home").value = match.scoreA ?? 0;
+      document.getElementById("score-away").value = match.scoreB ?? 0;
+      document.getElementById("modal-save").textContent = readOnly ? "Đóng" : "Lưu kết quả";
+      document.getElementById("score-modal").classList.add("show");
+    }
+
+    function competitorCountryHtml(c) {
+      return `<span class="cup-country">${flagHtml(c.country.flag)} ${c.country.name}</span>`;
+    }
+
+    function renderCupMatchCard(cup, round, match, interactive) {
+      const done = match.status === "completed";
+      const aWin = done && match.winnerId === match.a.id;
+      const bWin = done && match.winnerId === match.b.id;
+      const cls = done ? "completed" : "pending";
+      const bracketLabel = round.bracket === "winners" ? "Nhánh thắng" : round.bracket === "losers" ? "Nhánh thua" : "Vòng " + (round.index + 1);
+      const click = interactive ? `data-cup-match="${match.id}" data-cup-round="${round.id}"` : "";
+      const aPill = done ? (aWin ? '<span class="status-pill win">Thắng</span>' : '<span class="status-pill lose">Thua</span>') : '<span class="status-pill wait">Chờ</span>';
+      const bPill = done ? (bWin ? '<span class="status-pill win">Thắng</span>' : '<span class="status-pill lose">Thua</span>') : '<span class="status-pill wait">Chờ</span>';
+      return `
+        <div class="cup-match-card ${cls}" ${click}>
+          <div class="cup-match-meta">${bracketLabel}${round.isFinal ? " · Chung kết" : ""}</div>
+          <div class="cup-side ${aWin ? "winner" : done ? "loser" : ""}">
+            <div class="cup-side-info">
+              <span class="cup-name">${match.a.name}</span>
+              ${competitorCountryHtml(match.a)}
+            </div>
+            <span class="cup-score-pill">${done ? match.scoreA : "–"}</span>
+            ${aPill}
+          </div>
+          <div class="cup-side ${bWin ? "winner" : done ? "loser" : ""}">
+            <div class="cup-side-info">
+              <span class="cup-name">${match.b.name}</span>
+              ${competitorCountryHtml(match.b)}
+            </div>
+            <span class="cup-score-pill">${done ? match.scoreB : "–"}</span>
+            ${bPill}
+          </div>
+          ${!done && interactive ? `<div style="text-align:center;font-size:0.72rem;color:#38bdf8;margin-top:6px">Bấm để nhập kết quả</div>` : ""}
+        </div>`;
+    }
+
+    function renderByeCard(cup, compId) {
+      const c = cup.competitors.find(x => x.id === compId);
+      if (!c) return "";
+      return `<div class="cup-bye-card">
+        <div class="bye-badge">Miễn đấu vòng này</div>
+        <div class="cup-name">${c.name}</div>
+        ${competitorCountryHtml(c)}
+      </div>`;
+    }
+
+    function renderCupBracket(cup, interactive) {
+      if (!cup.rounds.length) return "";
+      const groups = { main: [], winners: [], losers: [] };
+      cup.rounds.forEach(r => groups[r.bracket]?.push(r));
+      const renderGroup = (title, cls, rounds) => {
+        if (!rounds.length) return "";
+        return `
+          <div class="cup-bracket-wrap">
+            <div class="cup-bracket-title ${cls}">${title}</div>
+            ${rounds.map(r => `
+              <div class="cup-round-block">
+                ${(r.byes || []).map(id => renderByeCard(cup, id)).join("")}
+                ${r.matches.map(m => renderCupMatchCard(cup, r, m, interactive)).join("")}
+              </div>
+            `).join("")}
+          </div>`;
+      };
+      let html = renderGroup("Vòng đầu", "main", groups.main.filter(r => !r.isFinal))
+        + renderGroup("Nhánh thắng", "winners", groups.winners)
+        + renderGroup("Nhánh thua", "losers", groups.losers);
+      if (cup.status === "running" && cup.bracketPools?.winners?.length) {
+        html += `<div class="cup-bracket-wrap"><div class="cup-bracket-title winners">Chờ nhánh thắng</div>
+          ${cup.bracketPools.winners.map(id => renderByeCard(cup, id)).join("")}</div>`;
+      }
+      return html;
+    }
+
+    function renderRandomCup() {
+      const active = getActiveCup();
+      const displayCup = viewingCupId ? getCupById(viewingCupId) : active;
+      const statusEl = document.getElementById("cup-status");
+      const activeWrap = document.getElementById("cup-active-wrap");
+      const createBtn = document.getElementById("create-cup-btn");
+      const setupEl = document.getElementById("cup-setup");
+      const showSetup = !active || !!viewingCupId;
+
+      setupEl.style.display = showSetup ? "" : "none";
+      createBtn.style.display = showSetup ? "" : "none";
+
+      if (displayCup) {
+        const label = displayCup.status === "running" ? "Đang chơi"
+          : displayCup.status === "saved" ? "Đã lưu" : "Đã xong";
+        statusEl.innerHTML = `<strong>${displayCup.key}</strong> · ${label} · ${displayCup.mode === "1v1" ? "1v1" : displayCup.teamSize + "v" + displayCup.teamSize}`;
+        let html = "";
+        if (displayCup.champion) {
+          html += `<div class="cup-champion-banner"><div class="trophy">🏆</div><div class="name">${displayCup.champion}</div><div style="font-size:0.78rem;color:#86efac;margin-top:4px"><span class="status-pill champ">Vô địch</span></div></div>`;
+        }
+        if (displayCup.bench?.length) {
+          html += `<p style="font-size:0.8rem;color:#fbbf24;margin-bottom:10px">🪑 Dự bị: ${displayCup.bench.join(", ")}</p>`;
+        }
+        const interactive = displayCup.status === "running" && !viewingCupId;
+        html += renderCupBracket(displayCup, interactive);
+        if (viewingCupId) {
+          html += `<button class="btn-ghost" id="cup-back-active" style="margin-top:10px">← Quay lại giải đang chơi</button>`;
+        }
+        activeWrap.innerHTML = html;
+        activeWrap.querySelectorAll("[data-cup-match]").forEach(el => {
+          el.addEventListener("click", () => {
+            const round = displayCup.rounds.find(r => r.id === el.dataset.cupRound);
+            const match = round?.matches.find(m => m.id === el.dataset.cupMatch);
+            if (match) openCupScoreModal(displayCup, round, match);
+          });
+        });
+        document.getElementById("cup-back-active")?.addEventListener("click", () => {
+          viewingCupId = null;
+          renderRandomCup();
+        });
+      } else {
+        statusEl.textContent = "Chưa có giải đang chơi";
+        activeWrap.innerHTML = `<div class="empty-state">
+          <div class="empty-icon">🏅</div>
+          Chưa có giải nào
+          <div class="empty-cta">Đặt tên giải, chọn chế độ, bấm <strong>Tạo giải</strong></div>
+        </div>`;
+      }
+
+      createBtn.disabled = players.length < 2;
+      updateCupSetupButtons();
+      renderCupHistory();
+    }
+
+    function renderCupHistory() {
+      const el = document.getElementById("cup-history-list");
+      const search = (document.getElementById("cup-search-input")?.value || "").trim().toLowerCase();
+      let cups = [...randomCupData.cups].reverse();
+      if (cupFilter === "running") cups = cups.filter(c => c.status === "running");
+      if (cupFilter === "done") cups = cups.filter(c => c.status === "done" || c.status === "saved");
+      if (search) {
+        cups = cups.filter(c =>
+          c.key.toLowerCase().includes(search)
+          || c.players.some(p => p.toLowerCase().includes(search))
+          || (c.champion || "").toLowerCase().includes(search)
+        );
+      }
+      if (!cups.length) {
+        el.innerHTML = `<div class="empty-state">
+          <div class="empty-icon">🏅</div>
+          Chưa có giải nào
+          <div class="empty-cta">Bấm <strong>Tạo giải</strong> ở trên để bắt đầu</div>
+        </div>`;
+        return;
+      }
+      el.innerHTML = cups.map(c => {
+        const date = new Date(c.completedAt || c.createdAt).toLocaleDateString("vi-VN");
+        const badge = c.status === "running"
+          ? '<span class="status-pill wait">Đang chơi</span>'
+          : c.status === "saved"
+            ? '<span class="badge saved">Đã lưu</span>'
+            : '<span class="status-pill win">Đã xong</span>';
+        return `
+          <div class="cycle-card" data-view-cup="${c.id}">
+            <h4>${c.key} ${badge}</h4>
+            <div class="cycle-info">${date} · ${c.mode === "1v1" ? "1v1" : c.teamSize + "v" + c.teamSize} · ${c.players.length} người
+              ${c.champion ? `· VĐ: <strong style="color:#facc15">${c.champion}</strong>` : ""}
+            </div>
+          </div>`;
+      }).join("");
+      el.querySelectorAll("[data-view-cup]").forEach(card => {
+        card.style.cursor = "pointer";
+        card.addEventListener("click", () => {
+          viewingCupId = card.dataset.viewCup;
+          renderRandomCup();
+        });
+      });
+    }
+
+    function updateCupSetupButtons() {
+      const n = players.length;
+      const tSize = parseInt(document.getElementById("cup-team-size").value, 10);
+      document.getElementById("cup-mode-1v1").disabled = n < 2;
+      document.getElementById("cup-mode-nvn").disabled = n < 4;
+      const minNvn = tSize * 2;
+      document.getElementById("create-cup-btn").title = cupSetupMode === "nvn" && n < minNvn
+        ? `Cần ít nhất ${minNvn} người cho ${tSize}v${tSize}` : "";
+    }
+
+    function ensurePlayerStatsIn(stats, name) {
+      if (!stats[name]) stats[name] = { tournaments: 0, wins: 0, losses: 0, championships: 0, winRate: 0, countries: {} };
+    }
+
+    function recomputePlayerStats() {
+      const stats = {};
+      randomCupData.cups.forEach(cup => {
+        ensureCupShape(cup);
+        cup.rounds.forEach(round => {
+          round.matches.forEach(m => {
+            if (m.status !== "completed") return;
+            const winM = m.winnerId === m.a.id ? m.a.members : m.b.members;
+            const loseM = m.loserId === m.a.id ? m.a.members : m.b.members;
+            const country = m.winnerId === m.a.id ? m.a.country.name : m.b.country.name;
+            winM.forEach(n => {
+              ensurePlayerStatsIn(stats, n);
+              stats[n].wins++;
+              stats[n].countries[country] = (stats[n].countries[country] || 0) + 1;
+            });
+            loseM.forEach(n => { ensurePlayerStatsIn(stats, n); stats[n].losses++; });
+          });
+        });
+        if (cup.status === "done" || cup.status === "saved") {
+          cup.players.forEach(p => { ensurePlayerStatsIn(stats, p); stats[p].tournaments++; });
+          const champ = cup.competitors.find(c => c.name === cup.champion);
+          champ?.members.forEach(m => { ensurePlayerStatsIn(stats, m); stats[m].championships++; });
+        }
+      });
+      Object.values(stats).forEach(s => {
+        const t = s.wins + s.losses;
+        s.winRate = t ? Math.round(s.wins / t * 100) : 0;
+      });
+      randomCupData.playerStats = stats;
+    }
+
+    function renderStats() {
+      const wrap = document.getElementById("stats-table-wrap");
+      const names = Object.keys(randomCupData.playerStats).sort((a, b) => {
+        return (randomCupData.playerStats[b].championships - randomCupData.playerStats[a].championships)
+          || (randomCupData.playerStats[b].winRate - randomCupData.playerStats[a].winRate);
+      });
+      if (!names.length) {
+        wrap.innerHTML = `<div class="empty-state">
+          <div class="empty-icon">📈</div>
+          Chưa có số liệu
+          <div class="empty-cta">Chơi <strong>Random Cup</strong> để tích lũy thống kê</div>
+        </div>`;
+        return;
+      }
+      const rows = names.map(n => {
+        const s = randomCupData.playerStats[n];
+        const topCountry = Object.entries(s.countries).sort((a, b) => b[1] - a[1])[0];
+        const countryNote = topCountry ? topCountry[0] : "—";
+        return `<tr>
+          <td><strong>${n}</strong></td>
+          <td data-label="Giải:">${s.tournaments}</td>
+          <td data-label="Thắng:">${s.wins}</td>
+          <td data-label="Thua:">${s.losses}</td>
+          <td data-label="Tỉ lệ:">${s.winRate}%</td>
+          <td data-label="Vô địch:">${s.championships}</td>
+          <td data-label="ĐTQG:" style="font-size:0.78rem;color:#fbbf24">${countryNote}</td>
+        </tr>`;
+      }).join("");
+      wrap.innerHTML = `<table class="stats-table">
+        <thead><tr>
+          <th>Tên</th><th>Giải</th><th>Thắng</th><th>Thua</th><th>Tỉ lệ</th><th>Vô địch</th><th>ĐTQG hay dùng</th>
+        </tr></thead><tbody>${rows}</tbody></table>`;
+    }
+
+    function exportStateJson() {
+      const json = JSON.stringify(buildStateObject(), null, 2);
+      const blob = new Blob([json], { type: "application/json" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      a.download = `fc-mobile-cup-backup-${new Date().toISOString().slice(0, 10)}.json`;
+      a.click();
+      showToast("Đã tải backup ✓");
+    }
+
+    function getSavedView() {
+      const v = localStorage.getItem(ACTIVE_VIEW_KEY);
+      return VALID_VIEWS.includes(v) ? v : "shuffle";
+    }
+
+    function restoreViewTabsOnly(view) {
+      if (!VALID_VIEWS.includes(view)) view = "shuffle";
+      document.querySelectorAll(".app-tab").forEach(t => t.classList.toggle("active", t.dataset.view === view));
+      document.querySelectorAll(".view").forEach(v => v.classList.toggle("active", v.id === `view-${view}`));
+    }
+
+    function switchView(view) {
+      if (!VALID_VIEWS.includes(view)) view = "shuffle";
+      localStorage.setItem(ACTIVE_VIEW_KEY, view);
+      restoreViewTabsOnly(view);
+      if (view === "tournament") renderTournament();
+      if (view === "randomcup") renderRandomCup();
+      if (view === "stats") renderStats();
+      if (view === "profile") renderProfile(getUserName());
+    }
+
+    let players = [...DEFAULT_PLAYERS];
+    let shuffleMode = "1v1";
     let isShuffling = false;
     let currentTeams = {};
-    const history = [];
 
     const pitchEl = document.getElementById("pitch");
     const teamAEl = document.getElementById("team-a");
@@ -1828,11 +4977,9 @@
     const playerChips = document.getElementById("player-chips");
     const nameInput = document.getElementById("name-input");
     const playerCountEl = document.getElementById("player-count");
-    const subtitleEl = document.getElementById("subtitle");
     const labelA = document.getElementById("label-a");
     const labelB = document.getElementById("label-b");
     const toast = document.getElementById("toast");
-    const teamStatusEl = document.getElementById("team-status");
 
     function flagHtml(flag) {
       if (!flag) return "";
@@ -1842,46 +4989,117 @@
       return flag;
     }
 
-    async function loadTeamsFromApi() {
-      try {
-        const res = await fetch(TEAMS_API);
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        const data = await res.json();
-        if (!Array.isArray(data.teams) || !data.teams.length) throw new Error("empty");
-        NATIONAL_TEAMS = data.teams.map(t => ({
-          flag: t.flag,
-          name: VN_NAMES[t.name_en] || t.name_en,
-          group: t.groups,
-        }));
-        teamStatusEl.textContent = `${NATIONAL_TEAMS.length} đội WC 2026 · worldcup26.ir`;
-        teamStatusEl.className = "team-status";
-        renderPlayerChips();
-      } catch {
-        NATIONAL_TEAMS = [...FALLBACK_TEAMS];
-        teamStatusEl.textContent = "Không tải được API — dùng danh sách dự phòng";
-        teamStatusEl.className = "team-status error";
-      }
+    let teamsLoading = null;
+
+    function mapApiTeams(apiTeams) {
+      return apiTeams.map(t => ({
+        flag: t.flag,
+        name: VN_NAMES[t.name_en] || t.name_en,
+        nameEn: t.name_en,
+        group: t.groups,
+      }));
     }
 
-    function loadPlayers() {
-      try {
-        const saved = localStorage.getItem(STORAGE_KEY);
-        if (saved) {
-          const parsed = JSON.parse(saved);
-          if (Array.isArray(parsed) && parsed.length >= 2) return parsed;
+    function resolveCountryPool(mode, source) {
+      if (mode !== "fc16") return [...source];
+      return FC16_PRESET.map(en => {
+        const found = source.find(t => t.nameEn === en);
+        if (found) return found;
+        return FC16_FALLBACK[en] || null;
+      }).filter(Boolean);
+    }
+
+    function applyCountryPool() {
+      NATIONAL_TEAMS = resolveCountryPool(countryPoolMode, allNationalTeams);
+      if (!NATIONAL_TEAMS.length) NATIONAL_TEAMS = [...FALLBACK_TEAMS];
+      updateCountryPoolUI();
+    }
+
+    function updateCountryPoolUI() {
+      const hint = document.getElementById("country-pool-hint");
+      const sel = document.getElementById("country-pool-select");
+      if (hint) {
+        hint.textContent = countryPoolMode === "fc16"
+          ? `${NATIONAL_TEAMS.length} đội · bracket FC Mobile`
+          : `${NATIONAL_TEAMS.length} đội từ API`;
+      }
+      if (sel && sel.value !== countryPoolMode) sel.value = countryPoolMode;
+    }
+
+    function loadTeamsCache() {
+      if (stateTeamsCache?.teams?.length) return stateTeamsCache.teams;
+      return null;
+    }
+
+    function saveTeamsCache(teams) {
+      stateTeamsCache = { cachedAt: new Date().toISOString(), teams };
+      scheduleSaveToGithub();
+    }
+
+    function applyTeams(teams, cached = false) {
+      allNationalTeams = teams.length ? teams : [...FALLBACK_TEAMS];
+      applyCountryPool();
+    }
+
+    async function loadTeamsFromApi() {
+      if (teamsLoading) return teamsLoading;
+
+      const cached = loadTeamsCache();
+      if (cached) {
+        applyTeams(cached, true);
+        return;
+      }
+
+      teamsLoading = (async () => {
+        try {
+          const res = await fetch(TEAMS_API);
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          const data = await res.json();
+          if (!Array.isArray(data.teams) || !data.teams.length) throw new Error("empty");
+          const teams = mapApiTeams(data.teams);
+          saveTeamsCache(teams);
+          applyTeams(teams, false);
+        } catch {
+          const stale = loadTeamsCache();
+          if (stale) {
+            applyTeams(stale, true);
+            return;
+          }
+          NATIONAL_TEAMS = [...FALLBACK_TEAMS];
+          allNationalTeams = [...FALLBACK_TEAMS];
+          applyCountryPool();
+        } finally {
+          teamsLoading = null;
         }
-      } catch {}
-      return [...DEFAULT_PLAYERS];
+      })();
+
+      return teamsLoading;
     }
 
     function savePlayers() {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(players));
+      scheduleSaveToGithub();
     }
 
-    function showToast(msg) {
+    function saveShuffleHistory() {
+      if (shuffleHistory.length > 20) shuffleHistory = shuffleHistory.slice(0, 20);
+      scheduleSaveToGithub();
+    }
+
+    function getShuffleTeamSize() {
+      if (shuffleMode === "1v1") return 1;
+      return parseInt(document.getElementById("shuffle-team-size").value, 10) || 2;
+    }
+
+    function shuffleModeLabel() {
+      const ts = getShuffleTeamSize();
+      return ts === 1 ? "1v1" : `${ts}v${ts}`;
+    }
+
+    function showToast(msg, isError = false) {
       toast.textContent = msg;
+      toast.classList.toggle("error", isError);
       toast.classList.add("show");
-      setTimeout(() => toast.classList.remove("show"), 2000);
+      setTimeout(() => { toast.classList.remove("show"); toast.classList.remove("error"); }, 2200);
     }
 
     function shuffle(arr) {
@@ -1914,6 +5132,10 @@
     }
 
     function allPlayersInResult(result) {
+      if (result.type === "nvn") {
+        const names = result.matches.flatMap(m => [...m.a, ...m.b]);
+        return result.bench?.length ? [...names, ...result.bench] : names;
+      }
       if (result.type === "pairs") {
         const names = result.pairs.flat();
         return result.bench?.length ? [...names, ...result.bench] : names;
@@ -1924,33 +5146,17 @@
     function getSplit() {
       const shuffled = shuffle(players);
       const n = shuffled.length;
-
-      if (mode === "1v1") {
-        const pairs = [];
-        for (let i = 0; i + 1 < n; i += 2) pairs.push([shuffled[i], shuffled[i + 1]]);
-        const bench = n % 2 === 1 ? [shuffled[n - 1]] : [];
-        return { type: "pairs", pairs, bench };
+      const ts = getShuffleTeamSize();
+      const matchCount = Math.floor(n / (2 * ts));
+      const matches = [];
+      for (let i = 0; i < matchCount; i++) {
+        matches.push({
+          a: shuffled.slice(i * 2 * ts, i * 2 * ts + ts),
+          b: shuffled.slice(i * 2 * ts + ts, i * 2 * ts + 2 * ts),
+        });
       }
-
-      if (mode === "2v2") {
-        const playing = shuffled.slice(0, Math.min(4, n));
-        const bench = shuffled.slice(Math.min(4, n));
-        return {
-          type: "teams",
-          a: playing.slice(0, 2),
-          b: playing.slice(2, 4),
-          bench,
-        };
-      }
-
-      // split: chia 2 đội đều nhất có thể
-      const half = Math.ceil(n / 2);
-      return {
-        type: "teams",
-        a: shuffled.slice(0, half),
-        b: shuffled.slice(half),
-        bench: [],
-      };
+      const bench = shuffled.slice(matchCount * 2 * ts);
+      return { type: "nvn", teamSize: ts, matches, bench };
     }
 
     function renderBench(bench) {
@@ -1963,6 +5169,27 @@
       } else {
         benchBar.classList.remove("show");
       }
+    }
+
+    function renderNvnMatches(matches, animate = false, shuffling = false, teams = currentTeams) {
+      const anim = shuffling ? " shuffling" : animate ? " reveal" : "";
+      const sideLabel = (side, members) => members.length > 1
+        ? `<div class="team-side-label">${side === "a" ? "Đội Xanh" : "Đội Đỏ"}</div>`
+        : "";
+      pairsEl.innerHTML = matches.map((m, i) => `
+        <div class="pair-row">
+          <div class="pair-label">Trận ${i + 1} · ${m.a.length}v${m.b.length}</div>
+          <div class="nvn-team-block blue${anim}">
+            ${sideLabel("a", m.a)}
+            ${m.a.map(n => `<div class="player-name">${n}</div>${teamLabel(teams[n])}`).join("")}
+          </div>
+          <div class="pair-vs">VS</div>
+          <div class="nvn-team-block red${anim}">
+            ${sideLabel("b", m.b)}
+            ${m.b.map(n => `<div class="player-name">${n}</div>${teamLabel(teams[n])}`).join("")}
+          </div>
+        </div>
+      `).join("");
     }
 
     function renderPairs(pairs, animate = false, shuffling = false, teams = currentTeams) {
@@ -1996,8 +5223,14 @@
     }
 
     function renderResult(result, animate = false) {
-      pitchEl.classList.toggle("mode-1v1", result.type === "pairs");
-      if (result.type === "pairs") {
+      const isNvn = result.type === "nvn";
+      const isPairs = result.type === "pairs";
+      pitchEl.classList.toggle("mode-nvn", isNvn);
+      pitchEl.classList.toggle("mode-1v1", isPairs);
+      if (isNvn) {
+        renderNvnMatches(result.matches, animate);
+        renderBench(result.bench);
+      } else if (isPairs) {
         renderPairs(result.pairs, animate);
         renderBench(result.bench);
       } else {
@@ -2006,66 +5239,88 @@
     }
 
     function renderPlayerChips() {
-      playerChips.innerHTML = players.map((name, i) => `
-        <span class="chip">
-          ${name}
-          <button type="button" aria-label="Xóa ${name}" data-index="${i}">×</button>
-        </span>
-      `).join("");
-
-      playerChips.querySelectorAll("button").forEach(btn => {
-        btn.addEventListener("click", () => removePlayer(+btn.dataset.index));
-      });
+      updateMyNameBadge();
+      if (!playerChips) return;
+      if (!players.length) {
+        playerChips.innerHTML = '<span class="player-chips-empty">Chưa có người chơi — gõ tên rồi bấm Thêm</span>';
+      } else {
+        playerChips.innerHTML = players.map((name, i) => `
+          <span class="chip">
+            ${name}
+            <button type="button" aria-label="Xóa ${name}" data-index="${i}">×</button>
+          </span>
+        `).join("");
+        playerChips.querySelectorAll("button").forEach(btn => {
+          btn.addEventListener("click", () => removePlayer(+btn.dataset.index));
+        });
+      }
 
       const n = players.length;
-      playerCountEl.textContent = `${n} người`;
-      subtitleEl.textContent = `${n} người · ${NATIONAL_TEAMS.length} đội WC 2026 · Bấm bắt đội để random`;
+      if (playerCountEl) playerCountEl.textContent = `${n} người`;
       updateModeButtons();
+      updateCupSetupButtons();
       previewResult();
       renderProfileChips();
       renderTournament();
+      updateTournamentSetup();
     }
 
     function updateModeButtons() {
       const n = players.length;
-      const btn2v2 = document.getElementById("mode-2v2");
+      const ts = getShuffleTeamSize();
+      const minNeed = ts * 2;
       const btn1v1 = document.getElementById("mode-1v1");
-      const btnSplit = document.getElementById("mode-split");
+      const btnNvn = document.getElementById("mode-nvn");
+      const sizeRow = document.getElementById("nvn-size-row");
+      const sizeSelect = document.getElementById("shuffle-team-size");
+      const summary = document.getElementById("mode-summary");
 
-      btnSplit.textContent = n === 6 ? "3 vs 3" : `Chia 2 đội (${Math.ceil(n/2)}-${Math.floor(n/2)})`;
-      btn2v2.textContent = n > 4 ? `2 vs 2 (+${n - 4} dự bị)` : "2 vs 2";
-      btn1v1.textContent = n % 2 === 0 ? `${n / 2} trận 1 vs 1` : `${Math.floor(n / 2)} trận 1 vs 1 (+1 dự bị)`;
-
-      btn2v2.disabled = n < 4;
+      btn1v1.classList.toggle("active", shuffleMode === "1v1");
+      btnNvn.classList.toggle("active", shuffleMode === "nvn");
       btn1v1.disabled = n < 2;
-      btnSplit.disabled = n < 2;
+      btnNvn.disabled = n < 4;
+      sizeRow.style.display = shuffleMode === "nvn" ? "flex" : "none";
 
-      if ((mode === "2v2" && n < 4) || n < 2) {
-        mode = n >= 2 ? "split" : "split";
-        document.querySelectorAll(".mode-btn").forEach(b => b.classList.remove("active"));
-        btnSplit.classList.add("active");
+      sizeSelect.querySelectorAll("option").forEach(opt => {
+        opt.disabled = n < parseInt(opt.value, 10) * 2;
+      });
+
+      if (shuffleMode === "nvn" && n >= 4) {
+        const current = parseInt(sizeSelect.value, 10);
+        if (n < current * 2) {
+          const fit = [2, 3, 4, 5].filter(s => n >= s * 2).pop();
+          if (fit) sizeSelect.value = String(fit);
+        }
       }
 
-      if (mode === "split") {
-        labelA.textContent = `Đội Xanh (${Math.ceil(n / 2)})`;
-        labelB.textContent = `Đội Đỏ (${Math.floor(n / 2)})`;
-      } else if (mode === "2v2") {
-        labelA.textContent = "Đội Xanh";
-        labelB.textContent = "Đội Đỏ";
+      const tsNow = getShuffleTeamSize();
+      const matchCount = Math.floor(n / (2 * tsNow));
+      const benchCount = n % (2 * tsNow);
+      if (n < tsNow * 2) {
+        summary.textContent = shuffleMode === "1v1"
+          ? (n < 2 ? "Cần ít nhất 2 người" : "")
+          : "Chọn số người mỗi đội";
+      } else if (shuffleMode === "1v1") {
+        summary.textContent = `${matchCount} trận 1v1${benchCount ? ` · ${benchCount} dự bị` : ""}`;
+      } else {
+        summary.textContent = `${matchCount} trận ${tsNow}v${tsNow}${benchCount ? ` · ${benchCount} dự bị` : ""}`;
       }
+
+      shuffleBtn.disabled = n < tsNow * 2;
+      shuffleBtn.title = shuffleBtn.disabled ? `Cần ít nhất ${tsNow * 2} người` : "";
     }
 
     function addPlayer(name) {
       const trimmed = name.trim();
       if (!trimmed) return showToast("Nhập tên trước nhé!");
-      if (players.some(p => p.toLowerCase() === trimmed.toLowerCase())) {
+      if (isPlayerNameTaken(trimmed)) {
         return showToast("Tên này đã có rồi!");
       }
       players.push(trimmed);
       savePlayers();
       nameInput.value = "";
       renderPlayerChips();
-      showToast(`Đã thêm ${trimmed}`);
+      showToast(`Đã thêm ${trimmed} ✓`);
     }
 
     function removePlayer(index) {
@@ -2079,90 +5334,115 @@
 
     function historyPlayerLine(name, teams) {
       const t = teams?.[name];
-      return t ? `${name} (${t.name})` : name;
+      if (!t) return name;
+      const label = typeof t === "object" ? (t.name || t) : t;
+      return `${name} (${label})`;
+    }
+
+    function modeLabel(h) {
+      if (h.mode) return h.mode;
+      if (h.type === "nvn") return `${h.teamSize}v${h.teamSize}`;
+      if (h.type === "pairs") return "1v1";
+      return "split";
     }
 
     function renderHistory() {
-      if (!history.length) {
-        historyEl.innerHTML = '<div class="empty-history">Chưa bắt đội lần nào</div>';
+      if (!shuffleHistory.length) {
+        historyEl.innerHTML = '<div class="empty-history">Chưa random lần nào</div>';
         return;
       }
-      historyEl.innerHTML = history.map((h, i) => {
+      historyEl.innerHTML = shuffleHistory.map((h, i) => {
         const teams = h.teams || {};
+        const meta = `<div class="history-meta">${(h.createdAt || h.at) ? new Date(h.createdAt || h.at).toLocaleString("vi-VN") : ""} · ${modeLabel(h)}</div>`;
+        if (h.type === "nvn") {
+          return `<div class="history-item pairs-item">${meta}
+            ${h.matches.map((m, j) => `
+              <div class="pair-line">
+                <span>Trận ${j + 1}: ${m.a.map(n => historyPlayerLine(n, teams)).join(", ")}</span>
+                <span>${m.b.map(n => historyPlayerLine(n, teams)).join(", ")}</span>
+              </div>`).join("")}
+            ${h.bench?.length ? `<div style="color:#fbbf24;font-size:0.8rem">🪑 ${h.bench.map(n => historyPlayerLine(n, teams)).join(", ")}</div>` : ""}
+          </div>`;
+        }
         if (h.type === "pairs") {
-          return `
-            <div class="history-item pairs-item">
-              <div style="color:#64748b;font-size:0.75rem">#${history.length - i}</div>
-              ${h.pairs.map((p, j) => `
-                <div class="pair-line">
-                  <span>Trận ${j + 1}: ${historyPlayerLine(p[0], teams)}</span>
-                  <span>${historyPlayerLine(p[1], teams)}</span>
-                </div>
-              `).join("")}
-              ${h.bench?.length ? `<div style="color:#fbbf24;font-size:0.8rem">🪑 ${h.bench.map(n => historyPlayerLine(n, teams)).join(", ")}</div>` : ""}
-            </div>
-          `;
+          return `<div class="history-item pairs-item">${meta}
+            ${h.pairs.map((p, j) => `
+              <div class="pair-line">
+                <span>Trận ${j + 1}: ${historyPlayerLine(p[0], teams)}</span>
+                <span>${historyPlayerLine(p[1], teams)}</span>
+              </div>`).join("")}
+            ${h.bench?.length ? `<div style="color:#fbbf24;font-size:0.8rem">🪑 ${h.bench.map(n => historyPlayerLine(n, teams)).join(", ")}</div>` : ""}
+          </div>`;
         }
         const benchNote = h.bench?.length
           ? ` (🪑 ${h.bench.map(n => historyPlayerLine(n, teams)).join(", ")})`
           : "";
-        return `
-          <div class="history-item">
-            <span>${h.a.map(n => historyPlayerLine(n, teams)).join(", ")}</span>
-            <span style="color:#64748b">#${history.length - i}</span>
-            <span>${h.b.map(n => historyPlayerLine(n, teams)).join(", ")}${benchNote}</span>
-          </div>
-        `;
+        return `<div class="history-item">${meta}
+          <span>${h.a.map(n => historyPlayerLine(n, teams)).join(", ")}</span>
+          <span style="color:#64748b">#${shuffleHistory.length - i}</span>
+          <span>${h.b.map(n => historyPlayerLine(n, teams)).join(", ")}${benchNote}</span>
+        </div>`;
       }).join("");
     }
 
     async function doShuffle() {
       if (isShuffling || players.length < 2) return;
+      const ts = getShuffleTeamSize();
+      if (players.length < ts * 2) {
+        return showToast(`Cần ít nhất ${ts * 2} người`, true);
+      }
       isShuffling = true;
       shuffleBtn.disabled = true;
-      shuffleBtn.textContent = "⏳ Đang bắt đội...";
+      shuffleBtn.textContent = "⏳ Đang random...";
 
       for (let round = 0; round < 12; round++) {
         const fake = shuffle(players);
         const fakeTeams = assignTeams(fake);
-        if (mode === "1v1") {
-          const pairs = [];
-          for (let i = 0; i + 1 < fake.length; i += 2) pairs.push([fake[i], fake[i + 1]]);
-          renderPairs(pairs, false, true, fakeTeams);
-        } else {
-          const count = mode === "2v2" ? 2 : Math.ceil(fake.length / 2);
-          teamAEl.innerHTML = fake.slice(0, count).map(n =>
-            playerCard(n, "player shuffling", fakeTeams[n])
-          ).join("");
-          teamBEl.innerHTML = fake.slice(count, count * 2).map(n =>
-            playerCard(n, "player shuffling", fakeTeams[n])
-          ).join("");
+        const mc = Math.floor(fake.length / (2 * ts));
+        const matches = [];
+        for (let i = 0; i < mc; i++) {
+          matches.push({
+            a: fake.slice(i * 2 * ts, i * 2 * ts + ts),
+            b: fake.slice(i * 2 * ts + ts, i * 2 * ts + 2 * ts),
+          });
         }
+        renderNvnMatches(matches, false, true, fakeTeams);
         await new Promise(r => setTimeout(r, 80 + round * 8));
       }
 
       const result = getSplit();
       currentTeams = assignTeams(allPlayersInResult(result));
-      result.teams = { ...currentTeams };
+      const teamsSnapshot = {};
+      Object.entries(currentTeams).forEach(([name, t]) => {
+        teamsSnapshot[name] = { name: t.name, flag: t.flag };
+      });
+      result.teams = teamsSnapshot;
+      result.createdAt = new Date().toISOString();
+      result.mode = shuffleModeLabel();
+      result.players = [...players];
       renderResult(result, true);
-      history.unshift(JSON.parse(JSON.stringify(result)));
-      if (history.length > 10) history.pop();
+      shuffleHistory.unshift(JSON.parse(JSON.stringify(result)));
+      saveShuffleHistory();
       renderHistory();
 
       shuffleBtn.disabled = false;
-      shuffleBtn.textContent = "🎲 Bắt Đội & Random ĐTQG";
+      shuffleBtn.textContent = "🎲 Random";
       isShuffling = false;
+      updateModeButtons();
     }
 
-    document.querySelectorAll(".mode-btn").forEach(btn => {
+    document.querySelectorAll(".mode-btn[data-shuffle-mode]").forEach(btn => {
       btn.addEventListener("click", () => {
-        if (btn.disabled) return;
-        document.querySelectorAll(".mode-btn").forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        mode = btn.dataset.mode;
+        if (btn.disabled) return showToast(btn.title || "Không đủ người", true);
+        shuffleMode = btn.dataset.shuffleMode;
         updateModeButtons();
         previewResult();
       });
+    });
+
+    document.getElementById("shuffle-team-size").addEventListener("change", () => {
+      updateModeButtons();
+      previewResult();
     });
 
     document.getElementById("add-btn").addEventListener("click", () => addPlayer(nameInput.value));
@@ -2171,25 +5451,51 @@
 
     document.getElementById("share-url").textContent = window.location.href;
     document.getElementById("copy-btn").addEventListener("click", () => {
-      navigator.clipboard.writeText(window.location.href).then(() => showToast("Đã copy link!"));
+      navigator.clipboard.writeText(window.location.href).then(() => showToast("Đã copy link ✓"));
     });
 
     document.querySelectorAll(".app-tab").forEach(tab => {
       tab.addEventListener("click", () => switchView(tab.dataset.view));
     });
     document.getElementById("new-cycle-btn").addEventListener("click", startNewCycle);
+
+    document.querySelectorAll("[data-tournament-format]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        if (getActiveCycle()) return;
+        tournamentFormat = btn.dataset.tournamentFormat;
+        updateTournamentSetup();
+      });
+    });
+
+    updateTournamentSetup();
     document.getElementById("profile-search-btn").addEventListener("click", () => {
-      renderProfile(document.getElementById("profile-name-input").value);
+      const name = document.getElementById("profile-name-input").value.trim();
+      if (!name) return showToast("Nhập tên trước nhé!");
+      renderProfile(name);
       switchView("profile");
     });
     document.getElementById("profile-name-input").addEventListener("keydown", e => {
       if (e.key === "Enter") {
-        renderProfile(e.target.value);
+        const name = e.target.value.trim();
+        if (!name) return;
+        renderProfile(name);
         switchView("profile");
       }
     });
+    document.getElementById("profile-back-btn")?.addEventListener("click", () => {
+      document.getElementById("profile-name-input").value = "";
+      renderProfile(getUserName());
+    });
+    document.getElementById("profile-logout-btn")?.addEventListener("click", logoutProfile);
     document.getElementById("modal-cancel").addEventListener("click", closeScoreModal);
     document.getElementById("modal-save").addEventListener("click", () => {
+      if (scoreModalContext?.type === "cup") {
+        if (scoreModalContext.readOnly) return closeScoreModal();
+        const h = parseInt(document.getElementById("score-home").value, 10) || 0;
+        const a = parseInt(document.getElementById("score-away").value, 10) || 0;
+        saveCupMatchScore(h, a);
+        return;
+      }
       const h = parseInt(document.getElementById("score-home").value, 10) || 0;
       const a = parseInt(document.getElementById("score-away").value, 10) || 0;
       saveMatchScore(h, a);
@@ -2197,13 +5503,147 @@
     document.getElementById("quick-home-win").addEventListener("click", () => saveMatchScore(2, 1));
     document.getElementById("quick-away-win").addEventListener("click", () => saveMatchScore(1, 2));
     document.getElementById("quick-draw").addEventListener("click", () => saveMatchScore(1, 1));
+    document.querySelectorAll("#modal-quick-scores button").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const [h, a] = btn.dataset.scores.split(",").map(Number);
+        document.getElementById("score-home").value = h;
+        document.getElementById("score-away").value = a;
+      });
+    });
+    document.getElementById("cup-win-a").addEventListener("click", () => saveCupMatchWinner("a"));
+    document.getElementById("cup-win-b").addEventListener("click", () => saveCupMatchWinner("b"));
     document.getElementById("score-modal").addEventListener("click", e => {
       if (e.target.id === "score-modal") closeScoreModal();
     });
 
-    renderPlayerChips();
-    renderTournament();
-    loadTeamsFromApi();
+    document.getElementById("create-cup-btn").addEventListener("click", startRandomCup);
+    document.getElementById("export-json-btn").addEventListener("click", exportStateJson);
+    document.getElementById("reset-all-btn").addEventListener("click", resetAllAppData);
+    document.getElementById("cup-search-input")?.addEventListener("input", renderCupHistory);
+    document.getElementById("cup-team-size")?.addEventListener("change", updateCupSetupButtons);
+
+    document.querySelectorAll(".cup-mode-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        if (btn.disabled) return;
+        document.querySelectorAll(".cup-mode-btn").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        cupSetupMode = btn.dataset.cupMode;
+        document.getElementById("cup-team-size-wrap").style.display =
+          cupSetupMode === "nvn" ? "block" : "none";
+        updateCupSetupButtons();
+      });
+    });
+
+    document.querySelectorAll("[data-cup-filter]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        document.querySelectorAll("[data-cup-filter]").forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        cupFilter = btn.dataset.cupFilter;
+        renderCupHistory();
+      });
+    });
+
+    document.getElementById("sync-api-save").addEventListener("click", () => {
+      const urlInput = document.getElementById("sync-api-input");
+      const keyInput = document.getElementById("sync-key-input");
+      const url = urlInput.value.trim().replace(/\/$/, "");
+      const key = keyInput.value.trim();
+      if (!url) {
+        localStorage.removeItem(SYNC_API_URL_KEY);
+        localStorage.removeItem(SYNC_API_URL_KEY_LEGACY);
+      } else {
+        localStorage.setItem(SYNC_API_URL_KEY, url);
+      }
+      if (!key) {
+        localStorage.removeItem(SYNC_WRITE_KEY);
+      } else {
+        localStorage.setItem(SYNC_WRITE_KEY, key);
+      }
+      showToast("Đã lưu ✓");
+      updatePersistStatus();
+      loadStateFromGithub().then(() => refreshAllFromState());
+    });
+
+    document.getElementById("sync-hint-banner")?.addEventListener("click", (e) => {
+      if (e.target.closest("[data-sync-hint-open]")) {
+        e.preventDefault();
+        document.querySelector(".advanced-settings")?.setAttribute("open", "");
+        document.querySelector(".advanced-settings")?.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+
+    document.getElementById("gh-sync-btn").addEventListener("click", async () => {
+      if (getGhToken()) await refreshStateSha();
+      const ok = await reloadRemoteState(true);
+      if (ok) showToast("Đã tải lại ✓");
+    });
+
+    const countryPoolSelect = document.getElementById("country-pool-select");
+    if (countryPoolSelect) {
+      countryPoolSelect.value = countryPoolMode;
+      countryPoolSelect.addEventListener("change", () => {
+        countryPoolMode = countryPoolSelect.value;
+        localStorage.setItem(COUNTRY_POOL_KEY, countryPoolMode);
+        applyCountryPool();
+        showToast(countryPoolMode === "fc16" ? "16 đội FC Mobile ✓" : `Tất cả ${allNationalTeams.length} đội ✓`);
+      });
+    }
+    updateCountryPoolUI();
+
+    const savedSyncApi = localStorage.getItem(SYNC_API_URL_KEY) || localStorage.getItem(SYNC_API_URL_KEY_LEGACY) || "";
+    if (savedSyncApi) {
+      document.getElementById("sync-api-input").value = savedSyncApi;
+    }
+    const savedSyncKey = localStorage.getItem(SYNC_WRITE_KEY) || "";
+    if (savedSyncKey) {
+      document.getElementById("sync-key-input").value = savedSyncKey;
+    }
+
+    async function boot() {
+      const continueBtn = document.getElementById("welcome-continue-btn");
+      const needsWelcome = !getUserName();
+      if (!needsWelcome) {
+        hideWelcomeGate();
+      } else if (continueBtn) {
+        continueBtn.disabled = true;
+      }
+
+      if (getGhToken()) await refreshStateSha();
+      await loadStateFromGithub();
+      migrateProfilePlayerSeparation();
+      refreshAllFromState();
+      await loadTeamsFromApi();
+      startSyncPolling();
+
+      if (needsWelcome) {
+        updateWelcomeTakenHint();
+        if (continueBtn) continueBtn.disabled = false;
+      }
+
+      switchView(getSavedView());
+    }
+
+    restoreViewTabsOnly(getSavedView());
+
+    document.getElementById("welcome-random-btn")?.addEventListener("click", () => {
+      const input = document.getElementById("welcome-name-input");
+      if (!input) return;
+      input.value = generateRandomName();
+      setWelcomeError("");
+      input.focus();
+    });
+
+    document.getElementById("welcome-continue-btn")?.addEventListener("click", finishWelcomeGate);
+
+    document.getElementById("welcome-name-input")?.addEventListener("keydown", e => {
+      if (e.key === "Enter") finishWelcomeGate();
+    });
+
+    document.getElementById("welcome-name-input")?.addEventListener("input", () => {
+      setWelcomeError("");
+    });
+
+    boot();
   </script>
 </body>
 </html>

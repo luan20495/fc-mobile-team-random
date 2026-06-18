@@ -1,0 +1,23 @@
+{
+  "name": "fc-mobile-team-random",
+  "version": "1.0.0",
+  "description": "Tool chia đội / bắt đối ngẫu nhiên cho FC Mobile.",
+  "main": "index.js",
+  "scripts": {
+    "icons": "node scripts/render-icons.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/luan20495/fc-mobile-team-random.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/luan20495/fc-mobile-team-random/issues"
+  },
+  "homepage": "https://github.com/luan20495/fc-mobile-team-random#readme",
+  "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2"
+  }
+}
