@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-18T06:35:04.829Z",
+  "updatedAt": "2026-06-18T06:36:18.831Z",
   "players": [
     "Luân",
     "Hưng",
@@ -218,117 +218,6 @@
         },
         "champion": "Luân",
         "completedAt": "2026-06-18T05:55:47.059Z"
-      },
-      {
-        "id": "mqj47omu0hqk5",
-        "number": 4,
-        "createdAt": "2026-06-18T06:24:45.174Z",
-        "locked": true,
-        "format": "knockout",
-        "players": [
-          "Luân",
-          "Hưng",
-          "Đại",
-          "Khuê"
-        ],
-        "phase": "done",
-        "league": [],
-        "playoffs": [
-          {
-            "id": "mqj47svaf5ipt",
-            "type": "third",
-            "label": "Tranh hạng 3 · Ba vs Tư",
-            "home": "Luân",
-            "away": "Đại",
-            "homeSeed": 3,
-            "awaySeed": 4,
-            "scoreHome": null,
-            "scoreAway": null,
-            "played": false,
-            "lockedAt": null
-          }
-        ],
-        "knockoutRounds": [
-          {
-            "round": 1,
-            "label": "Bán kết",
-            "matches": [
-              {
-                "id": "mqj47omudvtce",
-                "home": "Luân",
-                "away": "Hưng",
-                "scoreHome": 1,
-                "scoreAway": 2,
-                "played": true,
-                "lockedAt": "2026-06-18T06:24:48.710Z",
-                "teamHome": {
-                  "name": "Anh",
-                  "flag": "https://flagcdn.com/w80/gb-eng.png"
-                },
-                "teamAway": {
-                  "name": "Uruguay",
-                  "flag": "https://flagcdn.com/w80/uy.png"
-                }
-              },
-              {
-                "id": "mqj47omu2mtxt",
-                "home": "Khuê",
-                "away": "Đại",
-                "scoreHome": 2,
-                "scoreAway": 1,
-                "played": true,
-                "lockedAt": "2026-06-18T06:24:50.662Z",
-                "teamHome": {
-                  "name": "Hà Lan",
-                  "flag": "https://flagcdn.com/w80/nl.png"
-                },
-                "teamAway": {
-                  "name": "Pháp",
-                  "flag": "https://flagcdn.com/w80/fr.png"
-                }
-              }
-            ],
-            "byes": [],
-            "completed": true
-          },
-          {
-            "round": 2,
-            "label": "Chung kết",
-            "matches": [
-              {
-                "id": "mqj47svahs1m3",
-                "home": "Hưng",
-                "away": "Khuê",
-                "scoreHome": null,
-                "scoreAway": null,
-                "played": false,
-                "lockedAt": null
-              }
-            ],
-            "byes": [],
-            "completed": false
-          }
-        ],
-        "playerTeams": {
-          "Luân": {
-            "name": "Anh",
-            "flag": "https://flagcdn.com/w80/gb-eng.png"
-          },
-          "Hưng": {
-            "name": "Uruguay",
-            "flag": "https://flagcdn.com/w80/uy.png"
-          },
-          "Đại": {
-            "name": "Pháp",
-            "flag": "https://flagcdn.com/w80/fr.png"
-          },
-          "Khuê": {
-            "name": "Hà Lan",
-            "flag": "https://flagcdn.com/w80/nl.png"
-          }
-        },
-        "champion": null,
-        "completedAt": "2026-06-18T06:33:31.683Z"
       },
       {
         "id": "mqj4iyw3c6vur",
