@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-18T05:21:21.913Z",
+  "updatedAt": "2026-06-18T05:21:32.654Z",
   "players": [
     "Luân",
     "Hưng",
@@ -30,18 +30,18 @@
             "label": "Bán kết",
             "matches": [
               {
-                "id": "mqj1y5eeb3kj0",
-                "home": "Đại",
-                "away": "Khuê",
+                "id": "mqj1ydosb7wln",
+                "home": "Hưng",
+                "away": "Luân",
                 "scoreHome": null,
                 "scoreAway": null,
                 "played": false,
                 "lockedAt": null
               },
               {
-                "id": "mqj1y5eegw39w",
-                "home": "Hưng",
-                "away": "Luân",
+                "id": "mqj1ydosr30xe",
+                "home": "Khuê",
+                "away": "Đại",
                 "scoreHome": null,
                 "scoreAway": null,
                 "played": false,
@@ -54,20 +54,20 @@
         ],
         "playerTeams": {
           "Luân": {
-            "name": "New Zealand",
-            "flag": "https://flagcdn.com/w80/nz.png"
+            "name": "Ý",
+            "flag": "https://flagcdn.com/w80/it.png"
           },
           "Hưng": {
-            "name": "Nhật Bản",
-            "flag": "https://flagcdn.com/w80/jp.png"
+            "name": "Hà Lan",
+            "flag": "https://flagcdn.com/w80/nl.png"
           },
           "Đại": {
-            "name": "Ecuador",
-            "flag": "https://flagcdn.com/w80/ec.png"
+            "name": "Bồ Đào Nha",
+            "flag": "https://flagcdn.com/w80/pt.png"
           },
           "Khuê": {
-            "name": "Curacao",
-            "flag": "https://flagcdn.com/w80/cw.png"
+            "name": "Uruguay",
+            "flag": "https://flagcdn.com/w80/uy.png"
           }
         },
         "champion": null,
