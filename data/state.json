@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-18T07:09:36.095Z",
+  "updatedAt": "2026-06-18T07:53:44.936Z",
   "players": [
     "Luân",
     "Hưng",
@@ -559,7 +559,57 @@
       }
     ]
   },
-  "shuffleHistory": [],
+  "shuffleHistory": [
+    {
+      "type": "nvn",
+      "teamSize": 1,
+      "matches": [
+        {
+          "a": [
+            "Khuê"
+          ],
+          "b": [
+            "Hưng"
+          ]
+        },
+        {
+          "a": [
+            "Đại"
+          ],
+          "b": [
+            "Luân"
+          ]
+        }
+      ],
+      "bench": [],
+      "teams": {
+        "Khuê": {
+          "name": "Tây Ban Nha",
+          "flag": "https://flagcdn.com/w80/es.png"
+        },
+        "Hưng": {
+          "name": "Hà Lan",
+          "flag": "https://flagcdn.com/w80/nl.png"
+        },
+        "Đại": {
+          "name": "Ma Rốc",
+          "flag": "https://flagcdn.com/w80/ma.png"
+        },
+        "Luân": {
+          "name": "Croatia",
+          "flag": "https://flagcdn.com/w80/hr.png"
+        }
+      },
+      "createdAt": "2026-06-18T07:53:44.134Z",
+      "mode": "1v1",
+      "players": [
+        "Luân",
+        "Hưng",
+        "Đại",
+        "Khuê"
+      ]
+    }
+  ],
   "randomCup": {
     "activeCupId": null,
     "cups": [],
