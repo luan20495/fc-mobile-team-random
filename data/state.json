@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-18T09:27:59.161Z",
+  "updatedAt": "2026-06-18T09:28:03.405Z",
   "players": [
     "Luân",
     "Hưng",
@@ -648,6 +648,62 @@
     ]
   },
   "shuffleHistory": [
+    {
+      "type": "nvn",
+      "teamSize": 1,
+      "matches": [
+        {
+          "a": [
+            "Khuê"
+          ],
+          "b": [
+            "Đại"
+          ]
+        },
+        {
+          "a": [
+            "Luân"
+          ],
+          "b": [
+            "Long"
+          ]
+        }
+      ],
+      "bench": [
+        "Hưng"
+      ],
+      "teams": {
+        "Khuê": {
+          "name": "Ghana",
+          "flag": "https://flagcdn.com/w80/gh.png"
+        },
+        "Đại": {
+          "name": "Bờ Biển Ngà",
+          "flag": "https://flagcdn.com/w80/ci.png"
+        },
+        "Luân": {
+          "name": "Ecuador",
+          "flag": "https://flagcdn.com/w80/ec.png"
+        },
+        "Long": {
+          "name": "Bờ Biển Ngà",
+          "flag": "https://flagcdn.com/w80/ci.png"
+        },
+        "Hưng": {
+          "name": "Tunisia",
+          "flag": "https://flagcdn.com/w80/tn.png"
+        }
+      },
+      "createdAt": "2026-06-18T09:28:02.600Z",
+      "mode": "1v1",
+      "players": [
+        "Luân",
+        "Hưng",
+        "Đại",
+        "Khuê",
+        "Long"
+      ]
+    },
     {
       "type": "nvn",
       "teamSize": 1,
