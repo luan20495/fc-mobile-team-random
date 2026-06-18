@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-18T06:24:49.512Z",
+  "updatedAt": "2026-06-18T06:24:51.463Z",
   "players": [
     "Luân",
     "Hưng",
@@ -280,7 +280,21 @@
         ],
         "phase": "knockout",
         "league": [],
-        "playoffs": [],
+        "playoffs": [
+          {
+            "id": "mqj47svaf5ipt",
+            "type": "third",
+            "label": "Tranh hạng 3 · Ba vs Tư",
+            "home": "Luân",
+            "away": "Đại",
+            "homeSeed": 3,
+            "awaySeed": 4,
+            "scoreHome": null,
+            "scoreAway": null,
+            "played": false,
+            "lockedAt": null
+          }
+        ],
         "knockoutRounds": [
           {
             "round": 1,
@@ -299,6 +313,23 @@
                 "id": "mqj47omu2mtxt",
                 "home": "Khuê",
                 "away": "Đại",
+                "scoreHome": 2,
+                "scoreAway": 1,
+                "played": true,
+                "lockedAt": "2026-06-18T06:24:50.662Z"
+              }
+            ],
+            "byes": [],
+            "completed": true
+          },
+          {
+            "round": 2,
+            "label": "Chung kết",
+            "matches": [
+              {
+                "id": "mqj47svahs1m3",
+                "home": "Hưng",
+                "away": "Khuê",
                 "scoreHome": null,
                 "scoreAway": null,
                 "played": false,
@@ -311,16 +342,16 @@
         ],
         "playerTeams": {
           "Luân": {
-            "name": "Ý",
-            "flag": "https://flagcdn.com/w80/it.png"
+            "name": "Tây Ban Nha",
+            "flag": "https://flagcdn.com/w80/es.png"
           },
           "Hưng": {
             "name": "Brazil",
             "flag": "https://flagcdn.com/w80/br.png"
           },
           "Đại": {
-            "name": "Anh",
-            "flag": "https://flagcdn.com/w80/gb-eng.png"
+            "name": "Đức",
+            "flag": "https://flagcdn.com/w80/de.png"
           },
           "Khuê": {
             "name": "Uruguay",
