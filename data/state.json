@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-18T06:24:28.513Z",
+  "updatedAt": "2026-06-18T06:24:32.880Z",
   "players": [
     "Luân",
     "Hưng",
@@ -194,10 +194,10 @@
             "away": "Luân",
             "homeSeed": 3,
             "awaySeed": 4,
-            "scoreHome": null,
-            "scoreAway": null,
-            "played": false,
-            "lockedAt": null
+            "scoreHome": 1,
+            "scoreAway": 2,
+            "played": true,
+            "lockedAt": "2026-06-18T06:24:32.079Z"
           }
         ],
         "knockoutRounds": [
