@@ -8,7 +8,7 @@
   <link rel="icon" href="assets/icons/favicon-32.png" sizes="32x32">
   <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
   <link rel="manifest" href="manifest.webmanifest">
-  <meta name="theme-color" content="#07111f">
+  <meta name="theme-color" content="#312e81">
   <meta name="application-name" content="FC Mobile Cup">
   <meta name="apple-mobile-web-app-title" content="FC Cup">
   <style>
@@ -56,7 +56,7 @@
       height: 48px;
       border-radius: 16px;
       display: block;
-      filter: drop-shadow(0 8px 20px rgba(74, 222, 128, 0.25));
+      filter: drop-shadow(0 8px 20px rgba(250, 204, 21, 0.28));
     }
 
     .brand-text { min-width: 0; }
@@ -946,9 +946,105 @@
 
     .cycle-card h4 {
       font-size: 0.95rem;
-      margin-bottom: 6px;
+      margin-bottom: 0;
       color: #e2e8f0;
     }
+
+    .cycle-card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 6px;
+    }
+
+    .cycle-delete-btn {
+      flex-shrink: 0;
+      padding: 5px 10px;
+      border-radius: 8px;
+      border: 1px solid rgba(248,113,113,0.45);
+      background: rgba(248,113,113,0.1);
+      color: #fca5a5;
+      font-size: 0.72rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .cycle-delete-btn:hover {
+      background: rgba(248,113,113,0.22);
+      border-color: rgba(248,113,113,0.65);
+    }
+
+    .delete-cycle-modal .modal-sub {
+      font-size: 0.82rem;
+      color: #94a3b8;
+      margin-bottom: 14px;
+      line-height: 1.45;
+    }
+
+    .delete-cycle-modal label {
+      display: block;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: #64748b;
+      margin-bottom: 6px;
+    }
+
+    .delete-cycle-modal input {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 10px;
+      border: 2px solid rgba(255,255,255,0.12);
+      background: rgba(0,0,0,0.35);
+      color: #fff;
+      font-size: 0.92rem;
+      outline: none;
+      margin-bottom: 12px;
+    }
+
+    .delete-cycle-modal input:focus {
+      border-color: rgba(248,113,113,0.5);
+    }
+
+    .delete-cycle-extra {
+      margin-bottom: 4px;
+    }
+
+    .delete-cycle-extra .extra-hint {
+      font-size: 0.78rem;
+      color: #4ade80;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    .delete-cycle-profile-error {
+      font-size: 0.78rem;
+      color: #f87171;
+      margin: -6px 0 10px;
+      min-height: 1.1rem;
+    }
+
+    .delete-cycle-modal input:disabled {
+      opacity: 0.65;
+      cursor: not-allowed;
+    }
+
+    .btn-danger {
+      background: linear-gradient(135deg, #dc2626, #b91c1c);
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      padding: 10px 14px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+    }
+
+    .btn-danger:hover:not(:disabled) { filter: brightness(1.08); }
+    .btn-danger:disabled { opacity: 0.45; cursor: not-allowed; }
 
     .cycle-card .cycle-info {
       font-size: 0.8rem;
@@ -1384,7 +1480,7 @@
       padding: 14px 10px 16px;
       border: 2px solid rgba(139,92,246,0.35);
       box-shadow: inset 0 0 80px rgba(139,92,246,0.1), 0 12px 40px rgba(0,0,0,0.45);
-      overflow: hidden;
+      overflow: visible;
       margin-bottom: 14px;
     }
 
@@ -1430,17 +1526,60 @@
     }
 
     .fc-ko-random-btn {
-      padding: 3px 8px; border-radius: 6px;
-      border: 1px solid rgba(250,204,21,0.45);
-      background: rgba(250,204,21,0.12);
-      color: #fcd34d; font-size: 0.58rem; font-weight: 700;
-      cursor: pointer; letter-spacing: 0; text-transform: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      border-radius: 10px;
+      border: none;
+      background: transparent;
+      line-height: 0;
+      cursor: pointer;
+      letter-spacing: 0;
+      text-transform: none;
       white-space: nowrap;
+      width: 34px;
+      height: 34px;
+      min-width: 34px;
+      min-height: 34px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.38);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .fc-ko-random-btn .fc-dice-icon {
+      display: block;
+      width: 34px;
+      height: 34px;
+      flex-shrink: 0;
     }
 
     .fc-ko-random-btn:hover {
-      background: rgba(250,204,21,0.22);
-      border-color: rgba(250,204,21,0.65);
+      transform: scale(1.06);
+      box-shadow: 0 4px 16px rgba(250, 204, 21, 0.32);
+    }
+    .fc-knockout-third-wrap {
+      margin-top: 14px;
+      padding-top: 12px;
+      border-top: 1px dashed rgba(217,119,6,0.35);
+    }
+    .fc-knockout-third-head {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #d97706;
+    }
+    .fc-knockout-third-body {
+      display: flex;
+      justify-content: center;
+      max-width: 280px;
+      margin: 0 auto;
     }
     .fc-ks-center { color: #facc15; font-size: 0.62rem; }
 
@@ -1453,6 +1592,8 @@
       min-width: 520px;
       min-height: 220px;
       position: relative;
+      --fc-line: rgba(167, 139, 250, 0.72);
+      --fc-bridge: 22px;
     }
 
     .fc-knockout-main::before {
@@ -1461,6 +1602,7 @@
       inset: 0;
       background: radial-gradient(ellipse at center 50%, rgba(250,204,21,0.1) 0%, transparent 62%);
       pointer-events: none;
+      z-index: 0;
     }
 
     .fc-k-side.left {
@@ -1495,6 +1637,7 @@
       align-self: center;
       display: flex; flex-direction: column; align-items: center;
       justify-content: center; gap: 6px; z-index: 2; text-align: center;
+      position: relative;
     }
 
     .fc-k-side {
@@ -1512,6 +1655,7 @@
       gap: 6px;
       width: 100%;
       max-width: 172px;
+      overflow: visible;
     }
 
     .fc-k-side.left .fc-pair-group { margin-left: auto; }
@@ -1526,31 +1670,41 @@
     .fc-pair-group.left-out::after {
       content: "";
       position: absolute;
-      right: -32px; top: 50%;
-      width: 32px; height: 2px;
-      background: rgba(167,139,250,0.7);
+      right: calc(-1 * var(--fc-bridge));
+      top: 50%;
+      width: var(--fc-bridge);
+      height: 2px;
+      background: var(--fc-line);
       transform: translateY(-50%);
     }
     .fc-pair-group.left-out::before {
       content: "";
       position: absolute;
-      right: -2px; top: 14%; bottom: 14%;
-      width: 2px; background: rgba(167,139,250,0.7);
+      right: 0;
+      top: 10%;
+      bottom: 10%;
+      width: 2px;
+      background: var(--fc-line);
     }
 
     .fc-pair-group.right-out::after {
       content: "";
       position: absolute;
-      left: -32px; top: 50%;
-      width: 32px; height: 2px;
-      background: rgba(167,139,250,0.7);
+      left: calc(-1 * var(--fc-bridge));
+      top: 50%;
+      width: var(--fc-bridge);
+      height: 2px;
+      background: var(--fc-line);
       transform: translateY(-50%);
     }
     .fc-pair-group.right-out::before {
       content: "";
       position: absolute;
-      left: -2px; top: 14%; bottom: 14%;
-      width: 2px; background: rgba(167,139,250,0.7);
+      left: 0;
+      top: 10%;
+      bottom: 10%;
+      width: 2px;
+      background: var(--fc-line);
     }
 
     .fc-slot {
@@ -1605,10 +1759,12 @@
 
     .fc-bk-col {
       display: flex; flex-direction: column; z-index: 1;
+      overflow: visible;
     }
 
     .fc-bk-match {
       position: relative;
+      overflow: visible;
       background: rgba(15,8,30,0.85);
       border: 1px solid rgba(250,204,21,0.45);
       border-radius: 10px; padding: 8px 10px;
@@ -1627,28 +1783,29 @@
     }
 
     .fc-bk-match.left-bk::after {
-      content: ""; position: absolute;
-      right: -32px; top: 50%; width: 32px; height: 2px;
-      background: rgba(167,139,250,0.7); transform: translateY(-50%);
+      content: "";
+      position: absolute;
+      right: calc(-1 * var(--fc-bridge));
+      top: 50%;
+      width: var(--fc-bridge);
+      height: 2px;
+      background: var(--fc-line);
+      transform: translateY(-50%);
     }
     .fc-bk-match.right-bk::after {
-      content: ""; position: absolute;
-      left: -32px; top: 50%; width: 32px; height: 2px;
-      background: rgba(167,139,250,0.7); transform: translateY(-50%);
+      content: "";
+      position: absolute;
+      left: calc(-1 * var(--fc-bridge));
+      top: 50%;
+      width: var(--fc-bridge);
+      height: 2px;
+      background: var(--fc-line);
+      transform: translateY(-50%);
     }
 
-    .fc-bk-match.left-bk::before {
-      content: ""; position: absolute;
-      right: -34px; top: 50%; bottom: auto;
-      width: 2px; height: 50%;
-      background: rgba(167,139,250,0.45);
-      transform: translateY(0);
-    }
-
+    .fc-bk-match.left-bk::before,
     .fc-bk-match.right-bk::before {
-      content: ""; position: absolute;
-      left: -34px; top: 0; height: 50%;
-      width: 2px; background: rgba(167,139,250,0.45);
+      display: none;
     }
 
     .fc-trophy-hero {
@@ -1712,10 +1869,75 @@
     }
 
     .fc-knockout-main.fc-ko-mirror {
-      grid-template-columns: 1.15fr 0.7fr 1.35fr 0.7fr 1.15fr;
+      grid-template-columns: 1.1fr 0.62fr 1.45fr 0.62fr 1.1fr;
+      grid-template-rows: 1fr;
+      --fc-bridge: 26px;
+      min-height: 210px;
+      padding: 6px 0;
     }
 
-    .fc-knockout-main.fc-ko-mirror .fc-k-center { min-width: 118px; }
+    .fc-knockout-main.fc-ko-mirror .fc-k-side.left,
+    .fc-knockout-main.fc-ko-mirror .fc-k-side.right,
+    .fc-knockout-main.fc-ko-mirror .fc-bk-col.left,
+    .fc-knockout-main.fc-ko-mirror .fc-bk-col.right {
+      grid-row: 1;
+      align-self: center;
+    }
+
+    .fc-knockout-main.fc-ko-mirror .fc-k-center {
+      grid-row: 1;
+    }
+
+    .fc-knockout-main.fc-ko-mirror > * {
+      overflow: visible;
+    }
+
+    .fc-knockout-main.fc-ko-mirror .fc-k-center { min-width: 128px; }
+
+    .fc-knockout-main.fc-ko-mirror .fc-k-center .fc-pair-group {
+      max-width: 148px;
+      margin: 0 auto 6px;
+      position: relative;
+    }
+
+    /* SVG overlay thay pseudo-elements — tránh lệch gap/grid */
+    .fc-knockout-main.fc-ko-mirror .fc-pair-group.left-out::before,
+    .fc-knockout-main.fc-ko-mirror .fc-pair-group.left-out::after,
+    .fc-knockout-main.fc-ko-mirror .fc-pair-group.right-out::before,
+    .fc-knockout-main.fc-ko-mirror .fc-pair-group.right-out::after,
+    .fc-knockout-main.fc-ko-mirror .fc-k-center .fc-pair-group::before,
+    .fc-knockout-main.fc-ko-mirror .fc-k-center .fc-pair-group::after,
+    .fc-knockout-main.fc-ko-mirror .fc-bk-col.left::after,
+    .fc-knockout-main.fc-ko-mirror .fc-bk-col.right::after,
+    .fc-knockout-main.fc-ko-mirror .fc-bk-match.left-bk::after,
+    .fc-knockout-main.fc-ko-mirror .fc-bk-match.right-bk::after {
+      display: none !important;
+    }
+
+    .fc-ko-lines {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 2;
+      overflow: visible;
+    }
+
+    .fc-knockout-main.fc-ko-mirror .fc-k-side,
+    .fc-knockout-main.fc-ko-mirror .fc-bk-col,
+    .fc-knockout-main.fc-ko-mirror .fc-k-center {
+      z-index: 3;
+    }
+
+    .fc-ko-line-path {
+      fill: none;
+      stroke: rgba(196, 181, 253, 0.92);
+      stroke-width: 2.25;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      filter: drop-shadow(0 0 3px rgba(139, 92, 246, 0.45));
+    }
 
     .fc-k-center .fc-pair-group {
       max-width: 148px;
@@ -1729,6 +1951,10 @@
       grid-row: 1 / 3;
       justify-content: center;
       gap: 10px;
+    }
+
+    .fc-knockout-main.fc-ko-mirror .fc-k-side.stacked {
+      grid-row: 1;
     }
 
     .fc-k-side.stacked .fc-pair-group { max-width: 156px; }
@@ -1954,7 +2180,7 @@
   <header>
     <div class="brand">
       <div class="brand-mark">
-        <img class="app-logo" src="assets/icons/logo-mark.svg" width="48" height="48" alt="">
+        <img class="app-logo" src="assets/brand/app_icon.svg" width="48" height="48" alt="">
       </div>
       <div class="brand-text">
         <h1>FC Mobile Cup</h1>
@@ -2104,6 +2330,7 @@
           <h2 style="font-size:1rem;margin-bottom:4px">🏆 Giải Nhất Nhì</h2>
           <div class="tournament-meta" id="tournament-status">Chưa có giải đang chạy</div>
         </div>
+        <button type="button" class="cycle-delete-btn" id="delete-active-cycle-btn" hidden>🗑 Xóa giải</button>
       </div>
       <div class="tournament-setup" style="margin-bottom:12px">
         <span class="mode-section-label">Thể thức</span>
@@ -2174,7 +2401,7 @@
 
   <div class="welcome-gate show" id="welcome-gate">
     <div class="welcome-card">
-      <img class="welcome-logo" src="assets/icons/logo-mark.svg" width="56" height="56" alt="">
+      <img class="welcome-logo" src="assets/brand/app_icon.svg" width="56" height="56" alt="">
       <h2>FC Mobile Cup</h2>
       <p class="welcome-sub">Đặt <strong>tên profile</strong> trên máy này.<br>Dữ liệu giải <strong>tự đồng bộ nhóm</strong> — mở link app là dùng chung.</p>
       <input type="text" id="welcome-name-input" placeholder="Tên của bạn..." maxlength="20" autocomplete="nickname" />
@@ -2225,6 +2452,26 @@
       <div class="modal-actions">
         <button class="btn-ghost" id="modal-cancel">Huỷ</button>
         <button class="btn-primary" id="modal-save" style="flex:1.5">Lưu kết quả</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="delete-cycle-modal">
+    <div class="modal delete-cycle-modal">
+      <h3 id="delete-cycle-title">Xóa giải</h3>
+      <p class="modal-sub" id="delete-cycle-desc">Hành động này không thể hoàn tác.</p>
+      <label for="delete-cycle-profile">Tên profile của bạn</label>
+      <input type="text" id="delete-cycle-profile" placeholder="Nhập đúng tên profile..." maxlength="20" autocomplete="off" />
+      <div class="delete-cycle-profile-error" id="delete-cycle-profile-error"></div>
+      <div class="delete-cycle-extra" id="delete-cycle-extra" hidden>
+        <p class="extra-hint">✓ Profile đã xác minh. Gõ <strong>delete</strong> để bật nút xóa.</p>
+        <label for="delete-cycle-confirm-text">Gõ delete</label>
+        <input type="text" id="delete-cycle-confirm-text" placeholder="delete" autocomplete="off" />
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn-ghost" id="delete-cycle-cancel">Huỷ</button>
+        <button type="button" class="btn-primary" id="delete-cycle-verify" style="flex:1.5">Xác minh</button>
+        <button type="button" class="btn-danger" id="delete-cycle-submit" hidden disabled style="flex:1.5">Xóa giải</button>
       </div>
     </div>
   </div>
@@ -2670,7 +2917,11 @@
       }
       if (state.tournament && typeof state.tournament === "object") {
         tournamentData = state.tournament;
-        tournamentData.cycles.forEach(ensureCycleShape);
+        let thirdBackfilled = false;
+        tournamentData.cycles.forEach(c => {
+          if (ensureCycleShape(c)) thirdBackfilled = true;
+        });
+        if (thirdBackfilled) scheduleSaveToGithub();
       }
       if (state.teamsCache?.teams?.length) {
         stateTeamsCache = state.teamsCache;
@@ -3104,6 +3355,161 @@
       saveTimer = setTimeout(saveStateToGithub, 800);
     }
 
+    let pendingDeleteCycleId = null;
+    let deleteCycleProfileVerified = false;
+
+    function getCycleById(cycleId) {
+      return tournamentData.cycles.find(c => c.id === cycleId) || null;
+    }
+
+    function isDeleteTextConfirmed(deleteInput) {
+      return (deleteInput || "").trim().toLowerCase() === "delete";
+    }
+
+    function resetDeleteCycleModalForm() {
+      deleteCycleProfileVerified = false;
+      const profileEl = document.getElementById("delete-cycle-profile");
+      const deleteEl = document.getElementById("delete-cycle-confirm-text");
+      const extraWrap = document.getElementById("delete-cycle-extra");
+      const verifyBtn = document.getElementById("delete-cycle-verify");
+      const submitBtn = document.getElementById("delete-cycle-submit");
+      const errEl = document.getElementById("delete-cycle-profile-error");
+
+      if (profileEl) {
+        profileEl.value = "";
+        profileEl.disabled = false;
+      }
+      if (deleteEl) deleteEl.value = "";
+      if (extraWrap) extraWrap.hidden = true;
+      if (verifyBtn) {
+        verifyBtn.hidden = false;
+        verifyBtn.disabled = false;
+      }
+      if (submitBtn) {
+        submitBtn.hidden = true;
+        submitBtn.disabled = true;
+      }
+      if (errEl) errEl.textContent = "";
+    }
+
+    function updateDeleteCycleModalState() {
+      const profileEl = document.getElementById("delete-cycle-profile");
+      const deleteEl = document.getElementById("delete-cycle-confirm-text");
+      const verifyBtn = document.getElementById("delete-cycle-verify");
+      const submitBtn = document.getElementById("delete-cycle-submit");
+      if (!profileEl || !verifyBtn || !submitBtn) return;
+
+      if (!deleteCycleProfileVerified) {
+        verifyBtn.disabled = !profileEl.value.trim();
+        submitBtn.disabled = true;
+        return;
+      }
+
+      submitBtn.disabled = !isDeleteTextConfirmed(deleteEl?.value || "");
+    }
+
+    function verifyDeleteCycleProfile() {
+      const profileEl = document.getElementById("delete-cycle-profile");
+      const errEl = document.getElementById("delete-cycle-profile-error");
+      const extraWrap = document.getElementById("delete-cycle-extra");
+      const verifyBtn = document.getElementById("delete-cycle-verify");
+      const submitBtn = document.getElementById("delete-cycle-submit");
+      const deleteEl = document.getElementById("delete-cycle-confirm-text");
+      const me = getUserName();
+      const profile = profileEl?.value.trim() || "";
+
+      if (!me) {
+        if (errEl) errEl.textContent = "Chưa có profile trên máy này.";
+        showToast("Chưa có profile — đặt tên khi vào app", true);
+        return;
+      }
+      if (profile.toLowerCase() !== me.toLowerCase()) {
+        if (errEl) errEl.textContent = "Tên profile không đúng.";
+        showToast("Tên profile không đúng", true);
+        return;
+      }
+
+      deleteCycleProfileVerified = true;
+      if (errEl) errEl.textContent = "";
+      if (profileEl) profileEl.disabled = true;
+      if (extraWrap) extraWrap.hidden = false;
+      if (verifyBtn) verifyBtn.hidden = true;
+      if (submitBtn) {
+        submitBtn.hidden = false;
+        submitBtn.disabled = true;
+      }
+      if (deleteEl) {
+        deleteEl.value = "";
+        deleteEl.focus();
+      }
+      updateDeleteCycleModalState();
+    }
+
+    function openDeleteCycleModal(cycleId) {
+      const cycle = getCycleById(cycleId);
+      if (!cycle) return showToast("Không tìm thấy giải", true);
+
+      pendingDeleteCycleId = cycleId;
+      const titleEl = document.getElementById("delete-cycle-title");
+      const descEl = document.getElementById("delete-cycle-desc");
+      const profileEl = document.getElementById("delete-cycle-profile");
+
+      if (titleEl) titleEl.textContent = `Xóa Giải #${cycle.number}?`;
+      if (descEl) {
+        const stateNote = cycle.locked ? "Giải đã khóa" : "Giải đang đá dở";
+        descEl.textContent = `${stateNote} · VĐ: ${getChampion(cycle)}. Không thể hoàn tác.`;
+      }
+
+      resetDeleteCycleModalForm();
+      updateDeleteCycleModalState();
+      document.getElementById("delete-cycle-modal")?.classList.add("show");
+      profileEl?.focus();
+    }
+
+    function closeDeleteCycleModal() {
+      pendingDeleteCycleId = null;
+      resetDeleteCycleModalForm();
+      document.getElementById("delete-cycle-modal")?.classList.remove("show");
+    }
+
+    function deleteCycleById(cycleId) {
+      const idx = tournamentData.cycles.findIndex(c => c.id === cycleId);
+      if (idx < 0) return false;
+      if (tournamentData.activeCycleId === cycleId) {
+        tournamentData.activeCycleId = null;
+      }
+      tournamentData.cycles.splice(idx, 1);
+      saveTournamentData();
+      return true;
+    }
+
+    function confirmDeleteCycle() {
+      if (!pendingDeleteCycleId || !deleteCycleProfileVerified) return;
+      const deleteEl = document.getElementById("delete-cycle-confirm-text");
+      if (!isDeleteTextConfirmed(deleteEl?.value)) {
+        showToast("Gõ delete để xác nhận xóa", true);
+        updateDeleteCycleModalState();
+        return;
+      }
+
+      const cycle = getCycleById(pendingDeleteCycleId);
+      const num = cycle?.number || "?";
+      if (!deleteCycleById(pendingDeleteCycleId)) {
+        showToast("Không xóa được giải", true);
+        return;
+      }
+
+      closeDeleteCycleModal();
+      renderTournament();
+      renderProfile(getUserName());
+      renderStats();
+      showToast(`Đã xóa Giải #${num} ✓`);
+    }
+
+    function cycleDeleteBtn(cycleId) {
+      return `<button type="button" class="cycle-delete-btn" data-delete-cycle="${cycleId}" title="Xóa giải">🗑 Xóa</button>`;
+    }
+
     function saveTournamentData() {
       scheduleSaveToGithub();
     }
@@ -3126,6 +3532,113 @@
       if (!cycle.playerTeams || typeof cycle.playerTeams !== "object") {
         cycle.playerTeams = assignTeamsForCycle(cycle.players || []);
       }
+      backfillMatchTeams(cycle);
+      const backfilled = backfillKnockoutThirdPlaceIfNeeded(cycle);
+      return backfilled;
+    }
+
+    function getPlayerTeamFromKnockoutHistory(cycle, playerName) {
+      for (const round of cycle.knockoutRounds || []) {
+        for (const m of round.matches) {
+          if (m.home === playerName || m.away === playerName) {
+            const t = getMatchTeam(cycle, m, playerName);
+            if (t) return t;
+          }
+        }
+      }
+      return getCycleTeam(cycle, playerName);
+    }
+
+    function isKnockoutThirdEditable(cycle, match) {
+      return !!(cycle?.format === "knockout" && match?.type === "third" && !match.played);
+    }
+
+    function isTournamentMatchClickable(cycle, match, phase, interactive) {
+      if (!match || !cycle) return false;
+      if (isKnockoutThirdEditable(cycle, match)) return true;
+      if (cycle.locked) return false;
+      return !!(interactive && !match.played);
+    }
+
+    function resolveCycleFromEl(el) {
+      const diagram = el?.closest?.("[data-cycle-id]");
+      if (diagram?.dataset.cycleId) return getCycleById(diagram.dataset.cycleId);
+      return getActiveCycle();
+    }
+
+    function getKnockoutThirdMatch(cycle) {
+      return cycle?.playoffs?.find(m => m.type === "third") || null;
+    }
+
+    function getSemiFinalLosersFromRound(round) {
+      if (!round || round.matches.length !== 2 || !round.matches.every(m => m.played)) return null;
+      return round.matches.map(m => matchLoser(m));
+    }
+
+    function ensureKnockoutThirdPlace(cycle, losers) {
+      if (!losers || losers.length !== 2) return false;
+      let third = getKnockoutThirdMatch(cycle);
+      if (!third) {
+        cycle.playoffs.push({
+          id: uid(),
+          type: "third",
+          label: "Tranh hạng 3 · Ba vs Tư",
+          home: losers[0],
+          away: losers[1],
+          homeSeed: 3,
+          awaySeed: 4,
+          scoreHome: null,
+          scoreAway: null,
+          played: false,
+          lockedAt: null,
+        });
+        third = getKnockoutThirdMatch(cycle);
+        const teams = {};
+        losers.forEach(n => { teams[n] = getPlayerTeamFromKnockoutHistory(cycle, n); });
+        syncMatchTeamsFromMap(third, teams);
+        return true;
+      }
+      if (!third.played) {
+        third.home = losers[0];
+        third.away = losers[1];
+      }
+      return false;
+    }
+
+    function backfillKnockoutThirdPlaceIfNeeded(cycle) {
+      if (cycle.format !== "knockout" || getKnockoutThirdMatch(cycle)) return false;
+      const semiRound = (cycle.knockoutRounds || []).find(r =>
+        r.matches.length === 2 && r.matches.every(m => m.played)
+      );
+      if (!semiRound) return false;
+      const losers = getSemiFinalLosersFromRound(semiRound);
+      return losers ? ensureKnockoutThirdPlace(cycle, losers) : false;
+    }
+
+    function getActiveKnockoutRoundIndex(cycle) {
+      const rounds = cycle?.knockoutRounds || [];
+      for (let i = 0; i < rounds.length; i++) {
+        if (!rounds[i].completed) return i;
+      }
+      return -1;
+    }
+
+    function knockoutHasPendingThird(cycle) {
+      const third = getKnockoutThirdMatch(cycle);
+      return !!(third && !third.played);
+    }
+
+    function maybeFinishKnockoutTournament(cycle) {
+      if (cycle.format !== "knockout" || cycle.locked || cycle.phase !== "knockout") return;
+      const last = cycle.knockoutRounds?.[cycle.knockoutRounds.length - 1];
+      const final = last?.matches?.length === 1 && last.matches[0]?.played ? last.matches[0] : null;
+      if (!final) return;
+      cycle.champion = matchWinner(final);
+      if (knockoutHasPendingThird(cycle)) return;
+      cycle.phase = "done";
+      cycle.locked = true;
+      cycle.completedAt = new Date().toISOString();
+      tournamentData.activeCycleId = null;
     }
 
     function assignTeamsForCycle(playerList) {
@@ -3142,6 +3655,61 @@
       return teams;
     }
 
+    function snapshotTeam(team) {
+      return team ? { name: team.name, flag: team.flag } : null;
+    }
+
+    function syncMatchTeamsFromMap(match, teamsMap) {
+      if (!match || !teamsMap) return;
+      if (match.home && teamsMap[match.home]) match.teamHome = snapshotTeam(teamsMap[match.home]);
+      if (match.away && teamsMap[match.away]) match.teamAway = snapshotTeam(teamsMap[match.away]);
+    }
+
+    function getMatchTeam(cycle, match, playerName) {
+      if (match && playerName) {
+        if (match.home === playerName && match.teamHome) return match.teamHome;
+        if (match.away === playerName && match.teamAway) return match.teamAway;
+      }
+      return getCycleTeam(cycle, playerName);
+    }
+
+    function freezeMatchTeams(cycle, match) {
+      if (!match) return;
+      if (!match.teamHome && match.home) {
+        const t = getMatchTeam(cycle, match, match.home);
+        if (t) match.teamHome = snapshotTeam(t);
+      }
+      if (!match.teamAway && match.away) {
+        const t = getMatchTeam(cycle, match, match.away);
+        if (t) match.teamAway = snapshotTeam(t);
+      }
+    }
+
+    function assignTeamsToKnockoutRound(cycle, round, teamsMap = null, updatePlayerTeams = null) {
+      if (!round) return;
+      const names = getKnockoutRoundPlayers(round);
+      const teams = teamsMap || assignTeamsForPlayerNames(names);
+      round.matches.forEach(m => {
+        if (!m.played) syncMatchTeamsFromMap(m, teams);
+      });
+      const shouldUpdateGlobal = updatePlayerTeams ?? !teamsMap;
+      if (shouldUpdateGlobal) {
+        cycle.playerTeams = { ...cycle.playerTeams, ...teams };
+      }
+    }
+
+    function backfillMatchTeams(cycle) {
+      if (cycle.format !== "knockout") return;
+      (cycle.knockoutRounds || []).forEach(round => {
+        round.matches.forEach(m => {
+          if (m.played && (!m.teamHome || !m.teamAway)) freezeMatchTeams(cycle, m);
+        });
+      });
+      (cycle.playoffs || []).forEach(m => {
+        if (m.played && (!m.teamHome || !m.teamAway)) freezeMatchTeams(cycle, m);
+      });
+    }
+
     function getKnockoutRoundPlayers(round) {
       const names = new Set();
       (round.byes || []).forEach(n => names.add(n));
@@ -3154,6 +3722,7 @@
 
     function canRandomizeKnockoutRound(cycle, roundIndex) {
       if (!cycle || cycle.locked || cycle.format !== "knockout") return false;
+      if (getActiveKnockoutRoundIndex(cycle) !== roundIndex) return false;
       const rounds = cycle.knockoutRounds || [];
       const round = rounds[roundIndex];
       if (!round || round.completed) return false;
@@ -3162,6 +3731,12 @@
         if (!rounds[i]?.completed) return false;
       }
       return true;
+    }
+
+    function canRandomizeKnockoutThird(cycle) {
+      if (!cycle || cycle.format !== "knockout") return false;
+      const third = getKnockoutThirdMatch(cycle);
+      return !!(third && !third.played);
     }
 
     function reshuffleKnockoutRoundPairings(round, entrantNames) {
@@ -3193,26 +3768,61 @@
       const round = cycle.knockoutRounds[roundIndex];
       if (roundIndex === 0) {
         cycle.knockoutRounds = cycle.knockoutRounds.slice(0, 1);
+        cycle.playoffs = cycle.playoffs.filter(m => m.type !== "third");
         cycle.champion = null;
         cycle.phase = "knockout";
         reshuffleKnockoutRoundPairings(round, cycle.players);
         cycle.playerTeams = assignTeamsForPlayerNames(cycle.players);
-        showToast("Đã random lại cặp + ĐTQG");
+        assignTeamsToKnockoutRound(cycle, round, cycle.playerTeams);
+        showToast("Đã random lại cặp + quốc gia");
       } else {
-        const names = getKnockoutRoundPlayers(round);
-        cycle.playerTeams = { ...cycle.playerTeams, ...assignTeamsForPlayerNames(names) };
-        showToast("Đã random lại ĐTQG vòng này");
+        const names = [];
+        round.matches.forEach(m => {
+          if (!m.played) names.push(m.home, m.away);
+        });
+        if (!names.length) {
+          showToast("Không còn trận nào để random", true);
+          return;
+        }
+        const teams = assignTeamsForPlayerNames(names);
+        round.matches.forEach(m => {
+          if (!m.played) syncMatchTeamsFromMap(m, teams);
+        });
+        showToast("Đã random lại quốc gia vòng này");
       }
       saveTournamentData();
       renderTournament();
     }
 
+    function rerandomizeKnockoutThird(cycle) {
+      if (!canRandomizeKnockoutThird(cycle)) {
+        showToast("Không random được — chỉ random trận tranh hạng 3 chưa đá", true);
+        return;
+      }
+      const third = getKnockoutThirdMatch(cycle);
+      syncMatchTeamsFromMap(third, assignTeamsForPlayerNames([third.home, third.away]));
+      saveTournamentData();
+      renderTournament();
+      showToast("Đã random lại quốc gia tranh hạng 3");
+    }
+
+    function diceIconHtml() {
+      return `<img class="fc-dice-icon" src="assets/brand/app_icon.svg" width="34" height="34" alt="" aria-hidden="true">`;
+    }
+
     function koRoundRandomBtn(cycle, roundIndex, interactive) {
       if (!interactive || !canRandomizeKnockoutRound(cycle, roundIndex)) return "";
       const first = roundIndex === 0;
-      const title = first ? "Random lại cặp đấu + quốc gia" : "Random lại quốc gia";
-      const label = first ? "🎲 Random" : "🎲 ĐTQG";
-      return `<button type="button" class="fc-ko-random-btn" data-ko-round="${roundIndex}" title="${title}">${label}</button>`;
+      const title = first
+        ? "Random cặp đấu + quốc gia (chỉ vòng đang đá)"
+        : "Random quốc gia (chỉ trận chưa đá vòng này)";
+      return `<button type="button" class="fc-ko-random-btn" data-ko-round="${roundIndex}" title="${title}" aria-label="${title}">${diceIconHtml()}</button>`;
+    }
+
+    function koThirdRandomBtn(cycle, interactive) {
+      if (!interactive || !canRandomizeKnockoutThird(cycle)) return "";
+      const title = "Random quốc gia tranh hạng 3";
+      return `<button type="button" class="fc-ko-random-btn fc-ko-third-random-btn" title="${title}" aria-label="${title}">${diceIconHtml()}</button>`;
     }
 
     function getCycleTeam(cycle, playerName) {
@@ -3265,6 +3875,7 @@
         byes,
         completed: false,
       });
+      assignTeamsToKnockoutRound(cycle, cycle.knockoutRounds[cycle.knockoutRounds.length - 1], null, false);
     }
 
     function maybeAdvanceKnockout(cycle) {
@@ -3274,17 +3885,15 @@
       if (!current.matches.every(m => m.played)) return;
 
       current.completed = true;
-      const winners = current.matches.map(m =>
-        m.scoreHome > m.scoreAway ? m.home : m.away
-      );
+      const losers = getSemiFinalLosersFromRound(current);
+      if (losers) ensureKnockoutThirdPlace(cycle, losers);
+
+      const winners = current.matches.map(m => matchWinner(m));
       const nextEntrants = [...current.byes, ...winners];
 
       if (nextEntrants.length === 1) {
         cycle.champion = nextEntrants[0];
-        cycle.phase = "done";
-        cycle.locked = true;
-        cycle.completedAt = new Date().toISOString();
-        tournamentData.activeCycleId = null;
+        maybeFinishKnockoutTournament(cycle);
         return;
       }
 
@@ -3405,6 +4014,7 @@
     function maybeAdvancePhase(cycle) {
       if (cycle.format === "knockout") {
         maybeAdvanceKnockout(cycle);
+        maybeFinishKnockoutTournament(cycle);
         return;
       }
       if (cycle.phase === "league" && leagueComplete(cycle)) {
@@ -3463,6 +4073,7 @@
       };
       if (format === "knockout") {
         generateKnockoutRound(cycle, players, true);
+        assignTeamsToKnockoutRound(cycle, cycle.knockoutRounds[0], cycle.playerTeams, false);
       }
       tournamentData.cycles.push(cycle);
       tournamentData.activeCycleId = cycle.id;
@@ -3472,12 +4083,12 @@
       switchView("tournament");
     }
 
-    function openScoreModal(match, phase, roundLabel) {
-      scoreModalContext = { type: "tournament", match, phase, roundLabel };
+    function openScoreModal(match, phase, roundLabel, cycleRef) {
+      const cycle = cycleRef || getActiveCycle();
+      scoreModalContext = { type: "tournament", match, phase, roundLabel, cycleId: cycle?.id };
       pendingMatch = { match, phase };
-      const cycle = getActiveCycle();
-      const hTeam = cycle ? getCycleTeam(cycle, match.home) : null;
-      const aTeam = cycle ? getCycleTeam(cycle, match.away) : null;
+      const hTeam = cycle ? getMatchTeam(cycle, match, match.home) : null;
+      const aTeam = cycle ? getMatchTeam(cycle, match, match.away) : null;
       const showTeams = !!(hTeam || aTeam);
       document.getElementById("modal-teams").style.display = showTeams ? "grid" : "none";
       if (showTeams) {
@@ -3521,8 +4132,9 @@
 
     function saveMatchScore(scoreHome, scoreAway) {
       if (!scoreModalContext || scoreModalContext.type !== "tournament") return;
-      const cycle = getActiveCycle();
-      if (!cycle || cycle.locked) return;
+      const cycle = (scoreModalContext.cycleId && getCycleById(scoreModalContext.cycleId))
+        || getActiveCycle();
+      if (!cycle) return;
       const { match, phase } = scoreModalContext;
       let target = null;
       if (phase === "knockout") {
@@ -3532,21 +4144,29 @@
         target = list.find(m => m.id === match.id);
       }
       if (!target) return;
+
+      const isLockedThirdSave = cycle.locked && phase === "playoffs" && target.type === "third";
+      if (cycle.locked && !isLockedThirdSave) return;
+
       if (target.played && !confirm("Sửa tỉ số trận đã khóa?")) return;
       const wasPlayed = target.played;
       const wasLocked = cycle.locked;
+      if (!wasPlayed) freezeMatchTeams(cycle, target);
       target.scoreHome = scoreHome;
       target.scoreAway = scoreAway;
       target.played = true;
       target.lockedAt = new Date().toISOString();
-      if (!wasPlayed) maybeAdvancePhase(cycle);
-      const justFinished = !wasLocked && cycle.locked;
+      if (!wasPlayed && !cycle.locked) maybeAdvancePhase(cycle);
       saveTournamentData();
       closeScoreModal();
       renderTournament();
-      if (justFinished) {
+      renderProfile(getUserName());
+      renderStats();
+      if (!wasLocked && cycle.locked) {
         updatePastTournamentsPanel();
         showToast(`Vô địch: ${getChampion(cycle)} 🏆 · xem Giải đã xong bên dưới`);
+      } else if (isLockedThirdSave && !wasPlayed) {
+        showToast("Đã lưu tranh hạng 3 ✓");
       } else {
         showToast(wasPlayed ? "Đã cập nhật ✓" : "Đã lưu ✓");
       }
@@ -3589,9 +4209,9 @@
         </div>`;
     }
 
-    function fcBkBox(match, side, interactive, highlightPlayer, phase = "playoffs", roundLabel = "", labelText = null) {
-      const cycle = getActiveCycle();
-      const clickable = interactive && match && !match.played && cycle && !cycle.locked;
+    function fcBkBox(match, side, interactive, highlightPlayer, phase = "playoffs", roundLabel = "", labelText = null, cycleRef = null) {
+      const cycle = cycleRef || getActiveCycle();
+      const clickable = isTournamentMatchClickable(cycle, match, phase, interactive);
       const played = match?.played;
       const score = played ? `${match.scoreHome}:${match.scoreAway}` : "-:-";
       const label = labelText || (match?.type === "third" ? "Hạng 3" : "CK");
@@ -3609,13 +4229,13 @@
       `;
     }
 
-    function fcPairSlots(home, away, homeScore, awayScore, homeSeed, awaySeed, homeWin, awayWin, side, cycle) {
-      return `${fcSlot(home, homeScore, homeWin, homeSeed, side, getCycleTeam(cycle, home))}${fcSlot(away, awayScore, awayWin, awaySeed, side, getCycleTeam(cycle, away))}`;
+    function fcPairSlots(home, away, homeScore, awayScore, homeSeed, awaySeed, homeWin, awayWin, side, cycle, match = null) {
+      return `${fcSlot(home, homeScore, homeWin, homeSeed, side, getMatchTeam(cycle, match, home))}${fcSlot(away, awayScore, awayWin, awaySeed, side, getMatchTeam(cycle, match, away))}`;
     }
 
     function fcPairGroup(home, away, homeScore, awayScore, homeSeed, awaySeed, homeWin, awayWin, side, match, interactive, highlightPlayer, cycle, phase = "playoffs", roundLabel = "", connector = true) {
       const cycleRef = cycle || getActiveCycle();
-      const clickable = interactive && match && !match.played && cycleRef && !cycleRef.locked;
+      const clickable = isTournamentMatchClickable(cycleRef, match, phase, interactive);
       const hl = highlightPlayer && match && (match.home === highlightPlayer || match.away === highlightPlayer);
       const sideClass = connector ? (side === "right" ? "right-out" : side === "left" ? "left-out" : "") : "";
       const attrs = match
@@ -3625,7 +4245,7 @@
         <div class="fc-pair-group ${sideClass} ${clickable ? "clickable" : ""}"
              ${attrs} ${clickable ? 'title="Bấm nhập kết quả"' : ""}
              ${hl ? 'style="filter:drop-shadow(0 0 4px #facc15)"' : ""}>
-          ${fcPairSlots(home, away, homeScore, awayScore, homeSeed, awaySeed, homeWin, awayWin, side, cycleRef)}
+          ${fcPairSlots(home, away, homeScore, awayScore, homeSeed, awaySeed, homeWin, awayWin, side, cycleRef, match)}
         </div>`;
     }
 
@@ -3658,7 +4278,17 @@
         const second = matchLoser(final);
         if (first) ranks[first] = 1;
         if (second) ranks[second] = 2;
-        return { ranks, first, second, third: null };
+        const thirdMatch = getKnockoutThirdMatch(cycle);
+        if (thirdMatch?.played) {
+          const third = matchWinner(thirdMatch);
+          if (third) ranks[third] = 3;
+        }
+        return {
+          ranks,
+          first,
+          second,
+          third: Object.keys(ranks).find(n => ranks[n] === 3) || null,
+        };
       }
 
       const finalMatch = cycle.playoffs.find(m => m.type === "final" && m.played);
@@ -3766,6 +4396,161 @@
       return label.slice(0, 4);
     }
 
+    function relBox(rootRect, el) {
+      if (!el) return null;
+      const b = el.getBoundingClientRect();
+      return {
+        l: b.left - rootRect.left,
+        r: b.right - rootRect.left,
+        t: b.top - rootRect.top,
+        b: b.bottom - rootRect.top,
+        cx: (b.left + b.right) / 2 - rootRect.left,
+        cy: (b.top + b.bottom) / 2 - rootRect.top,
+      };
+    }
+
+    function drawKoPath(svg, d) {
+      const p = document.createElementNS("http://www.w3.org/2000/svg", "path");
+      p.setAttribute("d", d);
+      p.setAttribute("class", "fc-ko-line-path");
+      svg.appendChild(p);
+    }
+
+    function drawPairVertical(svg, rootRect, pairEl, side) {
+      const pair = relBox(rootRect, pairEl);
+      const slots = pairEl.querySelectorAll(".fc-slot");
+      if (!pair || slots.length < 2) return null;
+      const s0 = relBox(rootRect, slots[0]);
+      const s1 = relBox(rootRect, slots[1]);
+      const x = side === "left" ? pair.r : pair.l;
+      drawKoPath(svg, `M ${x} ${s0.cy} V ${s1.cy}`);
+      return (s0.cy + s1.cy) / 2;
+    }
+
+    function drawElbow(svg, x1, y1, x2, y2) {
+      const midX = (x1 + x2) / 2;
+      drawKoPath(svg, `M ${x1} ${y1} H ${midX} V ${y2} H ${x2}`);
+    }
+
+    function drawPairToMid(svg, rootRect, pairEl, midEl, side) {
+      const yMid = drawPairVertical(svg, rootRect, pairEl, side);
+      const pair = relBox(rootRect, pairEl);
+      const mid = relBox(rootRect, midEl);
+      if (yMid == null || !pair || !mid) return;
+      if (side === "left") drawKoPath(svg, `M ${pair.r} ${yMid} H ${mid.l}`);
+      else drawKoPath(svg, `M ${pair.l} ${yMid} H ${mid.r}`);
+    }
+
+    function drawSideBranch(svg, rootRect, pairEl, midEl, finalSlotEl, side) {
+      drawPairToMid(svg, rootRect, pairEl, midEl, side);
+      const mid = relBox(rootRect, midEl);
+      const fin = relBox(rootRect, finalSlotEl);
+      if (!mid || !fin) return;
+      if (side === "left") drawElbow(svg, mid.r, mid.cy, fin.l, fin.cy);
+      else drawElbow(svg, mid.l, mid.cy, fin.r, fin.cy);
+    }
+
+    function drawQfToSemi(svg, rootRect, qfPair, sfPair, slotIndex, side) {
+      const yMid = drawPairVertical(svg, rootRect, qfPair, side);
+      const qf = relBox(rootRect, qfPair);
+      const sfSlots = sfPair.querySelectorAll(".fc-slot");
+      const target = relBox(rootRect, sfSlots[slotIndex]);
+      if (yMid == null || !qf || !target) return;
+      const xFrom = side === "left" ? qf.r : qf.l;
+      const xTo = side === "left" ? target.l : target.r;
+      drawKoPath(svg, `M ${xFrom} ${yMid} H ${xTo}`);
+    }
+
+    function drawSemiToFinal(svg, rootRect, sfPair, finalSlotEl, side) {
+      const yMid = drawPairVertical(svg, rootRect, sfPair, side);
+      const sf = relBox(rootRect, sfPair);
+      const fin = relBox(rootRect, finalSlotEl);
+      if (yMid == null || !sf || !fin) return;
+      if (side === "left") drawElbow(svg, sf.r, yMid, fin.l, fin.cy);
+      else drawElbow(svg, sf.l, yMid, fin.r, fin.cy);
+    }
+
+    function drawKnockoutMirrorLines(main) {
+      if (!main?.classList.contains("fc-ko-mirror")) return;
+
+      let svg = main.querySelector(".fc-ko-lines");
+      if (!svg) {
+        svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        svg.setAttribute("class", "fc-ko-lines");
+        svg.setAttribute("aria-hidden", "true");
+        main.insertBefore(svg, main.firstChild);
+      }
+      while (svg.firstChild) svg.removeChild(svg.firstChild);
+
+      const rootRect = main.getBoundingClientRect();
+      if (rootRect.width < 20 || rootRect.height < 20) return;
+      svg.setAttribute("viewBox", `0 0 ${Math.ceil(rootRect.width)} ${Math.ceil(rootRect.height)}`);
+
+      const leftPairs = [...main.querySelectorAll(".fc-k-side.left .fc-pair-group")];
+      const rightPairs = [...main.querySelectorAll(".fc-k-side.right .fc-pair-group")];
+      const sfLeft = main.querySelector(".fc-bk-col.left .fc-pair-group");
+      const sfRight = main.querySelector(".fc-bk-col.right .fc-pair-group");
+      const bkLeft = main.querySelector(".fc-bk-col.left .fc-bk-match");
+      const bkRight = main.querySelector(".fc-bk-col.right .fc-bk-match");
+      const finalPair = main.querySelector(".fc-k-center .fc-pair-group");
+      const finalSlots = finalPair ? [...finalPair.querySelectorAll(".fc-slot")] : [];
+
+      if (leftPairs.length === 2 && sfLeft && finalSlots.length >= 2) {
+        drawQfToSemi(svg, rootRect, leftPairs[0], sfLeft, 0, "left");
+        drawQfToSemi(svg, rootRect, leftPairs[1], sfLeft, 1, "left");
+        drawSemiToFinal(svg, rootRect, sfLeft, finalSlots[0], "left");
+        drawQfToSemi(svg, rootRect, rightPairs[0], sfRight, 0, "right");
+        drawQfToSemi(svg, rootRect, rightPairs[1], sfRight, 1, "right");
+        drawSemiToFinal(svg, rootRect, sfRight, finalSlots[1], "right");
+      } else if (leftPairs.length === 1 && bkLeft) {
+        if (finalPair && finalSlots.length >= 2) {
+          drawSideBranch(svg, rootRect, leftPairs[0], bkLeft, finalSlots[0], "left");
+          if (rightPairs[0] && bkRight) {
+            drawSideBranch(svg, rootRect, rightPairs[0], bkRight, finalSlots[1], "right");
+          }
+        } else {
+          drawPairToMid(svg, rootRect, leftPairs[0], bkLeft, "left");
+          if (rightPairs[0] && bkRight) drawPairToMid(svg, rootRect, rightPairs[0], bkRight, "right");
+          if (!finalPair) {
+            const center = relBox(rootRect, main.querySelector(".fc-k-center"));
+            const bk = relBox(rootRect, bkLeft);
+            if (center && bk) drawKoPath(svg, `M ${bk.r} ${bk.cy} H ${center.l}`);
+          }
+        }
+      }
+    }
+
+    let koLinesResizeTimer = null;
+    function refreshKnockoutLines(scope = document) {
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          scope.querySelectorAll(".fc-knockout-main.fc-ko-mirror").forEach(drawKnockoutMirrorLines);
+        });
+      });
+    }
+
+    function renderKnockoutThirdSection(cycle, interactive, highlightPlayer) {
+      const third = getKnockoutThirdMatch(cycle);
+      if (!third) return "";
+      const thirdInteractive = interactive || isKnockoutThirdEditable(cycle, third);
+      const thirdLabel = "Tranh hạng 3";
+      const thirdWinner = matchWinner(third);
+      const pendingNote = !third.played
+        ? `<div class="cycle-info" style="text-align:center;margin-top:6px;color:#fbbf24">Bấm cặp đấu để nhập kết quả 3 vs 4</div>`
+        : "";
+      return `
+        <div class="fc-knockout-third-wrap">
+          <div class="fc-knockout-third-head">
+            <span>🥉 ${thirdLabel}</span>
+            ${koThirdRandomBtn(cycle, thirdInteractive)}
+          </div>
+          <div class="fc-knockout-third-body">
+            ${fcPairGroupFromMatch(third, null, thirdInteractive, highlightPlayer, cycle, "playoffs", thirdLabel, false)}
+          </div>
+          ${thirdWinner ? `<div class="fc-third-name" style="text-align:center;margin-top:6px">Hạng 3: ${thirdWinner}</div>` : pendingNote}
+        </div>`;
+    }
+
     function renderKnockoutMirroredFour(cycle, interactive, highlightPlayer) {
       const semiRound = cycle.knockoutRounds[0];
       const semi1 = semiRound?.matches[0];
@@ -3807,6 +4592,7 @@
               ${fcPairGroupFromMatch(semi2, "right", interactive, highlightPlayer, cycle, "knockout", semiLabel)}
             </div>
           </div>
+          ${renderKnockoutThirdSection(cycle, interactive, highlightPlayer)}
         </div>`;
     }
 
@@ -3895,6 +4681,7 @@
               ${qfPair(qf[3], "right")}
             </div>
           </div>
+          ${renderKnockoutThirdSection(cycle, interactive, highlightPlayer)}
         </div>`;
     }
 
@@ -4002,8 +4789,8 @@
                    data-match-id="${m.id}" data-phase="league"
                    ${hl ? 'style="filter:drop-shadow(0 0 4px #facc15)"' : ""}>
                 <div class="fc-match-tag">V${round}</div>
-                ${fcSlot(m.home, played ? m.scoreHome : null, hWin, null, null, getCycleTeam(cycle, m.home))}
-                ${fcSlot(m.away, played ? m.scoreAway : null, aWin, null, null, getCycleTeam(cycle, m.away))}
+                ${fcSlot(m.home, played ? m.scoreHome : null, hWin, null, null, getMatchTeam(cycle, m, m.home))}
+                ${fcSlot(m.away, played ? m.scoreAway : null, aWin, null, null, getMatchTeam(cycle, m, m.away))}
               </div>`;
           }).join("")}
         </div>
@@ -4066,8 +4853,8 @@
               <div class="fc-league-pair ${clickable ? "clickable" : ""}"
                    data-match-id="${m.id}" data-phase="knockout" data-round-label="${round.label}"
                    ${hl ? 'style="filter:drop-shadow(0 0 4px #facc15)"' : ""}>
-                ${fcSlot(m.home, played ? m.scoreHome : null, hWin, null, null, getCycleTeam(cycle, m.home))}
-                ${fcSlot(m.away, played ? m.scoreAway : null, aWin, null, null, getCycleTeam(cycle, m.away))}
+                ${fcSlot(m.home, played ? m.scoreHome : null, hWin, null, null, getMatchTeam(cycle, m, m.home))}
+                ${fcSlot(m.away, played ? m.scoreAway : null, aWin, null, null, getMatchTeam(cycle, m, m.away))}
               </div>`;
           }).join("")}
         </div>
@@ -4078,7 +4865,8 @@
         <div class="fc-league-scroll">
           <div class="fc-league-stages">${stageLabels}</div>
           <div class="fc-league-body">${cols}</div>
-        </div>`;
+        </div>
+        ${renderKnockoutThirdSection(cycle, interactive, highlightPlayer)}`;
     }
 
     function renderFcDiagram(cycle, interactive = false, highlightPlayer = null) {
@@ -4093,24 +4881,11 @@
       ensureCycleShape(cycle);
 
       if (cycle.format === "knockout") {
-        const badge = cycle.locked ? "ĐÃ KHÓA" : cycle.phase === "done" ? "HOÀN TẤT" : "LOẠI TRỰC TIẾP";
-        const champ = cycle.champion || getChampion(cycle);
-        const champBlock = cycle.champion ? `
-          <div class="fc-knockout-champ">
-            <div class="fc-trophy-hero">🏆</div>
-            <div class="fc-trophy-text">Vô địch</div>
-            <div class="fc-champ-name">${champ}</div>
-          </div>` : "";
         return `
           <div class="fc-diagram" data-cycle-id="${cycle.id}">
-            <div class="fc-diagram-head">
-              <div class="fc-title">⚽ GIẢI NHẤT NHÌ #${cycle.number}</div>
-              <div class="fc-sub">${badge} · ${cycle.players.length} người</div>
-            </div>
             ${renderPlayerSeedBar(cycle)}
             <div class="fc-section-divider">Loại trực tiếp</div>
             ${renderKnockoutMirrored(cycle, interactive, highlightPlayer)}
-            ${champBlock}
           </div>`;
       }
 
@@ -4118,7 +4893,6 @@
       const showPlayoffs = cycle.players.length >= 4;
       const finalMatch = cycle.playoffs.find(m => m.type === "final");
       const thirdMatch = cycle.playoffs.find(m => m.type === "third");
-      const badge = cycle.locked ? "ĐÃ KHÓA" : cycle.phase === "playoffs" ? "PLAYOFF" : "VÒNG TRÒN";
 
       let playoffSection = "";
       if (!showPlayoffs) {
@@ -4138,10 +4912,6 @@
 
       return `
         <div class="fc-diagram" data-cycle-id="${cycle.id}">
-          <div class="fc-diagram-head">
-            <div class="fc-title">⚽ GIẢI NHẤT NHÌ #${cycle.number}</div>
-            <div class="fc-sub">${badge} · ${cycle.players.length} người</div>
-          </div>
           ${renderStandingsBar(cycle)}
           <div class="fc-section-divider">Vòng tròn</div>
           ${renderLeagueColumns(cycle, interactive, highlightPlayer)}
@@ -4151,33 +4921,44 @@
     }
 
     function bindKnockoutRandom(container) {
-      if (!container) return;
-      container.querySelectorAll(".fc-ko-random-btn").forEach(btn => {
-        btn.addEventListener("click", (e) => {
+      if (!container || container.dataset.koRandomBound) return;
+      container.dataset.koRandomBound = "1";
+      container.addEventListener("click", (e) => {
+        const roundBtn = e.target.closest(".fc-ko-random-btn[data-ko-round]");
+        if (roundBtn) {
           e.stopPropagation();
-          const cycle = getActiveCycle();
+          const cycle = resolveCycleFromEl(roundBtn);
           if (!cycle || cycle.locked) return;
-          rerandomizeKnockoutRound(cycle, parseInt(btn.dataset.koRound, 10));
-        });
+          rerandomizeKnockoutRound(cycle, parseInt(roundBtn.dataset.koRound, 10));
+          return;
+        }
+        const thirdBtn = e.target.closest(".fc-ko-third-random-btn");
+        if (thirdBtn) {
+          e.stopPropagation();
+          const cycle = resolveCycleFromEl(thirdBtn);
+          if (!cycle) return;
+          rerandomizeKnockoutThird(cycle);
+        }
       });
     }
 
     function bindBracketClicks(container) {
-      if (!container) return;
-      container.querySelectorAll("[data-match-id].clickable, .fc-league-pair.clickable, .fc-bk-match.clickable, .fc-pair-group.clickable").forEach(el => {
-        el.addEventListener("click", () => {
-          const cycle = getActiveCycle();
-          if (!cycle) return;
-          const phase = el.dataset.phase;
-          let match = null;
-          if (phase === "knockout") {
-            match = findKnockoutMatch(cycle, el.dataset.matchId);
-          } else {
-            const list = phase === "league" ? cycle.league : cycle.playoffs;
-            match = list.find(m => m.id === el.dataset.matchId);
-          }
-          if (match) openScoreModal(match, phase, el.dataset.roundLabel);
-        });
+      if (!container || container.dataset.bracketClickBound) return;
+      container.dataset.bracketClickBound = "1";
+      container.addEventListener("click", (e) => {
+        const el = e.target.closest("[data-match-id].clickable, .fc-league-pair.clickable, .fc-bk-match.clickable, .fc-pair-group.clickable");
+        if (!el || !container.contains(el)) return;
+        const cycle = resolveCycleFromEl(el);
+        if (!cycle) return;
+        const phase = el.dataset.phase;
+        let match = null;
+        if (phase === "knockout") {
+          match = findKnockoutMatch(cycle, el.dataset.matchId);
+        } else {
+          const list = phase === "league" ? cycle.league : cycle.playoffs;
+          match = list.find(m => m.id === el.dataset.matchId);
+        }
+        if (match) openScoreModal(match, phase, el.dataset.roundLabel, cycle);
       });
     }
 
@@ -4226,7 +5007,7 @@
       if (hint) {
         const fmt = active?.format || tournamentFormat;
         hint.innerHTML = fmt === "knockout"
-          ? "<strong>Loại trực tiếp</strong> — vòng 1: 🎲 Random (cặp + ĐTQG), vòng sau: 🎲 ĐTQG."
+          ? "<strong>Loại trực tiếp</strong> — vòng đang đá: bấm 🎲 để random. Sau bán kết có trận <strong>3 vs 4</strong>."
           : "Vòng tròn + playoff — random <strong>ĐTQG</strong> khi tạo giải.";
       }
       if (active || !newBtn) return;
@@ -4244,8 +5025,10 @@
       const bracketEl = document.getElementById("fc-bracket-active");
       const pastEl = document.getElementById("past-cycles");
       const newBtn = document.getElementById("new-cycle-btn");
+      const deleteActiveBtn = document.getElementById("delete-active-cycle-btn");
 
       if (!active) {
+        if (deleteActiveBtn) deleteActiveBtn.hidden = true;
         statusEl.textContent = `${players.length} người sẵn sàng`;
         standingsWrap.innerHTML = "";
         const locked = getLockedCycles();
@@ -4260,6 +5043,10 @@
         }
         updateTournamentSetup();
       } else {
+        if (deleteActiveBtn) {
+          deleteActiveBtn.hidden = false;
+          deleteActiveBtn.dataset.deleteCycle = active.id;
+        }
         if (active.format === "knockout") {
           const all = allKnockoutMatches(active);
           const played = all.filter(m => m.played).length;
@@ -4290,9 +5077,12 @@
           <div class="empty-cta">Bấm <strong>Tạo giải mới</strong> để bắt đầu</div>
         </div>`;
       } else {
-        pastEl.innerHTML = locked.map(c => renderCycleSummary(c)).join("");
+        pastEl.innerHTML = locked.map(c => renderCycleSummary(c, null, true)).join("");
       }
+      bindBracketClicks(pastEl);
+      bindKnockoutRandom(pastEl);
       renderProfileChips();
+      refreshKnockoutLines(document);
     }
 
     function getChampion(cycle) {
@@ -4308,7 +5098,7 @@
       return computeStandings(cycle)[0]?.name || "?";
     }
 
-    function renderCycleSummary(cycle, highlightPlayer) {
+    function renderCycleSummary(cycle, highlightPlayer, showDelete = false) {
       ensureCycleShape(cycle);
       const standings = cycle.format === "knockout" ? [] : computeStandings(cycle);
       const champion = getChampion(cycle);
@@ -4324,9 +5114,13 @@
       const podium = getCyclePlacements(cycle);
       const podiumNote = podium ? formatPodiumPoints(podium) : "";
       const podiumLine = podiumNote ? `<div class="cycle-info" style="margin-top:4px;color:#fbbf24">${podiumNote}</div>` : "";
+      const deleteBtn = showDelete ? cycleDeleteBtn(cycle.id) : "";
       return `
         <div class="cycle-card ${cycle.locked ? "locked" : ""}">
-          <h4>Giải #${cycle.number} ${badge}</h4>
+          <div class="cycle-card-head">
+            <h4>Giải #${cycle.number} ${badge}</h4>
+            ${deleteBtn}
+          </div>
           <div class="cycle-info">${date} · ${formatNote} · VĐ: <strong style="color:#facc15">${champion}</strong>${rankNote}</div>
           ${podiumLine}
           ${renderFcDiagram(cycle, false, highlightPlayer)}
@@ -4485,6 +5279,7 @@
       }
 
       resultsEl.innerHTML = html;
+      refreshKnockoutLines(resultsEl);
       resultsEl.querySelectorAll("[data-profile-cup]").forEach(el => {
         el.addEventListener("click", () => {
           viewingCupId = el.dataset.profileCup;
@@ -5688,6 +6483,42 @@
       if (e.target.id === "score-modal") closeScoreModal();
     });
 
+    document.getElementById("delete-cycle-cancel")?.addEventListener("click", closeDeleteCycleModal);
+    document.getElementById("delete-cycle-verify")?.addEventListener("click", verifyDeleteCycleProfile);
+    document.getElementById("delete-cycle-submit")?.addEventListener("click", confirmDeleteCycle);
+    document.getElementById("delete-cycle-profile")?.addEventListener("input", updateDeleteCycleModalState);
+    document.getElementById("delete-cycle-profile")?.addEventListener("keydown", e => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        if (!deleteCycleProfileVerified) verifyDeleteCycleProfile();
+      }
+    });
+    document.getElementById("delete-cycle-confirm-text")?.addEventListener("input", updateDeleteCycleModalState);
+    document.getElementById("delete-cycle-confirm-text")?.addEventListener("keydown", e => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        const submitBtn = document.getElementById("delete-cycle-submit");
+        if (deleteCycleProfileVerified && submitBtn && !submitBtn.disabled) confirmDeleteCycle();
+      }
+    });
+    document.getElementById("delete-cycle-modal")?.addEventListener("click", e => {
+      if (e.target.id === "delete-cycle-modal") closeDeleteCycleModal();
+    });
+
+    document.addEventListener("click", e => {
+      const btn = e.target.closest("[data-delete-cycle]");
+      if (!btn) return;
+      e.stopPropagation();
+      openDeleteCycleModal(btn.dataset.deleteCycle);
+    });
+
+    bindBracketClicks(document.getElementById("past-cycles"));
+    bindKnockoutRandom(document.getElementById("past-cycles"));
+    bindBracketClicks(document.getElementById("profile-results"));
+    bindKnockoutRandom(document.getElementById("profile-results"));
+    bindBracketClicks(document.getElementById("fc-bracket-active"));
+    bindKnockoutRandom(document.getElementById("fc-bracket-active"));
+
     document.getElementById("create-cup-btn").addEventListener("click", startRandomCup);
     document.getElementById("export-json-btn").addEventListener("click", exportStateJson);
     document.getElementById("reset-all-btn").addEventListener("click", resetAllAppData);
@@ -5813,6 +6644,11 @@
 
     document.getElementById("welcome-name-input")?.addEventListener("input", () => {
       setWelcomeError("");
+    });
+
+    window.addEventListener("resize", () => {
+      clearTimeout(koLinesResizeTimer);
+      koLinesResizeTimer = setTimeout(() => refreshKnockoutLines(document), 120);
     });
 
     boot();
