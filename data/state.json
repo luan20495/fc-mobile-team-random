@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-18T04:17:42.329Z",
+  "updatedAt": "2026-06-18T04:45:52.263Z",
   "players": [
     "Luân",
     "Hưng",
@@ -8,11 +8,93 @@
     "Khuê"
   ],
   "tournament": {
-    "cycles": [],
+    "cycles": [
+      {
+        "id": "mqiy8drllsh68",
+        "number": 1,
+        "createdAt": "2026-06-18T03:37:20.049Z",
+        "locked": true,
+        "format": "knockout",
+        "players": [
+          "Luân",
+          "Hưng",
+          "Đại",
+          "Khuê"
+        ],
+        "phase": "done",
+        "league": [],
+        "playoffs": [],
+        "knockoutRounds": [
+          {
+            "round": 1,
+            "label": "Bán kết",
+            "matches": [
+              {
+                "id": "mqiy8drldfeiz",
+                "home": "Đại",
+                "away": "Hưng",
+                "scoreHome": 1,
+                "scoreAway": 2,
+                "played": true,
+                "lockedAt": "2026-06-18T03:37:24.727Z"
+              },
+              {
+                "id": "mqiy8drl52iin",
+                "home": "Khuê",
+                "away": "Luân",
+                "scoreHome": 2,
+                "scoreAway": 1,
+                "played": true,
+                "lockedAt": "2026-06-18T03:37:29.351Z"
+              }
+            ],
+            "byes": [],
+            "completed": true
+          },
+          {
+            "round": 2,
+            "label": "Chung kết",
+            "matches": [
+              {
+                "id": "mqiy8kxz8n9p3",
+                "home": "Hưng",
+                "away": "Khuê",
+                "scoreHome": 2,
+                "scoreAway": 1,
+                "played": true,
+                "lockedAt": "2026-06-18T03:37:32.588Z"
+              }
+            ],
+            "byes": [],
+            "completed": true
+          }
+        ],
+        "playerTeams": {
+          "Luân": {
+            "name": "Croatia",
+            "flag": "https://flagcdn.com/w80/hr.png"
+          },
+          "Hưng": {
+            "name": "Colombia",
+            "flag": "https://flagcdn.com/w80/co.png"
+          },
+          "Đại": {
+            "name": "Tây Ban Nha",
+            "flag": "https://flagcdn.com/w80/es.png"
+          },
+          "Khuê": {
+            "name": "Uruguay",
+            "flag": "https://flagcdn.com/w80/uy.png"
+          }
+        },
+        "champion": "Hưng",
+        "completedAt": "2026-06-18T03:37:32.588Z"
+      }
+    ],
     "activeCycleId": null
   },
   "teamsCache": {
-    "cachedAt": "2026-06-18T04:17:41.528Z",
+    "cachedAt": "2026-06-18T03:36:59.542Z",
     "teams": [
       {
         "flag": "https://flagcdn.com/w80/za.png",
