@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-18T06:44:13.861Z",
+  "updatedAt": "2026-06-18T06:44:32.551Z",
   "players": [
     "Luân",
     "Hưng",
@@ -287,10 +287,10 @@
                 "id": "mqj4wps4by4vp",
                 "home": "Đại",
                 "away": "Khuê",
-                "scoreHome": null,
-                "scoreAway": null,
-                "played": false,
-                "lockedAt": null,
+                "scoreHome": 2,
+                "scoreAway": 1,
+                "played": true,
+                "lockedAt": "2026-06-18T06:44:31.749Z",
                 "teamHome": {
                   "name": "Ma Rốc",
                   "flag": "https://flagcdn.com/w80/ma.png"
