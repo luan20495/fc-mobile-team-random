@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-18T09:26:41.443Z",
+  "updatedAt": "2026-06-18T09:26:56.283Z",
   "players": [
     "Luân",
     "Hưng",
@@ -286,66 +286,66 @@
             "label": "Vòng loại",
             "matches": [
               {
-                "id": "mqjapn298rn8l",
-                "home": "Hưng",
-                "away": "Luân",
+                "id": "mqjapyihx69b0",
+                "home": "Long",
+                "away": "Hưng",
                 "scoreHome": null,
                 "scoreAway": null,
                 "played": false,
                 "lockedAt": null,
                 "teamHome": {
-                  "name": "Thụy Điển",
-                  "flag": "https://flagcdn.com/w80/se.png"
+                  "name": "Nhật Bản",
+                  "flag": "https://flagcdn.com/w80/jp.png"
                 },
                 "teamAway": {
-                  "name": "Mỹ",
-                  "flag": "https://flagcdn.com/w80/us.png"
+                  "name": "Anh",
+                  "flag": "https://flagcdn.com/w80/gb-eng.png"
                 }
               },
               {
-                "id": "mqjapn29cqgnt",
-                "home": "Đại",
-                "away": "Khuê",
+                "id": "mqjapyihsyqyu",
+                "home": "Luân",
+                "away": "Đại",
                 "scoreHome": null,
                 "scoreAway": null,
                 "played": false,
                 "lockedAt": null,
                 "teamHome": {
-                  "name": "CHDC Congo",
-                  "flag": "https://flagcdn.com/w80/cd.png"
+                  "name": "Thổ Nhĩ Kỳ",
+                  "flag": "https://flagcdn.com/w80/tr.png"
                 },
                 "teamAway": {
-                  "name": "Scotland",
-                  "flag": "https://flagcdn.com/w80/gb-sct.png"
+                  "name": "Pháp",
+                  "flag": "https://flagcdn.com/w80/fr.png"
                 }
               }
             ],
             "byes": [
-              "Long"
+              "Khuê"
             ],
             "completed": false
           }
         ],
         "playerTeams": {
           "Luân": {
-            "name": "Mỹ",
-            "flag": "https://flagcdn.com/w80/us.png"
+            "name": "Thổ Nhĩ Kỳ",
+            "flag": "https://flagcdn.com/w80/tr.png"
           },
           "Hưng": {
-            "name": "Thụy Điển",
-            "flag": "https://flagcdn.com/w80/se.png"
+            "name": "Anh",
+            "flag": "https://flagcdn.com/w80/gb-eng.png"
           },
           "Đại": {
-            "name": "CHDC Congo",
-            "flag": "https://flagcdn.com/w80/cd.png"
+            "name": "Pháp",
+            "flag": "https://flagcdn.com/w80/fr.png"
           },
           "Khuê": {
-            "name": "Scotland",
-            "flag": "https://flagcdn.com/w80/gb-sct.png"
+            "name": "Bosnia",
+            "flag": "https://flagcdn.com/w80/ba.png"
           },
           "Long": {
-            "name": "Nam Phi",
-            "flag": "https://flagcdn.com/w80/za.png"
+            "name": "Nhật Bản",
+            "flag": "https://flagcdn.com/w80/jp.png"
           }
         },
         "champion": null,
