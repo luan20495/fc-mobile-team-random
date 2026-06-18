@@ -14,6 +14,11 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
+    :root {
+      --page-gutter: clamp(8px, 1.5vw, 20px);
+      --page-max: min(1680px, calc(100vw - var(--page-gutter) * 2));
+    }
+
     body {
       min-height: 100dvh;
       font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
@@ -21,13 +26,58 @@
       color: #fff;
       display: flex;
       flex-direction: column;
+      align-items: stretch;
+      padding: 12px var(--page-gutter) 32px;
+    }
+
+    .app-page {
+      width: 100%;
+      max-width: var(--page-max);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      flex: 1;
+    }
+
+    .app-page > * {
+      width: 100%;
+      max-width: 100%;
+    }
+
+    .app-shell {
+      margin-bottom: 10px;
+    }
+
+    .app-shell-brand {
+      display: flex;
       align-items: center;
-      padding: 24px 16px 40px;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .app-shell-brand h1 {
+      font-size: clamp(1.05rem, 4vw, 1.35rem);
+      font-weight: 800;
+      background: linear-gradient(90deg, #4ade80, #38bdf8, #facc15);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+
+    .app-logo {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: block;
+      flex-shrink: 0;
+      filter: drop-shadow(0 4px 12px rgba(250, 204, 21, 0.25));
     }
 
     header {
       margin-bottom: 20px;
-      max-width: 720px;
       width: 100%;
     }
 
@@ -49,14 +99,6 @@
       background: linear-gradient(135deg, rgba(74,222,128,0.18), rgba(59,130,246,0.15));
       border: 1px solid rgba(255,255,255,0.12);
       box-shadow: 0 8px 24px rgba(0,0,0,0.35);
-    }
-
-    .app-logo {
-      width: 48px;
-      height: 48px;
-      border-radius: 16px;
-      display: block;
-      filter: drop-shadow(0 8px 20px rgba(250, 204, 21, 0.28));
     }
 
     .brand-text { min-width: 0; }
@@ -94,14 +136,64 @@
     }
 
     .panel {
-      width: min(720px, 100%);
+      width: 100%;
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 16px;
-      padding: 14px 16px;
-      margin-bottom: 16px;
+      border-radius: 14px;
+      padding: 10px 12px;
+      margin-bottom: 10px;
       box-shadow: 0 8px 32px rgba(0,0,0,0.25);
       backdrop-filter: blur(8px);
+    }
+
+    .panel-compact { padding: 10px 12px; }
+
+    .players-panel > summary {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      list-style: none;
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #e2e8f0;
+    }
+
+    .players-panel > summary::-webkit-details-marker { display: none; }
+
+    .players-panel > summary::before {
+      content: "▾";
+      margin-right: 4px;
+      font-size: 0.65rem;
+      color: #64748b;
+      transition: transform 0.15s ease;
+    }
+
+    .players-panel:not([open]) > summary::before {
+      transform: rotate(-90deg);
+    }
+
+    .players-panel-inner { margin-top: 8px; }
+
+    .players-tools {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    @media (min-width: 560px) {
+      .players-tools {
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .players-tools .add-row { flex: 1; min-width: 200px; }
+      .players-tools .country-pool-row {
+        flex: 1;
+        min-width: 220px;
+        margin-top: 0;
+      }
     }
 
     .panel-header {
@@ -126,9 +218,9 @@
     .player-chips {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 12px;
-      min-height: 40px;
+      gap: 6px;
+      margin-bottom: 8px;
+      min-height: 28px;
       align-items: center;
     }
 
@@ -142,12 +234,12 @@
     .chip {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       background: rgba(74,222,128,0.15);
       border: 1px solid rgba(74,222,128,0.35);
-      border-radius: 20px;
-      padding: 6px 10px 6px 14px;
-      font-size: 0.9rem;
+      border-radius: 16px;
+      padding: 4px 8px 4px 10px;
+      font-size: 0.82rem;
       font-weight: 600;
       color: #bbf7d0;
     }
@@ -172,8 +264,8 @@
 
     .add-row input {
       flex: 1;
-      padding: 10px 14px;
-      border-radius: 10px;
+      padding: 8px 12px;
+      border-radius: 8px;
       border: 2px solid rgba(255,255,255,0.15);
       background: rgba(0,0,0,0.3);
       color: #fff;
@@ -185,9 +277,9 @@
     .add-row input::placeholder { color: #64748b; }
 
     .btn-add {
-      padding: 10px 16px;
+      padding: 8px 14px;
       border: none;
-      border-radius: 10px;
+      border-radius: 8px;
       background: #334155;
       color: #e2e8f0;
       font-weight: 600;
@@ -198,7 +290,7 @@
     .btn-add:hover { background: #475569; }
 
     .pitch {
-      width: min(720px, 100%);
+      width: 100%;
       background: linear-gradient(180deg, #14532d 0%, #166534 50%, #14532d 100%);
       border: 3px solid rgba(255,255,255,0.25);
       border-radius: 16px;
@@ -409,7 +501,7 @@
       flex-direction: column;
       align-items: center;
       gap: 14px;
-      width: min(720px, 100%);
+      width: 100%;
     }
 
     .btn-shuffle {
@@ -494,10 +586,8 @@
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-      gap: 8px;
-      margin-top: 12px;
-      padding-top: 12px;
-      border-top: 1px solid rgba(255,255,255,0.08);
+      gap: 6px;
+      margin-top: 8px;
     }
 
     .country-pool-row label {
@@ -509,8 +599,8 @@
 
     .country-pool-row select {
       flex: 1;
-      min-width: 160px;
-      padding: 8px 10px;
+      min-width: 140px;
+      padding: 7px 9px;
       border-radius: 8px;
       border: 1px solid rgba(255,255,255,0.15);
       background: rgba(0,0,0,0.35);
@@ -534,7 +624,7 @@
 
     .history {
       margin-top: 24px;
-      width: min(720px, 100%);
+      width: 100%;
     }
 
     .history h3 {
@@ -585,7 +675,7 @@
 
     .advanced-settings {
       margin-top: 12px;
-      width: min(720px, 100%);
+      width: 100%;
       font-size: 0.8rem;
       color: #64748b;
     }
@@ -646,7 +736,7 @@
       color: #64748b;
       margin-top: 20px;
       text-align: center;
-      width: min(720px, 100%);
+      width: 100%;
     }
     .sync-status.ok { color: #4ade80; }
     .sync-status.error { color: #f87171; }
@@ -654,7 +744,7 @@
     .sync-status.warn { color: #fbbf24; }
 
     .sync-hint-banner {
-      width: min(720px, 100%);
+      width: 100%;
       margin: 10px auto 0;
       padding: 10px 14px;
       border-radius: 10px;
@@ -723,13 +813,97 @@
     .btn-ghost:hover { border-color: rgba(255,255,255,0.25); color: #e2e8f0; }
 
     .view-hint {
-      font-size: 0.85rem;
+      font-size: 0.76rem;
       color: #94a3b8;
       text-align: center;
-      margin-bottom: 14px;
-      line-height: 1.5;
-      padding: 0 8px;
+      margin-bottom: 10px;
+      line-height: 1.4;
+      padding: 0 4px;
     }
+
+    .tournament-hint {
+      font-size: 0.72rem;
+      color: #64748b;
+      line-height: 1.4;
+      margin: 0 0 8px;
+    }
+
+    .tournament-hint strong { color: #86efac; font-weight: 600; }
+
+    .tournament-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .tournament-bar-idle,
+    .tournament-bar-active {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .tournament-bar-active {
+      justify-content: space-between;
+    }
+
+    .tournament-bar-idle .mode-row {
+      flex: 1 1 auto;
+      min-width: 0;
+      max-width: none;
+      margin: 0;
+      gap: 6px;
+    }
+
+    .tournament-bar-idle .mode-btn {
+      padding: 6px 10px;
+      font-size: 0.74rem;
+      border-radius: 8px;
+    }
+
+    .tournament-ready {
+      font-size: 0.72rem;
+      color: #64748b;
+      font-weight: 600;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .btn-primary.btn-compact {
+      padding: 8px 14px;
+      font-size: 0.8rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 14px rgba(34, 197, 94, 0.28);
+      flex-shrink: 0;
+      margin: 0;
+    }
+
+    .btn-primary.btn-compact:hover:not(:disabled) {
+      box-shadow: 0 6px 18px rgba(34, 197, 94, 0.38);
+    }
+
+    .tournament-panel #fc-bracket-active:empty {
+      display: none;
+    }
+
+    .tournament-setup {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+
+    .tournament-setup .mode-section-label {
+      margin-bottom: 0;
+      flex-shrink: 0;
+    }
+
+    .tournament-setup .mode-row { margin: 0; }
 
     .view-hint strong { color: #4ade80; font-weight: 600; }
 
@@ -772,23 +946,25 @@
 
     .app-tabs {
       display: flex;
-      gap: 6px;
-      width: min(720px, 100%);
-      margin-bottom: 16px;
+      gap: 4px;
+      width: 100%;
+      margin-bottom: 0;
       flex-wrap: wrap;
-      justify-content: center;
     }
 
     .app-tab {
-      padding: 8px 12px;
-      border: 2px solid rgba(255,255,255,0.12);
-      border-radius: 10px;
+      padding: 6px 10px;
+      border: 1.5px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
       background: rgba(255,255,255,0.04);
       color: #94a3b8;
-      font-size: 0.78rem;
+      font-size: 0.72rem;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.15s;
+      flex: 1 1 auto;
+      text-align: center;
+      min-width: 0;
     }
 
     .app-tab:hover:not(.active) { border-color: rgba(255,255,255,0.22); color: #cbd5e1; }
@@ -803,19 +979,19 @@
     .app-tab.tab-tournament.active { border-color: #facc15; background: rgba(250,204,21,0.12); color: #facc15; }
     .app-tab.tab-stats.active { border-color: #a78bfa; background: rgba(167,139,250,0.12); color: #c4b5fd; }
 
-    .view { display: none; width: min(720px, 100%); }
+    .view { display: none; width: 100%; }
     .view.active { display: block; }
 
     .tournament-header {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      gap: 12px;
+      align-items: center;
+      gap: 8px;
       flex-wrap: wrap;
-      margin-bottom: 12px;
+      margin-bottom: 6px;
     }
 
-    .tournament-meta { font-size: 0.85rem; color: #94a3b8; }
+    .tournament-meta { font-size: 0.8rem; color: #94a3b8; line-height: 1.35; }
     .tournament-meta strong { color: #4ade80; }
 
     .btn-secondary {
@@ -940,6 +1116,7 @@
       border: 1px solid rgba(255,255,255,0.1);
       border-radius: 12px;
       padding: 14px;
+      min-width: 0;
     }
 
     .cycle-card.locked { border-color: rgba(100,116,139,0.4); }
@@ -1081,6 +1258,38 @@
       font-weight: 600;
       cursor: pointer;
     }
+
+    .profile-chip.active {
+      border-color: rgba(74,222,128,0.55);
+      background: rgba(74,222,128,0.18);
+      color: #4ade80;
+    }
+
+    .profile-player-link {
+      margin-bottom: 14px;
+      padding: 12px;
+      background: rgba(0,0,0,0.22);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+    }
+
+    .profile-player-link-label {
+      font-size: 0.72rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #94a3b8;
+      margin-bottom: 6px;
+    }
+
+    .profile-player-link-hint {
+      font-size: 0.78rem;
+      color: #64748b;
+      line-height: 1.45;
+      margin-bottom: 10px;
+    }
+
+    .profile-player-link-hint strong { color: #facc15; }
 
     .profile-hero {
       display: flex; align-items: center; gap: 16px;
@@ -1262,9 +1471,19 @@
     .welcome-taken {
       font-size: 0.75rem;
       color: #64748b;
-      margin-bottom: 14px;
+      margin-bottom: 8px;
       line-height: 1.4;
       word-break: break-word;
+    }
+
+    .welcome-player-chips {
+      justify-content: center;
+      margin-bottom: 14px;
+    }
+
+    .profile-active-banner.warn {
+      background: rgba(251,191,36,0.12);
+      color: #fcd34d;
     }
 
     .welcome-actions {
@@ -1373,6 +1592,21 @@
     .empty-state .empty-icon { font-size: 2rem; margin-bottom: 8px; opacity: 0.9; }
     .empty-state .empty-cta { font-size: 0.82rem; color: #64748b; margin-top: 10px; }
     .empty-state .empty-cta strong { color: #4ade80; font-weight: 600; }
+    .empty-state.compact {
+      padding: 14px 10px;
+      font-size: 0.8rem;
+      line-height: 1.45;
+    }
+
+    .empty-state.compact .empty-icon {
+      font-size: 1.35rem;
+      margin-bottom: 4px;
+    }
+
+    .empty-state.compact .empty-cta {
+      font-size: 0.75rem;
+      margin-top: 6px;
+    }
 
     .status-pill {
       display: inline-block;
@@ -1482,6 +1716,10 @@
       box-shadow: inset 0 0 80px rgba(139,92,246,0.1), 0 12px 40px rgba(0,0,0,0.45);
       overflow: visible;
       margin-bottom: 14px;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
     }
 
     .fc-diagram-head { text-align: center; margin-bottom: 10px; }
@@ -1509,13 +1747,25 @@
       content: ""; flex: 1; height: 1px; background: rgba(139,92,246,0.3);
     }
 
-    .fc-knockout-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 6px; }
+    .fc-knockout-scroll {
+      width: 100%;
+      max-width: 100%;
+      overflow-x: auto;
+      overflow-y: visible;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 6px;
+    }
+
+    #fc-bracket-active .fc-knockout-scroll {
+      overflow-x: visible;
+    }
 
     .fc-knockout-stages {
       display: grid;
-      grid-template-columns: 1.15fr 0.7fr 96px 0.7fr 1.15fr;
+      grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.64fr) minmax(80px, 1.1fr) minmax(0, 0.64fr) minmax(0, 1.12fr);
       gap: 4px;
-      min-width: 520px;
+      width: 100%;
+      min-width: 0;
       margin-bottom: 8px;
       padding: 0 4px;
     }
@@ -1585,11 +1835,12 @@
 
     .fc-knockout-main {
       display: grid;
-      grid-template-columns: 1.15fr 0.7fr 96px 0.7fr 1.15fr;
+      grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.64fr) minmax(80px, 1.1fr) minmax(0, 0.64fr) minmax(0, 1.12fr);
       grid-template-rows: 1fr 1fr;
       align-items: center;
       gap: 0;
-      min-width: 520px;
+      width: 100%;
+      min-width: 0;
       min-height: 220px;
       position: relative;
       --fc-line: rgba(167, 139, 250, 0.72);
@@ -1638,12 +1889,14 @@
       display: flex; flex-direction: column; align-items: center;
       justify-content: center; gap: 6px; z-index: 2; text-align: center;
       position: relative;
+      min-width: 0;
     }
 
     .fc-k-side {
       display: flex;
       flex-direction: column;
       z-index: 1;
+      min-width: 0;
     }
 
     .fc-k-side.right { align-items: flex-end; }
@@ -1654,12 +1907,12 @@
       flex-direction: column;
       gap: 6px;
       width: 100%;
-      max-width: 172px;
+      max-width: min(100%, 220px);
       overflow: visible;
     }
 
     .fc-k-side.left .fc-pair-group { margin-left: auto; }
-    .fc-k-side.right .fc-pair-group { margin-right: auto; }
+    .fc-k-side.right .fc-pair-group { margin-right: auto; max-width: min(100%, 220px); }
 
     .fc-pair-group.clickable { cursor: pointer; }
     .fc-pair-group.clickable:hover .fc-slot {
@@ -1760,6 +2013,7 @@
     .fc-bk-col {
       display: flex; flex-direction: column; z-index: 1;
       overflow: visible;
+      min-width: 0;
     }
 
     .fc-bk-match {
@@ -1869,11 +2123,14 @@
     }
 
     .fc-knockout-main.fc-ko-mirror {
-      grid-template-columns: 1.1fr 0.62fr 1.45fr 0.62fr 1.1fr;
+      grid-template-columns: minmax(150px, 1.1fr) minmax(52px, 0.6fr) minmax(170px, 1.35fr) minmax(52px, 0.6fr) minmax(150px, 1.1fr);
       grid-template-rows: 1fr;
       --fc-bridge: 26px;
       min-height: 210px;
       padding: 6px 0;
+      width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
     }
 
     .fc-knockout-main.fc-ko-mirror .fc-k-side.left,
@@ -1892,10 +2149,10 @@
       overflow: visible;
     }
 
-    .fc-knockout-main.fc-ko-mirror .fc-k-center { min-width: 128px; }
+    .fc-knockout-main.fc-ko-mirror .fc-k-center { min-width: 0; width: 100%; }
 
     .fc-knockout-main.fc-ko-mirror .fc-k-center .fc-pair-group {
-      max-width: 148px;
+      max-width: min(100%, 220px);
       margin: 0 auto 6px;
       position: relative;
     }
@@ -1940,7 +2197,7 @@
     }
 
     .fc-k-center .fc-pair-group {
-      max-width: 148px;
+      max-width: min(100%, 220px);
       margin: 0 auto 6px;
     }
 
@@ -1957,7 +2214,7 @@
       grid-row: 1;
     }
 
-    .fc-k-side.stacked .fc-pair-group { max-width: 156px; }
+    .fc-k-side.stacked .fc-pair-group { max-width: min(100%, 180px); }
 
     .fc-ko-wait-final {
       font-size: 0.62rem; font-weight: 700; letter-spacing: 0.08em;
@@ -1965,11 +2222,63 @@
     }
 
     .fc-waiting-tree {
-      min-width: 520px; padding: 24px; text-align: center;
-      color: #7c3aed; font-size: 0.82rem;
+      width: 100%;
+      min-width: 0;
+      padding: 24px;
+      text-align: center;
+      color: #7c3aed;
+      font-size: 0.82rem;
     }
 
-    .cycle-card .fc-diagram { margin-top: 10px; margin-bottom: 0; }
+    .cycle-card .fc-diagram {
+      margin-top: 10px;
+      margin-bottom: 0;
+      max-width: 100%;
+      overflow: visible;
+    }
+
+    .cycle-card .fc-knockout-scroll {
+      overflow-x: auto;
+    }
+
+    .cycle-card .fc-knockout-stages,
+    .cycle-card .fc-knockout-main.fc-ko-mirror {
+      min-width: 840px;
+      width: 100%;
+    }
+
+    .cycle-card .fc-pair-group {
+      max-width: min(100%, 200px);
+    }
+
+    .cycle-card .fc-k-side.stacked .fc-pair-group {
+      max-width: min(100%, 180px);
+    }
+
+    @media (min-width: 900px) {
+      .fc-pair-group { max-width: min(100%, 240px); }
+      .fc-k-side.stacked .fc-pair-group { max-width: min(100%, 200px); }
+      .fc-knockout-main.fc-ko-mirror .fc-k-center .fc-pair-group { max-width: min(100%, 240px); }
+
+      .fc-standings-bar {
+        gap: 10px;
+        justify-content: center;
+      }
+
+      .fc-rank-chip { font-size: 0.8rem; }
+
+      .tournament-bar-idle .mode-row { flex: 1 1 320px; }
+
+      .points-board-table { font-size: 0.88rem; }
+    }
+
+    @media (min-width: 1100px) {
+      .profile-stats-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      .cup-setup-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
 
     /* ── NvN matches ── */
     .pitch.mode-nvn::after { display: none; }
@@ -2163,12 +2472,9 @@
     .badge.saved { background: rgba(100,116,139,0.3); color: #94a3b8; }
 
     @media (max-width: 480px) {
-      body { padding: 16px 12px 32px; }
-      .brand { gap: 10px; }
-      .brand-mark { width: 44px; height: 44px; border-radius: 14px; }
-      .app-logo { width: 38px; height: 38px; border-radius: 12px; }
-      header h1 { font-size: 1.15rem; }
-      header p { font-size: 0.75rem; }
+      body { padding: 10px 10px 28px; }
+      .app-logo { width: 32px; height: 32px; border-radius: 9px; }
+      .app-shell-brand h1 { font-size: 1rem; }
       .modal { max-height: 90dvh; overflow-y: auto; padding: 16px; }
       .modal-teams { grid-template-columns: 1fr; }
       .cup-bracket-wrap { padding: 10px; }
@@ -2177,45 +2483,44 @@
   </style>
 </head>
 <body>
-  <header>
-    <div class="brand">
-      <div class="brand-mark">
-        <img class="app-logo" src="assets/brand/app_icon.svg" width="48" height="48" alt="">
-      </div>
-      <div class="brand-text">
-        <h1>FC Mobile Cup</h1>
-        <p id="subtitle">Bắt đội nhanh · Random Cup · Thống kê nhiều máy</p>
-      </div>
+  <div class="app-page">
+  <header class="app-shell">
+    <div class="app-shell-brand">
+      <img class="app-logo" src="assets/brand/app_icon.svg" width="36" height="36" alt="">
+      <h1>FC Mobile Cup</h1>
     </div>
+    <nav class="app-tabs">
+      <button class="app-tab active" data-view="shuffle">Bắt đội</button>
+      <button class="app-tab tab-tournament" data-view="tournament">Giải Nhất Nhì</button>
+      <button class="app-tab" data-view="profile">Profile</button>
+      <button class="app-tab tab-cup" data-view="randomcup" hidden>Random Cup</button>
+      <button class="app-tab tab-stats" data-view="stats" hidden>Thống kê</button>
+    </nav>
   </header>
 
-  <nav class="app-tabs">
-    <button class="app-tab active" data-view="shuffle">Bắt đội</button>
-    <button class="app-tab tab-cup" data-view="randomcup">Random Cup</button>
-    <button class="app-tab tab-tournament" data-view="tournament">Giải Nhất Nhì</button>
-    <button class="app-tab" data-view="profile">Profile</button>
-    <button class="app-tab tab-stats" data-view="stats">Thống kê</button>
-  </nav>
-
-  <div class="panel" style="width:min(720px,100%);margin-bottom:16px">
-    <div class="panel-header">
-      <h2>Người chơi<span class="my-name-badge" id="my-name-badge"></span></h2>
+  <details class="panel players-panel" id="players-panel" open>
+    <summary>
+      <span>Người chơi<span class="my-name-badge" id="my-name-badge"></span></span>
       <span class="player-count" id="player-count">0 người</span>
+    </summary>
+    <div class="players-panel-inner">
+      <div class="player-chips" id="player-chips"></div>
+      <div class="players-tools">
+        <div class="add-row">
+          <input type="text" id="name-input" placeholder="Tên người chơi..." maxlength="20" />
+          <button class="btn-add" id="add-btn">Thêm</button>
+        </div>
+        <div class="country-pool-row">
+          <label for="country-pool-select">ĐTQG</label>
+          <select id="country-pool-select" aria-label="Nguồn danh sách đội tuyển">
+            <option value="all">Tất cả (API)</option>
+            <option value="fc16">Giải 16 đội (FC Mobile)</option>
+          </select>
+          <span class="country-pool-hint" id="country-pool-hint"></span>
+        </div>
+      </div>
     </div>
-    <div class="player-chips" id="player-chips"></div>
-    <div class="add-row">
-      <input type="text" id="name-input" placeholder="Tên người chơi..." maxlength="20" />
-      <button class="btn-add" id="add-btn">Thêm</button>
-    </div>
-    <div class="country-pool-row">
-      <label for="country-pool-select">ĐTQG random</label>
-      <select id="country-pool-select" aria-label="Nguồn danh sách đội tuyển">
-        <option value="all">Tất cả (API)</option>
-        <option value="fc16">Giải 16 đội (FC Mobile)</option>
-      </select>
-      <span class="country-pool-hint" id="country-pool-hint"></span>
-    </div>
-  </div>
+  </details>
 
   <div id="view-shuffle" class="view active">
   <p class="view-hint">Chọn <strong>1 vs 1</strong> hoặc <strong>N vs N</strong>, rồi bấm <strong>Random</strong>.</p>
@@ -2254,7 +2559,7 @@
     <button class="btn-shuffle" id="shuffle-btn">🎲 Random</button>
   </div>
 
-  <details class="history-collapsible" style="width:min(720px,100%);margin-top:20px">
+  <details class="history-collapsible" style="margin-top:20px">
     <summary>Lịch sử bắt đội gần đây</summary>
     <div class="history-list" id="history">
       <div class="empty-history">Chưa random lần nào</div>
@@ -2323,23 +2628,21 @@
   </div>
 
   <div id="view-tournament" class="view">
-    <p class="view-hint" id="tournament-view-hint">Loại trực tiếp hoặc vòng tròn — mỗi người được <strong>random ĐTQG</strong> khi tạo giải.</p>
-    <div class="panel">
-      <div class="tournament-header">
-        <div>
-          <h2 style="font-size:1rem;margin-bottom:4px">🏆 Giải Nhất Nhì</h2>
+    <div class="panel panel-compact tournament-panel">
+      <div class="tournament-bar">
+        <div class="tournament-bar-idle" id="tournament-idle-bar">
+          <div class="mode-row" id="tournament-format-row">
+            <button type="button" class="mode-btn active" data-tournament-format="knockout" id="format-knockout">Loại trực tiếp</button>
+            <button type="button" class="mode-btn" data-tournament-format="league" id="format-league">Vòng tròn</button>
+          </div>
+          <span class="tournament-ready" id="tournament-ready"></span>
+          <button type="button" class="btn-primary btn-compact" id="new-cycle-btn">Tạo giải</button>
+        </div>
+        <div class="tournament-bar-active" id="tournament-active-bar" hidden>
           <div class="tournament-meta" id="tournament-status">Chưa có giải đang chạy</div>
-        </div>
-        <button type="button" class="cycle-delete-btn" id="delete-active-cycle-btn" hidden>🗑 Xóa giải</button>
-      </div>
-      <div class="tournament-setup" style="margin-bottom:12px">
-        <span class="mode-section-label">Thể thức</span>
-        <div class="mode-row" id="tournament-format-row">
-          <button type="button" class="mode-btn active" data-tournament-format="knockout" id="format-knockout">Loại trực tiếp</button>
-          <button type="button" class="mode-btn" data-tournament-format="league" id="format-league">Vòng tròn</button>
+          <button type="button" class="cycle-delete-btn" id="delete-active-cycle-btn" hidden>🗑 Xóa</button>
         </div>
       </div>
-      <button class="btn-primary" id="new-cycle-btn" style="width:100%;margin-bottom:14px">Tạo giải mới</button>
       <div id="standings-wrap"></div>
       <div id="fc-bracket-active"></div>
     </div>
@@ -2368,6 +2671,7 @@
         <button type="button" class="profile-logout-btn" id="profile-logout-btn" style="display:none">Đăng xuất</button>
       </div>
       <p class="profile-data-note" id="profile-data-note" style="display:none"></p>
+      <div class="profile-player-link" id="profile-player-link-wrap" hidden></div>
       <div class="profile-stats-grid" id="profile-stats-grid"></div>
       <div id="profile-active-banners"></div>
       <div id="profile-results">
@@ -2399,12 +2703,54 @@
     </div>
   </div>
 
+  <footer class="sync-status pending" id="sync-status">Đang tải...</footer>
+  <div class="sync-hint-banner" id="sync-hint-banner" hidden></div>
+
+  <details class="advanced-settings">
+    <summary>⚙️ Cài đặt nâng cao</summary>
+
+    <div class="advanced-block">
+      <h4>Đồng bộ dữ liệu</h4>
+      <p>Mặc định <strong>tự đồng bộ nhóm</strong> qua cloud — không cần cấu hình. Phần dưới chỉ khi dùng server riêng.</p>
+      <div class="sync-row">
+        <input type="url" id="sync-api-input" placeholder="URL mặc định: fc-mobile-sync…workers.dev" autocomplete="off" />
+      </div>
+      <div class="sync-row" style="margin-top:8px">
+        <input type="password" id="sync-key-input" placeholder="Để trống = mã nhóm mặc định" autocomplete="off" />
+        <button class="btn-copy" id="sync-api-save">Lưu</button>
+        <button class="btn-ghost" id="gh-sync-btn">Tải lại</button>
+      </div>
+    </div>
+
+    <div class="advanced-block share-box" style="display:block">
+      <h4>Chia sẻ app</h4>
+      <p>Gửi link cho anh em cùng dùng.</p>
+      <div class="sync-row">
+        <code id="share-url" style="flex:1;font-size:0.75rem;color:#94a3b8;word-break:break-all"></code>
+        <button class="btn-ghost" id="copy-btn">Copy link</button>
+      </div>
+    </div>
+
+    <div class="advanced-block">
+      <h4>Sao lưu</h4>
+      <p>Tải file JSON để giữ bản backup.</p>
+      <button class="btn-ghost" id="export-json-btn">Tải backup JSON</button>
+    </div>
+
+    <div class="advanced-block">
+      <h4>Reset dữ liệu</h4>
+      <p>Xóa toàn bộ người chơi, giải, lịch sử và profile trên máy này.</p>
+      <button class="btn-ghost" id="reset-all-btn" style="color:#f87171;border-color:rgba(248,113,113,0.35)">🗑 Xóa toàn bộ &amp; chạy lại</button>
+    </div>
+  </details>
+  </div>
+
   <div class="welcome-gate show" id="welcome-gate">
     <div class="welcome-card">
       <img class="welcome-logo" src="assets/brand/app_icon.svg" width="56" height="56" alt="">
       <h2>FC Mobile Cup</h2>
-      <p class="welcome-sub">Đặt <strong>tên profile</strong> trên máy này.<br>Dữ liệu giải <strong>tự đồng bộ nhóm</strong> — mở link app là dùng chung.</p>
-      <input type="text" id="welcome-name-input" placeholder="Tên của bạn..." maxlength="20" autocomplete="nickname" />
+      <p class="welcome-sub">Đặt <strong>tên profile</strong> trên máy này (vd. Tứ Hùng).<br>Trong tab Profile, chọn <strong>tên trong giải</strong> để xem điểm.</p>
+      <input type="text" id="welcome-name-input" placeholder="Tên profile..." maxlength="20" autocomplete="nickname" />
       <div class="welcome-error" id="welcome-error"></div>
       <div class="welcome-taken" id="welcome-taken"></div>
       <div class="welcome-actions">
@@ -2476,46 +2822,6 @@
     </div>
   </div>
 
-  <footer class="sync-status pending" id="sync-status">Đang tải...</footer>
-  <div class="sync-hint-banner" id="sync-hint-banner" hidden></div>
-
-  <details class="advanced-settings">
-    <summary>⚙️ Cài đặt nâng cao</summary>
-
-    <div class="advanced-block">
-      <h4>Đồng bộ dữ liệu</h4>
-      <p>Mặc định <strong>tự đồng bộ nhóm</strong> qua cloud — không cần cấu hình. Phần dưới chỉ khi dùng server riêng.</p>
-      <div class="sync-row">
-        <input type="url" id="sync-api-input" placeholder="URL mặc định: fc-mobile-sync…workers.dev" autocomplete="off" />
-      </div>
-      <div class="sync-row" style="margin-top:8px">
-        <input type="password" id="sync-key-input" placeholder="Để trống = mã nhóm mặc định" autocomplete="off" />
-        <button class="btn-copy" id="sync-api-save">Lưu</button>
-        <button class="btn-ghost" id="gh-sync-btn">Tải lại</button>
-      </div>
-    </div>
-
-    <div class="advanced-block share-box" style="display:block">
-      <h4>Chia sẻ app</h4>
-      <p>Gửi link cho anh em cùng dùng.</p>
-      <div class="sync-row">
-        <code id="share-url" style="flex:1;font-size:0.75rem;color:#94a3b8;word-break:break-all"></code>
-        <button class="btn-ghost" id="copy-btn">Copy link</button>
-      </div>
-    </div>
-
-    <div class="advanced-block">
-      <h4>Sao lưu</h4>
-      <p>Tải file JSON để giữ bản backup.</p>
-      <button class="btn-ghost" id="export-json-btn">Tải backup JSON</button>
-    </div>
-
-    <div class="advanced-block">
-      <h4>Reset dữ liệu</h4>
-      <p>Xóa toàn bộ người chơi, giải, lịch sử và profile trên máy này.</p>
-      <button class="btn-ghost" id="reset-all-btn" style="color:#f87171;border-color:rgba(248,113,113,0.35)">🗑 Xóa toàn bộ &amp; chạy lại</button>
-    </div>
-  </details>
   <div class="toast" id="toast"></div>
 
   <script>
@@ -2533,6 +2839,7 @@
     const SYNC_WRITE_KEY_DEFAULT = "fc-mobile-cup";
     const CLIENT_ID_KEY = "fc-mobile-client-id";
     const USER_NAME_KEY = "fc-mobile-user-name";
+    const PROFILE_PLAYER_LINK_KEY = "fc-mobile-profile-player-link";
     const LOCAL_STATE_KEY = "fc-mobile-local-state";
     const PROFILE_PLAYER_MIGRATED_KEY = "fc-mobile-profile-player-migrated";
     const TOKEN_KEY = "fc-mobile-gh-token";
@@ -2542,6 +2849,7 @@
     const COUNTRY_POOL_KEY = "fc-mobile-country-pool";
     const ACTIVE_VIEW_KEY = "fc-mobile-active-view";
     const VALID_VIEWS = ["shuffle", "randomcup", "tournament", "profile", "stats"];
+    const HIDDEN_TAB_VIEWS = new Set(["randomcup", "stats"]);
 
     /** 16 đội bracket FC Mobile (World's Game) */
     const FC16_PRESET = [
@@ -2716,6 +3024,76 @@
 
     function clearUserName() {
       localStorage.removeItem(USER_NAME_KEY);
+      localStorage.removeItem(PROFILE_PLAYER_LINK_KEY);
+    }
+
+    function getProfilePlayerLink() {
+      return (localStorage.getItem(PROFILE_PLAYER_LINK_KEY) || "").trim();
+    }
+
+    function setProfilePlayerLink(name) {
+      const trimmed = (name || "").trim();
+      if (trimmed) localStorage.setItem(PROFILE_PLAYER_LINK_KEY, trimmed);
+      else localStorage.removeItem(PROFILE_PLAYER_LINK_KEY);
+    }
+
+    function resolveParticipantName(profileName, isOwnProfile) {
+      if (!isOwnProfile) return (profileName || "").trim();
+      const link = getProfilePlayerLink();
+      if (link) return link;
+      return resolveKnownPlayerName(profileName) || (profileName || "").trim();
+    }
+
+    function linkProfilePlayer(participantName) {
+      const resolved = resolveKnownPlayerName(participantName);
+      if (!resolved) return;
+      setProfilePlayerLink(resolved);
+      renderProfile(getUserName());
+      showToast(`Tên trong giải: ${resolved} ✓`);
+    }
+
+    function bindLinkPlayerChips(container) {
+      if (!container) return;
+      container.querySelectorAll("[data-link-player]").forEach(btn => {
+        btn.addEventListener("click", () => linkProfilePlayer(btn.dataset.linkPlayer));
+      });
+    }
+
+    function renderProfilePlayerLink(isMe) {
+      const wrap = document.getElementById("profile-player-link-wrap");
+      if (!wrap) return;
+      if (!isMe) {
+        wrap.hidden = true;
+        wrap.innerHTML = "";
+        return;
+      }
+      const known = getKnownPlayerNames();
+      const link = getProfilePlayerLink();
+      if (!known.length) {
+        wrap.hidden = true;
+        wrap.innerHTML = "";
+        return;
+      }
+      wrap.hidden = false;
+      const chips = known.map(n =>
+        `<button type="button" class="profile-chip${link === n ? " active" : ""}" data-link-player="${n}">${n}</button>`
+      ).join("");
+      const profileLabel = getUserName();
+      wrap.innerHTML = `
+        <div class="profile-player-link-label">Tên trong giải</div>
+        <p class="profile-player-link-hint">${link
+          ? `Profile <strong>${profileLabel}</strong> đang xem số liệu của <strong>${link}</strong> trong dữ liệu nhóm.`
+          : `Chọn tên bạn dùng khi tham gia giải (Luân, Hưng, …) — khác với tên profile trên máy.`}</p>
+        <div class="profile-chips" style="margin:0">${chips}</div>`;
+      bindLinkPlayerChips(wrap);
+    }
+
+    function migrateProfilePlayerLink() {
+      if (getProfilePlayerLink()) return;
+      const me = getUserName();
+      if (!me) return;
+      const match = resolveKnownPlayerName(me);
+      if (match) setProfilePlayerLink(match);
     }
 
     function logoutProfile() {
@@ -2753,11 +3131,26 @@
       return `Player${Date.now() % 100000}`;
     }
 
+    function getKnownPlayerNames() {
+      return [...new Set([
+        ...players,
+        ...tournamentData.cycles.flatMap(c => c.players || []),
+        ...randomCupData.cups.flatMap(c => c.players || []),
+      ])].filter(Boolean);
+    }
+
+    function resolveKnownPlayerName(name) {
+      const lc = (name || "").trim().toLowerCase();
+      if (!lc) return null;
+      return getKnownPlayerNames().find(p => p.toLowerCase() === lc) || null;
+    }
+
     function updateWelcomeTakenHint() {
       const el = document.getElementById("welcome-taken");
       if (!el) return;
-      if (players.length) {
-        el.textContent = `Người chơi trong nhóm: ${players.join(", ")} (thêm/sửa ở tab chính)`;
+      const known = getKnownPlayerNames();
+      if (known.length) {
+        el.textContent = `Người trong giải: ${known.join(", ")} — gán trong tab Profile sau khi vào.`;
       } else {
         el.textContent = "Chưa có người chơi — thêm tên sau khi vào app.";
       }
@@ -2975,6 +3368,7 @@
 
       localStorage.removeItem(LOCAL_STATE_KEY);
       localStorage.removeItem(USER_NAME_KEY);
+      localStorage.removeItem(PROFILE_PLAYER_LINK_KEY);
       localStorage.removeItem(PROFILE_PLAYER_MIGRATED_KEY);
       clearLegacyLocalStorage();
 
@@ -4987,8 +5381,8 @@
       const btnKo = document.getElementById("format-knockout");
       const btnLg = document.getElementById("format-league");
       const newBtn = document.getElementById("new-cycle-btn");
-      const hint = document.getElementById("tournament-view-hint");
       const formatRow = document.getElementById("tournament-format-row");
+      const readyEl = document.getElementById("tournament-ready");
       const active = getActiveCycle();
 
       if (active) {
@@ -5002,20 +5396,22 @@
         if (btnLg) btnLg.classList.toggle("active", tournamentFormat === "league");
         if (formatRow) formatRow.style.pointerEvents = "";
         if (formatRow) formatRow.style.opacity = "";
+        if (readyEl) readyEl.textContent = `${players.length} người`;
       }
 
-      if (hint) {
-        const fmt = active?.format || tournamentFormat;
-        hint.innerHTML = fmt === "knockout"
-          ? "<strong>Loại trực tiếp</strong> — vòng đang đá: bấm 🎲 để random. Sau bán kết có trận <strong>3 vs 4</strong>."
-          : "Vòng tròn + playoff — random <strong>ĐTQG</strong> khi tạo giải.";
-      }
       if (active || !newBtn) return;
       const minOk = tournamentFormat === "knockout" ? players.length >= 2 : players.length >= 3;
       newBtn.disabled = !minOk;
       newBtn.textContent = !minOk
-        ? (tournamentFormat === "knockout" ? "Cần ít nhất 2 người" : "Cần ít nhất 3 người")
-        : "Tạo giải mới";
+        ? (tournamentFormat === "knockout" ? "Cần ≥2 người" : "Cần ≥3 người")
+        : "Tạo giải";
+    }
+
+    function syncTournamentBars(active) {
+      const idleBar = document.getElementById("tournament-idle-bar");
+      const activeBar = document.getElementById("tournament-active-bar");
+      if (idleBar) idleBar.hidden = !!active;
+      if (activeBar) activeBar.hidden = !active;
     }
 
     function renderTournament() {
@@ -5028,21 +5424,21 @@
       const deleteActiveBtn = document.getElementById("delete-active-cycle-btn");
 
       if (!active) {
+        syncTournamentBars(false);
         if (deleteActiveBtn) deleteActiveBtn.hidden = true;
-        statusEl.textContent = `${players.length} người sẵn sàng`;
         standingsWrap.innerHTML = "";
         const locked = getLockedCycles();
         if (locked.length) {
-          bracketEl.innerHTML = `<div class="fc-diagram"><div class="empty-state">
-            <div class="empty-icon">🏆</div>
-            Không có giải đang chạy
-            <div class="empty-cta">Cuộn xuống <strong>Giải đã xong (${locked.length})</strong> để xem lịch sử</div>
-          </div></div>`;
+          bracketEl.innerHTML = "";
         } else {
-          bracketEl.innerHTML = renderFcDiagram(null);
+          bracketEl.innerHTML = `<div class="fc-diagram"><div class="empty-state compact">
+            <div class="empty-icon">🏆</div>
+            Chưa có giải — bấm <strong style="color:#4ade80">Tạo giải</strong>
+          </div></div>`;
         }
         updateTournamentSetup();
       } else {
+        syncTournamentBars(true);
         if (deleteActiveBtn) {
           deleteActiveBtn.hidden = false;
           deleteActiveBtn.dataset.deleteCycle = active.id;
@@ -5062,8 +5458,6 @@
         bracketEl.innerHTML = renderFcDiagram(active, true);
         bindBracketClicks(bracketEl);
         bindKnockoutRandom(bracketEl);
-        newBtn.disabled = false;
-        newBtn.textContent = "Tạo giải mới";
         updateTournamentSetup();
       }
 
@@ -5082,6 +5476,7 @@
       bindBracketClicks(pastEl);
       bindKnockoutRandom(pastEl);
       renderProfileChips();
+      updateWelcomeTakenHint();
       refreshKnockoutLines(document);
     }
 
@@ -5217,22 +5612,31 @@
       const isMe = me && trimmed.toLowerCase() === me.toLowerCase();
       if (heroName) heroName.textContent = trimmed;
       if (heroAvatar) heroAvatar.textContent = trimmed.charAt(0).toUpperCase();
-      if (heroTag) heroTag.textContent = isMe ? "Profile của bạn" : "Đang xem người khác";
+      if (heroTag) {
+        if (isMe) {
+          const link = getProfilePlayerLink();
+          heroTag.textContent = link ? `Profile của bạn · Giải: ${link}` : "Profile của bạn";
+        } else {
+          heroTag.textContent = "Đang xem người khác";
+        }
+      }
       if (backBtn) backBtn.style.display = me && !isMe ? "inline-block" : "none";
       if (logoutBtn) logoutBtn.style.display = isMe ? "inline-block" : "none";
       if (dataNote) {
         if (isMe) {
           dataNote.style.display = "block";
-          dataNote.textContent = "Profile chỉ là tên trên máy này. Lịch sử lọc theo tên khi bạn có trong danh sách người chơi. Dữ liệu nhóm lấy từ cloud nếu đã cấu hình Đồng bộ.";
+          dataNote.textContent = "Profile là key trên máy này. Chọn「Tên trong giải」bên dưới để gán với nick khi đá (Luân, Hưng, …). Dữ liệu giải lấy từ cloud.";
         } else {
           dataNote.style.display = "none";
         }
       }
 
-      const summary = computeProfileSummary(trimmed);
-      renderProfileStatsGrid(summary, trimmed);
+      renderProfilePlayerLink(isMe);
+      const statsName = resolveParticipantName(trimmed, isMe);
+      const summary = computeProfileSummary(statsName);
+      renderProfileStatsGrid(summary, statsName);
 
-      const lc = trimmed.toLowerCase();
+      const lc = statsName.toLowerCase();
       const active = getActiveCycle();
       const activeCup = getActiveCup();
       let banners = "";
@@ -5245,13 +5649,16 @@
       if (bannersEl) bannersEl.innerHTML = banners;
 
       if (!summary.cycles.length && !summary.cups.length && !summary.shuffles.length && !summary.cupStats) {
-        resultsEl.innerHTML = renderProfileShuffleSection([], trimmed)
-          + `<div class="empty-state" style="margin-top:12px">${trimmed} chưa tham gia giải nào</div>`;
+        const emptyMsg = isMe && !getProfilePlayerLink() && getKnownPlayerNames().length
+          ? "Chọn <strong>Tên trong giải</strong> ở trên để xem điểm & lịch sử."
+          : `${statsName} chưa tham gia giải nào`;
+        resultsEl.innerHTML = renderProfileShuffleSection([], statsName)
+          + `<div class="empty-state" style="margin-top:12px">${emptyMsg}</div>`;
         return;
       }
 
-      const canonical = trimmed;
-      let html = renderProfileShuffleSection(summary.shuffles, trimmed);
+      const canonical = statsName;
+      let html = renderProfileShuffleSection(summary.shuffles, statsName);
 
       if (summary.cycles.length) {
         html += `<div class="profile-section"><h3>🏆 Giải Nhất Nhì</h3>`;
@@ -5909,19 +6316,34 @@
 
     function getSavedView() {
       const v = localStorage.getItem(ACTIVE_VIEW_KEY);
-      return VALID_VIEWS.includes(v) ? v : "shuffle";
+      if (!VALID_VIEWS.includes(v) || HIDDEN_TAB_VIEWS.has(v)) return "shuffle";
+      return v;
     }
 
     function restoreViewTabsOnly(view) {
       if (!VALID_VIEWS.includes(view)) view = "shuffle";
-      document.querySelectorAll(".app-tab").forEach(t => t.classList.toggle("active", t.dataset.view === view));
+      document.querySelectorAll(".app-tab").forEach(t => {
+        const tabView = t.dataset.view;
+        t.classList.toggle("active", !HIDDEN_TAB_VIEWS.has(tabView) && tabView === view);
+      });
       document.querySelectorAll(".view").forEach(v => v.classList.toggle("active", v.id === `view-${view}`));
+    }
+
+    function syncPlayersPanelCollapse(view) {
+      const panel = document.getElementById("players-panel");
+      if (!panel) return;
+      if (view === "shuffle") {
+        panel.open = true;
+      } else if (players.length >= 2) {
+        panel.open = false;
+      }
     }
 
     function switchView(view) {
       if (!VALID_VIEWS.includes(view)) view = "shuffle";
       localStorage.setItem(ACTIVE_VIEW_KEY, view);
       restoreViewTabsOnly(view);
+      syncPlayersPanelCollapse(view);
       if (view === "tournament") renderTournament();
       if (view === "randomcup") renderRandomCup();
       if (view === "stats") renderStats();
@@ -6614,6 +7036,7 @@
       if (getGhToken()) await refreshStateSha();
       await loadStateFromGithub();
       migrateProfilePlayerSeparation();
+      migrateProfilePlayerLink();
       refreshAllFromState();
       await loadTeamsFromApi();
       startSyncPolling();
