@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-18T06:36:18.831Z",
+  "updatedAt": "2026-06-18T06:41:44.643Z",
   "players": [
     "Luân",
     "Hưng",
@@ -23,7 +23,29 @@
         ],
         "phase": "done",
         "league": [],
-        "playoffs": [],
+        "playoffs": [
+          {
+            "id": "mqj4tin6zb5bu",
+            "type": "third",
+            "label": "Tranh hạng 3 · Ba vs Tư",
+            "home": "Luân",
+            "away": "Khuê",
+            "homeSeed": 3,
+            "awaySeed": 4,
+            "scoreHome": null,
+            "scoreAway": null,
+            "played": false,
+            "lockedAt": null,
+            "teamHome": {
+              "name": "Ý",
+              "flag": "https://flagcdn.com/w80/it.png"
+            },
+            "teamAway": {
+              "name": "Uruguay",
+              "flag": "https://flagcdn.com/w80/uy.png"
+            }
+          }
+        ],
         "knockoutRounds": [
           {
             "round": 1,
@@ -128,7 +150,29 @@
         ],
         "phase": "done",
         "league": [],
-        "playoffs": [],
+        "playoffs": [
+          {
+            "id": "mqj4tin65sw5h",
+            "type": "third",
+            "label": "Tranh hạng 3 · Ba vs Tư",
+            "home": "Khuê",
+            "away": "Đại",
+            "homeSeed": 3,
+            "awaySeed": 4,
+            "scoreHome": null,
+            "scoreAway": null,
+            "played": false,
+            "lockedAt": null,
+            "teamHome": {
+              "name": "Thổ Nhĩ Kỳ",
+              "flag": "https://flagcdn.com/w80/tr.png"
+            },
+            "teamAway": {
+              "name": "Ý",
+              "flag": "https://flagcdn.com/w80/it.png"
+            }
+          }
+        ],
         "knockoutRounds": [
           {
             "round": 1,
