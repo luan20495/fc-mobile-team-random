@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-18T05:30:25.355Z",
+  "updatedAt": "2026-06-18T05:30:34.835Z",
   "players": [
     "Luân",
     "Hưng",
@@ -75,12 +75,12 @@
             "flag": "https://flagcdn.com/w80/it.png"
           },
           "Hưng": {
-            "name": "Hà Lan",
-            "flag": "https://flagcdn.com/w80/nl.png"
+            "name": "Bỉ",
+            "flag": "https://flagcdn.com/w80/be.png"
           },
           "Đại": {
-            "name": "Bồ Đào Nha",
-            "flag": "https://flagcdn.com/w80/pt.png"
+            "name": "Colombia",
+            "flag": "https://flagcdn.com/w80/co.png"
           },
           "Khuê": {
             "name": "Uruguay",
