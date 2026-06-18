@@ -1,0 +1,21 @@
+{
+  "version": 2,
+  "updatedAt": "2026-06-18T18:30:00.000Z",
+  "players": [
+    "Luân",
+    "Hưng",
+    "Đại",
+    "Khuê"
+  ],
+  "tournament": {
+    "cycles": [],
+    "activeCycleId": null
+  },
+  "teamsCache": null,
+  "shuffleHistory": [],
+  "randomCup": {
+    "activeCupId": null,
+    "cups": [],
+    "playerStats": {}
+  }
+}
