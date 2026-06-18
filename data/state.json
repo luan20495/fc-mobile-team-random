@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-18T05:20:19.988Z",
+  "updatedAt": "2026-06-18T05:20:25.981Z",
   "players": [
     "Luân",
     "Hưng",
@@ -8,8 +8,73 @@
     "Khuê"
   ],
   "tournament": {
-    "cycles": [],
-    "activeCycleId": null
+    "cycles": [
+      {
+        "id": "mqj1wy8rttchi",
+        "number": 1,
+        "createdAt": "2026-06-18T05:20:25.179Z",
+        "locked": false,
+        "format": "knockout",
+        "players": [
+          "Luân",
+          "Hưng",
+          "Đại",
+          "Khuê"
+        ],
+        "phase": "knockout",
+        "league": [],
+        "playoffs": [],
+        "knockoutRounds": [
+          {
+            "round": 1,
+            "label": "Bán kết",
+            "matches": [
+              {
+                "id": "mqj1wy8repvws",
+                "home": "Đại",
+                "away": "Khuê",
+                "scoreHome": null,
+                "scoreAway": null,
+                "played": false,
+                "lockedAt": null
+              },
+              {
+                "id": "mqj1wy8rbafyk",
+                "home": "Hưng",
+                "away": "Luân",
+                "scoreHome": null,
+                "scoreAway": null,
+                "played": false,
+                "lockedAt": null
+              }
+            ],
+            "byes": [],
+            "completed": false
+          }
+        ],
+        "playerTeams": {
+          "Luân": {
+            "name": "Hà Lan",
+            "flag": "https://flagcdn.com/w80/nl.png"
+          },
+          "Hưng": {
+            "name": "Iran",
+            "flag": "https://flagcdn.com/w80/ir.png"
+          },
+          "Đại": {
+            "name": "Pháp",
+            "flag": "https://flagcdn.com/w80/fr.png"
+          },
+          "Khuê": {
+            "name": "Tây Ban Nha",
+            "flag": "https://flagcdn.com/w80/es.png"
+          }
+        },
+        "champion": null,
+        "completedAt": null
+      }
+    ],
+    "activeCycleId": "mqj1wy8rttchi"
   },
   "teamsCache": {
     "cachedAt": "2026-06-18T05:20:19.186Z",
