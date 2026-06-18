@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-18T06:42:04.444Z",
+  "updatedAt": "2026-06-18T06:42:56.925Z",
   "players": [
     "Luân",
     "Hưng",
@@ -159,10 +159,10 @@
             "away": "Đại",
             "homeSeed": 3,
             "awaySeed": 4,
-            "scoreHome": null,
-            "scoreAway": null,
-            "played": false,
-            "lockedAt": null,
+            "scoreHome": 1,
+            "scoreAway": 2,
+            "played": true,
+            "lockedAt": "2026-06-18T06:42:56.124Z",
             "teamHome": {
               "name": "Thổ Nhĩ Kỳ",
               "flag": "https://flagcdn.com/w80/tr.png"
