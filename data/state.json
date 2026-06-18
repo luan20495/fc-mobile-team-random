@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-18T06:25:06.420Z",
+  "updatedAt": "2026-06-18T06:33:33.246Z",
   "players": [
     "Luân",
     "Hưng",
@@ -36,7 +36,15 @@
                 "scoreHome": 2,
                 "scoreAway": 1,
                 "played": true,
-                "lockedAt": "2026-06-18T05:27:54.093Z"
+                "lockedAt": "2026-06-18T05:27:54.093Z",
+                "teamHome": {
+                  "name": "Bỉ",
+                  "flag": "https://flagcdn.com/w80/be.png"
+                },
+                "teamAway": {
+                  "name": "Ý",
+                  "flag": "https://flagcdn.com/w80/it.png"
+                }
               },
               {
                 "id": "mqj1ydosr30xe",
@@ -45,7 +53,15 @@
                 "scoreHome": 1,
                 "scoreAway": 2,
                 "played": true,
-                "lockedAt": "2026-06-18T05:30:24.553Z"
+                "lockedAt": "2026-06-18T05:30:24.553Z",
+                "teamHome": {
+                  "name": "Uruguay",
+                  "flag": "https://flagcdn.com/w80/uy.png"
+                },
+                "teamAway": {
+                  "name": "Colombia",
+                  "flag": "https://flagcdn.com/w80/co.png"
+                }
               }
             ],
             "byes": [],
@@ -62,7 +78,15 @@
                 "scoreHome": 2,
                 "scoreAway": 1,
                 "played": true,
-                "lockedAt": "2026-06-18T05:37:18.339Z"
+                "lockedAt": "2026-06-18T05:37:18.339Z",
+                "teamHome": {
+                  "name": "Bỉ",
+                  "flag": "https://flagcdn.com/w80/be.png"
+                },
+                "teamAway": {
+                  "name": "Colombia",
+                  "flag": "https://flagcdn.com/w80/co.png"
+                }
               }
             ],
             "byes": [],
@@ -117,7 +141,15 @@
                 "scoreHome": 2,
                 "scoreAway": 1,
                 "played": true,
-                "lockedAt": "2026-06-18T05:49:33.561Z"
+                "lockedAt": "2026-06-18T05:49:33.561Z",
+                "teamHome": {
+                  "name": "Bồ Đào Nha",
+                  "flag": "https://flagcdn.com/w80/pt.png"
+                },
+                "teamAway": {
+                  "name": "Thổ Nhĩ Kỳ",
+                  "flag": "https://flagcdn.com/w80/tr.png"
+                }
               },
               {
                 "id": "mqj2p5gdsfax5",
@@ -126,7 +158,15 @@
                 "scoreHome": 2,
                 "scoreAway": 1,
                 "played": true,
-                "lockedAt": "2026-06-18T05:49:36.620Z"
+                "lockedAt": "2026-06-18T05:49:36.620Z",
+                "teamHome": {
+                  "name": "Tây Ban Nha",
+                  "flag": "https://flagcdn.com/w80/es.png"
+                },
+                "teamAway": {
+                  "name": "Ý",
+                  "flag": "https://flagcdn.com/w80/it.png"
+                }
               }
             ],
             "byes": [],
@@ -143,7 +183,15 @@
                 "scoreHome": 2,
                 "scoreAway": 1,
                 "played": true,
-                "lockedAt": "2026-06-18T05:55:47.059Z"
+                "lockedAt": "2026-06-18T05:55:47.059Z",
+                "teamHome": {
+                  "name": "Bồ Đào Nha",
+                  "flag": "https://flagcdn.com/w80/pt.png"
+                },
+                "teamAway": {
+                  "name": "Tây Ban Nha",
+                  "flag": "https://flagcdn.com/w80/es.png"
+                }
               }
             ],
             "byes": [],
@@ -197,7 +245,15 @@
             "scoreHome": 1,
             "scoreAway": 2,
             "played": true,
-            "lockedAt": "2026-06-18T06:24:32.079Z"
+            "lockedAt": "2026-06-18T06:24:32.079Z",
+            "teamHome": {
+              "name": "Colombia",
+              "flag": "https://flagcdn.com/w80/co.png"
+            },
+            "teamAway": {
+              "name": "Uruguay",
+              "flag": "https://flagcdn.com/w80/uy.png"
+            }
           }
         ],
         "knockoutRounds": [
@@ -212,7 +268,15 @@
                 "scoreHome": 2,
                 "scoreAway": 1,
                 "played": true,
-                "lockedAt": "2026-06-18T06:24:24.385Z"
+                "lockedAt": "2026-06-18T06:24:24.385Z",
+                "teamHome": {
+                  "name": "Uruguay",
+                  "flag": "https://flagcdn.com/w80/uy.png"
+                },
+                "teamAway": {
+                  "name": "Colombia",
+                  "flag": "https://flagcdn.com/w80/co.png"
+                }
               },
               {
                 "id": "mqj3xp4gb9njp",
@@ -221,7 +285,15 @@
                 "scoreHome": 2,
                 "scoreAway": 1,
                 "played": true,
-                "lockedAt": "2026-06-18T06:24:27.711Z"
+                "lockedAt": "2026-06-18T06:24:27.711Z",
+                "teamHome": {
+                  "name": "Ma Rốc",
+                  "flag": "https://flagcdn.com/w80/ma.png"
+                },
+                "teamAway": {
+                  "name": "Uruguay",
+                  "flag": "https://flagcdn.com/w80/uy.png"
+                }
               }
             ],
             "byes": [],
@@ -238,7 +310,15 @@
                 "scoreHome": 2,
                 "scoreAway": 1,
                 "played": true,
-                "lockedAt": "2026-06-18T06:24:34.597Z"
+                "lockedAt": "2026-06-18T06:24:34.597Z",
+                "teamHome": {
+                  "name": "Uruguay",
+                  "flag": "https://flagcdn.com/w80/uy.png"
+                },
+                "teamAway": {
+                  "name": "Ma Rốc",
+                  "flag": "https://flagcdn.com/w80/ma.png"
+                }
               }
             ],
             "byes": [],
@@ -270,7 +350,7 @@
         "id": "mqj47omu0hqk5",
         "number": 4,
         "createdAt": "2026-06-18T06:24:45.174Z",
-        "locked": false,
+        "locked": true,
         "format": "knockout",
         "players": [
           "Luân",
@@ -278,7 +358,7 @@
           "Đại",
           "Khuê"
         ],
-        "phase": "knockout",
+        "phase": "done",
         "league": [],
         "playoffs": [
           {
@@ -307,7 +387,15 @@
                 "scoreHome": 1,
                 "scoreAway": 2,
                 "played": true,
-                "lockedAt": "2026-06-18T06:24:48.710Z"
+                "lockedAt": "2026-06-18T06:24:48.710Z",
+                "teamHome": {
+                  "name": "Anh",
+                  "flag": "https://flagcdn.com/w80/gb-eng.png"
+                },
+                "teamAway": {
+                  "name": "Uruguay",
+                  "flag": "https://flagcdn.com/w80/uy.png"
+                }
               },
               {
                 "id": "mqj47omu2mtxt",
@@ -316,7 +404,15 @@
                 "scoreHome": 2,
                 "scoreAway": 1,
                 "played": true,
-                "lockedAt": "2026-06-18T06:24:50.662Z"
+                "lockedAt": "2026-06-18T06:24:50.662Z",
+                "teamHome": {
+                  "name": "Hà Lan",
+                  "flag": "https://flagcdn.com/w80/nl.png"
+                },
+                "teamAway": {
+                  "name": "Pháp",
+                  "flag": "https://flagcdn.com/w80/fr.png"
+                }
               }
             ],
             "byes": [],
@@ -359,10 +455,90 @@
           }
         },
         "champion": null,
+        "completedAt": "2026-06-18T06:33:31.683Z"
+      },
+      {
+        "id": "mqj4iyw3c6vur",
+        "number": 5,
+        "createdAt": "2026-06-18T06:33:31.683Z",
+        "locked": false,
+        "format": "knockout",
+        "players": [
+          "Luân",
+          "Hưng",
+          "Đại",
+          "Khuê"
+        ],
+        "phase": "knockout",
+        "league": [],
+        "playoffs": [],
+        "knockoutRounds": [
+          {
+            "round": 1,
+            "label": "Bán kết",
+            "matches": [
+              {
+                "id": "mqj4iyw3910td",
+                "home": "Luân",
+                "away": "Đại",
+                "scoreHome": null,
+                "scoreAway": null,
+                "played": false,
+                "lockedAt": null,
+                "teamHome": {
+                  "name": "Bỉ",
+                  "flag": "https://flagcdn.com/w80/be.png"
+                },
+                "teamAway": {
+                  "name": "Tây Ban Nha",
+                  "flag": "https://flagcdn.com/w80/es.png"
+                }
+              },
+              {
+                "id": "mqj4iyw38ao2r",
+                "home": "Hưng",
+                "away": "Khuê",
+                "scoreHome": null,
+                "scoreAway": null,
+                "played": false,
+                "lockedAt": null,
+                "teamHome": {
+                  "name": "Đức",
+                  "flag": "https://flagcdn.com/w80/de.png"
+                },
+                "teamAway": {
+                  "name": "Colombia",
+                  "flag": "https://flagcdn.com/w80/co.png"
+                }
+              }
+            ],
+            "byes": [],
+            "completed": false
+          }
+        ],
+        "playerTeams": {
+          "Luân": {
+            "name": "Bỉ",
+            "flag": "https://flagcdn.com/w80/be.png"
+          },
+          "Hưng": {
+            "name": "Đức",
+            "flag": "https://flagcdn.com/w80/de.png"
+          },
+          "Đại": {
+            "name": "Tây Ban Nha",
+            "flag": "https://flagcdn.com/w80/es.png"
+          },
+          "Khuê": {
+            "name": "Colombia",
+            "flag": "https://flagcdn.com/w80/co.png"
+          }
+        },
+        "champion": null,
         "completedAt": null
       }
     ],
-    "activeCycleId": "mqj47omu0hqk5"
+    "activeCycleId": "mqj4iyw3c6vur"
   },
   "teamsCache": {
     "cachedAt": "2026-06-18T05:20:19.186Z",
