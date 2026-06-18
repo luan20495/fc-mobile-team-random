@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-18T04:46:25.301Z",
+  "updatedAt": "2026-06-18T04:46:28.018Z",
   "players": [
     "Luân",
     "Hưng",
@@ -114,10 +114,10 @@
                 "id": "mqj0p7n8jbpll",
                 "home": "Đại",
                 "away": "Khuê",
-                "scoreHome": null,
-                "scoreAway": null,
-                "played": false,
-                "lockedAt": null
+                "scoreHome": 1,
+                "scoreAway": 2,
+                "played": true,
+                "lockedAt": "2026-06-18T04:46:27.217Z"
               },
               {
                 "id": "mqj0p7n8pedmj",
