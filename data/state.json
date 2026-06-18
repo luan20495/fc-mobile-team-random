@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-18T09:26:27.492Z",
+  "updatedAt": "2026-06-18T09:26:38.899Z",
   "players": [
     "Luân",
     "Hưng",
@@ -263,9 +263,96 @@
         },
         "champion": "Luân",
         "completedAt": "2026-06-18T05:55:47.059Z"
+      },
+      {
+        "id": "mqjapl3j1u2co",
+        "number": 3,
+        "createdAt": "2026-06-18T09:26:38.095Z",
+        "locked": false,
+        "format": "knockout",
+        "players": [
+          "Luân",
+          "Hưng",
+          "Đại",
+          "Khuê",
+          "Long"
+        ],
+        "phase": "knockout",
+        "league": [],
+        "playoffs": [],
+        "knockoutRounds": [
+          {
+            "round": 1,
+            "label": "Vòng loại",
+            "matches": [
+              {
+                "id": "mqjapl3jphn4i",
+                "home": "Long",
+                "away": "Khuê",
+                "scoreHome": null,
+                "scoreAway": null,
+                "played": false,
+                "lockedAt": null,
+                "teamHome": {
+                  "name": "Đức",
+                  "flag": "https://flagcdn.com/w80/de.png"
+                },
+                "teamAway": {
+                  "name": "Ai Cập",
+                  "flag": "https://flagcdn.com/w80/eg.png"
+                }
+              },
+              {
+                "id": "mqjapl3kkgpph",
+                "home": "Đại",
+                "away": "Hưng",
+                "scoreHome": null,
+                "scoreAway": null,
+                "played": false,
+                "lockedAt": null,
+                "teamHome": {
+                  "name": "Úc",
+                  "flag": "https://flagcdn.com/w80/au.png"
+                },
+                "teamAway": {
+                  "name": "Iraq",
+                  "flag": "https://flagcdn.com/w80/iq.png"
+                }
+              }
+            ],
+            "byes": [
+              "Luân"
+            ],
+            "completed": false
+          }
+        ],
+        "playerTeams": {
+          "Luân": {
+            "name": "Séc",
+            "flag": "https://flagcdn.com/w80/cz.png"
+          },
+          "Hưng": {
+            "name": "Iraq",
+            "flag": "https://flagcdn.com/w80/iq.png"
+          },
+          "Đại": {
+            "name": "Úc",
+            "flag": "https://flagcdn.com/w80/au.png"
+          },
+          "Khuê": {
+            "name": "Ai Cập",
+            "flag": "https://flagcdn.com/w80/eg.png"
+          },
+          "Long": {
+            "name": "Đức",
+            "flag": "https://flagcdn.com/w80/de.png"
+          }
+        },
+        "champion": null,
+        "completedAt": null
       }
     ],
-    "activeCycleId": null
+    "activeCycleId": "mqjapl3j1u2co"
   },
   "teamsCache": {
     "cachedAt": "2026-06-18T05:20:19.186Z",
