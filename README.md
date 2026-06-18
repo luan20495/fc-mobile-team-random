@@ -1,14 +1,43 @@
-# FC Mobile — Bắt Đội Ngẫu Nhiên
+# FC Mobile Cup
 
-Tool chia đội / bắt đối ngẫu nhiên cho FC Mobile.
+Web app nhỏ cho nhóm bạn chơi FC Mobile: bắt đội nhanh, random đội tuyển, tạo Random Cup, nhập kết quả, xem bracket, lưu lịch sử và thống kê.
 
-## Tính năng
+## Tính năng chính
 
-- Thêm / xóa tên người chơi
-- Chia 2 đội, 2 vs 2, hoặc nhiều trận 1 vs 1
-- Random đội tuyển từ [FIFA World Cup 2026 API](https://worldcup26.ir/api-docs/index#/Teams/get_get_teams) (48 đội)
-- Lưu danh sách trên trình duyệt (localStorage)
+- Bắt đội nhanh: chia 2 đội, 1v1, 2v2, 3v3, 4v4, 5v5
+- Random đội tuyển
+- Random Cup: thắng gặp thắng, thua gặp thua, có bye, có champion
+- Giải Nhất Nhì: vòng tròn + playoff
+- Lịch sử cá nhân
+- Thống kê thắng/thua/vô địch
+- Đồng bộ nhiều thiết bị qua Cloudflare Worker + `data/state.json`
 
-## Dùng local
+## Chạy local
 
-Mở `index.html` trong trình duyệt.
+```bash
+python3 -m http.server 8765
+```
+
+Mở:
+
+```text
+http://localhost:8765
+```
+
+## Deploy
+
+- **Frontend:** GitHub Pages từ branch `main`, root folder
+- **Sync API:** Cloudflare Worker trong thư mục `workers/`
+
+Xem hướng dẫn đầy đủ tại:
+
+- [PROJECT_REPORT.md](./PROJECT_REPORT.md)
+- [workers/README.md](./workers/README.md)
+
+## Bảo mật
+
+Không commit:
+
+- GitHub token
+- `WRITE_KEY`
+- `workers/.dev.vars`

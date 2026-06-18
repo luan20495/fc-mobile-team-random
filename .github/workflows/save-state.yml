@@ -1,0 +1,45 @@
+name: Save shared state
+
+on:
+  workflow_dispatch:
+    inputs:
+      state:
+        description: "Full JSON state"
+        required: true
+      clientId:
+        description: "Client id"
+        required: false
+      updatedAt:
+        description: "Client updatedAt"
+        required: false
+
+permissions:
+  contents: write
+
+jobs:
+  save:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Write and validate state
+        env:
+          STATE_JSON: ${{ inputs.state }}
+        run: |
+          mkdir -p data
+          python3 -c 'import json,os,sys; json.loads(os.environ["STATE_JSON"])'
+          printf '%s' "$STATE_JSON" > data/state.json
+          python3 -m json.tool data/state.json > /tmp/state.valid.json
+          mv /tmp/state.valid.json data/state.json
+
+      - name: Commit and push
+        run: |
+          git config user.name "fc-mobile-sync-bot"
+          git config user.email "fc-mobile-sync-bot@users.noreply.github.com"
+          git add data/state.json
+          if git diff --cached --quiet; then
+            echo "No changes"
+            exit 0
+          fi
+          git commit -m "Sync shared state (${{ inputs.clientId || 'workflow' }})"
+          git push
