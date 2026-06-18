@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-18T06:51:53.391Z",
+  "updatedAt": "2026-06-18T07:09:36.095Z",
   "players": [
     "Luân",
     "Hưng",
@@ -262,136 +262,9 @@
         },
         "champion": "Luân",
         "completedAt": "2026-06-18T05:55:47.059Z"
-      },
-      {
-        "id": "mqj53qorexv64",
-        "number": 3,
-        "createdAt": "2026-06-18T06:49:40.827Z",
-        "locked": false,
-        "format": "knockout",
-        "players": [
-          "Luân",
-          "Hưng",
-          "Đại",
-          "Khuê"
-        ],
-        "phase": "knockout",
-        "league": [],
-        "playoffs": [
-          {
-            "id": "mqj56kcupas5n",
-            "type": "third",
-            "label": "Tranh hạng 3 · Ba vs Tư",
-            "home": "Luân",
-            "away": "Đại",
-            "homeSeed": 3,
-            "awaySeed": 4,
-            "scoreHome": null,
-            "scoreAway": null,
-            "played": false,
-            "lockedAt": null,
-            "teamHome": {
-              "name": "Argentina",
-              "flag": "https://flagcdn.com/w80/ar.png"
-            },
-            "teamAway": {
-              "name": "Tây Ban Nha",
-              "flag": "https://flagcdn.com/w80/es.png"
-            }
-          }
-        ],
-        "knockoutRounds": [
-          {
-            "round": 1,
-            "label": "Bán kết",
-            "matches": [
-              {
-                "id": "mqj53qorzwqn3",
-                "home": "Hưng",
-                "away": "Luân",
-                "scoreHome": 2,
-                "scoreAway": 1,
-                "played": true,
-                "lockedAt": "2026-06-18T06:51:50.253Z",
-                "teamHome": {
-                  "name": "Đức",
-                  "flag": "https://flagcdn.com/w80/de.png"
-                },
-                "teamAway": {
-                  "name": "Argentina",
-                  "flag": "https://flagcdn.com/w80/ar.png"
-                }
-              },
-              {
-                "id": "mqj53qor7r3ja",
-                "home": "Đại",
-                "away": "Khuê",
-                "scoreHome": 1,
-                "scoreAway": 2,
-                "played": true,
-                "lockedAt": "2026-06-18T06:51:52.589Z",
-                "teamHome": {
-                  "name": "Tây Ban Nha",
-                  "flag": "https://flagcdn.com/w80/es.png"
-                },
-                "teamAway": {
-                  "name": "Pháp",
-                  "flag": "https://flagcdn.com/w80/fr.png"
-                }
-              }
-            ],
-            "byes": [],
-            "completed": true
-          },
-          {
-            "round": 2,
-            "label": "Chung kết",
-            "matches": [
-              {
-                "id": "mqj56kcu5d87f",
-                "home": "Hưng",
-                "away": "Khuê",
-                "scoreHome": null,
-                "scoreAway": null,
-                "played": false,
-                "lockedAt": null,
-                "teamHome": {
-                  "name": "Croatia",
-                  "flag": "https://flagcdn.com/w80/hr.png"
-                },
-                "teamAway": {
-                  "name": "Brazil",
-                  "flag": "https://flagcdn.com/w80/br.png"
-                }
-              }
-            ],
-            "byes": [],
-            "completed": false
-          }
-        ],
-        "playerTeams": {
-          "Luân": {
-            "name": "Argentina",
-            "flag": "https://flagcdn.com/w80/ar.png"
-          },
-          "Hưng": {
-            "name": "Đức",
-            "flag": "https://flagcdn.com/w80/de.png"
-          },
-          "Đại": {
-            "name": "Tây Ban Nha",
-            "flag": "https://flagcdn.com/w80/es.png"
-          },
-          "Khuê": {
-            "name": "Pháp",
-            "flag": "https://flagcdn.com/w80/fr.png"
-          }
-        },
-        "champion": null,
-        "completedAt": null
       }
     ],
-    "activeCycleId": "mqj53qorexv64"
+    "activeCycleId": null
   },
   "teamsCache": {
     "cachedAt": "2026-06-18T05:20:19.186Z",
