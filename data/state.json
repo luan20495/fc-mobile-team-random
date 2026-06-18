@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-18T06:44:41.896Z",
+  "updatedAt": "2026-06-18T06:44:45.449Z",
   "players": [
     "Luân",
     "Hưng",
@@ -360,8 +360,8 @@
                   "flag": "https://flagcdn.com/w80/fr.png"
                 },
                 "teamAway": {
-                  "name": "Uruguay",
-                  "flag": "https://flagcdn.com/w80/uy.png"
+                  "name": "Anh",
+                  "flag": "https://flagcdn.com/w80/gb-eng.png"
                 }
               }
             ],
