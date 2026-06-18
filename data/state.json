@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-18T06:24:35.400Z",
+  "updatedAt": "2026-06-18T06:24:45.976Z",
   "players": [
     "Luân",
     "Hưng",
@@ -265,9 +265,73 @@
         },
         "champion": "Đại",
         "completedAt": "2026-06-18T06:24:34.598Z"
+      },
+      {
+        "id": "mqj47omu0hqk5",
+        "number": 4,
+        "createdAt": "2026-06-18T06:24:45.174Z",
+        "locked": false,
+        "format": "knockout",
+        "players": [
+          "Luân",
+          "Hưng",
+          "Đại",
+          "Khuê"
+        ],
+        "phase": "knockout",
+        "league": [],
+        "playoffs": [],
+        "knockoutRounds": [
+          {
+            "round": 1,
+            "label": "Bán kết",
+            "matches": [
+              {
+                "id": "mqj47omudvtce",
+                "home": "Luân",
+                "away": "Hưng",
+                "scoreHome": null,
+                "scoreAway": null,
+                "played": false,
+                "lockedAt": null
+              },
+              {
+                "id": "mqj47omu2mtxt",
+                "home": "Khuê",
+                "away": "Đại",
+                "scoreHome": null,
+                "scoreAway": null,
+                "played": false,
+                "lockedAt": null
+              }
+            ],
+            "byes": [],
+            "completed": false
+          }
+        ],
+        "playerTeams": {
+          "Luân": {
+            "name": "Ý",
+            "flag": "https://flagcdn.com/w80/it.png"
+          },
+          "Hưng": {
+            "name": "Brazil",
+            "flag": "https://flagcdn.com/w80/br.png"
+          },
+          "Đại": {
+            "name": "Anh",
+            "flag": "https://flagcdn.com/w80/gb-eng.png"
+          },
+          "Khuê": {
+            "name": "Uruguay",
+            "flag": "https://flagcdn.com/w80/uy.png"
+          }
+        },
+        "champion": null,
+        "completedAt": null
       }
     ],
-    "activeCycleId": null
+    "activeCycleId": "mqj47omu0hqk5"
   },
   "teamsCache": {
     "cachedAt": "2026-06-18T05:20:19.186Z",
