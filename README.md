@@ -15,6 +15,14 @@
 
 <br>
 
+<a href="https://luan20495.github.io/fc-mobile-team-random/">
+  <img src="assets/screenshots/giai-nhat-nhi.png" alt="FC Mobile Cup — giao diện Giải Nhất Nhì" width="720">
+</a>
+
+<sub>👆 Bấm ảnh để mở bản live · thêm vào màn hình chính trên điện thoại (PWA)</sub>
+
+<br><br>
+
 [📖 Báo cáo vận hành](./PROJECT_REPORT.md) · [☁️ Deploy Worker](./workers/README.md) · [🤖 Agent handoff](./AGENT_HANDOFF.md)
 
 </div>
@@ -23,46 +31,65 @@
 
 ## ✨ Tại sao dùng?
 
-| | |
-|:---:|:---|
-| ⚡ | **Không cần cài app** — mở link, đặt tên profile, chơi ngay |
-| 🎲 | **Random đội tuyển** WC 2026 (API hoặc bộ 16 đội FC Mobile) |
-| 🏆 | **2 chế độ giải**: Random Cup (nhánh thắng/thua) & Giải Nhất Nhì (loại trực tiếp / vòng tròn) |
-| 📊 | **BXH điểm**, profile cá nhân, thống kê thắng/thua/vô địch |
-| ☁️ | **Đồng bộ nhóm** — mọi người dùng chung dữ liệu qua cloud |
-
-> Một file `index.html`, không framework, không build step. Push `main` là có bản production.
+<table>
+<tr>
+<td width="140" align="center"><img src="assets/brand/dice-mark.svg" width="48" alt=""></td>
+<td><strong>Không cần cài app</strong> — mở link, đặt tên profile, chơi ngay. Push <code>main</code> là có bản production.</td>
+</tr>
+<tr>
+<td align="center">🎲</td>
+<td><strong>Random đội tuyển</strong> WC 2026 (API) hoặc bộ <strong>16 đội FC Mobile</strong></td>
+</tr>
+<tr>
+<td align="center">🏆</td>
+<td><strong>Giải Nhất Nhì</strong> loại trực tiếp / vòng tròn · bracket mirror + BXH điểm</td>
+</tr>
+<tr>
+<td align="center">👤</td>
+<td><strong>Profile riêng</strong> trên máy — gán nick giải để xem điểm & lịch sử</td>
+</tr>
+<tr>
+<td align="center">☁️</td>
+<td><strong>Đồng bộ nhóm</strong> qua Cloudflare Worker — mọi máy dùng chung data</td>
+</tr>
+</table>
 
 ---
 
-## 🎮 Tính năng
+## 🖼️ Giao diện app
 
 <table>
 <tr>
 <td width="50%" valign="top">
 
-### 🟢 Bắt đội
-- Chia **1v1** hoặc **NvN** (2v2 → 5v5)
-- Random **ĐTQG** cho từng người
-- Lịch sử bắt đội gần đây
+### 🎲 Bắt đội
+Random cặp 1v1 / NvN, gán cờ ĐTQG, lịch sử gần đây.
 
-### 🏅 Random Cup
-- Giải loại trực tiếp **thắng gặp thắng · thua gặp thua**
-- Hỗ trợ **bye**, đổi ĐTQG mỗi vòng
-- Bracket + nhập tỉ số nhanh
+<a href="https://luan20495.github.io/fc-mobile-team-random/">
+  <img src="assets/screenshots/bat-doi.png" alt="Tab Bắt đội — random cặp và đội tuyển" width="100%">
+</a>
 
 </td>
 <td width="50%" valign="top">
 
-### 🏆 Giải Nhất Nhì
-- **Loại trực tiếp** (4 / 8 người) hoặc **vòng tròn + playoff**
-- Bracket kiểu FC Mobile, trận **3 vs 4** sau bán kết
-- **BXH tổng điểm** (Nhất +3 · Nhì +2 · Ba +1)
-- Random 🎲 cặp + ĐTQG theo từng vòng
+### 👤 Profile
+Tên profile trên máy (vd. Tứ Hùng) + chọn **tên trong giải** (Hưng, Luân…).
 
-### 👤 Profile & Thống kê
-- Xem lịch sử theo tên người chơi
-- Bảng thống kê Random Cup & điểm giải
+<a href="https://luan20495.github.io/fc-mobile-team-random/">
+  <img src="assets/screenshots/profile.png" alt="Tab Profile — thống kê và gán tên giải" width="100%">
+</a>
+
+</td>
+</tr>
+<tr>
+<td colspan="2" align="center">
+
+### 🏆 Bracket Giải Nhất Nhì
+Sơ đồ loại trực tiếp kiểu FC Mobile · dây nối SVG · nhập tỉ số trực tiếp · tranh hạng 3
+
+<a href="https://luan20495.github.io/fc-mobile-team-random/">
+  <img src="assets/screenshots/bracket.png" alt="Bracket knockout — bán kết, chung kết, tranh hạng 3" width="100%">
+</a>
 
 </td>
 </tr>
@@ -70,13 +97,33 @@
 
 ---
 
-## 🖼️ Giao diện
+## 🎮 Tính năng chính
 
-| Bracket giải | App tổng thể |
-|:---:|:---:|
-| Sơ đồ loại trực tiếp mirror, dây nối SVG, ô nhập kết quả trực tiếp | Header gọn, tab rõ, panel người chơi gập được, layout rộng trên desktop |
+<table>
+<tr>
+<td width="33%" valign="top" align="center">
 
-<sub>Mở <a href="https://luan20495.github.io/fc-mobile-team-random/">bản live</a> trên điện thoại để thêm vào màn hình chính (PWA).</sub>
+<img src="assets/screenshots/bat-doi.png" width="200" alt="Bắt đội"><br>
+<strong>Bắt đội</strong><br>
+<sub>1v1 · 2v2→5v5 · random ĐTQG</sub>
+
+</td>
+<td width="33%" valign="top" align="center">
+
+<img src="assets/screenshots/giai-nhat-nhi.png" width="200" alt="Giải"><br>
+<strong>Giải Nhất Nhì</strong><br>
+<sub>Loại TT · vòng tròn · BXH +3/+2/+1</sub>
+
+</td>
+<td width="33%" valign="top" align="center">
+
+<img src="assets/screenshots/profile.png" width="200" alt="Profile"><br>
+<strong>Profile & điểm</strong><br>
+<sub>Tên máy ≠ nick giải · lịch sử cá nhân</sub>
+
+</td>
+</tr>
+</table>
 
 ---
 
