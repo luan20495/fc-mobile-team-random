@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-18T05:49:34.363Z",
+  "updatedAt": "2026-06-18T05:49:37.422Z",
   "players": [
     "Luân",
     "Hưng",
@@ -123,6 +123,23 @@
                 "id": "mqj2p5gdsfax5",
                 "home": "Hưng",
                 "away": "Đại",
+                "scoreHome": 2,
+                "scoreAway": 1,
+                "played": true,
+                "lockedAt": "2026-06-18T05:49:36.620Z"
+              }
+            ],
+            "byes": [],
+            "completed": true
+          },
+          {
+            "round": 2,
+            "label": "Chung kết",
+            "matches": [
+              {
+                "id": "mqj2yhnw330dg",
+                "home": "Luân",
+                "away": "Hưng",
                 "scoreHome": null,
                 "scoreAway": null,
                 "played": false,
