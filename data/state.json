@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-18T05:42:18.645Z",
+  "updatedAt": "2026-06-18T05:42:21.696Z",
   "players": [
     "Luân",
     "Hưng",
@@ -111,8 +111,8 @@
             "label": "Bán kết",
             "matches": [
               {
-                "id": "mqj2p33n4se5g",
-                "home": "Đại",
+                "id": "mqj2p5gdkbwmh",
+                "home": "Luân",
                 "away": "Khuê",
                 "scoreHome": null,
                 "scoreAway": null,
@@ -120,9 +120,9 @@
                 "lockedAt": null
               },
               {
-                "id": "mqj2p33n1ir61",
-                "home": "Luân",
-                "away": "Hưng",
+                "id": "mqj2p5gdsfax5",
+                "home": "Hưng",
+                "away": "Đại",
                 "scoreHome": null,
                 "scoreAway": null,
                 "played": false,
@@ -139,16 +139,16 @@
             "flag": "https://flagcdn.com/w80/fr.png"
           },
           "Hưng": {
-            "name": "Hà Lan",
-            "flag": "https://flagcdn.com/w80/nl.png"
+            "name": "Senegal",
+            "flag": "https://flagcdn.com/w80/sn.png"
           },
           "Đại": {
-            "name": "Bỉ",
-            "flag": "https://flagcdn.com/w80/be.png"
+            "name": "Ý",
+            "flag": "https://flagcdn.com/w80/it.png"
           },
           "Khuê": {
-            "name": "Brazil",
-            "flag": "https://flagcdn.com/w80/br.png"
+            "name": "Thổ Nhĩ Kỳ",
+            "flag": "https://flagcdn.com/w80/tr.png"
           }
         },
         "champion": null,
