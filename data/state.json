@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-19T05:46:21.359Z",
+  "updatedAt": "2026-06-19T05:46:26.891Z",
   "players": [
     "Luân",
     "Hưng",
@@ -268,7 +268,7 @@
         "id": "mqjapl3j1u2co",
         "number": 3,
         "createdAt": "2026-06-18T09:26:38.095Z",
-        "locked": false,
+        "locked": true,
         "format": "knockout",
         "players": [
           "Luân",
@@ -277,7 +277,7 @@
           "Khuê",
           "Long"
         ],
-        "phase": "knockout",
+        "phase": "done",
         "league": [],
         "playoffs": [
           {
@@ -423,10 +423,97 @@
           }
         },
         "champion": null,
+        "completedAt": "2026-06-19T05:46:26.089Z"
+      },
+      {
+        "id": "mqkia9bdecu6d",
+        "number": 4,
+        "createdAt": "2026-06-19T05:46:26.089Z",
+        "locked": false,
+        "format": "knockout",
+        "players": [
+          "Luân",
+          "Hưng",
+          "Đại",
+          "Khuê",
+          "Long"
+        ],
+        "phase": "knockout",
+        "league": [],
+        "playoffs": [],
+        "knockoutRounds": [
+          {
+            "round": 1,
+            "label": "Vòng loại",
+            "matches": [
+              {
+                "id": "mqkia9bdtsh9e",
+                "home": "Đại",
+                "away": "Long",
+                "scoreHome": null,
+                "scoreAway": null,
+                "played": false,
+                "lockedAt": null,
+                "teamHome": {
+                  "name": "Ý",
+                  "flag": "https://flagcdn.com/w80/it.png"
+                },
+                "teamAway": {
+                  "name": "Croatia",
+                  "flag": "https://flagcdn.com/w80/hr.png"
+                }
+              },
+              {
+                "id": "mqkia9bdke3dl",
+                "home": "Khuê",
+                "away": "Hưng",
+                "scoreHome": null,
+                "scoreAway": null,
+                "played": false,
+                "lockedAt": null,
+                "teamHome": {
+                  "name": "Colombia",
+                  "flag": "https://flagcdn.com/w80/co.png"
+                },
+                "teamAway": {
+                  "name": "Thổ Nhĩ Kỳ",
+                  "flag": "https://flagcdn.com/w80/tr.png"
+                }
+              }
+            ],
+            "byes": [
+              "Luân"
+            ],
+            "completed": false
+          }
+        ],
+        "playerTeams": {
+          "Luân": {
+            "name": "Brazil",
+            "flag": "https://flagcdn.com/w80/br.png"
+          },
+          "Hưng": {
+            "name": "Thổ Nhĩ Kỳ",
+            "flag": "https://flagcdn.com/w80/tr.png"
+          },
+          "Đại": {
+            "name": "Ý",
+            "flag": "https://flagcdn.com/w80/it.png"
+          },
+          "Khuê": {
+            "name": "Colombia",
+            "flag": "https://flagcdn.com/w80/co.png"
+          },
+          "Long": {
+            "name": "Croatia",
+            "flag": "https://flagcdn.com/w80/hr.png"
+          }
+        },
+        "champion": null,
         "completedAt": null
       }
     ],
-    "activeCycleId": "mqjapl3j1u2co"
+    "activeCycleId": "mqkia9bdecu6d"
   },
   "teamsCache": {
     "cachedAt": "2026-06-18T05:20:19.186Z",
