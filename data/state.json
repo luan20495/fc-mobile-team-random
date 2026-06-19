@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-19T05:39:24.086Z",
+  "updatedAt": "2026-06-19T05:46:17.347Z",
   "players": [
     "Luân",
     "Hưng",
@@ -355,10 +355,10 @@
                 "id": "mqki0y1s1vbrp",
                 "home": "Hưng",
                 "away": "Khuê",
-                "scoreHome": null,
-                "scoreAway": null,
-                "played": false,
-                "lockedAt": null,
+                "scoreHome": 1,
+                "scoreAway": 2,
+                "played": true,
+                "lockedAt": "2026-06-19T05:46:16.542Z",
                 "teamHome": {
                   "name": "Uruguay",
                   "flag": "https://flagcdn.com/w80/uy.png"
@@ -372,6 +372,31 @@
             "byes": [
               "Long"
             ],
+            "completed": true
+          },
+          {
+            "round": 3,
+            "label": "Chung kết",
+            "matches": [
+              {
+                "id": "mqkia1y6nynv1",
+                "home": "Long",
+                "away": "Khuê",
+                "scoreHome": null,
+                "scoreAway": null,
+                "played": false,
+                "lockedAt": null,
+                "teamHome": {
+                  "name": "Hà Lan",
+                  "flag": "https://flagcdn.com/w80/nl.png"
+                },
+                "teamAway": {
+                  "name": "Thổ Nhĩ Kỳ",
+                  "flag": "https://flagcdn.com/w80/tr.png"
+                }
+              }
+            ],
+            "byes": [],
             "completed": false
           }
         ],
