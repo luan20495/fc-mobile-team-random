@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-19T05:46:40.386Z",
+  "updatedAt": "2026-06-19T05:46:44.377Z",
   "players": [
     "Luân",
     "Hưng",
@@ -446,9 +446,9 @@
             "label": "Vòng loại",
             "matches": [
               {
-                "id": "mqkiaclwns09a",
-                "home": "Đại",
-                "away": "Luân",
+                "id": "mqkiamt2wctzp",
+                "home": "Hưng",
+                "away": "Khuê",
                 "scoreHome": null,
                 "scoreAway": null,
                 "played": false,
@@ -458,54 +458,54 @@
                   "flag": "https://flagcdn.com/w80/de.png"
                 },
                 "teamAway": {
-                  "name": "Colombia",
-                  "flag": "https://flagcdn.com/w80/co.png"
+                  "name": "Argentina",
+                  "flag": "https://flagcdn.com/w80/ar.png"
                 }
               },
               {
-                "id": "mqkiaclwulp4m",
+                "id": "mqkiamt2g8h2w",
                 "home": "Long",
-                "away": "Khuê",
+                "away": "Luân",
                 "scoreHome": null,
                 "scoreAway": null,
                 "played": false,
                 "lockedAt": null,
                 "teamHome": {
-                  "name": "Ý",
-                  "flag": "https://flagcdn.com/w80/it.png"
+                  "name": "Brazil",
+                  "flag": "https://flagcdn.com/w80/br.png"
                 },
                 "teamAway": {
-                  "name": "Tây Ban Nha",
-                  "flag": "https://flagcdn.com/w80/es.png"
+                  "name": "Thổ Nhĩ Kỳ",
+                  "flag": "https://flagcdn.com/w80/tr.png"
                 }
               }
             ],
             "byes": [
-              "Hưng"
+              "Đại"
             ],
             "completed": false
           }
         ],
         "playerTeams": {
           "Luân": {
-            "name": "Colombia",
-            "flag": "https://flagcdn.com/w80/co.png"
-          },
-          "Hưng": {
             "name": "Thổ Nhĩ Kỳ",
             "flag": "https://flagcdn.com/w80/tr.png"
           },
-          "Đại": {
+          "Hưng": {
             "name": "Đức",
             "flag": "https://flagcdn.com/w80/de.png"
           },
+          "Đại": {
+            "name": "Senegal",
+            "flag": "https://flagcdn.com/w80/sn.png"
+          },
           "Khuê": {
-            "name": "Tây Ban Nha",
-            "flag": "https://flagcdn.com/w80/es.png"
+            "name": "Argentina",
+            "flag": "https://flagcdn.com/w80/ar.png"
           },
           "Long": {
-            "name": "Ý",
-            "flag": "https://flagcdn.com/w80/it.png"
+            "name": "Brazil",
+            "flag": "https://flagcdn.com/w80/br.png"
           }
         },
         "champion": null,
