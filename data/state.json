@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-19T13:48:57.788Z",
+  "updatedAt": "2026-06-19T13:49:04.700Z",
   "players": [
     "Luân",
     "Hưng",
@@ -658,7 +658,29 @@
         ],
         "phase": "knockout",
         "league": [],
-        "playoffs": [],
+        "playoffs": [
+          {
+            "id": "mqkzitq1pga54",
+            "type": "third",
+            "label": "Tranh hạng 3 · Ba vs Tư",
+            "home": "Khuê",
+            "away": "Luân",
+            "homeSeed": 3,
+            "awaySeed": 4,
+            "scoreHome": null,
+            "scoreAway": null,
+            "played": false,
+            "lockedAt": null,
+            "teamHome": {
+              "name": "Ma Rốc",
+              "flag": "https://flagcdn.com/w80/ma.png"
+            },
+            "teamAway": {
+              "name": "Brazil",
+              "flag": "https://flagcdn.com/w80/br.png"
+            }
+          }
+        ],
         "knockoutRounds": [
           {
             "round": 1,
@@ -685,10 +707,10 @@
                 "id": "mqkz9ids5culm",
                 "home": "Luân",
                 "away": "Long",
-                "scoreHome": null,
-                "scoreAway": null,
-                "played": false,
-                "lockedAt": null,
+                "scoreHome": 1,
+                "scoreAway": 2,
+                "played": true,
+                "lockedAt": "2026-06-19T13:48:59.251Z",
                 "teamHome": {
                   "name": "Brazil",
                   "flag": "https://flagcdn.com/w80/br.png"
@@ -696,6 +718,31 @@
                 "teamAway": {
                   "name": "Senegal",
                   "flag": "https://flagcdn.com/w80/sn.png"
+                }
+              }
+            ],
+            "byes": [],
+            "completed": true
+          },
+          {
+            "round": 2,
+            "label": "Chung kết",
+            "matches": [
+              {
+                "id": "mqkzitq1kcpq1",
+                "home": "Hưng",
+                "away": "Long",
+                "scoreHome": null,
+                "scoreAway": null,
+                "played": false,
+                "lockedAt": null,
+                "teamHome": {
+                  "name": "Uruguay",
+                  "flag": "https://flagcdn.com/w80/uy.png"
+                },
+                "teamAway": {
+                  "name": "Argentina",
+                  "flag": "https://flagcdn.com/w80/ar.png"
                 }
               }
             ],
