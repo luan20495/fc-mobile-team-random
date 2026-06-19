@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-19T06:10:23.150Z",
+  "updatedAt": "2026-06-19T06:39:46.758Z",
   "players": [
     "Luân",
     "Hưng",
@@ -267,7 +267,7 @@
         "id": "mqjapl3j1u2co",
         "number": 3,
         "createdAt": "2026-06-18T09:26:38.095Z",
-        "locked": true,
+        "locked": false,
         "format": "knockout",
         "players": [
           "Luân",
@@ -276,7 +276,7 @@
           "Khuê",
           "Long"
         ],
-        "phase": "done",
+        "phase": "knockout",
         "league": [],
         "playoffs": [
           {
@@ -552,7 +552,7 @@
         "completedAt": "2026-06-19T06:04:22.611Z"
       }
     ],
-    "activeCycleId": null
+    "activeCycleId": "mqjapl3j1u2co"
   },
   "teamsCache": {
     "cachedAt": "2026-06-18T05:20:19.186Z",
