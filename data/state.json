@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-19T14:07:36.452Z",
+  "updatedAt": "2026-06-19T14:13:27.128Z",
   "players": [
     "Luân",
     "Hưng",
@@ -794,10 +794,10 @@
             "away": "Luân",
             "homeSeed": 3,
             "awaySeed": 4,
-            "scoreHome": null,
-            "scoreAway": null,
-            "played": false,
-            "lockedAt": null,
+            "scoreHome": 2,
+            "scoreAway": 1,
+            "played": true,
+            "lockedAt": "2026-06-19T14:13:26.325Z",
             "teamHome": {
               "name": "Uruguay",
               "flag": "https://flagcdn.com/w80/uy.png"
