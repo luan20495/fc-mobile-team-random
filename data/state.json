@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-19T05:46:17.347Z",
+  "updatedAt": "2026-06-19T05:46:21.359Z",
   "players": [
     "Luân",
     "Hưng",
@@ -288,10 +288,10 @@
             "away": "Đại",
             "homeSeed": 3,
             "awaySeed": 4,
-            "scoreHome": null,
-            "scoreAway": null,
-            "played": false,
-            "lockedAt": null,
+            "scoreHome": 1,
+            "scoreAway": 2,
+            "played": true,
+            "lockedAt": "2026-06-19T05:46:20.558Z",
             "teamHome": {
               "name": "Colombia",
               "flag": "https://flagcdn.com/w80/co.png"
