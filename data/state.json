@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-19T05:46:29.353Z",
+  "updatedAt": "2026-06-19T05:46:31.158Z",
   "players": [
     "Luân",
     "Hưng",
@@ -447,9 +447,26 @@
             "label": "Vòng loại",
             "matches": [
               {
-                "id": "mqkiab7rdvk9b",
+                "id": "mqkiaclwns09a",
                 "home": "Đại",
                 "away": "Luân",
+                "scoreHome": null,
+                "scoreAway": null,
+                "played": false,
+                "lockedAt": null,
+                "teamHome": {
+                  "name": "Đức",
+                  "flag": "https://flagcdn.com/w80/de.png"
+                },
+                "teamAway": {
+                  "name": "Colombia",
+                  "flag": "https://flagcdn.com/w80/co.png"
+                }
+              },
+              {
+                "id": "mqkiaclwulp4m",
+                "home": "Long",
+                "away": "Khuê",
                 "scoreHome": null,
                 "scoreAway": null,
                 "played": false,
@@ -459,25 +476,8 @@
                   "flag": "https://flagcdn.com/w80/it.png"
                 },
                 "teamAway": {
-                  "name": "Colombia",
-                  "flag": "https://flagcdn.com/w80/co.png"
-                }
-              },
-              {
-                "id": "mqkiab7rvzxhz",
-                "home": "Long",
-                "away": "Khuê",
-                "scoreHome": null,
-                "scoreAway": null,
-                "played": false,
-                "lockedAt": null,
-                "teamHome": {
-                  "name": "Brazil",
-                  "flag": "https://flagcdn.com/w80/br.png"
-                },
-                "teamAway": {
-                  "name": "Pháp",
-                  "flag": "https://flagcdn.com/w80/fr.png"
+                  "name": "Tây Ban Nha",
+                  "flag": "https://flagcdn.com/w80/es.png"
                 }
               }
             ],
@@ -493,20 +493,20 @@
             "flag": "https://flagcdn.com/w80/co.png"
           },
           "Hưng": {
-            "name": "Ma Rốc",
-            "flag": "https://flagcdn.com/w80/ma.png"
+            "name": "Thổ Nhĩ Kỳ",
+            "flag": "https://flagcdn.com/w80/tr.png"
           },
           "Đại": {
-            "name": "Ý",
-            "flag": "https://flagcdn.com/w80/it.png"
+            "name": "Đức",
+            "flag": "https://flagcdn.com/w80/de.png"
           },
           "Khuê": {
-            "name": "Pháp",
-            "flag": "https://flagcdn.com/w80/fr.png"
+            "name": "Tây Ban Nha",
+            "flag": "https://flagcdn.com/w80/es.png"
           },
           "Long": {
-            "name": "Brazil",
-            "flag": "https://flagcdn.com/w80/br.png"
+            "name": "Ý",
+            "flag": "https://flagcdn.com/w80/it.png"
           }
         },
         "champion": null,
