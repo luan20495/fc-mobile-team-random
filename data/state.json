@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-19T05:47:11.751Z",
+  "updatedAt": "2026-06-19T05:55:57.225Z",
   "players": [
     "Luân",
     "Hưng",
@@ -535,10 +535,10 @@
                 "id": "mqkib7xhm7upi",
                 "home": "Hưng",
                 "away": "Luân",
-                "scoreHome": null,
-                "scoreAway": null,
-                "played": false,
-                "lockedAt": null,
+                "scoreHome": 2,
+                "scoreAway": 1,
+                "played": true,
+                "lockedAt": "2026-06-19T05:55:56.421Z",
                 "teamHome": {
                   "name": "Ý",
                   "flag": "https://flagcdn.com/w80/it.png"
