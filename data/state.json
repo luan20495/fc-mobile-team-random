@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-19T13:33:39.757Z",
+  "updatedAt": "2026-06-19T13:33:47.981Z",
   "players": [
     "Luân",
     "Hưng",
@@ -545,12 +545,12 @@
             "played": false,
             "lockedAt": null,
             "teamHome": {
-              "name": "Ý",
-              "flag": "https://flagcdn.com/w80/it.png"
+              "name": "Brazil",
+              "flag": "https://flagcdn.com/w80/br.png"
             },
             "teamAway": {
-              "name": "Senegal",
-              "flag": "https://flagcdn.com/w80/sn.png"
+              "name": "Uruguay",
+              "flag": "https://flagcdn.com/w80/uy.png"
             }
           }
         ],
