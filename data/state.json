@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-19T13:22:04.047Z",
+  "updatedAt": "2026-06-19T13:22:42.525Z",
   "players": [
     "Luân",
     "Hưng",
@@ -516,9 +516,89 @@
         },
         "champion": "Khuê",
         "completedAt": "2026-06-19T06:04:22.611Z"
+      },
+      {
+        "id": "mqkyl0hlcz6lg",
+        "number": 5,
+        "createdAt": "2026-06-19T13:22:41.721Z",
+        "locked": false,
+        "format": "knockout",
+        "players": [
+          "Luân",
+          "Hưng",
+          "Khuê",
+          "Long"
+        ],
+        "phase": "knockout",
+        "league": [],
+        "playoffs": [],
+        "knockoutRounds": [
+          {
+            "round": 1,
+            "label": "Bán kết",
+            "matches": [
+              {
+                "id": "mqkyl0hlj8hv6",
+                "home": "Long",
+                "away": "Luân",
+                "scoreHome": null,
+                "scoreAway": null,
+                "played": false,
+                "lockedAt": null,
+                "teamHome": {
+                  "name": "Anh",
+                  "flag": "https://flagcdn.com/w80/gb-eng.png"
+                },
+                "teamAway": {
+                  "name": "Pháp",
+                  "flag": "https://flagcdn.com/w80/fr.png"
+                }
+              },
+              {
+                "id": "mqkyl0hlru8ui",
+                "home": "Hưng",
+                "away": "Khuê",
+                "scoreHome": null,
+                "scoreAway": null,
+                "played": false,
+                "lockedAt": null,
+                "teamHome": {
+                  "name": "Uruguay",
+                  "flag": "https://flagcdn.com/w80/uy.png"
+                },
+                "teamAway": {
+                  "name": "Ý",
+                  "flag": "https://flagcdn.com/w80/it.png"
+                }
+              }
+            ],
+            "byes": [],
+            "completed": false
+          }
+        ],
+        "playerTeams": {
+          "Luân": {
+            "name": "Pháp",
+            "flag": "https://flagcdn.com/w80/fr.png"
+          },
+          "Hưng": {
+            "name": "Uruguay",
+            "flag": "https://flagcdn.com/w80/uy.png"
+          },
+          "Khuê": {
+            "name": "Ý",
+            "flag": "https://flagcdn.com/w80/it.png"
+          },
+          "Long": {
+            "name": "Anh",
+            "flag": "https://flagcdn.com/w80/gb-eng.png"
+          }
+        },
+        "champion": null,
+        "completedAt": null
       }
     ],
-    "activeCycleId": null
+    "activeCycleId": "mqkyl0hlcz6lg"
   },
   "teamsCache": {
     "cachedAt": "2026-06-18T05:20:19.186Z",
