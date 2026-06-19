@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-19T13:40:18.589Z",
+  "updatedAt": "2026-06-19T13:40:24.386Z",
   "players": [
     "Luân",
     "Hưng",
@@ -643,9 +643,89 @@
         },
         "champion": "Long",
         "completedAt": "2026-06-19T13:40:17.787Z"
+      },
+      {
+        "id": "mqkz7rtspql6s",
+        "number": 6,
+        "createdAt": "2026-06-19T13:40:23.584Z",
+        "locked": false,
+        "format": "knockout",
+        "players": [
+          "Luân",
+          "Hưng",
+          "Khuê",
+          "Long"
+        ],
+        "phase": "knockout",
+        "league": [],
+        "playoffs": [],
+        "knockoutRounds": [
+          {
+            "round": 1,
+            "label": "Bán kết",
+            "matches": [
+              {
+                "id": "mqkz7rttm7htk",
+                "home": "Khuê",
+                "away": "Hưng",
+                "scoreHome": null,
+                "scoreAway": null,
+                "played": false,
+                "lockedAt": null,
+                "teamHome": {
+                  "name": "Brazil",
+                  "flag": "https://flagcdn.com/w80/br.png"
+                },
+                "teamAway": {
+                  "name": "Uruguay",
+                  "flag": "https://flagcdn.com/w80/uy.png"
+                }
+              },
+              {
+                "id": "mqkz7rtt59agk",
+                "home": "Luân",
+                "away": "Long",
+                "scoreHome": null,
+                "scoreAway": null,
+                "played": false,
+                "lockedAt": null,
+                "teamHome": {
+                  "name": "Senegal",
+                  "flag": "https://flagcdn.com/w80/sn.png"
+                },
+                "teamAway": {
+                  "name": "Tây Ban Nha",
+                  "flag": "https://flagcdn.com/w80/es.png"
+                }
+              }
+            ],
+            "byes": [],
+            "completed": false
+          }
+        ],
+        "playerTeams": {
+          "Luân": {
+            "name": "Senegal",
+            "flag": "https://flagcdn.com/w80/sn.png"
+          },
+          "Hưng": {
+            "name": "Uruguay",
+            "flag": "https://flagcdn.com/w80/uy.png"
+          },
+          "Khuê": {
+            "name": "Brazil",
+            "flag": "https://flagcdn.com/w80/br.png"
+          },
+          "Long": {
+            "name": "Tây Ban Nha",
+            "flag": "https://flagcdn.com/w80/es.png"
+          }
+        },
+        "champion": null,
+        "completedAt": null
       }
     ],
-    "activeCycleId": null
+    "activeCycleId": "mqkz7rtspql6s"
   },
   "teamsCache": {
     "cachedAt": "2026-06-18T05:20:19.186Z",
