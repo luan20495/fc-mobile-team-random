@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-19T14:00:04.022Z",
+  "updatedAt": "2026-06-19T14:00:15.504Z",
   "players": [
     "Luân",
     "Hưng",
@@ -648,7 +648,7 @@
         "id": "mqkz7rtspql6s",
         "number": 6,
         "createdAt": "2026-06-19T13:40:23.584Z",
-        "locked": false,
+        "locked": true,
         "format": "knockout",
         "players": [
           "Luân",
@@ -656,7 +656,7 @@
           "Khuê",
           "Long"
         ],
-        "phase": "knockout",
+        "phase": "done",
         "league": [],
         "playoffs": [
           {
@@ -732,10 +732,10 @@
                 "id": "mqkzitq1kcpq1",
                 "home": "Hưng",
                 "away": "Long",
-                "scoreHome": null,
-                "scoreAway": null,
-                "played": false,
-                "lockedAt": null,
+                "scoreHome": 2,
+                "scoreAway": 1,
+                "played": true,
+                "lockedAt": "2026-06-19T14:00:07.711Z",
                 "teamHome": {
                   "name": "Uruguay",
                   "flag": "https://flagcdn.com/w80/uy.png"
@@ -747,7 +747,7 @@
               }
             ],
             "byes": [],
-            "completed": false
+            "completed": true
           }
         ],
         "playerTeams": {
@@ -768,11 +768,91 @@
             "flag": "https://flagcdn.com/w80/sn.png"
           }
         },
+        "champion": "Hưng",
+        "completedAt": "2026-06-19T14:00:07.711Z"
+      },
+      {
+        "id": "mqkzxawewvr14",
+        "number": 7,
+        "createdAt": "2026-06-19T14:00:14.702Z",
+        "locked": false,
+        "format": "knockout",
+        "players": [
+          "Luân",
+          "Hưng",
+          "Khuê",
+          "Long"
+        ],
+        "phase": "knockout",
+        "league": [],
+        "playoffs": [],
+        "knockoutRounds": [
+          {
+            "round": 1,
+            "label": "Bán kết",
+            "matches": [
+              {
+                "id": "mqkzxawffjxrf",
+                "home": "Khuê",
+                "away": "Luân",
+                "scoreHome": null,
+                "scoreAway": null,
+                "played": false,
+                "lockedAt": null,
+                "teamHome": {
+                  "name": "Bỉ",
+                  "flag": "https://flagcdn.com/w80/be.png"
+                },
+                "teamAway": {
+                  "name": "Croatia",
+                  "flag": "https://flagcdn.com/w80/hr.png"
+                }
+              },
+              {
+                "id": "mqkzxawftvca3",
+                "home": "Long",
+                "away": "Hưng",
+                "scoreHome": null,
+                "scoreAway": null,
+                "played": false,
+                "lockedAt": null,
+                "teamHome": {
+                  "name": "Pháp",
+                  "flag": "https://flagcdn.com/w80/fr.png"
+                },
+                "teamAway": {
+                  "name": "Uruguay",
+                  "flag": "https://flagcdn.com/w80/uy.png"
+                }
+              }
+            ],
+            "byes": [],
+            "completed": false
+          }
+        ],
+        "playerTeams": {
+          "Luân": {
+            "name": "Croatia",
+            "flag": "https://flagcdn.com/w80/hr.png"
+          },
+          "Hưng": {
+            "name": "Uruguay",
+            "flag": "https://flagcdn.com/w80/uy.png"
+          },
+          "Khuê": {
+            "name": "Bỉ",
+            "flag": "https://flagcdn.com/w80/be.png"
+          },
+          "Long": {
+            "name": "Pháp",
+            "flag": "https://flagcdn.com/w80/fr.png"
+          }
+        },
         "champion": null,
         "completedAt": null
       }
     ],
-    "activeCycleId": "mqkz7rtspql6s"
+    "activeCycleId": "mqkzxawewvr14"
   },
   "teamsCache": {
     "cachedAt": "2026-06-18T05:20:19.186Z",
