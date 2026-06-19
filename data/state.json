@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-19T06:04:23.412Z",
+  "updatedAt": "2026-06-19T06:10:23.150Z",
   "players": [
     "Luân",
     "Hưng",
@@ -423,93 +423,6 @@
         },
         "champion": null,
         "completedAt": "2026-06-19T05:46:26.089Z"
-      },
-      {
-        "id": "mqkia9bdecu6d",
-        "number": 4,
-        "createdAt": "2026-06-19T05:46:26.089Z",
-        "locked": true,
-        "format": "knockout",
-        "players": [
-          "Luân",
-          "Hưng",
-          "Đại",
-          "Khuê",
-          "Long"
-        ],
-        "phase": "done",
-        "league": [],
-        "playoffs": [],
-        "knockoutRounds": [
-          {
-            "round": 1,
-            "label": "Vòng loại",
-            "matches": [
-              {
-                "id": "mqkiamt2wctzp",
-                "home": "Hưng",
-                "away": "Khuê",
-                "scoreHome": null,
-                "scoreAway": null,
-                "played": false,
-                "lockedAt": null,
-                "teamHome": {
-                  "name": "Đức",
-                  "flag": "https://flagcdn.com/w80/de.png"
-                },
-                "teamAway": {
-                  "name": "Argentina",
-                  "flag": "https://flagcdn.com/w80/ar.png"
-                }
-              },
-              {
-                "id": "mqkiamt2g8h2w",
-                "home": "Long",
-                "away": "Luân",
-                "scoreHome": null,
-                "scoreAway": null,
-                "played": false,
-                "lockedAt": null,
-                "teamHome": {
-                  "name": "Brazil",
-                  "flag": "https://flagcdn.com/w80/br.png"
-                },
-                "teamAway": {
-                  "name": "Thổ Nhĩ Kỳ",
-                  "flag": "https://flagcdn.com/w80/tr.png"
-                }
-              }
-            ],
-            "byes": [
-              "Đại"
-            ],
-            "completed": false
-          }
-        ],
-        "playerTeams": {
-          "Luân": {
-            "name": "Thổ Nhĩ Kỳ",
-            "flag": "https://flagcdn.com/w80/tr.png"
-          },
-          "Hưng": {
-            "name": "Đức",
-            "flag": "https://flagcdn.com/w80/de.png"
-          },
-          "Đại": {
-            "name": "Senegal",
-            "flag": "https://flagcdn.com/w80/sn.png"
-          },
-          "Khuê": {
-            "name": "Argentina",
-            "flag": "https://flagcdn.com/w80/ar.png"
-          },
-          "Long": {
-            "name": "Brazil",
-            "flag": "https://flagcdn.com/w80/br.png"
-          }
-        },
-        "champion": null,
-        "completedAt": "2026-06-19T05:47:04.512Z"
       },
       {
         "id": "mqkib2yoki2tx",
