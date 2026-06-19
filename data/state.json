@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-19T06:39:46.758Z",
+  "updatedAt": "2026-06-19T06:46:13.604Z",
   "players": [
     "Luân",
     "Hưng",
@@ -267,16 +267,15 @@
         "id": "mqjapl3j1u2co",
         "number": 3,
         "createdAt": "2026-06-18T09:26:38.095Z",
-        "locked": false,
+        "locked": true,
         "format": "knockout",
         "players": [
           "Luân",
           "Hưng",
           "Đại",
-          "Khuê",
-          "Long"
+          "Khuê"
         ],
-        "phase": "knockout",
+        "phase": "done",
         "league": [],
         "playoffs": [
           {
@@ -341,9 +340,7 @@
                 }
               }
             ],
-            "byes": [
-              "Long"
-            ],
+            "byes": [],
             "completed": true
           },
           {
@@ -368,35 +365,8 @@
                 }
               }
             ],
-            "byes": [
-              "Long"
-            ],
-            "completed": true
-          },
-          {
-            "round": 3,
-            "label": "Chung kết",
-            "matches": [
-              {
-                "id": "mqkia1y6nynv1",
-                "home": "Long",
-                "away": "Khuê",
-                "scoreHome": null,
-                "scoreAway": null,
-                "played": false,
-                "lockedAt": null,
-                "teamHome": {
-                  "name": "Hà Lan",
-                  "flag": "https://flagcdn.com/w80/nl.png"
-                },
-                "teamAway": {
-                  "name": "Thổ Nhĩ Kỳ",
-                  "flag": "https://flagcdn.com/w80/tr.png"
-                }
-              }
-            ],
             "byes": [],
-            "completed": false
+            "completed": true
           }
         ],
         "playerTeams": {
@@ -415,13 +385,9 @@
           "Khuê": {
             "name": "Bồ Đào Nha",
             "flag": "https://flagcdn.com/w80/pt.png"
-          },
-          "Long": {
-            "name": "Colombia",
-            "flag": "https://flagcdn.com/w80/co.png"
           }
         },
-        "champion": null,
+        "champion": "Khuê",
         "completedAt": "2026-06-19T05:46:26.089Z"
       },
       {
@@ -552,7 +518,7 @@
         "completedAt": "2026-06-19T06:04:22.611Z"
       }
     ],
-    "activeCycleId": "mqjapl3j1u2co"
+    "activeCycleId": null
   },
   "teamsCache": {
     "cachedAt": "2026-06-18T05:20:19.186Z",
