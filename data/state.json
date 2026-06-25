@@ -1,11 +1,10 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-25T05:20:08.968Z",
+  "updatedAt": "2026-06-25T05:20:20.120Z",
   "players": [
     "Luân",
     "Hưng",
-    "Khuê",
-    "Long"
+    "Khuê"
   ],
   "tournament": {
     "cycles": [
