@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-25T05:51:48.253Z",
+  "updatedAt": "2026-06-25T05:51:52.716Z",
   "players": [
     "Luân",
     "Hưng",
@@ -1109,7 +1109,7 @@
         "id": "mqt2nglak9ba0",
         "number": 10,
         "createdAt": "2026-06-25T05:38:43.774Z",
-        "locked": false,
+        "locked": true,
         "format": "knockout",
         "players": [
           "Luân",
@@ -1117,7 +1117,7 @@
           "Khuê",
           "Đại"
         ],
-        "phase": "knockout",
+        "phase": "done",
         "league": [],
         "playoffs": [
           {
@@ -1128,10 +1128,10 @@
             "away": "Khuê",
             "homeSeed": 3,
             "awaySeed": 4,
-            "scoreHome": null,
-            "scoreAway": null,
-            "played": false,
-            "lockedAt": null,
+            "scoreHome": 2,
+            "scoreAway": 1,
+            "played": true,
+            "lockedAt": "2026-06-25T05:51:51.914Z",
             "teamHome": {
               "name": "Bồ Đào Nha",
               "flag": "https://flagcdn.com/w80/pt.png"
@@ -1230,10 +1230,10 @@
           }
         },
         "champion": "Hưng",
-        "completedAt": null
+        "completedAt": "2026-06-25T05:51:51.914Z"
       }
     ],
-    "activeCycleId": "mqt2nglak9ba0"
+    "activeCycleId": null
   },
   "teamsCache": {
     "cachedAt": "2026-06-18T05:20:19.186Z",
