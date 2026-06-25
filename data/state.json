@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-25T05:21:20.355Z",
+  "updatedAt": "2026-06-25T05:28:10.177Z",
   "players": [
     "Luân",
     "Hưng",
@@ -1002,10 +1002,10 @@
                 "id": "mqt212v3801nc",
                 "home": "Khuê",
                 "away": "Hưng",
-                "scoreHome": null,
-                "scoreAway": null,
-                "played": false,
-                "lockedAt": null,
+                "scoreHome": 1,
+                "scoreAway": 2,
+                "played": true,
+                "lockedAt": "2026-06-25T05:28:09.373Z",
                 "teamHome": {
                   "name": "Ma Rốc",
                   "flag": "https://flagcdn.com/w80/ma.png"
