@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-25T05:45:28.616Z",
+  "updatedAt": "2026-06-25T05:45:31.166Z",
   "players": [
     "Luân",
     "Hưng",
@@ -1119,7 +1119,29 @@
         ],
         "phase": "knockout",
         "league": [],
-        "playoffs": [],
+        "playoffs": [
+          {
+            "id": "mqt2w6bgzl1rp",
+            "type": "third",
+            "label": "Tranh hạng 3 · Ba vs Tư",
+            "home": "Đại",
+            "away": "Khuê",
+            "homeSeed": 3,
+            "awaySeed": 4,
+            "scoreHome": null,
+            "scoreAway": null,
+            "played": false,
+            "lockedAt": null,
+            "teamHome": {
+              "name": "Tây Ban Nha",
+              "flag": "https://flagcdn.com/w80/es.png"
+            },
+            "teamAway": {
+              "name": "Đức",
+              "flag": "https://flagcdn.com/w80/de.png"
+            }
+          }
+        ],
         "knockoutRounds": [
           {
             "round": 1,
@@ -1146,6 +1168,31 @@
                 "id": "mqt2niant1b6s",
                 "home": "Luân",
                 "away": "Khuê",
+                "scoreHome": 2,
+                "scoreAway": 1,
+                "played": true,
+                "lockedAt": "2026-06-25T05:45:30.364Z",
+                "teamHome": {
+                  "name": "Bồ Đào Nha",
+                  "flag": "https://flagcdn.com/w80/pt.png"
+                },
+                "teamAway": {
+                  "name": "Đức",
+                  "flag": "https://flagcdn.com/w80/de.png"
+                }
+              }
+            ],
+            "byes": [],
+            "completed": true
+          },
+          {
+            "round": 2,
+            "label": "Chung kết",
+            "matches": [
+              {
+                "id": "mqt2w6bhmryix",
+                "home": "Hưng",
+                "away": "Luân",
                 "scoreHome": null,
                 "scoreAway": null,
                 "played": false,
@@ -1155,8 +1202,8 @@
                   "flag": "https://flagcdn.com/w80/pt.png"
                 },
                 "teamAway": {
-                  "name": "Đức",
-                  "flag": "https://flagcdn.com/w80/de.png"
+                  "name": "Tây Ban Nha",
+                  "flag": "https://flagcdn.com/w80/es.png"
                 }
               }
             ],
