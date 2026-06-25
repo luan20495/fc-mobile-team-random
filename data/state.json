@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-25T05:28:10.177Z",
+  "updatedAt": "2026-06-25T05:28:13.814Z",
   "players": [
     "Luân",
     "Hưng",
@@ -992,7 +992,29 @@
         ],
         "phase": "knockout",
         "league": [],
-        "playoffs": [],
+        "playoffs": [
+          {
+            "id": "mqt29xw1b83f2",
+            "type": "third",
+            "label": "Tranh hạng 3 · Ba vs Tư",
+            "home": "Khuê",
+            "away": "Luân",
+            "homeSeed": 3,
+            "awaySeed": 4,
+            "scoreHome": null,
+            "scoreAway": null,
+            "played": false,
+            "lockedAt": null,
+            "teamHome": {
+              "name": "Ma Rốc",
+              "flag": "https://flagcdn.com/w80/ma.png"
+            },
+            "teamAway": {
+              "name": "Colombia",
+              "flag": "https://flagcdn.com/w80/co.png"
+            }
+          }
+        ],
         "knockoutRounds": [
           {
             "round": 1,
@@ -1019,6 +1041,31 @@
                 "id": "mqt212v3vuxuc",
                 "home": "Đại",
                 "away": "Luân",
+                "scoreHome": 2,
+                "scoreAway": 1,
+                "played": true,
+                "lockedAt": "2026-06-25T05:28:13.009Z",
+                "teamHome": {
+                  "name": "Argentina",
+                  "flag": "https://flagcdn.com/w80/ar.png"
+                },
+                "teamAway": {
+                  "name": "Colombia",
+                  "flag": "https://flagcdn.com/w80/co.png"
+                }
+              }
+            ],
+            "byes": [],
+            "completed": true
+          },
+          {
+            "round": 2,
+            "label": "Chung kết",
+            "matches": [
+              {
+                "id": "mqt29xw23sapx",
+                "home": "Hưng",
+                "away": "Đại",
                 "scoreHome": null,
                 "scoreAway": null,
                 "played": false,
@@ -1028,8 +1075,8 @@
                   "flag": "https://flagcdn.com/w80/ar.png"
                 },
                 "teamAway": {
-                  "name": "Colombia",
-                  "flag": "https://flagcdn.com/w80/co.png"
+                  "name": "Anh",
+                  "flag": "https://flagcdn.com/w80/gb-eng.png"
                 }
               }
             ],
