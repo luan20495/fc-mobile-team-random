@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-25T05:38:37.430Z",
+  "updatedAt": "2026-06-25T05:38:40.269Z",
   "players": [
     "Luân",
     "Hưng",
@@ -982,7 +982,7 @@
         "id": "mqt201cy62zl3",
         "number": 9,
         "createdAt": "2026-06-25T05:20:30.946Z",
-        "locked": false,
+        "locked": true,
         "format": "knockout",
         "players": [
           "Luân",
@@ -990,7 +990,7 @@
           "Khuê",
           "Đại"
         ],
-        "phase": "knockout",
+        "phase": "done",
         "league": [],
         "playoffs": [
           {
@@ -1066,10 +1066,10 @@
                 "id": "mqt29xw23sapx",
                 "home": "Hưng",
                 "away": "Đại",
-                "scoreHome": null,
-                "scoreAway": null,
-                "played": false,
-                "lockedAt": null,
+                "scoreHome": 2,
+                "scoreAway": 1,
+                "played": true,
+                "lockedAt": "2026-06-25T05:38:39.467Z",
                 "teamHome": {
                   "name": "Thổ Nhĩ Kỳ",
                   "flag": "https://flagcdn.com/w80/tr.png"
@@ -1081,7 +1081,7 @@
               }
             ],
             "byes": [],
-            "completed": false
+            "completed": true
           }
         ],
         "playerTeams": {
@@ -1102,11 +1102,11 @@
             "flag": "https://flagcdn.com/w80/ar.png"
           }
         },
-        "champion": null,
-        "completedAt": null
+        "champion": "Hưng",
+        "completedAt": "2026-06-25T05:38:39.467Z"
       }
     ],
-    "activeCycleId": "mqt201cy62zl3"
+    "activeCycleId": null
   },
   "teamsCache": {
     "cachedAt": "2026-06-18T05:20:19.186Z",
