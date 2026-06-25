@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-19T14:13:32.541Z",
+  "updatedAt": "2026-06-25T05:20:02.874Z",
   "players": [
     "Luân",
     "Hưng",
@@ -897,9 +897,89 @@
         },
         "champion": "Hưng",
         "completedAt": "2026-06-19T14:13:31.739Z"
+      },
+      {
+        "id": "mqt1zctrrzhcg",
+        "number": 8,
+        "createdAt": "2026-06-25T05:19:59.151Z",
+        "locked": false,
+        "format": "knockout",
+        "players": [
+          "Luân",
+          "Hưng",
+          "Khuê",
+          "Long"
+        ],
+        "phase": "knockout",
+        "league": [],
+        "playoffs": [],
+        "knockoutRounds": [
+          {
+            "round": 1,
+            "label": "Bán kết",
+            "matches": [
+              {
+                "id": "mqt1zctrw0gr2",
+                "home": "Hưng",
+                "away": "Luân",
+                "scoreHome": null,
+                "scoreAway": null,
+                "played": false,
+                "lockedAt": null,
+                "teamHome": {
+                  "name": "Brazil",
+                  "flag": "https://flagcdn.com/w80/br.png"
+                },
+                "teamAway": {
+                  "name": "Colombia",
+                  "flag": "https://flagcdn.com/w80/co.png"
+                }
+              },
+              {
+                "id": "mqt1zctr1mtqg",
+                "home": "Long",
+                "away": "Khuê",
+                "scoreHome": null,
+                "scoreAway": null,
+                "played": false,
+                "lockedAt": null,
+                "teamHome": {
+                  "name": "Croatia",
+                  "flag": "https://flagcdn.com/w80/hr.png"
+                },
+                "teamAway": {
+                  "name": "Ma Rốc",
+                  "flag": "https://flagcdn.com/w80/ma.png"
+                }
+              }
+            ],
+            "byes": [],
+            "completed": false
+          }
+        ],
+        "playerTeams": {
+          "Luân": {
+            "name": "Colombia",
+            "flag": "https://flagcdn.com/w80/co.png"
+          },
+          "Hưng": {
+            "name": "Brazil",
+            "flag": "https://flagcdn.com/w80/br.png"
+          },
+          "Khuê": {
+            "name": "Ma Rốc",
+            "flag": "https://flagcdn.com/w80/ma.png"
+          },
+          "Long": {
+            "name": "Croatia",
+            "flag": "https://flagcdn.com/w80/hr.png"
+          }
+        },
+        "champion": null,
+        "completedAt": null
       }
     ],
-    "activeCycleId": null
+    "activeCycleId": "mqt1zctrrzhcg"
   },
   "teamsCache": {
     "cachedAt": "2026-06-18T05:20:19.186Z",
