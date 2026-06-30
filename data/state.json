@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-30T05:36:20.564Z",
+  "updatedAt": "2026-06-30T05:42:22.490Z",
   "players": [
     "Luân",
     "Hưng",
@@ -1320,10 +1320,10 @@
                 "id": "mr07rchyy07o0",
                 "home": "Luân",
                 "away": "Hưng",
-                "scoreHome": null,
-                "scoreAway": null,
-                "played": false,
-                "lockedAt": null,
+                "scoreHome": 1,
+                "scoreAway": 2,
+                "played": true,
+                "lockedAt": "2026-06-30T05:42:21.686Z",
                 "teamHome": {
                   "name": "Thổ Nhĩ Kỳ",
                   "flag": "https://flagcdn.com/w80/tr.png"
@@ -1335,7 +1335,7 @@
               }
             ],
             "byes": [],
-            "completed": false
+            "completed": true
           }
         ],
         "playerTeams": {
@@ -1356,7 +1356,7 @@
             "flag": "https://flagcdn.com/w80/ma.png"
           }
         },
-        "champion": null,
+        "champion": "Hưng",
         "completedAt": null
       }
     ],
