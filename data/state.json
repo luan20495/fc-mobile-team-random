@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-25T05:51:52.716Z",
+  "updatedAt": "2026-06-30T05:22:58.160Z",
   "players": [
     "Luân",
     "Hưng",
@@ -1231,9 +1231,89 @@
         },
         "champion": "Hưng",
         "completedAt": "2026-06-25T05:51:51.914Z"
+      },
+      {
+        "id": "mr07admfzpv5s",
+        "number": 11,
+        "createdAt": "2026-06-30T05:22:54.711Z",
+        "locked": false,
+        "format": "knockout",
+        "players": [
+          "Luân",
+          "Hưng",
+          "Khuê",
+          "Đại"
+        ],
+        "phase": "knockout",
+        "league": [],
+        "playoffs": [],
+        "knockoutRounds": [
+          {
+            "round": 1,
+            "label": "Bán kết",
+            "matches": [
+              {
+                "id": "mr07admgglugk",
+                "home": "Hưng",
+                "away": "Luân",
+                "scoreHome": null,
+                "scoreAway": null,
+                "played": false,
+                "lockedAt": null,
+                "teamHome": {
+                  "name": "Senegal",
+                  "flag": "https://flagcdn.com/w80/sn.png"
+                },
+                "teamAway": {
+                  "name": "Croatia",
+                  "flag": "https://flagcdn.com/w80/hr.png"
+                }
+              },
+              {
+                "id": "mr07admgfzrzg",
+                "home": "Khuê",
+                "away": "Đại",
+                "scoreHome": null,
+                "scoreAway": null,
+                "played": false,
+                "lockedAt": null,
+                "teamHome": {
+                  "name": "Ý",
+                  "flag": "https://flagcdn.com/w80/it.png"
+                },
+                "teamAway": {
+                  "name": "Uruguay",
+                  "flag": "https://flagcdn.com/w80/uy.png"
+                }
+              }
+            ],
+            "byes": [],
+            "completed": false
+          }
+        ],
+        "playerTeams": {
+          "Luân": {
+            "name": "Croatia",
+            "flag": "https://flagcdn.com/w80/hr.png"
+          },
+          "Hưng": {
+            "name": "Senegal",
+            "flag": "https://flagcdn.com/w80/sn.png"
+          },
+          "Khuê": {
+            "name": "Ý",
+            "flag": "https://flagcdn.com/w80/it.png"
+          },
+          "Đại": {
+            "name": "Uruguay",
+            "flag": "https://flagcdn.com/w80/uy.png"
+          }
+        },
+        "champion": null,
+        "completedAt": null
       }
     ],
-    "activeCycleId": null
+    "activeCycleId": "mr07admfzpv5s"
   },
   "teamsCache": {
     "cachedAt": "2026-06-18T05:20:19.186Z",
