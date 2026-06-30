@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-30T05:42:31.506Z",
+  "updatedAt": "2026-06-30T05:42:34.057Z",
   "players": [
     "Luân",
     "Hưng",
@@ -1380,7 +1380,7 @@
             "label": "Bán kết",
             "matches": [
               {
-                "id": "mr07zl0xmvt9r",
+                "id": "mr07zmzq6j9d0",
                 "home": "Luân",
                 "away": "Đại",
                 "scoreHome": null,
@@ -1388,29 +1388,29 @@
                 "played": false,
                 "lockedAt": null,
                 "teamHome": {
-                  "name": "Colombia",
-                  "flag": "https://flagcdn.com/w80/co.png"
+                  "name": "Tây Ban Nha",
+                  "flag": "https://flagcdn.com/w80/es.png"
                 },
                 "teamAway": {
-                  "name": "Thổ Nhĩ Kỳ",
-                  "flag": "https://flagcdn.com/w80/tr.png"
+                  "name": "Đức",
+                  "flag": "https://flagcdn.com/w80/de.png"
                 }
               },
               {
-                "id": "mr07zl0xa6sod",
-                "home": "Hưng",
-                "away": "Khuê",
+                "id": "mr07zmzqf7wm7",
+                "home": "Khuê",
+                "away": "Hưng",
                 "scoreHome": null,
                 "scoreAway": null,
                 "played": false,
                 "lockedAt": null,
                 "teamHome": {
-                  "name": "Bồ Đào Nha",
-                  "flag": "https://flagcdn.com/w80/pt.png"
+                  "name": "Pháp",
+                  "flag": "https://flagcdn.com/w80/fr.png"
                 },
                 "teamAway": {
-                  "name": "Ý",
-                  "flag": "https://flagcdn.com/w80/it.png"
+                  "name": "Senegal",
+                  "flag": "https://flagcdn.com/w80/sn.png"
                 }
               }
             ],
@@ -1420,20 +1420,20 @@
         ],
         "playerTeams": {
           "Luân": {
-            "name": "Colombia",
-            "flag": "https://flagcdn.com/w80/co.png"
+            "name": "Tây Ban Nha",
+            "flag": "https://flagcdn.com/w80/es.png"
           },
           "Hưng": {
-            "name": "Bồ Đào Nha",
-            "flag": "https://flagcdn.com/w80/pt.png"
+            "name": "Senegal",
+            "flag": "https://flagcdn.com/w80/sn.png"
           },
           "Khuê": {
-            "name": "Ý",
-            "flag": "https://flagcdn.com/w80/it.png"
+            "name": "Pháp",
+            "flag": "https://flagcdn.com/w80/fr.png"
           },
           "Đại": {
-            "name": "Thổ Nhĩ Kỳ",
-            "flag": "https://flagcdn.com/w80/tr.png"
+            "name": "Đức",
+            "flag": "https://flagcdn.com/w80/de.png"
           }
         },
         "champion": null,
