@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-30T05:22:58.160Z",
+  "updatedAt": "2026-06-30T05:23:02.906Z",
   "players": [
     "Luân",
     "Hưng",
@@ -1253,37 +1253,37 @@
             "label": "Bán kết",
             "matches": [
               {
-                "id": "mr07admgglugk",
-                "home": "Hưng",
+                "id": "mr07ajbmjnyfx",
+                "home": "Đại",
                 "away": "Luân",
                 "scoreHome": null,
                 "scoreAway": null,
                 "played": false,
                 "lockedAt": null,
                 "teamHome": {
-                  "name": "Senegal",
-                  "flag": "https://flagcdn.com/w80/sn.png"
+                  "name": "Ma Rốc",
+                  "flag": "https://flagcdn.com/w80/ma.png"
                 },
                 "teamAway": {
-                  "name": "Croatia",
-                  "flag": "https://flagcdn.com/w80/hr.png"
+                  "name": "Ý",
+                  "flag": "https://flagcdn.com/w80/it.png"
                 }
               },
               {
-                "id": "mr07admgfzrzg",
-                "home": "Khuê",
-                "away": "Đại",
+                "id": "mr07ajbm8ut10",
+                "home": "Hưng",
+                "away": "Khuê",
                 "scoreHome": null,
                 "scoreAway": null,
                 "played": false,
                 "lockedAt": null,
                 "teamHome": {
-                  "name": "Ý",
-                  "flag": "https://flagcdn.com/w80/it.png"
+                  "name": "Đức",
+                  "flag": "https://flagcdn.com/w80/de.png"
                 },
                 "teamAway": {
-                  "name": "Uruguay",
-                  "flag": "https://flagcdn.com/w80/uy.png"
+                  "name": "Bồ Đào Nha",
+                  "flag": "https://flagcdn.com/w80/pt.png"
                 }
               }
             ],
@@ -1293,20 +1293,20 @@
         ],
         "playerTeams": {
           "Luân": {
-            "name": "Croatia",
-            "flag": "https://flagcdn.com/w80/hr.png"
-          },
-          "Hưng": {
-            "name": "Senegal",
-            "flag": "https://flagcdn.com/w80/sn.png"
-          },
-          "Khuê": {
             "name": "Ý",
             "flag": "https://flagcdn.com/w80/it.png"
           },
+          "Hưng": {
+            "name": "Đức",
+            "flag": "https://flagcdn.com/w80/de.png"
+          },
+          "Khuê": {
+            "name": "Bồ Đào Nha",
+            "flag": "https://flagcdn.com/w80/pt.png"
+          },
           "Đại": {
-            "name": "Uruguay",
-            "flag": "https://flagcdn.com/w80/uy.png"
+            "name": "Ma Rốc",
+            "flag": "https://flagcdn.com/w80/ma.png"
           }
         },
         "champion": null,
