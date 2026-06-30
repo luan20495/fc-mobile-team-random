@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-30T05:36:12.929Z",
+  "updatedAt": "2026-06-30T05:36:20.564Z",
   "players": [
     "Luân",
     "Hưng",
@@ -1325,12 +1325,12 @@
                 "played": false,
                 "lockedAt": null,
                 "teamHome": {
-                  "name": "Colombia",
-                  "flag": "https://flagcdn.com/w80/co.png"
+                  "name": "Thổ Nhĩ Kỳ",
+                  "flag": "https://flagcdn.com/w80/tr.png"
                 },
                 "teamAway": {
-                  "name": "Ý",
-                  "flag": "https://flagcdn.com/w80/it.png"
+                  "name": "Colombia",
+                  "flag": "https://flagcdn.com/w80/co.png"
                 }
               }
             ],
