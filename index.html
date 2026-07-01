@@ -865,6 +865,23 @@
       border-radius: 8px;
     }
 
+    .tournament-bar-idle .country-pool-row {
+      flex: 0 1 auto;
+      margin: 0;
+      gap: 6px;
+    }
+
+    .tournament-bar-idle .country-pool-row label {
+      font-size: 0.72rem;
+    }
+
+    .tournament-bar-idle .country-pool-row select {
+      padding: 6px 8px;
+      font-size: 0.72rem;
+      min-width: 0;
+      max-width: 148px;
+    }
+
     .tournament-ready {
       font-size: 0.72rem;
       color: #64748b;
@@ -1808,6 +1825,35 @@
       transform: scale(1.06);
       box-shadow: 0 4px 16px rgba(250, 204, 21, 0.32);
     }
+
+    .fc-ko-random-btn.rolling {
+      animation: fc-dice-wobble 0.32s ease-in-out infinite;
+      pointer-events: none;
+      opacity: 0.9;
+    }
+
+    .fc-ko-random-btn.rolling .fc-dice-icon {
+      filter: brightness(1.12) drop-shadow(0 0 6px rgba(250, 204, 21, 0.45));
+    }
+
+    @keyframes fc-dice-wobble {
+      0%, 100% { transform: rotate(0deg) scale(1); }
+      25% { transform: rotate(-14deg) scale(1.1); }
+      75% { transform: rotate(14deg) scale(1.1); }
+    }
+
+    .fc-diagram.ko-shuffling .fc-pair-group,
+    .fc-diagram.ko-shuffling .fc-league-pair {
+      opacity: 0.72;
+      transform: scale(0.985);
+      transition: opacity 0.07s ease, transform 0.07s ease;
+    }
+
+    .fc-diagram.ko-shuffling .fc-standings-bar .fc-rank-chip {
+      opacity: 0.78;
+      transition: opacity 0.07s ease;
+    }
+
     .fc-knockout-third-wrap {
       margin-top: 14px;
       padding-top: 12px;
@@ -2515,6 +2561,7 @@
           <select id="country-pool-select" aria-label="Nguồn danh sách đội tuyển">
             <option value="all">Tất cả (API)</option>
             <option value="fc16">Giải 16 đội (FC Mobile)</option>
+            <option value="fc5">Đội 5 sao (FC Mobile)</option>
           </select>
           <span class="country-pool-hint" id="country-pool-hint"></span>
         </div>
@@ -2634,6 +2681,14 @@
           <div class="mode-row" id="tournament-format-row">
             <button type="button" class="mode-btn active" data-tournament-format="knockout" id="format-knockout">Loại trực tiếp</button>
             <button type="button" class="mode-btn" data-tournament-format="league" id="format-league">Vòng tròn</button>
+          </div>
+          <div class="country-pool-row">
+            <label for="tournament-country-pool-select">ĐTQG</label>
+            <select id="tournament-country-pool-select" aria-label="Nguồn danh sách đội tuyển">
+              <option value="all">Tất cả (API)</option>
+              <option value="fc16">Giải 16 đội</option>
+              <option value="fc5">Đội 5 sao</option>
+            </select>
           </div>
           <span class="tournament-ready" id="tournament-ready"></span>
           <button type="button" class="btn-primary btn-compact" id="new-cycle-btn">Tạo giải</button>
@@ -2858,6 +2913,12 @@
       "Croatia", "Spain", "Uruguay", "Morocco",
     ];
 
+    /** Đội tuyển 5 sao trong FC Mobile */
+    const FC5_PRESET = [
+      "Argentina", "Belgium", "Brazil", "Croatia", "England", "France",
+      "Germany", "Netherlands", "Portugal", "Spain", "Vietnam",
+    ];
+
     const FC16_FALLBACK = {
       Argentina: { flag: "https://flagcdn.com/w80/ar.png", name: "Argentina", nameEn: "Argentina" },
       Netherlands: { flag: "https://flagcdn.com/w80/nl.png", name: "Hà Lan", nameEn: "Netherlands" },
@@ -2875,6 +2936,7 @@
       Spain: { flag: "https://flagcdn.com/w80/es.png", name: "Tây Ban Nha", nameEn: "Spain" },
       Uruguay: { flag: "https://flagcdn.com/w80/uy.png", name: "Uruguay", nameEn: "Uruguay" },
       Morocco: { flag: "https://flagcdn.com/w80/ma.png", name: "Ma Rốc", nameEn: "Morocco" },
+      Vietnam: { flag: "https://flagcdn.com/w80/vn.png", name: "Việt Nam", nameEn: "Vietnam" },
     };
 
     const GH_REPO = (() => {
@@ -4154,11 +4216,45 @@
       round.completed = false;
     }
 
-    function rerandomizeKnockoutRound(cycle, roundIndex) {
-      if (!canRandomizeKnockoutRound(cycle, roundIndex)) {
-        showToast("Không random được — vòng này đã có kết quả", true);
-        return;
-      }
+    let isKoRandomizing = false;
+
+    function snapshotKnockoutRandomState(cycle) {
+      return JSON.parse(JSON.stringify({
+        knockoutRounds: cycle.knockoutRounds,
+        playerTeams: cycle.playerTeams,
+        playoffs: cycle.playoffs,
+        champion: cycle.champion,
+        phase: cycle.phase,
+      }));
+    }
+
+    function restoreKnockoutRandomState(cycle, snap) {
+      cycle.knockoutRounds = snap.knockoutRounds;
+      cycle.playerTeams = snap.playerTeams;
+      cycle.playoffs = snap.playoffs;
+      cycle.champion = snap.champion;
+      cycle.phase = snap.phase;
+    }
+
+    function setKoRandomBusy(busy) {
+      document.querySelectorAll(".fc-ko-random-btn").forEach(btn => {
+        btn.classList.toggle("rolling", busy);
+        btn.disabled = busy;
+      });
+      document.querySelectorAll(".fc-diagram").forEach(el => {
+        el.classList.toggle("ko-shuffling", busy);
+      });
+    }
+
+    function refreshActiveKnockoutBracket(cycle) {
+      const bracketEl = document.getElementById("fc-bracket-active");
+      const active = getActiveCycle();
+      if (!bracketEl || !active || active.id !== cycle.id) return;
+      bracketEl.innerHTML = renderFcDiagram(cycle, true);
+      if (isKoRandomizing) setKoRandomBusy(true);
+    }
+
+    function applyKnockoutRoundRandom(cycle, roundIndex) {
       const round = cycle.knockoutRounds[roundIndex];
       if (roundIndex === 0) {
         cycle.knockoutRounds = cycle.knockoutRounds.slice(0, 1);
@@ -4168,36 +4264,82 @@
         reshuffleKnockoutRoundPairings(round, cycle.players);
         cycle.playerTeams = assignTeamsForPlayerNames(cycle.players);
         assignTeamsToKnockoutRound(cycle, round, cycle.playerTeams);
-        showToast("Đã random lại cặp + quốc gia");
       } else {
         const names = [];
         round.matches.forEach(m => {
           if (!m.played) names.push(m.home, m.away);
         });
-        if (!names.length) {
-          showToast("Không còn trận nào để random", true);
-          return;
-        }
+        if (!names.length) return false;
         const teams = assignTeamsForPlayerNames(names);
         round.matches.forEach(m => {
           if (!m.played) syncMatchTeamsFromMap(m, teams);
         });
-        showToast("Đã random lại quốc gia vòng này");
       }
-      saveTournamentData();
-      renderTournament();
+      return true;
     }
 
-    function rerandomizeKnockoutThird(cycle) {
+    async function rerandomizeKnockoutRound(cycle, roundIndex) {
+      if (isKoRandomizing) return;
+      if (!canRandomizeKnockoutRound(cycle, roundIndex)) {
+        showToast("Không random được — vòng này đã có kết quả", true);
+        return;
+      }
+
+      isKoRandomizing = true;
+      setKoRandomBusy(true);
+      const snap = snapshotKnockoutRandomState(cycle);
+      const first = roundIndex === 0;
+
+      try {
+        for (let i = 0; i < 10; i++) {
+          restoreKnockoutRandomState(cycle, snap);
+          const ok = applyKnockoutRoundRandom(cycle, roundIndex);
+          if (!ok) break;
+          refreshActiveKnockoutBracket(cycle);
+          await new Promise(r => setTimeout(r, 80 + i * 12));
+        }
+
+        restoreKnockoutRandomState(cycle, snap);
+        const ok = applyKnockoutRoundRandom(cycle, roundIndex);
+        if (!ok) {
+          showToast("Không còn trận nào để random", true);
+          return;
+        }
+        saveTournamentData();
+        renderTournament();
+        showToast(first ? "Đã random lại cặp + quốc gia ✓" : "Đã random lại quốc gia vòng này ✓");
+      } finally {
+        setKoRandomBusy(false);
+        isKoRandomizing = false;
+      }
+    }
+
+    async function rerandomizeKnockoutThird(cycle) {
+      if (isKoRandomizing) return;
       if (!canRandomizeKnockoutThird(cycle)) {
         showToast("Không random được — chỉ random trận tranh hạng 3 chưa đá", true);
         return;
       }
+
+      isKoRandomizing = true;
+      setKoRandomBusy(true);
       const third = getKnockoutThirdMatch(cycle);
-      syncMatchTeamsFromMap(third, assignTeamsForPlayerNames([third.home, third.away]));
-      saveTournamentData();
-      renderTournament();
-      showToast("Đã random lại quốc gia tranh hạng 3");
+
+      try {
+        for (let i = 0; i < 8; i++) {
+          syncMatchTeamsFromMap(third, assignTeamsForPlayerNames([third.home, third.away]));
+          refreshActiveKnockoutBracket(cycle);
+          await new Promise(r => setTimeout(r, 90 + i * 14));
+        }
+
+        syncMatchTeamsFromMap(third, assignTeamsForPlayerNames([third.home, third.away]));
+        saveTournamentData();
+        renderTournament();
+        showToast("Đã random lại quốc gia tranh hạng 3 ✓");
+      } finally {
+        setKoRandomBusy(false);
+        isKoRandomizing = false;
+      }
     }
 
     function diceIconHtml() {
@@ -5317,13 +5459,13 @@
     function bindKnockoutRandom(container) {
       if (!container || container.dataset.koRandomBound) return;
       container.dataset.koRandomBound = "1";
-      container.addEventListener("click", (e) => {
+      container.addEventListener("click", async (e) => {
         const roundBtn = e.target.closest(".fc-ko-random-btn[data-ko-round]");
         if (roundBtn) {
           e.stopPropagation();
           const cycle = resolveCycleFromEl(roundBtn);
           if (!cycle || cycle.locked) return;
-          rerandomizeKnockoutRound(cycle, parseInt(roundBtn.dataset.koRound, 10));
+          await rerandomizeKnockoutRound(cycle, parseInt(roundBtn.dataset.koRound, 10));
           return;
         }
         const thirdBtn = e.target.closest(".fc-ko-third-random-btn");
@@ -5331,7 +5473,7 @@
           e.stopPropagation();
           const cycle = resolveCycleFromEl(thirdBtn);
           if (!cycle) return;
-          rerandomizeKnockoutThird(cycle);
+          await rerandomizeKnockoutThird(cycle);
         }
       });
     }
@@ -5396,7 +5538,14 @@
         if (btnLg) btnLg.classList.toggle("active", tournamentFormat === "league");
         if (formatRow) formatRow.style.pointerEvents = "";
         if (formatRow) formatRow.style.opacity = "";
-        if (readyEl) readyEl.textContent = `${players.length} người`;
+        if (readyEl) {
+          const poolLabel = countryPoolMode === "fc16"
+            ? "16 đội FC"
+            : countryPoolMode === "fc5"
+            ? "5 sao"
+            : "API";
+          readyEl.textContent = `${players.length} người · ${poolLabel}`;
+        }
       }
 
       if (active || !newBtn) return;
@@ -6390,8 +6539,9 @@
     }
 
     function resolveCountryPool(mode, source) {
-      if (mode !== "fc16") return [...source];
-      return FC16_PRESET.map(en => {
+      if (mode === "all") return [...source];
+      const preset = mode === "fc5" ? FC5_PRESET : FC16_PRESET;
+      return preset.map(en => {
         const found = source.find(t => t.nameEn === en);
         if (found) return found;
         return FC16_FALLBACK[en] || null;
@@ -6406,13 +6556,32 @@
 
     function updateCountryPoolUI() {
       const hint = document.getElementById("country-pool-hint");
-      const sel = document.getElementById("country-pool-select");
+      const selects = [
+        document.getElementById("country-pool-select"),
+        document.getElementById("tournament-country-pool-select"),
+      ].filter(Boolean);
       if (hint) {
         hint.textContent = countryPoolMode === "fc16"
           ? `${NATIONAL_TEAMS.length} đội · bracket FC Mobile`
+          : countryPoolMode === "fc5"
+          ? `${NATIONAL_TEAMS.length} đội · 5 sao FC Mobile`
           : `${NATIONAL_TEAMS.length} đội từ API`;
       }
-      if (sel && sel.value !== countryPoolMode) sel.value = countryPoolMode;
+      for (const sel of selects) {
+        if (sel.value !== countryPoolMode) sel.value = countryPoolMode;
+      }
+      updateTournamentSetup();
+    }
+
+    function setCountryPoolMode(mode) {
+      countryPoolMode = mode;
+      localStorage.setItem(COUNTRY_POOL_KEY, countryPoolMode);
+      applyCountryPool();
+      showToast(
+        countryPoolMode === "fc16" ? "16 đội FC Mobile ✓"
+        : countryPoolMode === "fc5" ? `${NATIONAL_TEAMS.length} đội 5 sao ✓`
+        : `Tất cả ${allNationalTeams.length} đội ✓`
+      );
     }
 
     function loadTeamsCache() {
@@ -7004,14 +7173,11 @@
     });
 
     const countryPoolSelect = document.getElementById("country-pool-select");
-    if (countryPoolSelect) {
-      countryPoolSelect.value = countryPoolMode;
-      countryPoolSelect.addEventListener("change", () => {
-        countryPoolMode = countryPoolSelect.value;
-        localStorage.setItem(COUNTRY_POOL_KEY, countryPoolMode);
-        applyCountryPool();
-        showToast(countryPoolMode === "fc16" ? "16 đội FC Mobile ✓" : `Tất cả ${allNationalTeams.length} đội ✓`);
-      });
+    const tournamentCountryPoolSelect = document.getElementById("tournament-country-pool-select");
+    for (const sel of [countryPoolSelect, tournamentCountryPoolSelect]) {
+      if (!sel) continue;
+      sel.value = countryPoolMode;
+      sel.addEventListener("change", () => setCountryPoolMode(sel.value));
     }
     updateCountryPoolUI();
 
