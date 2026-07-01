@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-01T03:00:40.370Z",
+  "updatedAt": "2026-07-01T03:00:42.634Z",
   "players": [
     "Luân",
     "Hưng",
@@ -275,7 +275,7 @@
           "Khuê",
           "Đại"
         ],
-        "phase": "league",
+        "phase": "playoffs",
         "league": [
           {
             "id": "mr1hmx5fstj93",
@@ -372,13 +372,48 @@
             "home": "Khuê",
             "away": "Đại",
             "round": 3,
+            "scoreHome": 2,
+            "scoreAway": 1,
+            "played": true,
+            "lockedAt": "2026-07-01T03:00:41.831Z",
+            "teamHome": {
+              "name": "Bồ Đào Nha",
+              "flag": "https://flagcdn.com/w80/pt.png"
+            },
+            "teamAway": {
+              "name": "Đức",
+              "flag": "https://flagcdn.com/w80/de.png"
+            }
+          }
+        ],
+        "playoffs": [
+          {
+            "id": "mr1hnc9zal7h3",
+            "type": "final",
+            "label": "Chung kết · Nhất vs Nhì",
+            "home": "Hưng",
+            "away": "Khuê",
+            "homeSeed": 1,
+            "awaySeed": 2,
+            "scoreHome": null,
+            "scoreAway": null,
+            "played": false,
+            "lockedAt": null
+          },
+          {
+            "id": "mr1hnc9zf0jh6",
+            "type": "third",
+            "label": "Tranh hạng 3 · Ba vs Tư",
+            "home": "Luân",
+            "away": "Đại",
+            "homeSeed": 3,
+            "awaySeed": 4,
             "scoreHome": null,
             "scoreAway": null,
             "played": false,
             "lockedAt": null
           }
         ],
-        "playoffs": [],
         "knockoutRounds": [],
         "playerTeams": {
           "Luân": {
