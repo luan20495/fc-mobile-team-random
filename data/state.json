@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-01T05:32:01.916Z",
+  "updatedAt": "2026-07-01T05:32:06.170Z",
   "players": [
     "Luân",
     "Hưng",
@@ -277,7 +277,29 @@
         ],
         "phase": "knockout",
         "league": [],
-        "playoffs": [],
+        "playoffs": [
+          {
+            "id": "mr1n1zq4r4mj5",
+            "type": "third",
+            "label": "Tranh hạng 3 · Ba vs Tư",
+            "home": "Khuê",
+            "away": "Luân",
+            "homeSeed": 3,
+            "awaySeed": 4,
+            "scoreHome": null,
+            "scoreAway": null,
+            "played": false,
+            "lockedAt": null,
+            "teamHome": {
+              "name": "Tây Ban Nha",
+              "flag": "https://flagcdn.com/w80/es.png"
+            },
+            "teamAway": {
+              "name": "Pháp",
+              "flag": "https://flagcdn.com/w80/fr.png"
+            }
+          }
+        ],
         "knockoutRounds": [
           {
             "round": 1,
@@ -304,6 +326,31 @@
                 "id": "mr1mtkaq77082",
                 "home": "Hưng",
                 "away": "Luân",
+                "scoreHome": 2,
+                "scoreAway": 1,
+                "played": true,
+                "lockedAt": "2026-07-01T05:32:03.483Z",
+                "teamHome": {
+                  "name": "Argentina",
+                  "flag": "https://flagcdn.com/w80/ar.png"
+                },
+                "teamAway": {
+                  "name": "Pháp",
+                  "flag": "https://flagcdn.com/w80/fr.png"
+                }
+              }
+            ],
+            "byes": [],
+            "completed": true
+          },
+          {
+            "round": 2,
+            "label": "Chung kết",
+            "matches": [
+              {
+                "id": "mr1n1zq4yj32y",
+                "home": "Đại",
+                "away": "Hưng",
                 "scoreHome": null,
                 "scoreAway": null,
                 "played": false,
@@ -313,8 +360,8 @@
                   "flag": "https://flagcdn.com/w80/ar.png"
                 },
                 "teamAway": {
-                  "name": "Pháp",
-                  "flag": "https://flagcdn.com/w80/fr.png"
+                  "name": "Đức",
+                  "flag": "https://flagcdn.com/w80/de.png"
                 }
               }
             ],
