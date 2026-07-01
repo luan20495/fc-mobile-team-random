@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-01T05:39:16.804Z",
+  "updatedAt": "2026-07-01T05:46:42.996Z",
   "players": [
     "Luân",
     "Hưng",
@@ -414,10 +414,10 @@
                 "id": "mr1nb9gfdsebl",
                 "home": "Khuê",
                 "away": "Luân",
-                "scoreHome": null,
-                "scoreAway": null,
-                "played": false,
-                "lockedAt": null,
+                "scoreHome": 2,
+                "scoreAway": 1,
+                "played": true,
+                "lockedAt": "2026-07-01T05:46:42.193Z",
                 "teamHome": {
                   "name": "Việt Nam",
                   "flag": "https://flagcdn.com/w80/vn.png"
