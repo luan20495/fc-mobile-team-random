@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-06-30T06:05:44.999Z",
+  "updatedAt": "2026-07-01T02:57:43.433Z",
   "players": [
     "Luân",
     "Hưng",
@@ -1363,7 +1363,7 @@
         "id": "mr07zl0w5tdej",
         "number": 12,
         "createdAt": "2026-06-30T05:42:30.704Z",
-        "locked": false,
+        "locked": true,
         "format": "knockout",
         "players": [
           "Luân",
@@ -1371,7 +1371,7 @@
           "Khuê",
           "Đại"
         ],
-        "phase": "knockout",
+        "phase": "done",
         "league": [],
         "playoffs": [
           {
@@ -1382,10 +1382,10 @@
             "away": "Khuê",
             "homeSeed": 3,
             "awaySeed": 4,
-            "scoreHome": null,
-            "scoreAway": null,
-            "played": false,
-            "lockedAt": null,
+            "scoreHome": 1,
+            "scoreAway": 2,
+            "played": true,
+            "lockedAt": "2026-07-01T02:57:42.629Z",
             "teamHome": {
               "name": "Thổ Nhĩ Kỳ",
               "flag": "https://flagcdn.com/w80/tr.png"
@@ -1484,10 +1484,10 @@
           }
         },
         "champion": "Hưng",
-        "completedAt": null
+        "completedAt": "2026-07-01T02:57:42.629Z"
       }
     ],
-    "activeCycleId": "mr07zl0w5tdej"
+    "activeCycleId": null
   },
   "teamsCache": {
     "cachedAt": "2026-06-18T05:20:19.186Z",
