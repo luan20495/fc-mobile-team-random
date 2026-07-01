@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-01T05:56:32.636Z",
+  "updatedAt": "2026-07-01T05:56:35.451Z",
   "players": [
     "Luân",
     "Hưng",
@@ -394,7 +394,7 @@
         "id": "mr1nb6njmwb67",
         "number": 4,
         "createdAt": "2026-07-01T05:39:12.367Z",
-        "locked": false,
+        "locked": true,
         "format": "knockout",
         "players": [
           "Luân",
@@ -402,7 +402,7 @@
           "Khuê",
           "Đại"
         ],
-        "phase": "knockout",
+        "phase": "done",
         "league": [],
         "playoffs": [
           {
@@ -478,10 +478,10 @@
                 "id": "mr1no4bj4xlg1",
                 "home": "Khuê",
                 "away": "Hưng",
-                "scoreHome": null,
-                "scoreAway": null,
-                "played": false,
-                "lockedAt": null,
+                "scoreHome": 1,
+                "scoreAway": 2,
+                "played": true,
+                "lockedAt": "2026-07-01T05:56:34.649Z",
                 "teamHome": {
                   "name": "Croatia",
                   "flag": "https://flagcdn.com/w80/hr.png"
@@ -493,7 +493,7 @@
               }
             ],
             "byes": [],
-            "completed": false
+            "completed": true
           }
         ],
         "playerTeams": {
@@ -514,11 +514,11 @@
             "flag": "https://flagcdn.com/w80/de.png"
           }
         },
-        "champion": null,
-        "completedAt": null
+        "champion": "Hưng",
+        "completedAt": "2026-07-01T05:56:34.649Z"
       }
     ],
-    "activeCycleId": "mr1nb6njmwb67"
+    "activeCycleId": null
   },
   "teamsCache": {
     "cachedAt": "2026-06-18T05:20:19.186Z",
