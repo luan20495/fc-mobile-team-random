@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-01T03:00:35.266Z",
+  "updatedAt": "2026-07-01T03:00:37.820Z",
   "players": [
     "Luân",
     "Hưng",
@@ -300,10 +300,18 @@
             "home": "Hưng",
             "away": "Khuê",
             "round": 1,
-            "scoreHome": null,
-            "scoreAway": null,
-            "played": false,
-            "lockedAt": null
+            "scoreHome": 2,
+            "scoreAway": 1,
+            "played": true,
+            "lockedAt": "2026-07-01T03:00:37.018Z",
+            "teamHome": {
+              "name": "Colombia",
+              "flag": "https://flagcdn.com/w80/co.png"
+            },
+            "teamAway": {
+              "name": "Bồ Đào Nha",
+              "flag": "https://flagcdn.com/w80/pt.png"
+            }
           },
           {
             "id": "mr1hmx5fya638",
