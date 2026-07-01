@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-01T02:59:16.252Z",
+  "updatedAt": "2026-07-01T02:59:20.950Z",
   "players": [
     "Luân",
     "Hưng",
@@ -9,86 +9,6 @@
   ],
   "tournament": {
     "cycles": [
-      {
-        "id": "mqt1zctrrzhcg",
-        "number": 8,
-        "createdAt": "2026-06-25T05:19:59.151Z",
-        "locked": true,
-        "format": "knockout",
-        "players": [
-          "Luân",
-          "Hưng",
-          "Khuê",
-          "Long"
-        ],
-        "phase": "done",
-        "league": [],
-        "playoffs": [],
-        "knockoutRounds": [
-          {
-            "round": 1,
-            "label": "Bán kết",
-            "matches": [
-              {
-                "id": "mqt1zjs5029ev",
-                "home": "Long",
-                "away": "Luân",
-                "scoreHome": null,
-                "scoreAway": null,
-                "played": false,
-                "lockedAt": null,
-                "teamHome": {
-                  "name": "Uruguay",
-                  "flag": "https://flagcdn.com/w80/uy.png"
-                },
-                "teamAway": {
-                  "name": "Tây Ban Nha",
-                  "flag": "https://flagcdn.com/w80/es.png"
-                }
-              },
-              {
-                "id": "mqt1zjs55lkyn",
-                "home": "Hưng",
-                "away": "Khuê",
-                "scoreHome": null,
-                "scoreAway": null,
-                "played": false,
-                "lockedAt": null,
-                "teamHome": {
-                  "name": "Bồ Đào Nha",
-                  "flag": "https://flagcdn.com/w80/pt.png"
-                },
-                "teamAway": {
-                  "name": "Senegal",
-                  "flag": "https://flagcdn.com/w80/sn.png"
-                }
-              }
-            ],
-            "byes": [],
-            "completed": false
-          }
-        ],
-        "playerTeams": {
-          "Luân": {
-            "name": "Tây Ban Nha",
-            "flag": "https://flagcdn.com/w80/es.png"
-          },
-          "Hưng": {
-            "name": "Bồ Đào Nha",
-            "flag": "https://flagcdn.com/w80/pt.png"
-          },
-          "Khuê": {
-            "name": "Senegal",
-            "flag": "https://flagcdn.com/w80/sn.png"
-          },
-          "Long": {
-            "name": "Uruguay",
-            "flag": "https://flagcdn.com/w80/uy.png"
-          }
-        },
-        "champion": null,
-        "completedAt": "2026-06-25T05:20:30.946Z"
-      },
       {
         "id": "mqt201cy62zl3",
         "number": 9,
