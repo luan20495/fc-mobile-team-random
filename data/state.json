@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-01T03:00:26.364Z",
+  "updatedAt": "2026-07-01T03:00:30.189Z",
   "players": [
     "Luân",
     "Hưng",
@@ -310,10 +310,18 @@
             "home": "Luân",
             "away": "Khuê",
             "round": 2,
-            "scoreHome": null,
-            "scoreAway": null,
-            "played": false,
-            "lockedAt": null
+            "scoreHome": 1,
+            "scoreAway": 2,
+            "played": true,
+            "lockedAt": "2026-07-01T03:00:29.387Z",
+            "teamHome": {
+              "name": "Anh",
+              "flag": "https://flagcdn.com/w80/gb-eng.png"
+            },
+            "teamAway": {
+              "name": "Bồ Đào Nha",
+              "flag": "https://flagcdn.com/w80/pt.png"
+            }
           },
           {
             "id": "mr1hmx5fn4x5l",
