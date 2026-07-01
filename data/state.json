@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-01T05:56:35.451Z",
+  "updatedAt": "2026-07-01T06:25:53.972Z",
   "players": [
     "Luân",
     "Hưng",
@@ -516,9 +516,107 @@
         },
         "champion": "Hưng",
         "completedAt": "2026-07-01T05:56:34.649Z"
+      },
+      {
+        "id": "mr1oz7rnvsli9",
+        "number": 5,
+        "createdAt": "2026-07-01T06:25:53.171Z",
+        "locked": false,
+        "format": "league",
+        "players": [
+          "Luân",
+          "Hưng",
+          "Khuê",
+          "Đại"
+        ],
+        "phase": "league",
+        "league": [
+          {
+            "id": "mr1oz7rnnrd52",
+            "home": "Luân",
+            "away": "Đại",
+            "round": 1,
+            "scoreHome": null,
+            "scoreAway": null,
+            "played": false,
+            "lockedAt": null
+          },
+          {
+            "id": "mr1oz7rnr8pu5",
+            "home": "Hưng",
+            "away": "Khuê",
+            "round": 1,
+            "scoreHome": null,
+            "scoreAway": null,
+            "played": false,
+            "lockedAt": null
+          },
+          {
+            "id": "mr1oz7rn78fqg",
+            "home": "Luân",
+            "away": "Khuê",
+            "round": 2,
+            "scoreHome": null,
+            "scoreAway": null,
+            "played": false,
+            "lockedAt": null
+          },
+          {
+            "id": "mr1oz7rnfj310",
+            "home": "Đại",
+            "away": "Hưng",
+            "round": 2,
+            "scoreHome": null,
+            "scoreAway": null,
+            "played": false,
+            "lockedAt": null
+          },
+          {
+            "id": "mr1oz7rn2ldjp",
+            "home": "Luân",
+            "away": "Hưng",
+            "round": 3,
+            "scoreHome": null,
+            "scoreAway": null,
+            "played": false,
+            "lockedAt": null
+          },
+          {
+            "id": "mr1oz7rnsvo45",
+            "home": "Khuê",
+            "away": "Đại",
+            "round": 3,
+            "scoreHome": null,
+            "scoreAway": null,
+            "played": false,
+            "lockedAt": null
+          }
+        ],
+        "playoffs": [],
+        "knockoutRounds": [],
+        "playerTeams": {
+          "Luân": {
+            "name": "Argentina",
+            "flag": "https://flagcdn.com/w80/ar.png"
+          },
+          "Hưng": {
+            "name": "Việt Nam",
+            "flag": "https://flagcdn.com/w80/vn.png"
+          },
+          "Khuê": {
+            "name": "Đức",
+            "flag": "https://flagcdn.com/w80/de.png"
+          },
+          "Đại": {
+            "name": "Brazil",
+            "flag": "https://flagcdn.com/w80/br.png"
+          }
+        },
+        "champion": null,
+        "completedAt": null
       }
     ],
-    "activeCycleId": null
+    "activeCycleId": "mr1oz7rnvsli9"
   },
   "teamsCache": {
     "cachedAt": "2026-06-18T05:20:19.186Z",
