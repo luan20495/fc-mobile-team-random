@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-03T06:02:13.996Z",
+  "updatedAt": "2026-07-03T06:08:23.568Z",
   "players": [
     "Luân",
     "Hưng",
@@ -921,10 +921,10 @@
                 "id": "mr4j06yw5y9qw",
                 "home": "Đại",
                 "away": "Luân",
-                "scoreHome": null,
-                "scoreAway": null,
-                "played": false,
-                "lockedAt": null,
+                "scoreHome": 2,
+                "scoreAway": 1,
+                "played": true,
+                "lockedAt": "2026-07-03T06:08:22.764Z",
                 "teamHome": {
                   "name": "Việt Nam",
                   "flag": "https://flagcdn.com/w80/vn.png"
@@ -936,7 +936,7 @@
               }
             ],
             "byes": [],
-            "completed": false
+            "completed": true
           }
         ],
         "playerTeams": {
@@ -957,7 +957,7 @@
             "flag": "https://flagcdn.com/w80/fr.png"
           }
         },
-        "champion": null,
+        "champion": "Đại",
         "completedAt": null
       }
     ],
