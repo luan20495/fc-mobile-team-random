@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-03T05:30:20.225Z",
+  "updatedAt": "2026-07-03T05:30:23.957Z",
   "players": [
     "Luân",
     "Hưng",
@@ -529,7 +529,7 @@
           "Khuê",
           "Đại"
         ],
-        "phase": "league",
+        "phase": "playoffs",
         "league": [
           {
             "id": "mr1oz7rnnrd52",
@@ -608,23 +608,66 @@
             "home": "Luân",
             "away": "Hưng",
             "round": 3,
-            "scoreHome": null,
-            "scoreAway": null,
-            "played": false,
-            "lockedAt": null
+            "scoreHome": 1,
+            "scoreAway": 2,
+            "played": true,
+            "lockedAt": "2026-07-03T05:30:22.521Z",
+            "teamHome": {
+              "name": "Argentina",
+              "flag": "https://flagcdn.com/w80/ar.png"
+            },
+            "teamAway": {
+              "name": "Việt Nam",
+              "flag": "https://flagcdn.com/w80/vn.png"
+            }
           },
           {
             "id": "mr1oz7rnsvo45",
             "home": "Khuê",
             "away": "Đại",
             "round": 3,
+            "scoreHome": 1,
+            "scoreAway": 2,
+            "played": true,
+            "lockedAt": "2026-07-03T05:30:20.625Z",
+            "teamHome": {
+              "name": "Đức",
+              "flag": "https://flagcdn.com/w80/de.png"
+            },
+            "teamAway": {
+              "name": "Brazil",
+              "flag": "https://flagcdn.com/w80/br.png"
+            }
+          }
+        ],
+        "playoffs": [
+          {
+            "id": "mr4hvj5mmes9b",
+            "type": "final",
+            "label": "Chung kết · Nhất vs Nhì",
+            "home": "Khuê",
+            "away": "Hưng",
+            "homeSeed": 1,
+            "awaySeed": 2,
+            "scoreHome": null,
+            "scoreAway": null,
+            "played": false,
+            "lockedAt": null
+          },
+          {
+            "id": "mr4hvj5mrm5bh",
+            "type": "third",
+            "label": "Tranh hạng 3 · Ba vs Tư",
+            "home": "Đại",
+            "away": "Luân",
+            "homeSeed": 3,
+            "awaySeed": 4,
             "scoreHome": null,
             "scoreAway": null,
             "played": false,
             "lockedAt": null
           }
         ],
-        "playoffs": [],
         "knockoutRounds": [],
         "playerTeams": {
           "Luân": {
