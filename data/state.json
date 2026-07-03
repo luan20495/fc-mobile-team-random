@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-03T05:28:51.227Z",
+  "updatedAt": "2026-07-03T05:28:54.143Z",
   "players": [
     "Luân",
     "Hưng",
@@ -554,20 +554,36 @@
             "home": "Hưng",
             "away": "Khuê",
             "round": 1,
-            "scoreHome": null,
-            "scoreAway": null,
-            "played": false,
-            "lockedAt": null
+            "scoreHome": 1,
+            "scoreAway": 2,
+            "played": true,
+            "lockedAt": "2026-07-03T05:28:53.341Z",
+            "teamHome": {
+              "name": "Việt Nam",
+              "flag": "https://flagcdn.com/w80/vn.png"
+            },
+            "teamAway": {
+              "name": "Đức",
+              "flag": "https://flagcdn.com/w80/de.png"
+            }
           },
           {
             "id": "mr1oz7rn78fqg",
             "home": "Luân",
             "away": "Khuê",
             "round": 2,
-            "scoreHome": null,
-            "scoreAway": null,
-            "played": false,
-            "lockedAt": null
+            "scoreHome": 1,
+            "scoreAway": 2,
+            "played": true,
+            "lockedAt": "2026-07-03T05:28:51.892Z",
+            "teamHome": {
+              "name": "Argentina",
+              "flag": "https://flagcdn.com/w80/ar.png"
+            },
+            "teamAway": {
+              "name": "Đức",
+              "flag": "https://flagcdn.com/w80/de.png"
+            }
           },
           {
             "id": "mr1oz7rnfj310",
