@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-03T05:30:33.033Z",
+  "updatedAt": "2026-07-03T05:30:41.152Z",
   "players": [
     "Luân",
     "Hưng",
@@ -727,37 +727,37 @@
             "label": "Bán kết",
             "matches": [
               {
-                "id": "mr4hvqnbod276",
-                "home": "Đại",
-                "away": "Luân",
+                "id": "mr4hvwwqgvan9",
+                "home": "Khuê",
+                "away": "Đại",
                 "scoreHome": null,
                 "scoreAway": null,
                 "played": false,
                 "lockedAt": null,
                 "teamHome": {
-                  "name": "Argentina",
-                  "flag": "https://flagcdn.com/w80/ar.png"
+                  "name": "Anh",
+                  "flag": "https://flagcdn.com/w80/gb-eng.png"
                 },
                 "teamAway": {
-                  "name": "Bồ Đào Nha",
-                  "flag": "https://flagcdn.com/w80/pt.png"
+                  "name": "Pháp",
+                  "flag": "https://flagcdn.com/w80/fr.png"
                 }
               },
               {
-                "id": "mr4hvqnbku6cx",
-                "home": "Hưng",
-                "away": "Khuê",
+                "id": "mr4hvwwqruwv1",
+                "home": "Luân",
+                "away": "Hưng",
                 "scoreHome": null,
                 "scoreAway": null,
                 "played": false,
                 "lockedAt": null,
                 "teamHome": {
-                  "name": "Hà Lan",
-                  "flag": "https://flagcdn.com/w80/nl.png"
-                },
-                "teamAway": {
                   "name": "Tây Ban Nha",
                   "flag": "https://flagcdn.com/w80/es.png"
+                },
+                "teamAway": {
+                  "name": "Hà Lan",
+                  "flag": "https://flagcdn.com/w80/nl.png"
                 }
               }
             ],
@@ -767,20 +767,20 @@
         ],
         "playerTeams": {
           "Luân": {
-            "name": "Bồ Đào Nha",
-            "flag": "https://flagcdn.com/w80/pt.png"
+            "name": "Tây Ban Nha",
+            "flag": "https://flagcdn.com/w80/es.png"
           },
           "Hưng": {
             "name": "Hà Lan",
             "flag": "https://flagcdn.com/w80/nl.png"
           },
           "Khuê": {
-            "name": "Tây Ban Nha",
-            "flag": "https://flagcdn.com/w80/es.png"
+            "name": "Anh",
+            "flag": "https://flagcdn.com/w80/gb-eng.png"
           },
           "Đại": {
-            "name": "Argentina",
-            "flag": "https://flagcdn.com/w80/ar.png"
+            "name": "Pháp",
+            "flag": "https://flagcdn.com/w80/fr.png"
           }
         },
         "champion": null,
