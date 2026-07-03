@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-01T06:25:53.972Z",
+  "updatedAt": "2026-07-03T05:28:51.227Z",
   "players": [
     "Luân",
     "Hưng",
@@ -536,10 +536,18 @@
             "home": "Luân",
             "away": "Đại",
             "round": 1,
-            "scoreHome": null,
-            "scoreAway": null,
-            "played": false,
-            "lockedAt": null
+            "scoreHome": 1,
+            "scoreAway": 2,
+            "played": true,
+            "lockedAt": "2026-07-03T05:28:50.425Z",
+            "teamHome": {
+              "name": "Argentina",
+              "flag": "https://flagcdn.com/w80/ar.png"
+            },
+            "teamAway": {
+              "name": "Brazil",
+              "flag": "https://flagcdn.com/w80/br.png"
+            }
           },
           {
             "id": "mr1oz7rnr8pu5",
