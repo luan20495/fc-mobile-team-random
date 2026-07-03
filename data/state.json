@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-03T05:30:41.152Z",
+  "updatedAt": "2026-07-03T05:41:29.289Z",
   "players": [
     "Luân",
     "Hưng",
@@ -730,10 +730,10 @@
                 "id": "mr4hvwwqgvan9",
                 "home": "Khuê",
                 "away": "Đại",
-                "scoreHome": null,
-                "scoreAway": null,
-                "played": false,
-                "lockedAt": null,
+                "scoreHome": 1,
+                "scoreAway": 2,
+                "played": true,
+                "lockedAt": "2026-07-03T05:41:28.485Z",
                 "teamHome": {
                   "name": "Anh",
                   "flag": "https://flagcdn.com/w80/gb-eng.png"
