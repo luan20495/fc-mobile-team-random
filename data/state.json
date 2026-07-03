@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-03T06:08:23.568Z",
+  "updatedAt": "2026-07-03T06:08:26.717Z",
   "players": [
     "Luân",
     "Hưng",
@@ -837,7 +837,7 @@
         "id": "mr4ilsp8ds4sz",
         "number": 7,
         "createdAt": "2026-07-03T05:50:47.948Z",
-        "locked": false,
+        "locked": true,
         "format": "knockout",
         "players": [
           "Luân",
@@ -845,7 +845,7 @@
           "Khuê",
           "Đại"
         ],
-        "phase": "knockout",
+        "phase": "done",
         "league": [],
         "playoffs": [
           {
@@ -856,10 +856,10 @@
             "away": "Khuê",
             "homeSeed": 3,
             "awaySeed": 4,
-            "scoreHome": null,
-            "scoreAway": null,
-            "played": false,
-            "lockedAt": null,
+            "scoreHome": 2,
+            "scoreAway": 1,
+            "played": true,
+            "lockedAt": "2026-07-03T06:08:25.917Z",
             "teamHome": {
               "name": "Việt Nam",
               "flag": "https://flagcdn.com/w80/vn.png"
@@ -958,10 +958,10 @@
           }
         },
         "champion": "Đại",
-        "completedAt": null
+        "completedAt": "2026-07-03T06:08:25.917Z"
       }
     ],
-    "activeCycleId": "mr4ilsp8ds4sz"
+    "activeCycleId": null
   },
   "teamsCache": {
     "cachedAt": "2026-06-18T05:20:19.186Z",
