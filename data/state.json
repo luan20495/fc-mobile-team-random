@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-06T05:56:41.505Z",
+  "updatedAt": "2026-07-06T06:02:48.294Z",
   "players": [
     "Luân",
     "Hưng",
@@ -986,10 +986,10 @@
                 "id": "mr8t4kmshxa8h",
                 "home": "Hưng",
                 "away": "Đại",
-                "scoreHome": null,
-                "scoreAway": null,
-                "played": false,
-                "lockedAt": null,
+                "scoreHome": 2,
+                "scoreAway": 1,
+                "played": true,
+                "lockedAt": "2026-07-06T06:02:47.492Z",
                 "teamHome": {
                   "name": "Bồ Đào Nha",
                   "flag": "https://flagcdn.com/w80/pt.png"
@@ -1001,7 +1001,7 @@
               }
             ],
             "byes": [],
-            "completed": false
+            "completed": true
           }
         ],
         "playerTeams": {
@@ -1022,7 +1022,7 @@
             "flag": "https://flagcdn.com/w80/hr.png"
           }
         },
-        "champion": null,
+        "champion": "Hưng",
         "completedAt": null
       }
     ],
