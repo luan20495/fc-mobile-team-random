@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-06T05:52:57.485Z",
+  "updatedAt": "2026-07-06T05:56:25.622Z",
   "players": [
     "Luân",
     "Hưng",
@@ -912,7 +912,29 @@
         ],
         "phase": "knockout",
         "league": [],
-        "playoffs": [],
+        "playoffs": [
+          {
+            "id": "mr8t4kmr89p0n",
+            "type": "third",
+            "label": "Tranh hạng 3 · Ba vs Tư",
+            "home": "Luân",
+            "away": "Khuê",
+            "homeSeed": 3,
+            "awaySeed": 4,
+            "scoreHome": null,
+            "scoreAway": null,
+            "played": false,
+            "lockedAt": null,
+            "teamHome": {
+              "name": "Bồ Đào Nha",
+              "flag": "https://flagcdn.com/w80/pt.png"
+            },
+            "teamAway": {
+              "name": "Bỉ",
+              "flag": "https://flagcdn.com/w80/be.png"
+            }
+          }
+        ],
         "knockoutRounds": [
           {
             "round": 1,
@@ -939,6 +961,31 @@
                 "id": "mr8ss4ti6dd6j",
                 "home": "Khuê",
                 "away": "Đại",
+                "scoreHome": 1,
+                "scoreAway": 2,
+                "played": true,
+                "lockedAt": "2026-07-06T05:56:24.819Z",
+                "teamHome": {
+                  "name": "Bỉ",
+                  "flag": "https://flagcdn.com/w80/be.png"
+                },
+                "teamAway": {
+                  "name": "Croatia",
+                  "flag": "https://flagcdn.com/w80/hr.png"
+                }
+              }
+            ],
+            "byes": [],
+            "completed": true
+          },
+          {
+            "round": 2,
+            "label": "Chung kết",
+            "matches": [
+              {
+                "id": "mr8t4kmshxa8h",
+                "home": "Hưng",
+                "away": "Đại",
                 "scoreHome": null,
                 "scoreAway": null,
                 "played": false,
@@ -948,8 +995,8 @@
                   "flag": "https://flagcdn.com/w80/be.png"
                 },
                 "teamAway": {
-                  "name": "Croatia",
-                  "flag": "https://flagcdn.com/w80/hr.png"
+                  "name": "Pháp",
+                  "flag": "https://flagcdn.com/w80/fr.png"
                 }
               }
             ],
