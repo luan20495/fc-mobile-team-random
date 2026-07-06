@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-06T05:46:42.023Z",
+  "updatedAt": "2026-07-06T05:46:45.257Z",
   "players": [
     "Luân",
     "Hưng",
@@ -919,26 +919,9 @@
             "label": "Bán kết",
             "matches": [
               {
-                "id": "mr8ss2bpnalgd",
+                "id": "mr8ss4tiu0432",
                 "home": "Luân",
                 "away": "Hưng",
-                "scoreHome": null,
-                "scoreAway": null,
-                "played": false,
-                "lockedAt": null,
-                "teamHome": {
-                  "name": "Hà Lan",
-                  "flag": "https://flagcdn.com/w80/nl.png"
-                },
-                "teamAway": {
-                  "name": "Anh",
-                  "flag": "https://flagcdn.com/w80/gb-eng.png"
-                }
-              },
-              {
-                "id": "mr8ss2bpdjs94",
-                "home": "Khuê",
-                "away": "Đại",
                 "scoreHome": null,
                 "scoreAway": null,
                 "played": false,
@@ -948,8 +931,25 @@
                   "flag": "https://flagcdn.com/w80/pt.png"
                 },
                 "teamAway": {
-                  "name": "Argentina",
-                  "flag": "https://flagcdn.com/w80/ar.png"
+                  "name": "Brazil",
+                  "flag": "https://flagcdn.com/w80/br.png"
+                }
+              },
+              {
+                "id": "mr8ss4ti6dd6j",
+                "home": "Khuê",
+                "away": "Đại",
+                "scoreHome": null,
+                "scoreAway": null,
+                "played": false,
+                "lockedAt": null,
+                "teamHome": {
+                  "name": "Bỉ",
+                  "flag": "https://flagcdn.com/w80/be.png"
+                },
+                "teamAway": {
+                  "name": "Croatia",
+                  "flag": "https://flagcdn.com/w80/hr.png"
                 }
               }
             ],
@@ -959,20 +959,20 @@
         ],
         "playerTeams": {
           "Luân": {
-            "name": "Hà Lan",
-            "flag": "https://flagcdn.com/w80/nl.png"
-          },
-          "Hưng": {
-            "name": "Anh",
-            "flag": "https://flagcdn.com/w80/gb-eng.png"
-          },
-          "Khuê": {
             "name": "Bồ Đào Nha",
             "flag": "https://flagcdn.com/w80/pt.png"
           },
+          "Hưng": {
+            "name": "Brazil",
+            "flag": "https://flagcdn.com/w80/br.png"
+          },
+          "Khuê": {
+            "name": "Bỉ",
+            "flag": "https://flagcdn.com/w80/be.png"
+          },
           "Đại": {
-            "name": "Argentina",
-            "flag": "https://flagcdn.com/w80/ar.png"
+            "name": "Croatia",
+            "flag": "https://flagcdn.com/w80/hr.png"
           }
         },
         "champion": null,
