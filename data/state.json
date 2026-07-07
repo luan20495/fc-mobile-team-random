@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-07T05:55:25.438Z",
+  "updatedAt": "2026-07-07T05:55:29.742Z",
   "players": [
     "Luân",
     "Hưng",
@@ -1156,7 +1156,7 @@
         "id": "mra7xikj8o44a",
         "number": 10,
         "createdAt": "2026-07-07T05:38:35.971Z",
-        "locked": false,
+        "locked": true,
         "format": "knockout",
         "players": [
           "Luân",
@@ -1164,7 +1164,7 @@
           "Khuê",
           "Đại"
         ],
-        "phase": "knockout",
+        "phase": "done",
         "league": [],
         "playoffs": [
           {
@@ -1240,10 +1240,10 @@
                 "id": "mra85ivggtdih",
                 "home": "Hưng",
                 "away": "Khuê",
-                "scoreHome": null,
-                "scoreAway": null,
-                "played": false,
-                "lockedAt": null,
+                "scoreHome": 2,
+                "scoreAway": 1,
+                "played": true,
+                "lockedAt": "2026-07-07T05:55:26.948Z",
                 "teamHome": {
                   "name": "Bỉ",
                   "flag": "https://flagcdn.com/w80/be.png"
@@ -1255,7 +1255,7 @@
               }
             ],
             "byes": [],
-            "completed": false
+            "completed": true
           }
         ],
         "playerTeams": {
@@ -1276,11 +1276,11 @@
             "flag": "https://flagcdn.com/w80/nl.png"
           }
         },
-        "champion": null,
-        "completedAt": null
+        "champion": "Hưng",
+        "completedAt": "2026-07-07T05:55:26.948Z"
       }
     ],
-    "activeCycleId": "mra7xikj8o44a"
+    "activeCycleId": null
   },
   "teamsCache": {
     "cachedAt": "2026-06-18T05:20:19.186Z",
