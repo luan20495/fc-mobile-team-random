@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-07T05:44:44.644Z",
+  "updatedAt": "2026-07-07T05:44:50.413Z",
   "players": [
     "Luân",
     "Hưng",
@@ -1166,7 +1166,29 @@
         ],
         "phase": "knockout",
         "league": [],
-        "playoffs": [],
+        "playoffs": [
+          {
+            "id": "mra85ivfh0vgv",
+            "type": "third",
+            "label": "Tranh hạng 3 · Ba vs Tư",
+            "home": "Luân",
+            "away": "Đại",
+            "homeSeed": 3,
+            "awaySeed": 4,
+            "scoreHome": null,
+            "scoreAway": null,
+            "played": false,
+            "lockedAt": null,
+            "teamHome": {
+              "name": "Bỉ",
+              "flag": "https://flagcdn.com/w80/be.png"
+            },
+            "teamAway": {
+              "name": "Hà Lan",
+              "flag": "https://flagcdn.com/w80/nl.png"
+            }
+          }
+        ],
         "knockoutRounds": [
           {
             "round": 1,
@@ -1193,10 +1215,10 @@
                 "id": "mra7xldhxxmir",
                 "home": "Đại",
                 "away": "Khuê",
-                "scoreHome": null,
-                "scoreAway": null,
-                "played": false,
-                "lockedAt": null,
+                "scoreHome": 1,
+                "scoreAway": 2,
+                "played": true,
+                "lockedAt": "2026-07-07T05:44:49.611Z",
                 "teamHome": {
                   "name": "Hà Lan",
                   "flag": "https://flagcdn.com/w80/nl.png"
@@ -1204,6 +1226,31 @@
                 "teamAway": {
                   "name": "Anh",
                   "flag": "https://flagcdn.com/w80/gb-eng.png"
+                }
+              }
+            ],
+            "byes": [],
+            "completed": true
+          },
+          {
+            "round": 2,
+            "label": "Chung kết",
+            "matches": [
+              {
+                "id": "mra85ivggtdih",
+                "home": "Hưng",
+                "away": "Khuê",
+                "scoreHome": null,
+                "scoreAway": null,
+                "played": false,
+                "lockedAt": null,
+                "teamHome": {
+                  "name": "Đức",
+                  "flag": "https://flagcdn.com/w80/de.png"
+                },
+                "teamAway": {
+                  "name": "Việt Nam",
+                  "flag": "https://flagcdn.com/w80/vn.png"
                 }
               }
             ],
