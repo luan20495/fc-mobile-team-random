@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-07T05:45:05.789Z",
+  "updatedAt": "2026-07-07T05:55:25.438Z",
   "players": [
     "Luân",
     "Hưng",
@@ -1175,10 +1175,10 @@
             "away": "Đại",
             "homeSeed": 3,
             "awaySeed": 4,
-            "scoreHome": null,
-            "scoreAway": null,
-            "played": false,
-            "lockedAt": null,
+            "scoreHome": 1,
+            "scoreAway": 2,
+            "played": true,
+            "lockedAt": "2026-07-07T05:55:24.635Z",
             "teamHome": {
               "name": "Tây Ban Nha",
               "flag": "https://flagcdn.com/w80/es.png"
