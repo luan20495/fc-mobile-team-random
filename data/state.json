@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-07T05:25:16.589Z",
+  "updatedAt": "2026-07-07T05:25:21.824Z",
   "players": [
     "Luân",
     "Hưng",
@@ -1046,24 +1046,7 @@
             "label": "Bán kết",
             "matches": [
               {
-                "id": "mra7gbkln3h8b",
-                "home": "Hưng",
-                "away": "Đại",
-                "scoreHome": null,
-                "scoreAway": null,
-                "played": false,
-                "lockedAt": null,
-                "teamHome": {
-                  "name": "Đức",
-                  "flag": "https://flagcdn.com/w80/de.png"
-                },
-                "teamAway": {
-                  "name": "Anh",
-                  "flag": "https://flagcdn.com/w80/gb-eng.png"
-                }
-              },
-              {
-                "id": "mra7gbklboshb",
+                "id": "mra7gh6ksosay",
                 "home": "Luân",
                 "away": "Khuê",
                 "scoreHome": null,
@@ -1071,12 +1054,29 @@
                 "played": false,
                 "lockedAt": null,
                 "teamHome": {
-                  "name": "Bồ Đào Nha",
-                  "flag": "https://flagcdn.com/w80/pt.png"
+                  "name": "Việt Nam",
+                  "flag": "https://flagcdn.com/w80/vn.png"
                 },
                 "teamAway": {
-                  "name": "Hà Lan",
-                  "flag": "https://flagcdn.com/w80/nl.png"
+                  "name": "Argentina",
+                  "flag": "https://flagcdn.com/w80/ar.png"
+                }
+              },
+              {
+                "id": "mra7gh6kkrsxl",
+                "home": "Hưng",
+                "away": "Đại",
+                "scoreHome": null,
+                "scoreAway": null,
+                "played": false,
+                "lockedAt": null,
+                "teamHome": {
+                  "name": "Pháp",
+                  "flag": "https://flagcdn.com/w80/fr.png"
+                },
+                "teamAway": {
+                  "name": "Anh",
+                  "flag": "https://flagcdn.com/w80/gb-eng.png"
                 }
               }
             ],
@@ -1086,16 +1086,16 @@
         ],
         "playerTeams": {
           "Luân": {
-            "name": "Bồ Đào Nha",
-            "flag": "https://flagcdn.com/w80/pt.png"
+            "name": "Việt Nam",
+            "flag": "https://flagcdn.com/w80/vn.png"
           },
           "Hưng": {
-            "name": "Đức",
-            "flag": "https://flagcdn.com/w80/de.png"
+            "name": "Pháp",
+            "flag": "https://flagcdn.com/w80/fr.png"
           },
           "Khuê": {
-            "name": "Hà Lan",
-            "flag": "https://flagcdn.com/w80/nl.png"
+            "name": "Argentina",
+            "flag": "https://flagcdn.com/w80/ar.png"
           },
           "Đại": {
             "name": "Anh",
