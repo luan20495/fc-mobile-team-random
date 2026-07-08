@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-08T05:36:46.323Z",
+  "updatedAt": "2026-07-08T05:36:49.309Z",
   "players": [
     "Luân",
     "Hưng",
@@ -1283,7 +1283,7 @@
         "id": "mrbmsszh5brcv",
         "number": 11,
         "createdAt": "2026-07-08T05:22:36.605Z",
-        "locked": false,
+        "locked": true,
         "format": "knockout",
         "players": [
           "Luân",
@@ -1291,7 +1291,7 @@
           "Khuê",
           "Đại"
         ],
-        "phase": "knockout",
+        "phase": "done",
         "league": [],
         "playoffs": [
           {
@@ -1367,10 +1367,10 @@
                 "id": "mrbn2287ml1um",
                 "home": "Đại",
                 "away": "Hưng",
-                "scoreHome": null,
-                "scoreAway": null,
-                "played": false,
-                "lockedAt": null,
+                "scoreHome": 1,
+                "scoreAway": 2,
+                "played": true,
+                "lockedAt": "2026-07-08T05:36:48.507Z",
                 "teamHome": {
                   "name": "Tây Ban Nha",
                   "flag": "https://flagcdn.com/w80/es.png"
@@ -1382,7 +1382,7 @@
               }
             ],
             "byes": [],
-            "completed": false
+            "completed": true
           }
         ],
         "playerTeams": {
@@ -1403,11 +1403,11 @@
             "flag": "https://flagcdn.com/w80/gb-eng.png"
           }
         },
-        "champion": null,
-        "completedAt": null
+        "champion": "Hưng",
+        "completedAt": "2026-07-08T05:36:48.507Z"
       }
     ],
-    "activeCycleId": "mrbmsszh5brcv"
+    "activeCycleId": null
   },
   "teamsCache": {
     "cachedAt": "2026-06-18T05:20:19.186Z",
