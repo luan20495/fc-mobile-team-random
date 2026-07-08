@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-08T05:22:40.145Z",
+  "updatedAt": "2026-07-08T05:22:44.493Z",
   "players": [
     "Luân",
     "Hưng",
@@ -1300,26 +1300,26 @@
             "label": "Bán kết",
             "matches": [
               {
-                "id": "mrbmsugwbb7i5",
-                "home": "Hưng",
-                "away": "Đại",
+                "id": "mrbmswim3nobq",
+                "home": "Khuê",
+                "away": "Hưng",
                 "scoreHome": null,
                 "scoreAway": null,
                 "played": false,
                 "lockedAt": null,
                 "teamHome": {
-                  "name": "Hà Lan",
-                  "flag": "https://flagcdn.com/w80/nl.png"
+                  "name": "Brazil",
+                  "flag": "https://flagcdn.com/w80/br.png"
                 },
                 "teamAway": {
-                  "name": "Bỉ",
-                  "flag": "https://flagcdn.com/w80/be.png"
+                  "name": "Anh",
+                  "flag": "https://flagcdn.com/w80/gb-eng.png"
                 }
               },
               {
-                "id": "mrbmsugwwbusc",
-                "home": "Luân",
-                "away": "Khuê",
+                "id": "mrbmswimn260h",
+                "home": "Đại",
+                "away": "Luân",
                 "scoreHome": null,
                 "scoreAway": null,
                 "played": false,
@@ -1340,20 +1340,20 @@
         ],
         "playerTeams": {
           "Luân": {
-            "name": "Tây Ban Nha",
-            "flag": "https://flagcdn.com/w80/es.png"
-          },
-          "Hưng": {
-            "name": "Hà Lan",
-            "flag": "https://flagcdn.com/w80/nl.png"
-          },
-          "Khuê": {
             "name": "Pháp",
             "flag": "https://flagcdn.com/w80/fr.png"
           },
+          "Hưng": {
+            "name": "Anh",
+            "flag": "https://flagcdn.com/w80/gb-eng.png"
+          },
+          "Khuê": {
+            "name": "Brazil",
+            "flag": "https://flagcdn.com/w80/br.png"
+          },
           "Đại": {
-            "name": "Bỉ",
-            "flag": "https://flagcdn.com/w80/be.png"
+            "name": "Tây Ban Nha",
+            "flag": "https://flagcdn.com/w80/es.png"
           }
         },
         "champion": null,
