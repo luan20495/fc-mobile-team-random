@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-08T05:29:52.738Z",
+  "updatedAt": "2026-07-08T05:30:04.148Z",
   "players": [
     "Luân",
     "Hưng",
@@ -1307,12 +1307,12 @@
             "played": false,
             "lockedAt": null,
             "teamHome": {
-              "name": "Việt Nam",
-              "flag": "https://flagcdn.com/w80/vn.png"
+              "name": "Hà Lan",
+              "flag": "https://flagcdn.com/w80/nl.png"
             },
             "teamAway": {
-              "name": "Tây Ban Nha",
-              "flag": "https://flagcdn.com/w80/es.png"
+              "name": "Pháp",
+              "flag": "https://flagcdn.com/w80/fr.png"
             }
           }
         ],
