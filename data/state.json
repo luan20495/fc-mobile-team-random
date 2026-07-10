@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-10T05:33:19.721Z",
+  "updatedAt": "2026-07-10T05:43:07.802Z",
   "players": [
     "Luân",
     "Hưng",
@@ -1556,10 +1556,10 @@
             "away": "Luân",
             "homeSeed": 3,
             "awaySeed": 4,
-            "scoreHome": null,
-            "scoreAway": null,
-            "played": false,
-            "lockedAt": null,
+            "scoreHome": 1,
+            "scoreAway": 2,
+            "played": true,
+            "lockedAt": "2026-07-10T05:43:07.000Z",
             "teamHome": {
               "name": "Croatia",
               "flag": "https://flagcdn.com/w80/hr.png"
