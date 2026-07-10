@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-10T05:43:13.151Z",
+  "updatedAt": "2026-07-10T05:43:22.549Z",
   "players": [
     "Luân",
     "Hưng",
@@ -1659,9 +1659,89 @@
         },
         "champion": "Hưng",
         "completedAt": "2026-07-10T05:43:09.162Z"
+      },
+      {
+        "id": "mreif127wc31r",
+        "number": 14,
+        "createdAt": "2026-07-10T05:43:13.951Z",
+        "locked": false,
+        "format": "knockout",
+        "players": [
+          "Luân",
+          "Hưng",
+          "Khuê",
+          "Đại"
+        ],
+        "phase": "knockout",
+        "league": [],
+        "playoffs": [],
+        "knockoutRounds": [
+          {
+            "round": 1,
+            "label": "Bán kết",
+            "matches": [
+              {
+                "id": "mreif72oijroe",
+                "home": "Khuê",
+                "away": "Hưng",
+                "scoreHome": null,
+                "scoreAway": null,
+                "played": false,
+                "lockedAt": null,
+                "teamHome": {
+                  "name": "Brazil",
+                  "flag": "https://flagcdn.com/w80/br.png"
+                },
+                "teamAway": {
+                  "name": "Tây Ban Nha",
+                  "flag": "https://flagcdn.com/w80/es.png"
+                }
+              },
+              {
+                "id": "mreif72oy4wy9",
+                "home": "Luân",
+                "away": "Đại",
+                "scoreHome": null,
+                "scoreAway": null,
+                "played": false,
+                "lockedAt": null,
+                "teamHome": {
+                  "name": "Argentina",
+                  "flag": "https://flagcdn.com/w80/ar.png"
+                },
+                "teamAway": {
+                  "name": "Bỉ",
+                  "flag": "https://flagcdn.com/w80/be.png"
+                }
+              }
+            ],
+            "byes": [],
+            "completed": false
+          }
+        ],
+        "playerTeams": {
+          "Luân": {
+            "name": "Argentina",
+            "flag": "https://flagcdn.com/w80/ar.png"
+          },
+          "Hưng": {
+            "name": "Tây Ban Nha",
+            "flag": "https://flagcdn.com/w80/es.png"
+          },
+          "Khuê": {
+            "name": "Brazil",
+            "flag": "https://flagcdn.com/w80/br.png"
+          },
+          "Đại": {
+            "name": "Bỉ",
+            "flag": "https://flagcdn.com/w80/be.png"
+          }
+        },
+        "champion": null,
+        "completedAt": null
       }
     ],
-    "activeCycleId": null
+    "activeCycleId": "mreif127wc31r"
   },
   "teamsCache": {
     "cachedAt": "2026-06-18T05:20:19.186Z",
