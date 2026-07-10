@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-10T05:43:07.802Z",
+  "updatedAt": "2026-07-10T05:43:13.151Z",
   "players": [
     "Luân",
     "Hưng",
@@ -1537,7 +1537,7 @@
         "id": "mrehtom5pzhdq",
         "number": 13,
         "createdAt": "2026-07-10T05:26:38.045Z",
-        "locked": false,
+        "locked": true,
         "format": "knockout",
         "players": [
           "Luân",
@@ -1545,7 +1545,7 @@
           "Khuê",
           "Đại"
         ],
-        "phase": "knockout",
+        "phase": "done",
         "league": [],
         "playoffs": [
           {
@@ -1621,10 +1621,10 @@
                 "id": "mrei1yme054my",
                 "home": "Hưng",
                 "away": "Đại",
-                "scoreHome": null,
-                "scoreAway": null,
-                "played": false,
-                "lockedAt": null,
+                "scoreHome": 2,
+                "scoreAway": 1,
+                "played": true,
+                "lockedAt": "2026-07-10T05:43:09.162Z",
                 "teamHome": {
                   "name": "Argentina",
                   "flag": "https://flagcdn.com/w80/ar.png"
@@ -1636,7 +1636,7 @@
               }
             ],
             "byes": [],
-            "completed": false
+            "completed": true
           }
         ],
         "playerTeams": {
@@ -1657,11 +1657,11 @@
             "flag": "https://flagcdn.com/w80/pt.png"
           }
         },
-        "champion": null,
-        "completedAt": null
+        "champion": "Hưng",
+        "completedAt": "2026-07-10T05:43:09.162Z"
       }
     ],
-    "activeCycleId": "mrehtom5pzhdq"
+    "activeCycleId": null
   },
   "teamsCache": {
     "cachedAt": "2026-06-18T05:20:19.186Z",
