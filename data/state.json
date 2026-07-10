@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-10T05:26:44.404Z",
+  "updatedAt": "2026-07-10T05:33:02.932Z",
   "players": [
     "Luân",
     "Hưng",
@@ -1557,10 +1557,10 @@
                 "id": "mrehtswfomcil",
                 "home": "Hưng",
                 "away": "Khuê",
-                "scoreHome": null,
-                "scoreAway": null,
-                "played": false,
-                "lockedAt": null,
+                "scoreHome": 2,
+                "scoreAway": 1,
+                "played": true,
+                "lockedAt": "2026-07-10T05:33:02.128Z",
                 "teamHome": {
                   "name": "Anh",
                   "flag": "https://flagcdn.com/w80/gb-eng.png"
