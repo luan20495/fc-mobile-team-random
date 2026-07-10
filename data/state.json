@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-10T05:43:22.549Z",
+  "updatedAt": "2026-07-10T05:52:13.734Z",
   "players": [
     "Luân",
     "Hưng",
@@ -1684,10 +1684,10 @@
                 "id": "mreif72oijroe",
                 "home": "Khuê",
                 "away": "Hưng",
-                "scoreHome": null,
-                "scoreAway": null,
-                "played": false,
-                "lockedAt": null,
+                "scoreHome": 1,
+                "scoreAway": 2,
+                "played": true,
+                "lockedAt": "2026-07-10T05:52:12.929Z",
                 "teamHome": {
                   "name": "Brazil",
                   "flag": "https://flagcdn.com/w80/br.png"
