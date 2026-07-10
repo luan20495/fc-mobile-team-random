@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-10T05:52:28.116Z",
+  "updatedAt": "2026-07-10T06:02:26.001Z",
   "players": [
     "Luân",
     "Hưng",
@@ -1683,10 +1683,10 @@
             "away": "Luân",
             "homeSeed": 3,
             "awaySeed": 4,
-            "scoreHome": null,
-            "scoreAway": null,
-            "played": false,
-            "lockedAt": null,
+            "scoreHome": 2,
+            "scoreAway": 1,
+            "played": true,
+            "lockedAt": "2026-07-10T06:02:25.198Z",
             "teamHome": {
               "name": "Hà Lan",
               "flag": "https://flagcdn.com/w80/nl.png"
