@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-11T05:45:45.678Z",
+  "updatedAt": "2026-07-11T05:54:47.227Z",
   "players": [
     "Luân",
     "Hưng",
@@ -1955,10 +1955,10 @@
                 "id": "mrfxy46iho49n",
                 "home": "Luân",
                 "away": "Khuê",
-                "scoreHome": null,
-                "scoreAway": null,
-                "played": false,
-                "lockedAt": null,
+                "scoreHome": 2,
+                "scoreAway": 1,
+                "played": true,
+                "lockedAt": "2026-07-11T05:54:46.422Z",
                 "teamHome": {
                   "name": "Đức",
                   "flag": "https://flagcdn.com/w80/de.png"
