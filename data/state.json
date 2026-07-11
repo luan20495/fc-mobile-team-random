@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-11T05:57:39.853Z",
+  "updatedAt": "2026-07-11T06:07:38.259Z",
   "players": [
     "Luân",
     "Hưng",
@@ -2129,10 +2129,10 @@
                 "id": "mrfycylw3ze5s",
                 "home": "Luân",
                 "away": "Đại",
-                "scoreHome": null,
-                "scoreAway": null,
-                "played": false,
-                "lockedAt": null,
+                "scoreHome": 2,
+                "scoreAway": 1,
+                "played": true,
+                "lockedAt": "2026-07-11T06:07:35.068Z",
                 "teamHome": {
                   "name": "Bỉ",
                   "flag": "https://flagcdn.com/w80/be.png"
@@ -2144,7 +2144,7 @@
               }
             ],
             "byes": [],
-            "completed": false
+            "completed": true
           }
         ],
         "playerTeams": {
@@ -2165,7 +2165,7 @@
             "flag": "https://flagcdn.com/w80/ar.png"
           }
         },
-        "champion": null,
+        "champion": "Luân",
         "completedAt": null
       }
     ],
