@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-11T05:45:29.119Z",
+  "updatedAt": "2026-07-11T05:45:33.995Z",
   "players": [
     "Luân",
     "Hưng",
@@ -1791,7 +1791,7 @@
         "id": "mrfxbqxxr3081",
         "number": 15,
         "createdAt": "2026-07-11T05:28:21.286Z",
-        "locked": false,
+        "locked": true,
         "format": "knockout",
         "players": [
           "Luân",
@@ -1799,7 +1799,7 @@
           "Khuê",
           "Đại"
         ],
-        "phase": "knockout",
+        "phase": "done",
         "league": [],
         "playoffs": [
           {
@@ -1810,10 +1810,10 @@
             "away": "Khuê",
             "homeSeed": 3,
             "awaySeed": 4,
-            "scoreHome": null,
-            "scoreAway": null,
-            "played": false,
-            "lockedAt": null,
+            "scoreHome": 2,
+            "scoreAway": 1,
+            "played": true,
+            "lockedAt": "2026-07-11T05:45:33.190Z",
             "teamHome": {
               "name": "Hà Lan",
               "flag": "https://flagcdn.com/w80/nl.png"
@@ -1912,10 +1912,10 @@
           }
         },
         "champion": "Đại",
-        "completedAt": null
+        "completedAt": "2026-07-11T05:45:33.190Z"
       }
     ],
-    "activeCycleId": "mrfxbqxxr3081"
+    "activeCycleId": null
   },
   "teamsCache": {
     "cachedAt": "2026-06-18T05:20:19.186Z",
