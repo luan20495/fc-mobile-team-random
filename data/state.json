@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-11T05:55:54.854Z",
+  "updatedAt": "2026-07-11T05:56:46.949Z",
   "players": [
     "Luân",
     "Hưng",
@@ -1918,7 +1918,7 @@
         "id": "mrfxy04y2acge",
         "number": 16,
         "createdAt": "2026-07-11T05:45:39.635Z",
-        "locked": false,
+        "locked": true,
         "format": "knockout",
         "players": [
           "Luân",
@@ -1926,7 +1926,7 @@
           "Khuê",
           "Đại"
         ],
-        "phase": "knockout",
+        "phase": "done",
         "league": [],
         "playoffs": [
           {
@@ -2039,10 +2039,90 @@
           }
         },
         "champion": null,
+        "completedAt": "2026-07-11T05:56:46.147Z"
+      },
+      {
+        "id": "mrfycaf7ry4xf",
+        "number": 17,
+        "createdAt": "2026-07-11T05:56:46.147Z",
+        "locked": false,
+        "format": "knockout",
+        "players": [
+          "Luân",
+          "Hưng",
+          "Khuê",
+          "Đại"
+        ],
+        "phase": "knockout",
+        "league": [],
+        "playoffs": [],
+        "knockoutRounds": [
+          {
+            "round": 1,
+            "label": "Bán kết",
+            "matches": [
+              {
+                "id": "mrfycaf8rlaap",
+                "home": "Đại",
+                "away": "Luân",
+                "scoreHome": null,
+                "scoreAway": null,
+                "played": false,
+                "lockedAt": null,
+                "teamHome": {
+                  "name": "Việt Nam",
+                  "flag": "https://flagcdn.com/w80/vn.png"
+                },
+                "teamAway": {
+                  "name": "Anh",
+                  "flag": "https://flagcdn.com/w80/gb-eng.png"
+                }
+              },
+              {
+                "id": "mrfycaf8vuoen",
+                "home": "Hưng",
+                "away": "Khuê",
+                "scoreHome": null,
+                "scoreAway": null,
+                "played": false,
+                "lockedAt": null,
+                "teamHome": {
+                  "name": "Croatia",
+                  "flag": "https://flagcdn.com/w80/hr.png"
+                },
+                "teamAway": {
+                  "name": "Pháp",
+                  "flag": "https://flagcdn.com/w80/fr.png"
+                }
+              }
+            ],
+            "byes": [],
+            "completed": false
+          }
+        ],
+        "playerTeams": {
+          "Luân": {
+            "name": "Anh",
+            "flag": "https://flagcdn.com/w80/gb-eng.png"
+          },
+          "Hưng": {
+            "name": "Croatia",
+            "flag": "https://flagcdn.com/w80/hr.png"
+          },
+          "Khuê": {
+            "name": "Pháp",
+            "flag": "https://flagcdn.com/w80/fr.png"
+          },
+          "Đại": {
+            "name": "Việt Nam",
+            "flag": "https://flagcdn.com/w80/vn.png"
+          }
+        },
+        "champion": null,
         "completedAt": null
       }
     ],
-    "activeCycleId": "mrfxy04y2acge"
+    "activeCycleId": "mrfycaf7ry4xf"
   },
   "teamsCache": {
     "cachedAt": "2026-06-18T05:20:19.186Z",
