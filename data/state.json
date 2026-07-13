@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-13T05:43:49.241Z",
+  "updatedAt": "2026-07-13T05:50:42.208Z",
   "players": [
     "Luân",
     "Hưng",
@@ -2383,10 +2383,10 @@
                 "id": "mrisr0uusktsg",
                 "home": "Đại",
                 "away": "Luân",
-                "scoreHome": null,
-                "scoreAway": null,
-                "played": false,
-                "lockedAt": null,
+                "scoreHome": 2,
+                "scoreAway": 1,
+                "played": true,
+                "lockedAt": "2026-07-13T05:50:41.400Z",
                 "teamHome": {
                   "name": "Croatia",
                   "flag": "https://flagcdn.com/w80/hr.png"
@@ -2398,7 +2398,7 @@
               }
             ],
             "byes": [],
-            "completed": false
+            "completed": true
           }
         ],
         "playerTeams": {
@@ -2419,7 +2419,7 @@
             "flag": "https://flagcdn.com/w80/pt.png"
           }
         },
-        "champion": null,
+        "champion": "Đại",
         "completedAt": null
       }
     ],
