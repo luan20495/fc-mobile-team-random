@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-13T05:17:30.064Z",
+  "updatedAt": "2026-07-13T05:17:36.343Z",
   "players": [
     "Luân",
     "Hưng",
@@ -2189,33 +2189,33 @@
             "label": "Bán kết",
             "matches": [
               {
-                "id": "mrirtejeisnxv",
-                "home": "Đại",
+                "id": "mrirtjfoklw2n",
+                "home": "Khuê",
                 "away": "Luân",
                 "scoreHome": null,
                 "scoreAway": null,
                 "played": false,
                 "lockedAt": null,
                 "teamHome": {
-                  "name": "Brazil",
-                  "flag": "https://flagcdn.com/w80/br.png"
+                  "name": "Bỉ",
+                  "flag": "https://flagcdn.com/w80/be.png"
                 },
                 "teamAway": {
-                  "name": "Argentina",
-                  "flag": "https://flagcdn.com/w80/ar.png"
+                  "name": "Tây Ban Nha",
+                  "flag": "https://flagcdn.com/w80/es.png"
                 }
               },
               {
-                "id": "mrirtejekdjt9",
-                "home": "Khuê",
-                "away": "Hưng",
+                "id": "mrirtjfospmwt",
+                "home": "Hưng",
+                "away": "Đại",
                 "scoreHome": null,
                 "scoreAway": null,
                 "played": false,
                 "lockedAt": null,
                 "teamHome": {
-                  "name": "Việt Nam",
-                  "flag": "https://flagcdn.com/w80/vn.png"
+                  "name": "Hà Lan",
+                  "flag": "https://flagcdn.com/w80/nl.png"
                 },
                 "teamAway": {
                   "name": "Anh",
@@ -2229,20 +2229,20 @@
         ],
         "playerTeams": {
           "Luân": {
-            "name": "Argentina",
-            "flag": "https://flagcdn.com/w80/ar.png"
+            "name": "Tây Ban Nha",
+            "flag": "https://flagcdn.com/w80/es.png"
           },
           "Hưng": {
-            "name": "Anh",
-            "flag": "https://flagcdn.com/w80/gb-eng.png"
+            "name": "Hà Lan",
+            "flag": "https://flagcdn.com/w80/nl.png"
           },
           "Khuê": {
-            "name": "Việt Nam",
-            "flag": "https://flagcdn.com/w80/vn.png"
+            "name": "Bỉ",
+            "flag": "https://flagcdn.com/w80/be.png"
           },
           "Đại": {
-            "name": "Brazil",
-            "flag": "https://flagcdn.com/w80/br.png"
+            "name": "Anh",
+            "flag": "https://flagcdn.com/w80/gb-eng.png"
           }
         },
         "champion": null,
