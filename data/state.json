@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-13T05:37:15.173Z",
+  "updatedAt": "2026-07-13T05:43:33.347Z",
   "players": [
     "Luân",
     "Hưng",
@@ -2319,10 +2319,10 @@
                 "id": "mrisivltbbh31",
                 "home": "Đại",
                 "away": "Hưng",
-                "scoreHome": null,
-                "scoreAway": null,
-                "played": false,
-                "lockedAt": null,
+                "scoreHome": 2,
+                "scoreAway": 1,
+                "played": true,
+                "lockedAt": "2026-07-13T05:43:32.537Z",
                 "teamHome": {
                   "name": "Bồ Đào Nha",
                   "flag": "https://flagcdn.com/w80/pt.png"
