@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-13T05:17:36.343Z",
+  "updatedAt": "2026-07-13T05:25:50.063Z",
   "players": [
     "Luân",
     "Hưng",
@@ -2192,10 +2192,10 @@
                 "id": "mrirtjfoklw2n",
                 "home": "Khuê",
                 "away": "Luân",
-                "scoreHome": null,
-                "scoreAway": null,
-                "played": false,
-                "lockedAt": null,
+                "scoreHome": 2,
+                "scoreAway": 1,
+                "played": true,
+                "lockedAt": "2026-07-13T05:25:49.261Z",
                 "teamHome": {
                   "name": "Bỉ",
                   "flag": "https://flagcdn.com/w80/be.png"
