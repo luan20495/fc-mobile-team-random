@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-13T05:37:07.888Z",
+  "updatedAt": "2026-07-13T05:37:15.173Z",
   "players": [
     "Luân",
     "Hưng",
@@ -2294,9 +2294,89 @@
         },
         "champion": "Hưng",
         "completedAt": "2026-07-13T05:37:07.088Z"
+      },
+      {
+        "id": "mrisisjj1rckf",
+        "number": 19,
+        "createdAt": "2026-07-13T05:37:10.399Z",
+        "locked": false,
+        "format": "knockout",
+        "players": [
+          "Luân",
+          "Hưng",
+          "Khuê",
+          "Đại"
+        ],
+        "phase": "knockout",
+        "league": [],
+        "playoffs": [],
+        "knockoutRounds": [
+          {
+            "round": 1,
+            "label": "Bán kết",
+            "matches": [
+              {
+                "id": "mrisivltbbh31",
+                "home": "Đại",
+                "away": "Hưng",
+                "scoreHome": null,
+                "scoreAway": null,
+                "played": false,
+                "lockedAt": null,
+                "teamHome": {
+                  "name": "Bồ Đào Nha",
+                  "flag": "https://flagcdn.com/w80/pt.png"
+                },
+                "teamAway": {
+                  "name": "Tây Ban Nha",
+                  "flag": "https://flagcdn.com/w80/es.png"
+                }
+              },
+              {
+                "id": "mrisivltyqyzg",
+                "home": "Luân",
+                "away": "Khuê",
+                "scoreHome": null,
+                "scoreAway": null,
+                "played": false,
+                "lockedAt": null,
+                "teamHome": {
+                  "name": "Bỉ",
+                  "flag": "https://flagcdn.com/w80/be.png"
+                },
+                "teamAway": {
+                  "name": "Croatia",
+                  "flag": "https://flagcdn.com/w80/hr.png"
+                }
+              }
+            ],
+            "byes": [],
+            "completed": false
+          }
+        ],
+        "playerTeams": {
+          "Luân": {
+            "name": "Bỉ",
+            "flag": "https://flagcdn.com/w80/be.png"
+          },
+          "Hưng": {
+            "name": "Tây Ban Nha",
+            "flag": "https://flagcdn.com/w80/es.png"
+          },
+          "Khuê": {
+            "name": "Croatia",
+            "flag": "https://flagcdn.com/w80/hr.png"
+          },
+          "Đại": {
+            "name": "Bồ Đào Nha",
+            "flag": "https://flagcdn.com/w80/pt.png"
+          }
+        },
+        "champion": null,
+        "completedAt": null
       }
     ],
-    "activeCycleId": null
+    "activeCycleId": "mrisisjj1rckf"
   },
   "teamsCache": {
     "cachedAt": "2026-06-18T05:20:19.186Z",
