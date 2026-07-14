@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-14T05:29:25.045Z",
+  "updatedAt": "2026-07-14T05:39:54.571Z",
   "players": [
     "Luân",
     "Hưng",
@@ -2463,10 +2463,10 @@
                 "id": "mrk7oniin3mah",
                 "home": "Luân",
                 "away": "Hưng",
-                "scoreHome": null,
-                "scoreAway": null,
-                "played": false,
-                "lockedAt": null,
+                "scoreHome": 2,
+                "scoreAway": 1,
+                "played": true,
+                "lockedAt": "2026-07-14T05:39:53.769Z",
                 "teamHome": {
                   "name": "Argentina",
                   "flag": "https://flagcdn.com/w80/ar.png"
