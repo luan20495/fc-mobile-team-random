@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-14T06:01:55.132Z",
+  "updatedAt": "2026-07-14T06:01:59.931Z",
   "players": [
     "Luân",
     "Hưng",
@@ -2563,7 +2563,29 @@
         ],
         "phase": "knockout",
         "league": [],
-        "playoffs": [],
+        "playoffs": [
+          {
+            "id": "mrk8uhhkvfohw",
+            "type": "third",
+            "label": "Tranh hạng 3 · Ba vs Tư",
+            "home": "Luân",
+            "away": "Hưng",
+            "homeSeed": 3,
+            "awaySeed": 4,
+            "scoreHome": null,
+            "scoreAway": null,
+            "played": false,
+            "lockedAt": null,
+            "teamHome": {
+              "name": "Bồ Đào Nha",
+              "flag": "https://flagcdn.com/w80/pt.png"
+            },
+            "teamAway": {
+              "name": "Anh",
+              "flag": "https://flagcdn.com/w80/gb-eng.png"
+            }
+          }
+        ],
         "knockoutRounds": [
           {
             "round": 1,
@@ -2590,6 +2612,31 @@
                 "id": "mrk8h87pv41w5",
                 "home": "Hưng",
                 "away": "Đại",
+                "scoreHome": 1,
+                "scoreAway": 2,
+                "played": true,
+                "lockedAt": "2026-07-14T06:01:55.975Z",
+                "teamHome": {
+                  "name": "Anh",
+                  "flag": "https://flagcdn.com/w80/gb-eng.png"
+                },
+                "teamAway": {
+                  "name": "Hà Lan",
+                  "flag": "https://flagcdn.com/w80/nl.png"
+                }
+              }
+            ],
+            "byes": [],
+            "completed": true
+          },
+          {
+            "round": 2,
+            "label": "Chung kết",
+            "matches": [
+              {
+                "id": "mrk8uhhkadbvh",
+                "home": "Khuê",
+                "away": "Đại",
                 "scoreHome": null,
                 "scoreAway": null,
                 "played": false,
@@ -2599,8 +2646,8 @@
                   "flag": "https://flagcdn.com/w80/gb-eng.png"
                 },
                 "teamAway": {
-                  "name": "Hà Lan",
-                  "flag": "https://flagcdn.com/w80/nl.png"
+                  "name": "Đức",
+                  "flag": "https://flagcdn.com/w80/de.png"
                 }
               }
             ],
