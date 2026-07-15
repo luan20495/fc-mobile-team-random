@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updatedAt": "2026-07-15T05:33:13.522Z",
+  "updatedAt": "2026-07-15T05:33:18.568Z",
   "players": [
     "Luân",
     "Hưng",
@@ -2704,12 +2704,12 @@
             "played": false,
             "lockedAt": null,
             "teamHome": {
-              "name": "Argentina",
-              "flag": "https://flagcdn.com/w80/ar.png"
+              "name": "Hà Lan",
+              "flag": "https://flagcdn.com/w80/nl.png"
             },
             "teamAway": {
-              "name": "Pháp",
-              "flag": "https://flagcdn.com/w80/fr.png"
+              "name": "Croatia",
+              "flag": "https://flagcdn.com/w80/hr.png"
             }
           }
         ],
